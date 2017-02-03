@@ -8,6 +8,7 @@ import json
 import base64
 import getopt
 import threading
+import re
 
 import yaml
 import requests
@@ -219,6 +220,7 @@ class MockBackend(Backend):
             job['outputs'] = self.mock_output(app['outputs'])
             job['status'] = 'COMPLETED'
             dirname = str('cache/' + job['name']).replace('root.', 'root/')
+            dirname = re.sub(r'\.([0-9]+)$', r'/\1', dirname)
             try:
                 os.makedirs(dirname)
             except:
