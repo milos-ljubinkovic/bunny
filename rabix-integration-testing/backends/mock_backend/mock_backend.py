@@ -100,6 +100,7 @@ class Backend(object):
         self.conn_output = None
         self.channel = None
         self.channel_output = None
+        self.backend_id = None
 
     def connect(self):
         payload = {
@@ -117,6 +118,8 @@ class Backend(object):
         self.backend_info = r.json()
         be_cfg = self.backend_info['backend_configuration']
         eng_cfg = self.backend_info['engine_configuration']
+        self.backend_id = self.backend_info['id']
+
         params = pika.ConnectionParameters(
             host=self.mq_host,
             credentials=self.mq_credentials,
@@ -126,19 +129,19 @@ class Backend(object):
 
         self.conn = pika.BlockingConnection(params)
         self.channel = self.conn.channel()
-        self.channel.exchange_declare(exchange=eng_cfg['exchange'], type=eng_cfg['exchange_type'])
-        self.channel.queue_declare('jobs')
-        self.channel.queue_declare('control')
+        self.channel.exchange_declare(exchange=eng_cfg['exchange'], type=eng_cfg['exchange_type'], durable=True)
+        self.channel.queue_declare('jobs', durable=True)
+        self.channel.queue_declare('control', durable=True)
         try:
             self.channel.queue_bind(exchange=be_cfg['exchange'],
                                     queue='jobs',
-                                    routing_key=be_cfg['receive_routing_key'])
+                                    routing_key=be_cfg['receive_routing_key'] + '_' + self.backend_id)
         except Exception as e:
             log.exception('exception caught: ' + str(e) + ', exchange not found')
 
         self.channel.queue_bind(exchange=be_cfg['exchange'],
                                 queue='control',
-                                routing_key=be_cfg['receive_control_routing_key'])
+                                routing_key=be_cfg['receive_control_routing_key'] + '_' + self.backend_id)
 
         log.debug('!!!!!!!!!!!!!!! starting consume')
         self.channel.basic_consume(self.callback_jobs, queue='jobs')
