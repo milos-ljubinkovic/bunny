@@ -155,7 +155,7 @@ class Backend(object):
         hb = {'id': self.backend_info['id'], 'timestamp': int(round(time.time() * 1000))}
         log.debug('... bunny heartbeat')
         self.channel.basic_publish(exchange=eng_cfg['exchange'],
-                                   routing_key=eng_cfg['heartbeat_routing_key'],
+                                   routing_key=eng_cfg['heartbeat_routing_key' + '_' + self.backend_id],
                                    body=json.dumps(hb))
 
     def send_job(self, job):
