@@ -183,5 +183,10 @@ public class InMemoryJobRepository implements JobRepository {
   public void deleteByRootIds(Set<UUID> rootIds) {
     // TODO Auto-generated method stub
   }
-  
+
+  @Override
+  public void updateShort(Job job) {
+   this.update(job);
+  }
+
 }
