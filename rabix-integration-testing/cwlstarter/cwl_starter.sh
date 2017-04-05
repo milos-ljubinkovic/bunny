@@ -1,4 +1,5 @@
 #!/bin/bash
+pip install --upgrade pip
 virtualenv -p $(which python2) env/testenv
 source env/testenv/bin/activate
 pip install -U pip setuptools wheel
