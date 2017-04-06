@@ -24,5 +24,7 @@ public interface EngineStatusCallback {
   void onJobRootFailed(Job rootJob) throws EngineStatusCallbackException;
   
   void onJobRootAborted(Job rootJob) throws EngineStatusCallbackException;
+
+  void onJobRootRunning(Job job) throws EngineStatusCallbackException;
   
 }

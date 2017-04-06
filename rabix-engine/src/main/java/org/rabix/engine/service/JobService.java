@@ -48,4 +48,6 @@ public interface JobService {
 
   void handleJobRootAborted(Job rootJob);
 
+  void handleJobRootRunning(Job job);
+
 }

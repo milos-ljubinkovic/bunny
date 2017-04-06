@@ -60,4 +60,9 @@ public class DefaultEngineStatusCallback implements EngineStatusCallback {
     logger.debug("onJobRootReady(jobId={})", rootJob.getId());
   }
 
+  @Override
+  public void onJobRootRunning(Job rootJob) throws EngineStatusCallbackException{
+    logger.debug("onJobRootRunning(jobId={})", rootJob.getId());
+  }
+
 }
