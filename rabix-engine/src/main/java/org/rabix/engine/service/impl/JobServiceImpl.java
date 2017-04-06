@@ -398,15 +398,6 @@ public class JobServiceImpl implements JobService {
   }
 
   @Override
-  public void handleJobRootRunning(Job job){
-    try {
-      engineStatusCallback.onJobRootRunning(job);
-    } catch (EngineStatusCallbackException e) {
-      logger.error("Engine status callback failed", e);
-    } 
-  }
-  
-  @Override
   public void handleJobRootCompleted(Job job){
     logger.info("Root job {} completed.", job.getId());
     if (deleteFilesUponExecution) {

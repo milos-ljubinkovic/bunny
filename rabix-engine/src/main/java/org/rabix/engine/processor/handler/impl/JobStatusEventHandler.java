@@ -120,8 +120,9 @@ public class JobStatusEventHandler implements EventHandler<JobStatusEvent> {
       if (!jobRecord.getState().equals(JobState.READY)) {
         break;
       }
-      Job job = null;
+      
       if (!jobRecord.isContainer() && !jobRecord.isScatterWrapper()) {
+        Job job = null;
         try {
           job = JobHelper.createReadyJob(jobRecord, JobStatus.READY, jobRecordService, variableRecordService, linkRecordService, contextRecordService, dagNodeDB, appDB);
           if (!job.getName().equals(InternalSchemaHelper.ROOT_NAME)) {
@@ -137,15 +138,14 @@ public class JobStatusEventHandler implements EventHandler<JobStatusEvent> {
           jobService.handleJobContainerReady(job);
         }
       } else {
+        Job containerJob = null;
         try {
-          job = JobHelper.createJob(jobRecord, JobStatus.READY, jobRecordService, variableRecordService, linkRecordService, contextRecordService, dagNodeDB, appDB, false);
+          containerJob = JobHelper.createJob(jobRecord, JobStatus.READY, jobRecordService, variableRecordService, linkRecordService, contextRecordService, dagNodeDB, appDB, false);
         } catch (BindingException e) {
-          throw new EventHandlerException("Failed to call onReady callback for Job " + job, e);
+          throw new EventHandlerException("Failed to call onReady callback for Job " + containerJob, e);
         }
-        jobService.handleJobContainerReady(job);
-      }
-      if(jobRecord.isRoot()){
-        jobService.handleJobRootRunning(job);
+        jobService.handleJobContainerReady(containerJob);
+
       }
       break;
     case RUNNING:
