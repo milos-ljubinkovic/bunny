@@ -1,5 +1,8 @@
 package org.rabix.engine.service.impl;
 
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -9,6 +12,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Stream;
 
 import org.apache.commons.configuration.Configuration;
 import org.rabix.bindings.Bindings;
@@ -147,7 +151,9 @@ public class JobServiceImpl implements JobService {
               return null;
             }
             JobStateValidator.checkState(jobRecord, JobState.FAILED);
-            statusEvent = new JobStatusEvent(job.getName(), job.getRootId(), JobState.FAILED, null, job.getId(), job.getName());
+            Map<String, Object> result = new HashMap<>();
+            result.put("message", job.getMessage());
+            statusEvent = new JobStatusEvent(job.getName(), job.getRootId(), JobState.FAILED, result, job.getId(), job.getName());
             break;
           case ABORTED:
             if (JobState.ABORTED.equals(jobRecord.getState())) {
@@ -168,7 +174,7 @@ public class JobServiceImpl implements JobService {
           default:
             break;
           }
-          jobRepository.update(job);
+          jobRepository.updateShort(job);
           eventProcessor.persist(statusEvent);
           eventWrapper.set(statusEvent);
           isSuccessful.set(true);

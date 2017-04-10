@@ -206,7 +206,7 @@ public class JobStatusEventHandler implements EventHandler<JobStatusEvent> {
       if (jobRecord.isRoot()) {
         try {
           Job rootJob = JobHelper.createRootJob(jobRecord, JobStatus.FAILED, jobRecordService, variableRecordService, linkRecordService, contextRecordService, dagNodeDB, appDB, null);
-          jobService.handleJobRootFailed(rootJob);
+          jobService.handleJobRootFailed(Job.cloneWithMessage(rootJob, (String) event.getResult().get("message")));
           
           eventProcessor.send(new ContextStatusEvent(event.getContextId(), ContextStatus.FAILED));
         } catch (Exception e) {
@@ -215,7 +215,7 @@ public class JobStatusEventHandler implements EventHandler<JobStatusEvent> {
       } else {
         try {
           Job failedJob = JobHelper.createCompletedJob(jobRecord, JobStatus.FAILED, jobRecordService, variableRecordService, linkRecordService, contextRecordService, dagNodeDB, appDB);
-          jobService.handleJobFailed(failedJob);
+          jobService.handleJobFailed(Job.cloneWithMessage(failedJob, (String) event.getResult().get("message")));
           
           eventProcessor.send(new JobStatusEvent(InternalSchemaHelper.ROOT_NAME, event.getContextId(), JobState.FAILED, null, event.getEventGroupId(), event.getProducedByNode()));
         } catch (Exception e) {
