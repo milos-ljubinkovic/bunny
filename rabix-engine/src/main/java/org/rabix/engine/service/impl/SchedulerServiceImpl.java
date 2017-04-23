@@ -60,8 +60,8 @@ public class SchedulerServiceImpl implements SchedulerService, SchedulerCallback
 
   private final JobService jobService;
   private final BackendService backendService;
-  
-  private final boolean backendLocal; 
+
+  private final boolean backendLocal;
 
   private final TransactionHelper transactionHelper;
   private final StoreCleanupService storeCleanupService;
@@ -76,17 +76,19 @@ public class SchedulerServiceImpl implements SchedulerService, SchedulerCallback
   
   private final ExecutorService threadPool = Executors.newCachedThreadPool();
   
-  @Inject
-  public SchedulerServiceImpl(Configuration configuration, JobService jobService, BackendService backendService, TransactionHelper repositoriesFactory, StoreCleanupService storeCleanupService, SchedulerCallback schedulerCallback, ReceiveCallback<Job> jobReceiver) {
 
+  @Inject
+  public SchedulerServiceImpl(Configuration configuration, JobService jobService, BackendService backendService,
+      TransactionHelper repositoriesFactory, StoreCleanupService storeCleanupService, SchedulerCallback schedulerCallback, ReceiveCallback<Job> jobReceiver,
+      BackendRepository backendRepository) {
     this.jobService = jobService;
     this.backendService = backendService;
     this.schedulerCallback = schedulerCallback;
     this.transactionHelper = repositoriesFactory;
     this.storeCleanupService = storeCleanupService;
-    this.heartbeatPeriod = configuration.getLong("backend.cleaner.heartbeatPeriodMills", DEFAULT_HEARTBEAT_PERIOD);
-    this.backendLocal = configuration.getBoolean("local.backend",false);
-    
+    this.heartbeatPeriod = configuration.getLong("cleaner.backend.period", DEFAULT_HEARTBEAT_PERIOD);
+    this.backendLocal = configuration.getBoolean("backend.local", false);
+
     this.jobReceiver = jobReceiver;
     this.errorCallback = new ErrorCallback() {
       @Override

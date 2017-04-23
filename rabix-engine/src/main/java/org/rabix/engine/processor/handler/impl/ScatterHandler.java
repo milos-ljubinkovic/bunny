@@ -24,6 +24,7 @@ import org.rabix.engine.model.LinkRecord;
 import org.rabix.engine.model.VariableRecord;
 import org.rabix.engine.model.scatter.RowMapping;
 import org.rabix.engine.model.scatter.ScatterStrategy;
+import org.rabix.engine.model.scatter.ScatterStrategyException;
 import org.rabix.engine.model.scatter.ScatterStrategyFactory;
 import org.rabix.engine.processor.EventProcessor;
 import org.rabix.engine.processor.handler.EventHandlerException;
@@ -127,7 +128,7 @@ public class ScatterHandler {
         outputs.put(outputVariableRecord.getPortId(), output);
       }
       jobRecordService.update(job);
-      eventProcessor.send(new JobStatusEvent(job.getId(), JobState.COMPLETED, job.getRootId(), outputs, event.getEventGroupId(), event.getProducedByNode()));
+      eventProcessor.send(new JobStatusEvent(job.getId(), job.getRootId(), JobState.COMPLETED,  outputs, event.getEventGroupId(), event.getProducedByNode()));
       return;
     }
   }
@@ -148,7 +149,11 @@ public class ScatterHandler {
   
   private void createScatteredJobs(JobRecord job, Event event, String port, Object value, DAGNode node, Integer numberOfScattered, Integer position) throws EventHandlerException {
     ScatterStrategy scatterStrategy = job.getScatterStrategy();
-    scatterStrategy.enable(port, value, position, numberOfScattered);
+    try {
+      scatterStrategy.enable(port, value, position, numberOfScattered);
+    } catch (ScatterStrategyException e) {
+      throw new EventHandlerException("Failed to enable ScatterStrategy for node " + node.getId(), e);
+    }
     
     List<RowMapping> mappings = null;
     try {

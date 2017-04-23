@@ -64,6 +64,21 @@ public class CacheServiceImpl implements CacheService {
     }
   }
   
+  @Override
+  public void clear(UUID rootId) {
+    if (rootId == null) {
+      return;
+    }
+    String index = Long.toString(EventProcessorDispatcher.dispatch(rootId, getNumberOfEventProcessors()));
+    Map<String, Cache> cache = caches.get(index);
+    if (cache == null) {
+      return;
+    }
+    for (Entry<String, Cache> cacheEntry : cache.entrySet()) {
+      cacheEntry.getValue().clear();
+    }
+  }
+  
   private Map<String, Cache> generateCache() {
     Map<String, Cache> generated = new LinkedHashMap<>();
     generated.put(JobRecord.CACHE_NAME, new Cache(jobRecordRepository));
@@ -73,7 +88,7 @@ public class CacheServiceImpl implements CacheService {
   }
   
   private int getNumberOfEventProcessors() {
-    return configuration.getInt("bunny.event_processor.count", Runtime.getRuntime().availableProcessors());
+    return configuration.getInt("engine.event_processor.count", Runtime.getRuntime().availableProcessors());
   }
-  
+
 }

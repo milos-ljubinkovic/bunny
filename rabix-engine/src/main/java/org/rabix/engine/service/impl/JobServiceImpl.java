@@ -9,7 +9,6 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Stream;
@@ -19,9 +18,7 @@ import org.rabix.bindings.Bindings;
 import org.rabix.bindings.BindingsFactory;
 import org.rabix.bindings.model.Job;
 import org.rabix.bindings.model.Job.JobStatus;
-import org.rabix.bindings.model.Resources;
 import org.rabix.bindings.model.dag.DAGNode;
-import org.rabix.common.SystemEnvironmentHelper;
 import org.rabix.common.helper.InternalSchemaHelper;
 import org.rabix.engine.JobHelper;
 import org.rabix.engine.db.AppDB;
@@ -104,11 +101,11 @@ public class JobServiceImpl implements JobService {
     this.engineStatusCallback = statusCallback;
     this.intermediaryFilesService = intermediaryFilesService;
     
-    deleteFilesUponExecution = configuration.getBoolean("rabix.delete_files_upon_execution", false);
-    deleteIntermediaryFiles = configuration.getBoolean("rabix.delete_intermediary_files", false);
-    keepInputFiles = configuration.getBoolean("rabix.keep_input_files", true);
-    isLocalBackend = configuration.getBoolean("local.backend", false);
-    setResources = configuration.getBoolean("bunny.set_resources", false);
+    deleteFilesUponExecution = configuration.getBoolean("engine.delete_files_upon_execution", false);
+    deleteIntermediaryFiles = configuration.getBoolean("engine.delete_intermediary_files", false);
+    keepInputFiles = configuration.getBoolean("engine.keep_input_files", true);
+    isLocalBackend = configuration.getBoolean("backend.local", false);
+    setResources = configuration.getBoolean("engine.set_resources", false);
     eventProcessor.start();
   }
   
@@ -151,9 +148,7 @@ public class JobServiceImpl implements JobService {
               return null;
             }
             JobStateValidator.checkState(jobRecord, JobState.FAILED);
-            Map<String, Object> result = new HashMap<>();
-            result.put("message", job.getMessage());
-            statusEvent = new JobStatusEvent(job.getName(), job.getRootId(), JobState.FAILED, result, job.getId(), job.getName());
+            statusEvent = new JobStatusEvent(job.getName(), job.getRootId(), JobState.FAILED, job.getMessage(), job.getId(), job.getName());
             break;
           case ABORTED:
             if (JobState.ABORTED.equals(jobRecord.getState())) {
@@ -162,7 +157,7 @@ public class JobServiceImpl implements JobService {
             JobStateValidator.checkState(jobRecord, JobState.ABORTED);
             Job rootJob = jobRepository.get(jobRecord.getRootId());
             handleJobRootAborted(rootJob);
-            statusEvent = new JobStatusEvent(rootJob.getName(), rootJob.getRootId(), JobState.ABORTED, null, rootJob.getId(), rootJob.getName());
+            statusEvent = new JobStatusEvent(rootJob.getName(), rootJob.getRootId(), JobState.ABORTED, rootJob.getId(), rootJob.getName());
             break;
           case COMPLETED:
             if (JobState.COMPLETED.equals(jobRecord.getState())) {
@@ -265,7 +260,7 @@ public class JobServiceImpl implements JobService {
   
   @Override
   public Set<Job> getReady(EventProcessor eventProcessor, UUID rootId) throws JobServiceException {
-    return JobHelper.createReadyJobs(jobRecordService, variableRecordService, linkRecordService, contextRecordService, dagNodeDB, appDB, rootId);
+    return JobHelper.createReadyJobs(jobRecordService, variableRecordService, linkRecordService, contextRecordService, dagNodeDB, appDB, rootId, setResources);
   }
   
   @Override
@@ -300,22 +295,6 @@ public class JobServiceImpl implements JobService {
 
   @Override
   public void handleJobsReady(Set<Job> jobs, UUID rootId, String producedByNode){
-    if (setResources) {
-      for (Job job : jobs) {
-        long numberOfCores;
-        long memory;
-        if (job.getConfig() != null) {
-          numberOfCores = job.getConfig().get("allocatedResources.cpu") != null ? Long.parseLong((String) job.getConfig().get("allocatedResources.cpu")) : SystemEnvironmentHelper.getNumberOfCores();
-          memory = job.getConfig().get("allocatedResources.mem") != null ? Long.parseLong((String) job.getConfig().get("allocatedResources.mem")) : SystemEnvironmentHelper.getTotalPhysicalMemorySizeInMB();
-        } else {
-          numberOfCores = SystemEnvironmentHelper.getNumberOfCores();
-          memory = SystemEnvironmentHelper.getTotalPhysicalMemorySizeInMB();
-        }
-        Resources resources = new Resources(numberOfCores, memory, null, true, null, null, null, null);
-        job = Job.cloneWithResources(job, resources);
-        jobRepository.update(job);
-      }
-    }
     try {
       engineStatusCallback.onJobsReady(jobs, rootId, producedByNode);
     } catch (EngineStatusCallbackException e) {
@@ -326,44 +305,7 @@ public class JobServiceImpl implements JobService {
   @Override
   public void handleJobFailed(final Job failedJob){
     logger.warn("Job {}, rootId: {} failed: {}", failedJob.getName(), failedJob.getRootId(), failedJob.getMessage());
-    if (isLocalBackend) {
-      synchronized (stoppingRootIds) {
-        if (stoppingRootIds.contains(failedJob.getRootId())) {
-          return;
-        }
-        stoppingRootIds.add(failedJob.getRootId());
 
-        try {
-          stop(failedJob.getRootId());
-        } catch (JobServiceException e) {
-          logger.error("Failed to stop Root job " + failedJob.getRootId(), e);
-        }
-        executorService.submit(new Runnable() {
-          @Override
-          public void run() {
-            while (true) {
-              try {
-                boolean exit = true;
-                for (Job job : jobRepository.getByRootId(failedJob.getRootId())) {
-                  if (!job.isRoot() && !isFinished(job.getStatus())) {
-                    exit = false;
-                    break;
-                  }
-                }
-                if (exit) {
-                  handleJobRootFailed(failedJob);
-                  break;
-                }
-                Thread.sleep(TimeUnit.SECONDS.toMillis(2));
-              } catch (Exception e) {
-                logger.error("Failed to stop root Job " + failedJob.getRootId(), e);
-                break;
-              }
-            }
-          }
-        });
-      }
-    }
     if (deleteIntermediaryFiles) {
       intermediaryFilesService.handleJobFailed(failedJob, jobRepository.get(failedJob.getRootId()), keepInputFiles);
     }
@@ -374,16 +316,6 @@ public class JobServiceImpl implements JobService {
     }
   }
 
-  private boolean isFinished(JobStatus jobStatus) {
-    switch (jobStatus) {
-      case COMPLETED:
-      case FAILED:
-      case ABORTED:
-        return true;
-      default:
-        return false;
-    }
-  }
   @Override
   public void handleJobContainerReady(Job containerJob) {
     logger.info("Container job {} rootId: {} id ready.", containerJob.getName(), containerJob.getRootId());
