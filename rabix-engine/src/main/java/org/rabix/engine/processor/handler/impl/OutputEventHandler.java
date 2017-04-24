@@ -108,10 +108,6 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
         }
       }
     }
-    if(sourceJob.isRoot() && (!event.isFromScatter() || (event.getNumberOfScattered()==sourceVariable.getNumberOfTimesUpdated()))){
-        jobService.handleJobRootPartiallyCompleted(createRootJob(sourceJob, JobHelper.transformStatus(sourceJob.getState())), event.isFromScatter() ? InternalSchemaHelper.getJobIdFromScatteredId(event.getProducedByNode()) : event.getProducedByNode());
-
-    }
     
     Object value = null;
     
