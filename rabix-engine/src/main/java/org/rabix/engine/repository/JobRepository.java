@@ -48,10 +48,10 @@ public interface JobRepository {
   
   public class JobEntity {
     
-    Job job;
-    UUID groupId;
-    String producedByNode;
-    UUID backendId;
+    private Job job;
+    private UUID groupId;
+    private String producedByNode;
+    private UUID backendId;
     
     public JobEntity(Job job, UUID groupId, String producedByNode, UUID backendId) {
       super();

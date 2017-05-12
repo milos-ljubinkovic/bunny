@@ -6,6 +6,7 @@ public abstract class TransactionHelper {
     return callback.call();
   }
   
+  @FunctionalInterface
   public static interface TransactionCallback<Result> {
     Result call() throws Exception;
   }

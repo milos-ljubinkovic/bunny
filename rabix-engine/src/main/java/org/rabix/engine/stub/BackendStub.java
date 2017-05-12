@@ -30,7 +30,7 @@ public abstract class BackendStub<Q extends TransportQueue, B extends Backend, T
   protected boolean enableControlMesages;
   protected boolean cleanup;
   
-  
+  @FunctionalInterface
   public static interface HeartbeatCallback {
     void save(HeartbeatInfo info) throws Exception;
   }

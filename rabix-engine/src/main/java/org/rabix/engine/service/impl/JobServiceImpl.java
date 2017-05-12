@@ -4,8 +4,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -70,8 +68,6 @@ public class JobServiceImpl implements JobService {
   private IntermediaryFilesService intermediaryFilesService;
   private static final long FREE_RESOURCES_WAIT_TIME = 3000L;
 
-  private final ExecutorService executorService = Executors.newSingleThreadExecutor();
-  
   private Set<UUID> stoppingRootIds = new HashSet<>();
   private EngineStatusCallback engineStatusCallback;
   private boolean setResources;
