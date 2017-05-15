@@ -25,6 +25,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 import org.rabix.bindings.model.Job;
 import org.rabix.common.config.ConfigModule;
+import org.rabix.common.guice.PostConstructModule;
 import org.rabix.engine.EngineModule;
 import org.rabix.engine.rest.api.BackendHTTPService;
 import org.rabix.engine.rest.api.JobHTTPService;
@@ -80,6 +81,8 @@ public class ServerBuilder {
         Arrays.asList(new ServletModule(), new EngineModule(configModule), configModule, new AbstractModule() {
           @Override
           protected void configure() {
+            install(PostConstructModule.INSTANCE);
+            
             bind(JobService.class).to(JobServiceImpl.class).in(Scopes.SINGLETON);
             bind(EngineStatusCallback.class).to(DefaultEngineStatusCallback.class).in(Scopes.SINGLETON);
             bind(BootstrapService.class).to(BootstrapServiceImpl.class).in(Scopes.SINGLETON);

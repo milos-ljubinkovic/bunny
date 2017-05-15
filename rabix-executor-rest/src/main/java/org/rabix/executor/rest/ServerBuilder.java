@@ -27,6 +27,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 import org.rabix.bindings.mapper.FilePathMapper;
 import org.rabix.common.config.ConfigModule;
+import org.rabix.common.guice.PostConstructModule;
 import org.rabix.common.service.download.DownloadService;
 import org.rabix.common.service.download.impl.NoOpDownloadServiceImpl;
 import org.rabix.common.service.upload.UploadService;
@@ -75,6 +76,8 @@ public class ServerBuilder {
             new AbstractModule() {
               @Override
               protected void configure() {
+                install(PostConstructModule.INSTANCE);
+                
                 bind(BackendRegister.class).in(Scopes.SINGLETON);
                 bind(ExecutorHTTPService.class).to(ExecutorHTTPServiceImpl.class).in(Scopes.SINGLETON);
                 bind(DownloadService.class).to(NoOpDownloadServiceImpl.class).in(Scopes.SINGLETON);
@@ -85,7 +88,6 @@ public class ServerBuilder {
 
                 bind(FilePathMapper.class).annotatedWith(InputFileMapper.class).to(LocalPathMapper.class);
                 bind(FilePathMapper.class).annotatedWith(OutputFileMapper.class).to(LocalPathMapper.class);
-                
               }
         }));
 
