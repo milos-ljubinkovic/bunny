@@ -1,8 +1,12 @@
 package org.rabix.backend.local.tes.service.impl;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
@@ -14,7 +18,6 @@ import org.apache.commons.configuration.Configuration;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.NotImplementedException;
 import org.apache.mina.util.ConcurrentHashSet;
-import org.glassfish.jersey.internal.inject.Custom;
 import org.rabix.backend.local.tes.client.TESHTTPClientException;
 import org.rabix.backend.local.tes.client.TESHttpClient;
 import org.rabix.backend.local.tes.model.TESDockerExecutor;
@@ -37,13 +40,11 @@ import org.rabix.bindings.model.FileValue;
 import org.rabix.bindings.model.FileValue.FileType;
 import org.rabix.bindings.model.Job;
 import org.rabix.bindings.model.Job.JobStatus;
-import org.rabix.bindings.model.requirement.CustomRequirement;
 import org.rabix.bindings.model.requirement.DockerContainerRequirement;
 import org.rabix.bindings.model.requirement.Requirement;
 import org.rabix.bindings.model.requirement.ResourceRequirement;
 import org.rabix.common.helper.JSONHelper;
 import org.rabix.common.logging.VerboseLogger;
-import org.rabix.executor.ExecutorException;
 import org.rabix.executor.engine.EngineStub;
 import org.rabix.executor.engine.EngineStubLocal;
 import org.rabix.executor.service.ExecutorService;
@@ -140,6 +141,7 @@ public class LocalTESExecutorServiceImpl implements ExecutorService {
     }, 0, 1, TimeUnit.SECONDS);
   }
   
+  @SuppressWarnings("unchecked")
   private void success(Job job, TESJob tesJob) {
     job = Job.cloneWithStatus(job, JobStatus.COMPLETED);
     Map<String, Object> result = null;

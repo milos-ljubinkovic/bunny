@@ -1,11 +1,10 @@
 package org.rabix.backend.local.tes.service;
 
-import org.rabix.bindings.BindingException;
-import org.rabix.bindings.model.Job;
-
-import java.net.URI;
 import java.nio.file.Path;
 import java.util.Map;
+
+import org.rabix.bindings.BindingException;
+import org.rabix.bindings.model.Job;
 
 public interface TESStorageService {
 

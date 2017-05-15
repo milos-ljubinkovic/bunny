@@ -160,7 +160,6 @@ public class ExecutorServiceImpl implements ExecutorService {
   @Override
   public boolean isStopped() {
     return stopped.get();
-
   }
 
 }

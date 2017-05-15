@@ -39,6 +39,7 @@ import org.rabix.bindings.model.Job;
 import org.rabix.bindings.model.Job.JobStatus;
 import org.rabix.bindings.model.Resources;
 import org.rabix.common.config.ConfigModule;
+import org.rabix.common.guice.PostConstructModule;
 import org.rabix.common.helper.JSONHelper;
 import org.rabix.common.json.BeanSerializer;
 import org.rabix.common.logging.VerboseLogger;
@@ -243,6 +244,7 @@ public class BackendCommandLine {
             @Override
             protected void configure() {
               install(configModule);
+              install(PostConstructModule.INSTANCE);
               
               bind(StorageConfiguration.class).to(DefaultStorageConfiguration.class).in(Scopes.SINGLETON);
               bind(IntermediaryFilesService.class).to(IntermediaryFilesServiceImpl.class).in(Scopes.SINGLETON);
