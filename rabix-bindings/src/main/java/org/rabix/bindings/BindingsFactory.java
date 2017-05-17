@@ -1,10 +1,13 @@
 package org.rabix.bindings;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.apache.commons.lang.NotImplementedException;
+import org.apache.commons.lang3.StringUtils;
 import org.rabix.bindings.model.Application;
 import org.rabix.bindings.model.Job;
 import org.slf4j.Logger;
@@ -50,10 +53,10 @@ public class BindingsFactory {
         if (app == null) {
           continue;
         }
-        if (app.getVersion() != null && binding.getProtocolType().appVersion.equalsIgnoreCase(app.getVersion())) {
+        if (app.getVersion() != null && ProtocolType.containsIgnoreCase(binding.getProtocolType(), app.getVersion())) {
           return binding;
         }
-        else if(app.getVersion() == null && binding.getProtocolType().appVersion == null) {
+        else if(app.getVersion() == null && (binding.getProtocolType().appVersions == null || binding.getProtocolType().appVersions.isEmpty())) {
           return binding;
         }
       } catch (NotImplementedException e) {
@@ -66,17 +69,16 @@ public class BindingsFactory {
     }
 
     if (wrongVersions == bindings.size()) {
-      StringBuilder validVersions = new StringBuilder();
-      boolean first = true;
+      List<String> appVersions = new ArrayList<>();
       for (Bindings b : bindings) {
-        if (b.getProtocolType().appVersion == null)
+        if (b.getProtocolType().appVersions == null || b.getProtocolType().appVersions.isEmpty()) {
           continue;
-        if (!first)
-          validVersions.append(", ");
-        validVersions.append(b.getProtocolType().appVersion);
-        first = false;
+        }
+        for (String appVersion : appVersions) {
+          appVersions.add(appVersion);
+        }
       }
-      throw new BindingException("Ivalid cwlVersion. Allowed values are: " + validVersions);
+      throw new BindingException("Invalid cwlVersion. Allowed values are: " + StringUtils.join(appVersions, ","));
     }
 
     if (finalException != null && finalException.getMessage() != null) {

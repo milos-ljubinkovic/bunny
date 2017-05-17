@@ -62,11 +62,11 @@ public class SBDocumentResolver {
     }
 
     JsonNode cwlVersion = root.get(CWL_VERSION_KEY);
-    if (cwlVersion == null || !(cwlVersion.asText().equals(ProtocolType.SB.appVersion))){
+    if (cwlVersion == null || !(ProtocolType.containsIgnoreCase(ProtocolType.SB, cwlVersion.asText()))){
       clearReplacements(appUrl);
       clearReferenceCache(appUrl);
       clearFragmentCache(appUrl);
-      throw new BindingWrongVersionException("Document version is not " + ProtocolType.SB.appVersion);
+      throw new BindingWrongVersionException("Document version is not " + ProtocolType.SB);
     }
     
     if (root.isArray()) {
@@ -88,7 +88,7 @@ public class SBDocumentResolver {
       }
     }
     
-    if(!(root.get(CWL_VERSION_KEY).asText().equals(ProtocolType.SB.appVersion))) {
+    if(!(ProtocolType.containsIgnoreCase(ProtocolType.SB, root.get(CWL_VERSION_KEY).asText()))) {
       clearReplacements(appUrl);
       clearReferenceCache(appUrl);
       clearFragmentCache(appUrl);

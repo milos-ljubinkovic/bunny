@@ -134,12 +134,11 @@ public class CWLDocumentResolver {
       ((ObjectNode) root).remove(NAMESPACES_KEY);
     }
     
-
     JsonNode cwlVersion = root.get(CWL_VERSION_KEY);
-    if (cwlVersion==null || !(cwlVersion.asText().equals(ProtocolType.CWL.appVersion))) {
+    if (cwlVersion==null || !(ProtocolType.containsIgnoreCase(ProtocolType.CWL, cwlVersion.asText()))) {
       clearReplacements(appUrl);
       clearReferenceCache(appUrl);
-      throw new BindingWrongVersionException("Document version is not " + ProtocolType.CWL.appVersion);
+      throw new BindingWrongVersionException("Document version is not " + ProtocolType.CWL);
     }
     
     traverse(appUrl, root, file, null, root, false);

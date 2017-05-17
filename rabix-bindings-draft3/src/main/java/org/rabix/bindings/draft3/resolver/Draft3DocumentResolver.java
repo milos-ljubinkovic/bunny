@@ -106,10 +106,10 @@ public static Set<String> types = new HashSet<String>();
     }
     
     JsonNode cwlVersion = root.get(CWL_VERSION_KEY);
-    if (cwlVersion == null || !(cwlVersion.asText().equals(ProtocolType.DRAFT3.appVersion))) {
+    if (cwlVersion == null || !(ProtocolType.containsIgnoreCase(ProtocolType.DRAFT3, cwlVersion.asText()))) {
       clearReplacements(appUrl);
       clearReferenceCache(appUrl);
-      throw new BindingWrongVersionException("Document version is not " + ProtocolType.DRAFT3.appVersion);
+      throw new BindingWrongVersionException("Document version is not " + ProtocolType.DRAFT3);
     }
     
     traverse(appUrl, root, file, null, root);
@@ -149,7 +149,7 @@ public static Set<String> types = new HashSet<String>();
       graphResolve = false;
     }
     else {
-      if (!(root.get(CWL_VERSION_KEY).asText().equals(ProtocolType.DRAFT3.appVersion))) {
+      if (!(ProtocolType.containsIgnoreCase(ProtocolType.DRAFT3, root.get(CWL_VERSION_KEY).asText()))) {
         clearReplacements(appUrl);
         clearReferenceCache(appUrl);
         throw new BindingException("Document version is not cwl:draft-3");

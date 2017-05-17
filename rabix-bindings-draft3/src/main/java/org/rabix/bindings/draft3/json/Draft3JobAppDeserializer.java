@@ -34,7 +34,7 @@ public class Draft3JobAppDeserializer extends JsonDeserializer<Draft3JobApp> {
       return null;
     }
     if (tree.isObject()) {
-      if(tree.get(Draft3DocumentResolver.CWL_VERSION_KEY) == null || tree.get(Draft3DocumentResolver.CWL_VERSION_KEY).asText().equals(ProtocolType.DRAFT3.appVersion)) {
+      if(tree.get(Draft3DocumentResolver.CWL_VERSION_KEY) == null || ProtocolType.containsIgnoreCase(ProtocolType.DRAFT3, tree.get(Draft3DocumentResolver.CWL_VERSION_KEY).asText())) {
         if (tree.get(CLASS_KEY) == null)
           throw new IllegalStateException("\"" + CLASS_KEY + "\" attribute missing!");
 

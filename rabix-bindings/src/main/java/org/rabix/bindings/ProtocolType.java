@@ -1,19 +1,22 @@
 package org.rabix.bindings;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public enum ProtocolType {
-  CWL("org.rabix.bindings.cwl.CWLBindings", 3, "v1.0"),
-  DRAFT2("org.rabix.bindings.draft2.Draft2Bindings", 4, null),
-  SB("org.rabix.bindings.sb.SBBindings", 1, "sbg:draft-2"),
-  DRAFT3("org.rabix.bindings.draft3.Draft3Bindings", 2, "cwl:draft-3");
+  CWL("org.rabix.bindings.cwl.CWLBindings", 3, new HashSet<String>(Arrays.asList("v1.0", "v1.1.0-dev1"))),
+  DRAFT2("org.rabix.bindings.draft2.Draft2Bindings", 4, new HashSet<String>()),
+  SB("org.rabix.bindings.sb.SBBindings", 1, new HashSet<String>(Arrays.asList("sbg:draft-2"))),
+  DRAFT3("org.rabix.bindings.draft3.Draft3Bindings", 2, new HashSet<String>(Arrays.asList("cwl:draft-3")));
 
   public final int order;
   public final String bindingsClass;
-  public final String appVersion;
+  public final Set<String> appVersions;
 
-  private ProtocolType(String bindingsClass, int order, String appVersion) {
+  private ProtocolType(String bindingsClass, int order, Set<String> appVersions) {
     this.order = order;
-    this.appVersion = appVersion;
+    this.appVersions = appVersions;
     this.bindingsClass = bindingsClass;
   }
 
@@ -24,5 +27,14 @@ public enum ProtocolType {
       }
     }
     return null;
+  }
+  
+  public static boolean containsIgnoreCase(ProtocolType type, String version) {
+    for (String appVersion : type.appVersions) {
+      if (appVersion.equalsIgnoreCase(version)) {
+        return true;
+      }
+    }
+    return false;
   }
 }
