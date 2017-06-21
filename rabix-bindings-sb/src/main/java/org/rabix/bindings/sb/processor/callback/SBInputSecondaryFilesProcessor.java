@@ -31,7 +31,8 @@ public class SBInputSecondaryFilesProcessor implements SBPortProcessorCallback {
   @Override
   @SuppressWarnings("unchecked")
   public SBPortProcessorResult process(Object value, ApplicationPort port) throws Exception {
-    if (SBSchemaHelper.isFileFromValue(value) && port instanceof SBInputPort) {
+    
+    if ((SBSchemaHelper.isFileFromValue(value) || (value instanceof Map<?, ?> && ((Map) value).get("$type").equals("File"))) && port instanceof SBInputPort) {
       if (!CollectionUtils.isEmpty(SBFileValueHelper.getSecondaryFiles(value))) {
         return new SBPortProcessorResult(value, false); 
       }
