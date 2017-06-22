@@ -31,7 +31,8 @@ public class CWLInputSecondaryFilesProcessor implements CWLPortProcessorCallback
   @Override
   @SuppressWarnings("unchecked")
   public CWLPortProcessorResult process(Object value, ApplicationPort port) throws Exception {
-    if ((CWLSchemaHelper.isFileFromValue(value) || CWLSchemaHelper.isDirectoryFromValue(value)) && port instanceof CWLInputPort) {
+    if (((CWLSchemaHelper.isFileFromValue(value) || CWLSchemaHelper.isDirectoryFromValue(value)) ||
+        ((value instanceof Map) && (((Map<String,Object>)value).containsKey("$type") && ((Map<String,Object>)value).get("$type").equals("File")))) && port instanceof CWLInputPort) {
       if (!CollectionUtils.isEmpty(CWLFileValueHelper.getSecondaryFiles(value))) {
         return new CWLPortProcessorResult(value, false); 
       }
