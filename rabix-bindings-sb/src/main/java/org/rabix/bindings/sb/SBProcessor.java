@@ -374,7 +374,6 @@ public class SBProcessor implements ProtocolProcessor {
         secondaryFilePath += suffix.startsWith(".") ? suffix : "." + suffix;
       }
       File secondaryFile = new File(secondaryFilePath);
-      if (secondaryFile.exists()) {
         Map<String, Object> secondaryFileMap = new HashMap<>();
         SBFileValueHelper.setFileType(secondaryFileMap);
         SBFileValueHelper.setPath(secondaryFile.getAbsolutePath(), secondaryFileMap);
@@ -384,7 +383,6 @@ public class SBProcessor implements ProtocolProcessor {
           SBFileValueHelper.setChecksum(secondaryFile, secondaryFileMap, hashAlgorithm);
         }
         secondaryFileMaps.add(secondaryFileMap);
-      }
     }
     return secondaryFileMaps;
   }
