@@ -16,11 +16,11 @@ import java.util.UUID;
 
 import org.postgresql.util.PGobject;
 import org.rabix.common.helper.JSONHelper;
-import org.rabix.engine.store.postgres.jdbi.impl.JDBIJobRecordRepository.JobRecordMapper;
 import org.rabix.engine.store.model.JobRecord;
 import org.rabix.engine.store.model.JobRecord.JobIdRootIdPair;
 import org.rabix.engine.store.model.JobRecord.PortCounter;
 import org.rabix.engine.store.model.scatter.ScatterStrategy;
+import org.rabix.engine.store.postgres.jdbi.impl.JDBIJobRecordRepository.JobRecordMapper;
 import org.rabix.engine.store.repository.JobRecordRepository;
 import org.skife.jdbi.v2.SQLStatement;
 import org.skife.jdbi.v2.StatementContext;

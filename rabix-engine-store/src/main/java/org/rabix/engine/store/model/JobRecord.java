@@ -8,9 +8,9 @@ import java.util.UUID;
 import org.rabix.bindings.model.LinkMerge;
 import org.rabix.bindings.model.dag.DAGLinkPort.LinkPortType;
 import org.rabix.bindings.model.dag.DAGNode;
-import org.rabix.engine.store.model.scatter.ScatterStrategy;
 import org.rabix.engine.store.cache.Cachable;
 import org.rabix.engine.store.cache.CacheKey;
+import org.rabix.engine.store.model.scatter.ScatterStrategy;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

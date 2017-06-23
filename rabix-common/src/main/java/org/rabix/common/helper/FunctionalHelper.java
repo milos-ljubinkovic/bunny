@@ -1,4 +1,4 @@
-package org.rabix.common.functional;
+package org.rabix.common.helper;
 
 import java.util.List;
 import java.util.Map;
