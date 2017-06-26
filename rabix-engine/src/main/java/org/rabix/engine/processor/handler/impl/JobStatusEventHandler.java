@@ -162,6 +162,10 @@ public class JobStatusEventHandler implements EventHandler<JobStatusEvent> {
       }
       break;
     case COMPLETED:
+      if (jobStatsRecord != null) {
+        jobStatsRecord.increaseCompleted();
+        jobStatsRecordService.update(jobStatsRecord);
+      }
       if (jobRecord.isRoot()) {
         try {
           if(!jobRecord.isContainer()) {
