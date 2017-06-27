@@ -52,7 +52,14 @@ public class ScatterCartesian extends ScatterStrategy {
   
   @Override
   public void commit(List<RowMapping> mappings) {
-    // TODO Auto-generated method stub
+    for (RowMapping mapping : mappings) {
+      for (Combination combination : combinations) {
+        if (combination.position == mapping.getIndex()) {
+          combination.enabled = true;
+          break;
+        }
+      }
+    }
   }
 
   @Override
@@ -166,6 +173,23 @@ public class ScatterCartesian extends ScatterStrategy {
       }
       return result;
     }
+    if (scatterMethod.equals(ScatterMethod.nested_crossproduct)) {
+      LinkedList<Object> result = new LinkedList<>();
+
+      int position = 1;
+      LinkedList<Object> subresult = new LinkedList<>();
+      for (Combination combination : combinations) {
+        if (combination.indexes.get(0) != position) {
+          result.addLast(subresult);
+          subresult = new LinkedList<>();
+          position++;
+        }
+        String scatteredJobId = InternalSchemaHelper.scatterId(jobId, combination.position);
+        subresult.addLast(new JobPortPair(scatteredJobId, portId));
+      }
+      result.addLast(subresult);
+      return result;
+    }
     return null;
   }
 
@@ -177,7 +201,7 @@ public class ScatterCartesian extends ScatterStrategy {
     return new ArrayList<>(); // TODO implement outputs for nested_crossproduct
   }
   
-  public static class Combination {
+  private class Combination {
     @JsonProperty("position")
     int position;
     @JsonProperty("enabled")
@@ -197,7 +221,6 @@ public class ScatterCartesian extends ScatterStrategy {
     public String toString() {
       return "Combination [position=" + position + ", enabled=" + enabled + ", indexes=" + indexes + "]";
     }
-    
   }
   
 }

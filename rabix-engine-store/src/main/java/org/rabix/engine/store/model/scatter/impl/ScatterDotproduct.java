@@ -63,6 +63,24 @@ public class ScatterDotproduct extends ScatterStrategy {
   }
   
   @Override
+  public List<Object> valueStructure(String jobId, String portId, UUID rootId) {
+    List<Combination> combinationList = combinations.values().stream().collect(Collectors.toList());
+    Collections.sort(combinationList, new Comparator<Combination>() {
+      @Override
+      public int compare(Combination o1, Combination o2) {
+        return o1.position - o2.position;
+      }
+    });
+
+    LinkedList<Object> result = new LinkedList<>();
+    for (Combination combination : combinationList) {
+      String scatteredJobId = InternalSchemaHelper.scatterId(jobId, combination.position);
+      result.addLast(new JobPortPair(scatteredJobId, portId));
+    }
+    return result;
+  }
+  
+  @Override
   public void commit(List<RowMapping> mappings) {
     for (RowMapping mapping : mappings) {
       for (Combination combination : combinations.values()) {
@@ -79,7 +97,12 @@ public class ScatterDotproduct extends ScatterStrategy {
     return combinations.size();
   }
 
-  public static class Combination {
+  @Override
+  public Object generateOutputsForEmptyList() {
+    return new ArrayList<>();
+  }
+  
+  private class Combination {
     @JsonProperty("position")
     int position;
     @JsonProperty("enabled")
@@ -90,29 +113,11 @@ public class ScatterDotproduct extends ScatterStrategy {
       this.position = position;
       this.enabled = enabled;
     }
-  }
 
-  @Override
-  public List<Object> valueStructure(String jobId, String portId, UUID rootId) {
-    List<Combination> combinationList = combinations.values().stream().collect(Collectors.toList());
-    Collections.sort(combinationList, new Comparator<Combination>() {
-      @Override
-      public int compare(Combination o1, Combination o2) {
-        return o1.position - o2.position;
-      }
-    });
-    
-    LinkedList<Object> result = new LinkedList<>();
-    for (Combination combination : combinationList) {
-      String scatteredJobId = InternalSchemaHelper.scatterId(jobId, combination.position);
-      result.addLast(new JobPortPair(scatteredJobId, portId));
+    @Override
+    public String toString() {
+      return "Combination [position=" + position + ", enabled=" + enabled + "]";
     }
-    return result;
-  }
-  
-  @Override
-  public Object generateOutputsForEmptyList() {
-    return new ArrayList<>();
   }
 
 }
