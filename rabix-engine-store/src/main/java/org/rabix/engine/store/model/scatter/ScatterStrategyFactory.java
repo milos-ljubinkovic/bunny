@@ -2,8 +2,8 @@ package org.rabix.engine.store.model.scatter;
 
 import org.rabix.bindings.BindingException;
 import org.rabix.bindings.model.dag.DAGNode;
-import org.rabix.engine.store.model.scatter.impl.ScatterCartesianStrategy;
-import org.rabix.engine.store.model.scatter.impl.ScatterZipStrategy;
+import org.rabix.engine.store.model.scatter.impl.ScatterCartesian;
+import org.rabix.engine.store.model.scatter.impl.ScatterDotproduct;
 
 import com.google.common.base.Preconditions;
 
@@ -14,10 +14,10 @@ public class ScatterStrategyFactory {
     
     switch (dagNode.getScatterMethod()) {
     case dotproduct:
-      return new ScatterZipStrategy(dagNode);
+      return new ScatterDotproduct(dagNode);
     case flat_crossproduct:
     case nested_crossproduct:
-      return new ScatterCartesianStrategy(dagNode);
+      return new ScatterCartesian(dagNode);
     default:
       throw new BindingException("Scatter method " + dagNode.getScatterMethod() + " is not supported.");
     }
