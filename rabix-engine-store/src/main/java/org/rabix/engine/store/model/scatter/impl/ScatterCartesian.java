@@ -201,7 +201,7 @@ public class ScatterCartesian extends ScatterStrategy {
     return new ArrayList<>(); // TODO implement outputs for nested_crossproduct
   }
   
-  private class Combination {
+  public static class Combination {
     @JsonProperty("position")
     int position;
     @JsonProperty("enabled")
