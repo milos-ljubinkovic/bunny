@@ -26,6 +26,9 @@ public class FileValueHelper {
    * @return copy of value with replaced FileValues
    */
   public static Object updateFileValues(Object value, FileTransformer fileTransformer) throws BindingException {
+    if(value == null) 
+      return value;
+    
     if (value instanceof FileValue) {
       FileValue origFile = (FileValue) value;
       return fileTransformer.transform(origFile);
@@ -33,16 +36,14 @@ public class FileValueHelper {
       List<Object> ret = new ArrayList<>();
       for (Object o : (List<?>) value) {
         Object newValue = updateFileValues(o, fileTransformer);
-        if (newValue != null)
-          ret.add(newValue);
+        ret.add(newValue);
       }
       return ret;
     } else if (value instanceof Map) {
       Map<Object, Object> ret = new HashMap<>();
       for (Object key : ((Map<?, ?>) value).keySet()) {
         Object newValue = updateFileValues(((Map<?, ?>) value).get(key), fileTransformer);
-        if (newValue != null)
-          ret.put(key, newValue);
+        ret.put(key, newValue);
       }
       return ret;
     }
