@@ -23,6 +23,7 @@ import org.rabix.engine.event.Event;
 import org.rabix.engine.event.impl.InitEvent;
 import org.rabix.engine.event.impl.JobStatusEvent;
 import org.rabix.engine.model.JobRecord;
+import org.rabix.engine.model.JobStatsRecord;
 import org.rabix.engine.processor.EventProcessor;
 import org.rabix.engine.repository.JobRepository;
 import org.rabix.engine.repository.JobRepository.JobEntity;
@@ -32,6 +33,7 @@ import org.rabix.engine.service.IntermediaryFilesService;
 import org.rabix.engine.service.JobRecordService;
 import org.rabix.engine.service.JobService;
 import org.rabix.engine.service.JobServiceException;
+import org.rabix.engine.service.JobStatsRecordService;
 import org.rabix.engine.service.LinkRecordService;
 import org.rabix.engine.service.SchedulerService;
 import org.rabix.engine.service.VariableRecordService;
@@ -75,13 +77,15 @@ public class JobServiceImpl implements JobService {
   private Set<UUID> stoppingRootIds = new HashSet<>();
   private EngineStatusCallback engineStatusCallback;
   private boolean setResources;
+
+private JobStatsRecordService jobStatsRecordService;
   
   @Inject
   public JobServiceImpl(EventProcessor eventProcessor, JobRecordService jobRecordService,
       VariableRecordService variableRecordService, LinkRecordService linkRecordService,
       ContextRecordService contextRecordService, SchedulerService scheduler, DAGNodeDB dagNodeDB, AppDB appDB,
       JobRepository jobRepository, TransactionHelper transactionHelper, EngineStatusCallback statusCallback,
-      Configuration configuration, IntermediaryFilesService intermediaryFilesService) {
+      Configuration configuration, IntermediaryFilesService intermediaryFilesService, JobStatsRecordService jobStatsRecordService) {
 
     this.dagNodeDB = dagNodeDB;
     this.appDB = appDB;
@@ -96,6 +100,7 @@ public class JobServiceImpl implements JobService {
     this.transactionHelper = transactionHelper;
     this.engineStatusCallback = statusCallback;
     this.intermediaryFilesService = intermediaryFilesService;
+    this.jobStatsRecordService = jobStatsRecordService;
     
     deleteFilesUponExecution = configuration.getBoolean("engine.delete_files_upon_execution", false);
     deleteIntermediaryFiles = configuration.getBoolean("engine.delete_intermediary_files", false);
@@ -405,6 +410,11 @@ public class JobServiceImpl implements JobService {
 
   @Override
   public void handleJobCompleted(Job job){
+	if (job.getParentId() == job.getRootId()) {
+		JobStatsRecord jobStatsRecord = jobStatsRecordService.find(job.getRootId());
+		jobStatsRecord.increaseCompleted();
+		jobStatsRecordService.update(jobStatsRecord);
+	}
     logger.info("Job {} rootId: {} is completed.", job.getName(), job.getRootId());
     if (deleteIntermediaryFiles) {
       intermediaryFilesService.handleJobCompleted(job);
