@@ -315,7 +315,7 @@ public class SBProcessor implements ProtocolProcessor {
         SBFileValueHelper.setName(file.getName(), fileData);
         SBFileValueHelper.setPath(file.getAbsolutePath(), fileData);
 
-        List<?> secondaryFiles = getSecondaryFiles(job, hashAlgorithm, fileData, file.getAbsolutePath(), outputBinding);
+        List<?> secondaryFiles = getSecondaryFiles(job, hashAlgorithm, fileData, file.getAbsolutePath(), outputBinding, true);
         if (secondaryFiles != null) {
           SBFileValueHelper.setSecondaryFiles(secondaryFiles, fileData);
         }
@@ -348,7 +348,7 @@ public class SBProcessor implements ProtocolProcessor {
   /**
    * Gets secondary files (absolute paths)
    */
-  public static List<Map<String, Object>> getSecondaryFiles(SBJob job, HashAlgorithm hashAlgorithm, Map<String, Object> fileValue, String fileName, Object binding) throws SBExpressionException {
+  public static List<Map<String, Object>> getSecondaryFiles(SBJob job, HashAlgorithm hashAlgorithm, Map<String, Object> fileValue, String fileName, Object binding, boolean onlyExisting) throws SBExpressionException {
     List<String> secondaryFileSufixes = SBBindingHelper.getSecondaryFiles(binding);
 
     if (secondaryFileSufixes == null) {
@@ -374,15 +374,17 @@ public class SBProcessor implements ProtocolProcessor {
         secondaryFilePath += suffix.startsWith(".") ? suffix : "." + suffix;
       }
       File secondaryFile = new File(secondaryFilePath);
-        Map<String, Object> secondaryFileMap = new HashMap<>();
-        SBFileValueHelper.setFileType(secondaryFileMap);
-        SBFileValueHelper.setPath(secondaryFile.getAbsolutePath(), secondaryFileMap);
-        SBFileValueHelper.setSize(secondaryFile.length(), secondaryFileMap);
-        SBFileValueHelper.setName(secondaryFile.getName(), secondaryFileMap);
-        if (hashAlgorithm != null && secondaryFile.exists()) {
-          SBFileValueHelper.setChecksum(secondaryFile, secondaryFileMap, hashAlgorithm);
-        }
-        secondaryFileMaps.add(secondaryFileMap);
+      if(!secondaryFile.exists() && onlyExisting)
+        continue;
+      Map<String, Object> secondaryFileMap = new HashMap<>();
+      SBFileValueHelper.setFileType(secondaryFileMap);
+      SBFileValueHelper.setPath(secondaryFile.getAbsolutePath(), secondaryFileMap);
+      SBFileValueHelper.setSize(secondaryFile.length(), secondaryFileMap);
+      SBFileValueHelper.setName(secondaryFile.getName(), secondaryFileMap);
+      if (hashAlgorithm != null && secondaryFile.exists()) {
+        SBFileValueHelper.setChecksum(secondaryFile, secondaryFileMap, hashAlgorithm);
+      }
+      secondaryFileMaps.add(secondaryFileMap);
     }
     return secondaryFileMaps;
   }

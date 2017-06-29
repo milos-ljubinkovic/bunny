@@ -412,7 +412,7 @@ public class CWLProcessor implements ProtocolProcessor {
     CWLFileValueHelper.setDirname(file.getParentFile().getAbsolutePath(), fileData);
     CWLFileValueHelper.setPath(file.getAbsolutePath(), fileData);
 
-    List<?> secondaryFiles = getSecondaryFiles(job, hashAlgorithm, fileData, file.getAbsolutePath(), outputPort.getSecondaryFiles(), workingDir);
+    List<?> secondaryFiles = getSecondaryFiles(job, hashAlgorithm, fileData, file.getAbsolutePath(), outputPort.getSecondaryFiles(), workingDir, true);
     if (secondaryFiles != null) {
       CWLFileValueHelper.setSecondaryFiles(secondaryFiles, fileData);
     }
@@ -440,7 +440,7 @@ public class CWLProcessor implements ProtocolProcessor {
    * Gets secondary files (absolute paths)
    */
   @SuppressWarnings("unchecked")
-  public static List<Map<String, Object>> getSecondaryFiles(CWLJob job, HashAlgorithm hashAlgorithm, Map<String, Object> fileValue, String filePath, Object secondaryFilesObj, File workingDir) throws CWLExpressionException, IOException {
+  public static List<Map<String, Object>> getSecondaryFiles(CWLJob job, HashAlgorithm hashAlgorithm, Map<String, Object> fileValue, String filePath, Object secondaryFilesObj, File workingDir, boolean onlyExisting) throws CWLExpressionException, IOException {
     if (secondaryFilesObj == null) {
       return null;
     }
@@ -473,15 +473,18 @@ public class CWLProcessor implements ProtocolProcessor {
           secondaryFilePath = suffix;
         }
         File secondaryFile = new File(secondaryFilePath);
+        if(!secondaryFile.exists() && onlyExisting){
+          continue;
+        }
           if (secondaryFile.isDirectory()) {
             CWLFileValueHelper.setDirType(secondaryFileMap);
           } else {
             CWLFileValueHelper.setFileType(secondaryFileMap);
           }
           CWLFileValueHelper.setPath(secondaryFile.getAbsolutePath(), secondaryFileMap);
-          CWLFileValueHelper.setSize(secondaryFile.length(), secondaryFileMap);
           CWLFileValueHelper.setName(secondaryFile.getName(), secondaryFileMap);
           if (hashAlgorithm != null && secondaryFile.exists() && !secondaryFile.isDirectory()) {
+            CWLFileValueHelper.setSize(secondaryFile.length(), secondaryFileMap);
             CWLFileValueHelper.setChecksum(secondaryFile, secondaryFileMap, hashAlgorithm);
           }
       } else if (expr instanceof Map) {

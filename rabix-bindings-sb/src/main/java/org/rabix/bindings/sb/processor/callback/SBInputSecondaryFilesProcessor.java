@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.rabix.bindings.model.ApplicationPort;
 import org.rabix.bindings.model.FileValue;
 import org.rabix.bindings.sb.SBProcessor;
@@ -45,7 +44,7 @@ public class SBInputSecondaryFilesProcessor implements SBPortProcessorCallback {
       }
 
       Map<String, Object> clonedValue = (Map<String, Object>) CloneHelper.deepCopy(value);      
-      List<Map<String, Object>> out = SBProcessor.getSecondaryFiles(job, hashAlgorithm, clonedValue, SBFileValueHelper.getPath(clonedValue), binding);
+      List<Map<String, Object>> out = SBProcessor.getSecondaryFiles(job, hashAlgorithm, clonedValue, SBFileValueHelper.getPath(clonedValue), binding, false);
 
       if (secondaryFiles != null) {
         SBFileValueHelper.setSecondaryFiles(out, clonedValue);
