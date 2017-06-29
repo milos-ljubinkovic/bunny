@@ -410,7 +410,7 @@ private JobStatsRecordService jobStatsRecordService;
 
   @Override
   public void handleJobCompleted(Job job){
-	if (!job.getParentId().equals(job.getRootId())) {
+	if (job.getParentId().equals(job.getRootId())) {
 		JobStatsRecord jobStatsRecord = jobStatsRecordService.find(job.getRootId());
 		jobStatsRecord.increaseCompleted();
 		jobStatsRecordService.update(jobStatsRecord);
