@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.UUID;
 
 import org.rabix.bindings.BindingException;
+import org.rabix.bindings.model.Job;
+import org.rabix.bindings.model.Job.JobStatus;
 import org.rabix.bindings.model.LinkMerge;
 import org.rabix.bindings.model.ScatterMethod;
 import org.rabix.bindings.model.dag.DAGContainer;
@@ -14,6 +16,8 @@ import org.rabix.bindings.model.dag.DAGLinkPort;
 import org.rabix.bindings.model.dag.DAGLinkPort.LinkPortType;
 import org.rabix.bindings.model.dag.DAGNode;
 import org.rabix.common.helper.InternalSchemaHelper;
+import org.rabix.engine.JobHelper;
+import org.rabix.engine.db.AppDB;
 import org.rabix.engine.db.DAGNodeDB;
 import org.rabix.engine.event.Event;
 import org.rabix.engine.event.impl.InputUpdateEvent;
@@ -28,7 +32,9 @@ import org.rabix.engine.model.scatter.ScatterStrategyException;
 import org.rabix.engine.model.scatter.ScatterStrategyFactory;
 import org.rabix.engine.processor.EventProcessor;
 import org.rabix.engine.processor.handler.EventHandlerException;
+import org.rabix.engine.service.ContextRecordService;
 import org.rabix.engine.service.JobRecordService;
+import org.rabix.engine.service.JobService;
 import org.rabix.engine.service.LinkRecordService;
 import org.rabix.engine.service.VariableRecordService;
 import org.rabix.engine.service.impl.JobRecordServiceImpl.JobState;
@@ -44,17 +50,24 @@ public class ScatterHandler {
   private final LinkRecordService linkRecordService;
   private final VariableRecordService variableRecordService;
   private final ScatterStrategyFactory scatterStrategyFactory;
+  private JobService jobService;
+  private final ContextRecordService contextRecordService;
+  private final AppDB appDB;
   
   @Inject
-  public ScatterHandler(final DAGNodeDB dagNodeDB, final JobRecordService jobRecordService,
+  public ScatterHandler(final DAGNodeDB dagNodeDB, final JobRecordService jobRecordService, final JobService jobService,
       final VariableRecordService variableRecordService, final LinkRecordService linkRecordService,
-      final EventProcessor eventProcessor, final ScatterStrategyFactory scatterStrategyFactory) {
+      final EventProcessor eventProcessor, final ScatterStrategyFactory scatterStrategyFactory, final ContextRecordService contextRecordService,
+      final AppDB appDB) {
     this.dagNodeDB = dagNodeDB;
     this.eventProcessor = eventProcessor;
     this.jobRecordService = jobRecordService;
+    this.jobService = jobService;
     this.linkRecordService = linkRecordService;
     this.variableRecordService = variableRecordService;
     this.scatterStrategyFactory = scatterStrategyFactory;
+    this.appDB = appDB;
+    this.contextRecordService = contextRecordService;
   }
   
   /**
@@ -132,6 +145,11 @@ public class ScatterHandler {
         outputs.put(outputVariableRecord.getPortId(), output);
       }
       jobRecordService.update(job);
+      try {
+		jobService.handleJobCompleted(Job.cloneWithOutputs(JobHelper.createCompletedJob(job, JobStatus.COMPLETED, jobRecordService, variableRecordService, linkRecordService, contextRecordService, dagNodeDB, appDB), outputs));
+		} catch (BindingException e) {
+			throw new EventHandlerException(e);
+		}
       eventProcessor.send(new JobStatusEvent(job.getId(), job.getRootId(), JobState.COMPLETED,  outputs, event.getEventGroupId(), event.getProducedByNode()));
       return;
     }
