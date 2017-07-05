@@ -2,6 +2,8 @@ package org.rabix.bindings.cwl;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -455,10 +457,11 @@ public class CWLProcessor implements ProtocolProcessor {
       Object expr = CWLExpressionResolver.resolve(suffixObj, job, fileValue);
       Map<String, Object> secondaryFileMap = new HashMap<>();
       if(expr instanceof String) {
-        String secondaryFilePath;
+        Path file = Paths.get(filePath);
+        String secondaryFilePath = file.getParent().toString();
         String suffix = (String) expr;
         if((suffix).startsWith("^") || suffix.startsWith(".")) {
-          secondaryFilePath = filePath.toString();
+          secondaryFilePath = file.toString();
           while (suffix.startsWith("^")) {
             int extensionIndex = secondaryFilePath.lastIndexOf(".");
             if (extensionIndex != -1) {
