@@ -2,8 +2,10 @@ package org.rabix.bindings.sb;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.rabix.bindings.model.ApplicationPort;
@@ -14,6 +16,7 @@ import org.rabix.bindings.sb.bean.SBJobApp;
 import org.rabix.bindings.sb.bean.SBOutputPort;
 import org.rabix.bindings.sb.bean.SBStep;
 import org.rabix.bindings.sb.bean.SBWorkflow;
+import org.rabix.bindings.sb.bean.resource.SBResource;
 import org.rabix.bindings.sb.helper.SBBindingHelper;
 import org.rabix.bindings.sb.helper.SBSchemaHelper;
 import org.rabix.common.helper.InternalSchemaHelper;
@@ -54,6 +57,7 @@ public class SBJobProcessor implements BeanProcessor<SBJob> {
         SBJob stepJob = step.getJob();
         String stepId = job.getId() + SBSchemaHelper.PORT_ID_SEPARATOR + SBSchemaHelper.normalizeId(step.getId());
         stepJob.setId(stepId);
+        processHints(job.getApp(), stepJob.getApp());
         processElements(job, stepJob);
         process(job, stepJob);
       }
@@ -74,6 +78,26 @@ public class SBJobProcessor implements BeanProcessor<SBJob> {
     }
     processPorts(parentJob, job, app.getInputs());
     processPorts(parentJob, job, app.getOutputs());
+  }
+  
+  /**
+   * @param step
+   * @param parentJob
+   * @param childJob
+   * Process hints in workflow 
+   */
+  public void processHints(SBJobApp parentJob, SBJobApp childJob) {
+      setHints(childJob, parentJob.getHints());
+  }
+  private void setHints(SBJobApp childJob, List<SBResource> parentHints) {
+    Set<SBResource> survivors = new HashSet<>(parentHints);
+    for (SBResource hint : childJob.getHints()) {
+      if(survivors.stream().noneMatch(r-> r.getType().equals(hint))){
+        survivors.add(hint);
+      }
+    }
+    childJob.getHints().clear();
+    childJob.getHints().addAll(survivors);
   }
 
   /**
