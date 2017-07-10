@@ -1,8 +1,11 @@
 package org.rabix.engine.processor.handler.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.rabix.bindings.BindingException;
 import org.rabix.bindings.model.Job;
@@ -93,12 +96,9 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
         }
 
         if (sourceJob.isRoot()) {
-          Job rootJob = createRootJob(sourceJob, JobHelper.transformStatus(sourceJob.getState()));
-          if (!event.isFromScatter() || (event.getNumberOfScattered() == sourceVariable.getNumberOfTimesUpdated())) {
-            jobService.handleJobRootPartiallyCompleted(rootJob,
-                event.isFromScatter() ? InternalSchemaHelper.getJobIdFromScatteredId(event.getProducedByNode()) : event.getProducedByNode());
-          }
-          if (sourceJob.isContainer()) {
+          if (sourceJob.isContainer()) {  
+        	  Job rootJob = createRootJob(sourceJob, JobHelper.transformStatus(sourceJob.getState()));
+              jobService.handleJobRootPartiallyCompleted(rootJob.getId(), rootJob.getOutputs(), event.getProducedByNode());
             eventProcessor.send(new JobStatusEvent(sourceJob.getId(), event.getContextId(), JobState.COMPLETED, rootJob.getOutputs(), event.getEventGroupId(),
                 event.getProducedByNode()));
           }
@@ -112,11 +112,6 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
           }
         }
       }
-    }
-
-    if (sourceJob.isRoot() && (!event.isFromScatter() || (event.getNumberOfScattered() == sourceVariable.getNumberOfTimesUpdated()))) {
-      jobService.handleJobRootPartiallyCompleted(createRootJob(sourceJob, JobHelper.transformStatus(sourceJob.getState())),
-          event.isFromScatter() ? InternalSchemaHelper.getJobIdFromScatteredId(event.getProducedByNode()) : event.getProducedByNode());
     }
 
     Object value = variableService.getValue(sourceVariable);
@@ -137,7 +132,7 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
 
     List<LinkRecord> links = linkService.findBySourceAndSourceType(sourceVariable.getJobId(), sourceVariable.getPortId(), LinkPortType.OUTPUT,
         event.getContextId());
-
+    List<String> terminals = new ArrayList<>();
     for (LinkRecord link : links) {
       Object tempValue = value;
       Event newEvent = null;
@@ -160,6 +155,11 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
           newEvent = new InputUpdateEvent(event.getContextId(), link.getDestinationJobId(), link.getDestinationJobPort(), tempValue, lookAhead, numberOfScattered, position, event.getEventGroupId(), event.getProducedByNode());
           break;
         case OUTPUT:
+          boolean destinationRoot = link.getDestinationJobId().equals(InternalSchemaHelper.ROOT_NAME);
+		  if(sourceJob.isScattered() && destinationRoot) 
+        	break;
+		  if(destinationRoot && sourceJob.isOutputPortReady(event.getPortId()))
+				terminals.add(link.getDestinationJobPort());
           if (sourceJob.isOutputPortReady(event.getPortId()) || sourceJob.isScattered()) {
             newEvent = new OutputUpdateEvent(event.getContextId(), link.getDestinationJobId(), link.getDestinationJobPort(), value, numberOfScattered, link.getPosition(), event.getEventGroupId(), event.getProducedByNode());
           }
@@ -167,6 +167,11 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
       }
       if (newEvent != null)
         eventProcessor.send(newEvent);
+    }
+    Map<String, Object> outs = terminals.stream().collect(Collectors.toMap(Function.identity(), out->  variableService.find(InternalSchemaHelper.ROOT_NAME, out, LinkPortType.OUTPUT, sourceJob.getRootId()).getValue()));
+    if(!outs.isEmpty()){
+        jobService.handleJobRootPartiallyCompleted(event.getContextId(), outs, event.getProducedByNode());
+        
     }
   }
 

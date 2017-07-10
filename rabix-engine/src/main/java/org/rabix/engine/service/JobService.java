@@ -34,8 +34,6 @@ public interface JobService {
 
   void handleJobCompleted(Job job);
 
-  void handleJobRootPartiallyCompleted(Job rootJob, String producedBy);
-
   void handleJobRootFailed(Job job);
 
   void handleJobRootCompleted(Job job);
@@ -47,5 +45,7 @@ public interface JobService {
   void handleJobContainerReady(Job containerJob);
 
   void handleJobRootAborted(Job rootJob);
+
+  void handleJobRootPartiallyCompleted(UUID rootId, Map<String, Object> outs, String producedByNode);
 
 }
