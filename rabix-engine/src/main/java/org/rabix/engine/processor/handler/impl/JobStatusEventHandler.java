@@ -193,7 +193,8 @@ public class JobStatusEventHandler implements EventHandler<JobStatusEvent> {
         Map<String, Object> outs = rootLinks.stream().collect(Collectors.toMap(l->l.getDestinationJobPort(), l->variableRecordService.find(InternalSchemaHelper.ROOT_NAME, l.getDestinationJobPort(), LinkPortType.OUTPUT, jobRecord.getRootId()).getValue()));
         if(!outs.isEmpty()){
           jobService.handleJobRootPartiallyCompleted(jobRecord.getRootId(), outs, jobRecord.getId());
-        }}
+        }
+        }
       }
       break;
     case ABORTED:

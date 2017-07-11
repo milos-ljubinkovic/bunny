@@ -96,7 +96,7 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
         }
 
         if (sourceJob.isRoot()) {
-          if (sourceJob.isContainer()) {  
+          if (!sourceJob.isContainer()) {  
         	  Job rootJob = createRootJob(sourceJob, JobHelper.transformStatus(sourceJob.getState()));
               jobService.handleJobRootPartiallyCompleted(rootJob.getId(), rootJob.getOutputs(), event.getProducedByNode());
             eventProcessor.send(new JobStatusEvent(sourceJob.getId(), event.getContextId(), JobState.COMPLETED, rootJob.getOutputs(), event.getEventGroupId(),
@@ -109,7 +109,7 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
                 dagNodeDB, appDB);
             jobService.handleJobCompleted(completedJob);
             if(sourceJob.isScatterWrapper())
-            eventProcessor.addToQueue(new JobStatusEvent(sourceJob.getId(), event.getContextId(), JobState.COMPLETED, completedJob.getOutputs(), event.getEventGroupId(), sourceJob.getId()));
+            	eventProcessor.addToQueue(new JobStatusEvent(sourceJob.getId(), event.getContextId(), JobState.COMPLETED, completedJob.getOutputs(), event.getEventGroupId(), sourceJob.getId()));
           } catch (BindingException e) {
           }
         }
