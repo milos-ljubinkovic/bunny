@@ -100,7 +100,7 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
         	  Job rootJob = createRootJob(sourceJob, JobHelper.transformStatus(sourceJob.getState()));
               jobService.handleJobRootPartiallyCompleted(rootJob.getId(), rootJob.getOutputs(), event.getProducedByNode());
             eventProcessor.send(new JobStatusEvent(sourceJob.getId(), event.getContextId(), JobState.COMPLETED, rootJob.getOutputs(), event.getEventGroupId(),
-                event.getProducedByNode()));
+                InternalSchemaHelper.ROOT_NAME));
           }
           return;
         } else {
@@ -170,7 +170,7 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
     }
     Map<String, Object> outs = terminals.stream().collect(Collectors.toMap(Function.identity(), out->  variableService.find(InternalSchemaHelper.ROOT_NAME, out, LinkPortType.OUTPUT, sourceJob.getRootId()).getValue()));
     if(!outs.isEmpty()){
-        jobService.handleJobRootPartiallyCompleted(event.getContextId(), outs, event.getProducedByNode());
+        jobService.handleJobRootPartiallyCompleted(event.getContextId(), outs, event.getJobId());
         
     }
   }
