@@ -96,12 +96,13 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
         }
 
         if (sourceJob.isRoot()) {
+      	  Job rootJob = createRootJob(sourceJob, JobHelper.transformStatus(sourceJob.getState()));
           if (!sourceJob.isContainer()) {  
-        	  Job rootJob = createRootJob(sourceJob, JobHelper.transformStatus(sourceJob.getState()));
               jobService.handleJobRootPartiallyCompleted(rootJob.getId(), rootJob.getOutputs(), event.getProducedByNode());
-            eventProcessor.send(new JobStatusEvent(sourceJob.getId(), event.getContextId(), JobState.COMPLETED, rootJob.getOutputs(), event.getEventGroupId(),
-                InternalSchemaHelper.ROOT_NAME));
           }
+          else{
+          eventProcessor.send(new JobStatusEvent(sourceJob.getId(), event.getContextId(), JobState.COMPLETED, rootJob.getOutputs(), event.getEventGroupId(),
+                  InternalSchemaHelper.ROOT_NAME));}
           return;
         } else {
           try {
