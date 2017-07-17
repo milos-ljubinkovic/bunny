@@ -88,13 +88,6 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
 
     if (sourceJob.isCompleted()) {
       if (sourceJob.getOutputCounter(sourceVariable.getPortId()) != null) {
-        if ((sourceJob.isContainer() || isScatterWrapper) && sourceJob.getParentId() != null && sourceJob.getParentId().equals(sourceJob.getRootId())) {
-          JobStatsRecord jobStatsRecord = jobStatsRecordService.findOrCreate(sourceJob.getRootId());
-          jobStatsRecord.increaseCompleted();
-          jobStatsRecord.increaseRunning();
-          jobStatsRecordService.update(jobStatsRecord);
-        }
-
         if (sourceJob.isRoot()) {
       	  Job rootJob = createRootJob(sourceJob, JobHelper.transformStatus(sourceJob.getState()));
           if (!sourceJob.isContainer()) {  
@@ -109,7 +102,7 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
             Job completedJob = JobHelper.createCompletedJob(sourceJob, JobStatus.COMPLETED, jobRecordService, variableService, linkService, contextService,
                 dagNodeDB, appDB);
             jobService.handleJobCompleted(completedJob);
-            if(sourceJob.isScatterWrapper())
+            if(sourceJob.isScatterWrapper() || sourceJob.isContainer())
             	eventProcessor.addToQueue(new JobStatusEvent(sourceJob.getId(), event.getContextId(), JobState.COMPLETED, completedJob.getOutputs(), event.getEventGroupId(), sourceJob.getId()));
           } catch (BindingException e) {
           }

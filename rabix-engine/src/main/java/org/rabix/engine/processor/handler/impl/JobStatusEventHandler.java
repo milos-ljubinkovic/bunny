@@ -109,8 +109,7 @@ public class JobStatusEventHandler implements EventHandler<JobStatusEvent> {
     }
 
     JobStatsRecord jobStatsRecord = null;
-    if ((jobRecord.getParentId() != null && jobRecord.getParentId().equals(jobRecord.getRootId())) ||
-        (jobRecord.isRoot() && !jobRecord.isContainer() && !jobRecord.isScatterWrapper()))
+    if ((jobRecord.getParentId() != null && jobRecord.getParentId().equals(jobRecord.getRootId())) || jobRecord.isRoot())
       jobStatsRecord = jobStatsRecordService.findOrCreate(jobRecord.getRootId());
     try {
       JobStateValidator.checkState(jobRecord, event.getState());
@@ -167,33 +166,22 @@ public class JobStatusEventHandler implements EventHandler<JobStatusEvent> {
         jobStatsRecord.increaseCompleted();
         jobStatsRecordService.update(jobStatsRecord);
       }
-      if (jobRecord.isRoot()) {
-        try {
-          if(!jobRecord.isContainer()) {
-            // if root is CommandLineTool create OutputUpdateEvents
-            for (PortCounter portCounter : jobRecord.getOutputCounters()) {
-              Object output = event.getResult().get(portCounter.getPort());
-              eventProcessor.send(new OutputUpdateEvent(jobRecord.getRootId(), jobRecord.getId(), portCounter.getPort(), output, 1, event.getEventGroupId(), event.getProducedByNode()));
-            }
-          }
-          eventProcessor.send(new ContextStatusEvent(event.getContextId(), ContextStatus.COMPLETED));
-          Job rootJob = JobHelper.createRootJob(jobRecord, JobStatus.COMPLETED, jobRecordService, variableRecordService, linkRecordService, contextRecordService, dagNodeDB, appDB, event.getResult());
-          jobService.handleJobRootCompleted(rootJob);
-        } catch (Exception e) {
-          throw new EventHandlerException("Failed to call onRootCompleted callback for Job " + jobRecord.getRootId(), e);
-        }
-      } else {
-    	if(!jobRecord.isScatterWrapper())
+	  if ((!jobRecord.isScatterWrapper() || jobRecord.isRoot()) && !jobRecord.isContainer()){
         for (PortCounter portCounter : jobRecord.getOutputCounters()) {
           Object output = event.getResult().get(portCounter.getPort());
           eventProcessor.send(new OutputUpdateEvent(jobRecord.getRootId(), jobRecord.getId(), portCounter.getPort(), output, jobRecord.getNumberOfGlobalOutputs(), 1, event.getEventGroupId(), event.getProducedByNode()));
-        }
+        }}
+      if (jobRecord.isRoot()) {
+          eventProcessor.send(new ContextStatusEvent(event.getContextId(), ContextStatus.COMPLETED));
+          Job rootJob = JobHelper.createRootJob(jobRecord, JobStatus.COMPLETED, jobRecordService, variableRecordService, linkRecordService, contextRecordService, dagNodeDB, appDB, event.getResult());
+          jobService.handleJobRootCompleted(rootJob);
+      } else {
     	if(!jobRecord.isScattered()){
-        List<LinkRecord> rootLinks = linkRecordService.findBySourceAndSourceType(jobRecord.getId(), LinkPortType.OUTPUT, jobRecord.getRootId()).stream().filter(p->p.getDestinationJobId().equals(InternalSchemaHelper.ROOT_NAME)).collect(Collectors.toList());
-        Map<String, Object> outs = rootLinks.stream().collect(Collectors.toMap(l->l.getDestinationJobPort(), l->variableRecordService.find(InternalSchemaHelper.ROOT_NAME, l.getDestinationJobPort(), LinkPortType.OUTPUT, jobRecord.getRootId()).getValue()));
-        if(!outs.isEmpty()){
-          jobService.handleJobRootPartiallyCompleted(jobRecord.getRootId(), outs, jobRecord.getId());
-        }
+	        List<LinkRecord> rootLinks = linkRecordService.findBySourceAndSourceType(jobRecord.getId(), LinkPortType.OUTPUT, jobRecord.getRootId()).stream().filter(p->p.getDestinationJobId().equals(InternalSchemaHelper.ROOT_NAME)).collect(Collectors.toList());
+	        Map<String, Object> outs = rootLinks.stream().collect(Collectors.toMap(l->l.getDestinationJobPort(), l->variableRecordService.find(InternalSchemaHelper.ROOT_NAME, l.getDestinationJobPort(), LinkPortType.OUTPUT, jobRecord.getRootId()).getValue()));
+	        if(!outs.isEmpty()){
+	          jobService.handleJobRootPartiallyCompleted(jobRecord.getRootId(), outs, jobRecord.getId());
+	        }
         }
       }
       break;
