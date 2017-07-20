@@ -6,7 +6,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.rabix.bindings.cwl.bean.CWLCommandLineTool;
 import org.rabix.bindings.cwl.bean.CWLInputPort;
+import org.rabix.bindings.cwl.helper.CWLSchemaHelper;
 import org.rabix.common.helper.JSONHelper;
 import org.rabix.common.json.BeanSerializer;
 
@@ -38,13 +40,17 @@ public class CWLInputPortsDeserializer extends JsonDeserializer<List<CWLInputPor
         CWLInputPort inputPort = null;
         if (subnodeEntry.getValue().isObject()) {
           if(subnodeEntry.getValue().has("type") && subnodeEntry.getValue().get("type").equals("record")) {
-            inputPort = new CWLInputPort(subnodeEntry.getKey(), null, JSONHelper.transform(subnodeEntry.getValue()), null, null, null, null, null, null, null, null);
+            inputPort = new CWLInputPort(subnodeEntry.getKey(), null, JSONHelper.transform(subnodeEntry.getValue()), null, null, null, null, null, null, null, null, false);
           } else {
             inputPort = BeanSerializer.deserialize(subnodeEntry.getValue().toString(), CWLInputPort.class);
             inputPort.setId(subnodeEntry.getKey());
           }
-        } else {
-          inputPort = new CWLInputPort(subnodeEntry.getKey(), null, JSONHelper.transform(subnodeEntry.getValue()), null, null, null, null, null, null, null, null);
+        }
+        else if (subnodeEntry.getValue().isTextual() && subnodeEntry.getValue().asText().equals(CWLCommandLineTool.STDIN_KEY)) { 
+          inputPort = new CWLInputPort(subnodeEntry.getKey(), null, CWLSchemaHelper.TYPE_JOB_FILE, null, true, null, null, null, null, null, null, true);
+        }
+        else {
+          inputPort = new CWLInputPort(subnodeEntry.getKey(), null, JSONHelper.transform(subnodeEntry.getValue()), null, null, null, null, null, null, null, null, false);
         }
         inputPorts.add(inputPort);
       }

@@ -35,7 +35,7 @@ public class CWLJobAppDeserializer extends JsonDeserializer<CWLJobApp> {
       return null;
     }
     if (tree.isObject()) {
-      if(tree.get(CWLDocumentResolver.CWL_VERSION_KEY) == null || tree.get(CWLDocumentResolver.CWL_VERSION_KEY).asText().equals(ProtocolType.CWL.appVersion)) {
+      if(tree.get(CWLDocumentResolver.CWL_VERSION_KEY) == null || tree.get(CWLDocumentResolver.CWL_VERSION_KEY).asText().startsWith(ProtocolType.CWL.appVersion)) {
         JsonNode classNode = tree.get(CLASS_KEY);
         
         if (classNode == null)

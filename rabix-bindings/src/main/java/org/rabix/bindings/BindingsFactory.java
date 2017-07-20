@@ -50,6 +50,9 @@ public class BindingsFactory {
         if (app == null) {
           continue;
         }
+        if(app.getVersion() != null && binding.getProtocolType() == ProtocolType.CWL && app.getVersion().startsWith(ProtocolType.CWL.appVersion)) {
+          return binding;
+        }
         if (app.getVersion() != null && binding.getProtocolType().appVersion.equalsIgnoreCase(app.getVersion())) {
           return binding;
         }

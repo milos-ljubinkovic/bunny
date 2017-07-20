@@ -25,18 +25,23 @@ public class CWLInputPort extends ApplicationPort {
   protected final Object inputBinding;
   @JsonProperty("secondaryFiles")
   protected Object secondaryFiles;
-
+  @JsonProperty("stdin")
+  protected boolean stdin;
+  
   @JsonCreator
-  public CWLInputPort(@JsonProperty("id") String id, @JsonProperty("default") Object defaultValue, @JsonProperty("type") Object schema, 
-      @JsonProperty("inputBinding") Object inputBinding, @JsonProperty("streamable") Boolean streamable, @JsonProperty("format") Object format,
-      @JsonProperty("scatter") Boolean scatter, @JsonProperty("sbg:stageInput") StageInput stageInput, @JsonProperty("linkMerge") String linkMerge,
-                      @JsonProperty("description") String description, @JsonProperty("secondaryFiles") Object secondaryFiles) {
+  public CWLInputPort(@JsonProperty("id") String id, @JsonProperty("default") Object defaultValue,
+      @JsonProperty("type") Object schema, @JsonProperty("inputBinding") Object inputBinding,
+      @JsonProperty("streamable") Boolean streamable, @JsonProperty("format") Object format,
+      @JsonProperty("scatter") Boolean scatter, @JsonProperty("sbg:stageInput") StageInput stageInput,
+      @JsonProperty("linkMerge") String linkMerge, @JsonProperty("description") String description,
+      @JsonProperty("secondaryFiles") Object secondaryFiles, @JsonProperty("stdin") boolean stdin) {
     super(id, defaultValue, schema, scatter, linkMerge, description);
     this.format = format;
     this.streamable = streamable;
     this.stageInput = stageInput;
     this.inputBinding = inputBinding;
     this.secondaryFiles = secondaryFiles;
+    this.stdin = stdin;
   }
 
   @Override
@@ -63,6 +68,14 @@ public class CWLInputPort extends ApplicationPort {
   
   public Object getFormat() {
     return format;
+  }
+  
+  public void setStdin(boolean stdin) {
+    this.stdin = stdin;
+  }
+  
+  public boolean getStdin() {
+    return this.stdin;
   }
   
   @Override

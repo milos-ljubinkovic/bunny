@@ -137,7 +137,7 @@ public class CWLDocumentResolver {
     
 
     JsonNode cwlVersion = root.get(CWL_VERSION_KEY);
-    if (cwlVersion==null || !(cwlVersion.asText().equals(ProtocolType.CWL.appVersion))) {
+    if (cwlVersion==null || !(cwlVersion.asText().startsWith("v1."))) {
       clearReplacements(appUrl);
       clearReferenceCache(appUrl);
       throw new BindingWrongVersionException("Document version is not " + ProtocolType.CWL.appVersion);

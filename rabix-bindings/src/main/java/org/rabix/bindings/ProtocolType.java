@@ -2,7 +2,7 @@ package org.rabix.bindings;
 
 
 public enum ProtocolType {
-  CWL("org.rabix.bindings.cwl.CWLBindings", 3, "v1.0"),
+  CWL("org.rabix.bindings.cwl.CWLBindings", 3, "v1."),
   DRAFT2("org.rabix.bindings.draft2.Draft2Bindings", 4, null),
   SB("org.rabix.bindings.sb.SBBindings", 1, "sbg:draft-2"),
   DRAFT3("org.rabix.bindings.draft3.Draft3Bindings", 2, "cwl:draft-3");

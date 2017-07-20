@@ -257,28 +257,36 @@ public class CWLJobProcessor implements BeanProcessor<CWLJob> {
       }
       
       // handle standard out
-      if (job.getApp().isCommandLineTool() && port instanceof CWLOutputPort) {
-        Object type = port.getSchema();
-        if (CWLSchemaHelper.TYPE_JOB_FILE.equals(type)) {
-          CWLCommandLineTool commandLineTool = (CWLCommandLineTool) job.getApp();
-          Object outputBinding = ((CWLOutputPort) port).getOutputBinding();
-          if (outputBinding != null) {
-            String glob = CWLBindingHelper.getGlob(outputBinding);
-            if (outputBinding != null && glob != null && glob instanceof String) {
-              if (glob.startsWith(CWLCommandLineTool.RANDOM_STDOUT_PREFIX)) {
-                if (commandLineTool.getStdoutRaw() != null) {
-                  CWLBindingHelper.setGlob(commandLineTool.getStdoutRaw(), outputBinding);
-                } else {
-                  commandLineTool.setStdout(glob);
-                }
-              } else if (glob.startsWith(CWLCommandLineTool.RANDOM_STDERR_PREFIX)) {
-                if (commandLineTool.getStderrRaw() != null) {
-                  CWLBindingHelper.setGlob(commandLineTool.getStderrRaw(), outputBinding);
-                } else {
-                  commandLineTool.setStderr(glob);
+      if (job.getApp().isCommandLineTool()) {
+        if(port instanceof CWLOutputPort) {
+          Object type = port.getSchema();
+          if (CWLSchemaHelper.TYPE_JOB_FILE.equals(type)) {
+            CWLCommandLineTool commandLineTool = (CWLCommandLineTool) job.getApp();
+            Object outputBinding = ((CWLOutputPort) port).getOutputBinding();
+            if (outputBinding != null) {
+              String glob = CWLBindingHelper.getGlob(outputBinding);
+              if (outputBinding != null && glob != null && glob instanceof String) {
+                if (glob.startsWith(CWLCommandLineTool.RANDOM_STDOUT_PREFIX)) {
+                  if (commandLineTool.getStdoutRaw() != null) {
+                    CWLBindingHelper.setGlob(commandLineTool.getStdoutRaw(), outputBinding);
+                  } else {
+                    commandLineTool.setStdout(glob);
+                  }
+                } else if (glob.startsWith(CWLCommandLineTool.RANDOM_STDERR_PREFIX)) {
+                  if (commandLineTool.getStderrRaw() != null) {
+                    CWLBindingHelper.setGlob(commandLineTool.getStderrRaw(), outputBinding);
+                  } else {
+                    commandLineTool.setStderr(glob);
+                  }
                 }
               }
             }
+          }
+        }
+        else if (port instanceof CWLInputPort) {
+          if(((CWLInputPort) port).getStdin()) {
+            CWLCommandLineTool commandLineTool = (CWLCommandLineTool) job.getApp();
+            commandLineTool.setStdin(String.format("$(inputs.%s.path)", port.getId()));
           }
         }
       }
