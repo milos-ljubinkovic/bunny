@@ -137,7 +137,7 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
           }
         }
         return new InputUpdateEvent(event.getContextId(), link.getDestinationJobId(), link.getDestinationJobPort(), tempValue, lookAhead,
-            numberOfScattered, position, event.getEventGroupId(), event.getProducedByNode());
+            numberOfScattered, position, event.getEventGroupId(), sourceJob.getId());
 
       case OUTPUT:
         boolean destinationRoot = link.getDestinationJobId().equals(InternalSchemaHelper.ROOT_NAME);
@@ -145,7 +145,7 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
           return null;
         if (sourceJob.isOutputPortReady(event.getPortId()) || sourceJob.isScattered()) {
           return new OutputUpdateEvent(event.getContextId(), link.getDestinationJobId(), link.getDestinationJobPort(), tempValue, numberOfScattered,
-              link.getPosition(), event.getEventGroupId(), event.getProducedByNode());
+              link.getPosition(), event.getEventGroupId(), sourceJob.getId());
         }
     }
     return null;
