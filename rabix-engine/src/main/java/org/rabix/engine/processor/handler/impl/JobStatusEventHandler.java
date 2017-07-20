@@ -168,6 +168,7 @@ public class JobStatusEventHandler implements EventHandler<JobStatusEvent> {
         jobStatsRecord.increaseCompleted();
         jobStatsRecordService.update(jobStatsRecord);
       }
+            
       if ((!jobRecord.isScatterWrapper() || jobRecord.isRoot()) && !jobRecord.isContainer()){
         for (PortCounter portCounter : jobRecord.getOutputCounters()) {
           Object output = event.getResult().get(portCounter.getPort());
@@ -184,6 +185,11 @@ public class JobStatusEventHandler implements EventHandler<JobStatusEvent> {
           }
       } else {
         if(!jobRecord.isScattered()){
+          try {
+            jobService.handleJobCompleted(jobHelper.createJob(jobRecord, JobStatus.COMPLETED));
+          } catch (BindingException e) {
+            
+          }
           List<LinkRecord> rootLinks = linkRecordService.findBySourceAndSourceType(jobRecord.getId(), LinkPortType.OUTPUT, jobRecord.getRootId()).stream().filter(p->p.getDestinationJobId().equals(InternalSchemaHelper.ROOT_NAME)).collect(Collectors.toList());
           Map<String, Object> outs = rootLinks.stream().collect(Collectors.toMap(l->l.getDestinationJobPort(), l->variableRecordService.find(InternalSchemaHelper.ROOT_NAME, l.getDestinationJobPort(), LinkPortType.OUTPUT, jobRecord.getRootId()).getValue()));
           if(!outs.isEmpty()){

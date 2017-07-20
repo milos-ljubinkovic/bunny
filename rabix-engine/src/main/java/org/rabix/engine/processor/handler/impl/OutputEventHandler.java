@@ -53,9 +53,10 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
     if (sourceJob.getState().equals(JobRecord.JobState.COMPLETED)) {
       return;
     }
-    if (event.isFromScatter()) {
+    if (sourceJob.isScatterWrapper()) {
       jobRecordService.resetOutputPortCounter(sourceJob, event.getNumberOfScattered(), event.getPortId());
     }
+    
     Boolean isScatterWrapper = sourceJob.isScatterWrapper();
     
     VariableRecord sourceVariable = variableService.find(event.getJobId(), event.getPortId(), LinkPortType.OUTPUT, event.getContextId());
@@ -76,10 +77,8 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
           return;
         }
         else {
-          Job completedJob = createJob(sourceJob, JobStatus.COMPLETED);
-          jobService.handleJobCompleted(completedJob);
           if (sourceJob.isScatterWrapper() || sourceJob.isContainer()) {
-            eventProcessor.addToQueue(new JobStatusEvent(sourceJob.getId(), event.getContextId(), JobState.COMPLETED, completedJob.getOutputs(),
+            eventProcessor.addToQueue(new JobStatusEvent(sourceJob.getId(), event.getContextId(), JobState.COMPLETED, createJob(sourceJob, JobStatus.COMPLETED).getOutputs(),
                 event.getEventGroupId(), sourceJob.getId()));
           }
         }
