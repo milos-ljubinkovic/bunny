@@ -92,7 +92,7 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
     if (isScatterWrapper) {
       numberOfScattered = sourceJob.getNumberOfGlobalOutputs();
       ScatterStrategy scatterStrategy = sourceJob.getScatterStrategy();
-      if (scatterStrategy.isBlocking()) {
+      if (scatterStrategy.isBlocking() || scatterStrategy.isEmptyListDetected()) {
         if (sourceJob.isOutputPortReady(event.getPortId())) {
           List<Object> valueStructure = scatterStrategy.valueStructure(sourceJob.getId(), event.getPortId(), event.getContextId());
           value = Recursive.make(jp -> {
