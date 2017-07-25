@@ -50,9 +50,7 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
   
   public void handle(final OutputUpdateEvent event) throws EventHandlerException {
     JobRecord sourceJob = jobRecordService.find(event.getJobId(), event.getContextId());
-    if (sourceJob.getState().equals(JobRecord.JobState.COMPLETED)) {
-      return;
-    }
+    
     if (sourceJob.isScatterWrapper()) {
       jobRecordService.resetOutputPortCounter(sourceJob, event.getNumberOfScattered(), event.getPortId());
     }
@@ -75,12 +73,6 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
             eventProcessor.send(
                 new JobStatusEvent(sourceJob.getId(), event.getContextId(), JobRecord.JobState.COMPLETED, rootJob.getOutputs(), event.getEventGroupId(), InternalSchemaHelper.ROOT_NAME));
           return;
-        }
-        else {
-          if (sourceJob.isScatterWrapper() || sourceJob.isContainer()) {
-            eventProcessor.addToQueue(new JobStatusEvent(sourceJob.getId(), event.getContextId(), JobState.COMPLETED, createJob(sourceJob, JobStatus.COMPLETED).getOutputs(),
-                event.getEventGroupId(), sourceJob.getId()));
-          }
         }
       }
     }
@@ -113,7 +105,12 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
       Object tempValue = value;
       Event newEvent = createChildEvent(event, sourceJob, numberOfScattered, link, tempValue);
       if (newEvent != null)
-        eventProcessor.send(newEvent);
+        eventProcessor.addToQueue(newEvent);
+    }
+    
+    if (sourceJob.isCompleted() && (sourceJob.isScatterWrapper() || sourceJob.isContainer())) {
+      eventProcessor.addToQueue(new JobStatusEvent(sourceJob.getId(), event.getContextId(), JobState.COMPLETED, createJob(sourceJob, JobStatus.COMPLETED).getOutputs(),
+          event.getEventGroupId(), sourceJob.getId()));
     }
   }
 
@@ -136,7 +133,7 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
           }
         }
         return new InputUpdateEvent(event.getContextId(), link.getDestinationJobId(), link.getDestinationJobPort(), tempValue, lookAhead,
-            numberOfScattered, position, event.getEventGroupId(), sourceJob.getId());
+            numberOfScattered, position, event.getEventGroupId(), event.getProducedByNode());
 
       case OUTPUT:
         boolean destinationRoot = link.getDestinationJobId().equals(InternalSchemaHelper.ROOT_NAME);
@@ -144,7 +141,7 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
           return null;
         if (sourceJob.isOutputPortReady(event.getPortId()) || sourceJob.isScattered()) {
           return new OutputUpdateEvent(event.getContextId(), link.getDestinationJobId(), link.getDestinationJobPort(), tempValue, numberOfScattered,
-              link.getPosition(), event.getEventGroupId(), sourceJob.getId());
+              link.getPosition(), event.getEventGroupId(), event.getProducedByNode());
         }
     }
     return null;
