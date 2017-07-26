@@ -89,7 +89,7 @@ public static Set<String> types = new HashSet<String>();
     try {
       boolean isFile = URIHelper.isFile(appUrlBase);
       if (isFile) {
-        file = new File(URIHelper.getURIInfo(appUrlBase));
+        file = new File(URIHelper.getURIInfo(appUrlBase)).getAbsoluteFile();
       } else {
         file = new File(".");
       }

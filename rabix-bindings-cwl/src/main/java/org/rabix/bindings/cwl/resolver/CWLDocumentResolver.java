@@ -113,7 +113,7 @@ public class CWLDocumentResolver {
       boolean isFile = URIHelper.isFile(appUrlBase);
       if (isFile) {
         rewriteDefaultPaths = true;
-        file = new File(URIHelper.getURIInfo(appUrlBase));
+        file = new File(URIHelper.getURIInfo(appUrlBase)).getAbsoluteFile();
       } else {
         file = new File(".");
       }
