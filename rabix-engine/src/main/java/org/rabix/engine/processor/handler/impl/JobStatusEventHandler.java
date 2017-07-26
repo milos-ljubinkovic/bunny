@@ -188,15 +188,17 @@ public class JobStatusEventHandler implements EventHandler<JobStatusEvent> {
       } else {
         if(!jobRecord.isScattered()){
           List<LinkRecord> rootLinks = linkRecordService.findBySourceAndSourceType(jobRecord.getId(), LinkPortType.OUTPUT, jobRecord.getRootId()).stream().filter(p->p.getDestinationJobId().equals(InternalSchemaHelper.ROOT_NAME)).collect(Collectors.toList());
-          Map<String, Object> outs = rootLinks.stream().collect(Collectors.toMap(l->l.getDestinationJobPort(), l->variableRecordService.find(InternalSchemaHelper.ROOT_NAME, l.getDestinationJobPort(), LinkPortType.OUTPUT, jobRecord.getRootId()).getValue()));
+          Map<String, Object> outs =new HashMap<>();
+          rootLinks.stream().forEach(link -> {
+            outs.put(link.getDestinationJobPort(),
+                variableRecordService.find(InternalSchemaHelper.ROOT_NAME, link.getDestinationJobPort(), LinkPortType.OUTPUT, jobRecord.getRootId()).getValue());
+          });
           if(!outs.isEmpty()){
             jobService.handleJobRootPartiallyCompleted(jobRecord.getRootId(), outs, jobRecord.getId());
           }
           try {
             jobService.handleJobCompleted(jobHelper.createJob(jobRecord, JobStatus.COMPLETED));
-          } catch (BindingException e) {
-            
-          }
+          } catch (BindingException e) { }
       }
     }
       
