@@ -170,38 +170,41 @@ public class JobStatusEventHandler implements EventHandler<JobStatusEvent> {
         jobStatsRecord.increaseCompleted();
         jobStatsRecordService.update(jobStatsRecord);
       }
-            
-      if ((!jobRecord.isScatterWrapper() || jobRecord.isRoot()) && !jobRecord.isContainer()){
+
+      if ((!jobRecord.isScatterWrapper() || jobRecord.isRoot()) && !jobRecord.isContainer()) {
         for (PortCounter portCounter : jobRecord.getOutputCounters()) {
           Object output = event.getResult().get(portCounter.getPort());
-          eventProcessor.send(new OutputUpdateEvent(jobRecord.getRootId(), jobRecord.getId(), portCounter.getPort(), output, jobRecord.getNumberOfGlobalOutputs(), 1, event.getEventGroupId(), event.getProducedByNode()));
-        }}
+          eventProcessor.send(new OutputUpdateEvent(jobRecord.getRootId(), jobRecord.getId(), portCounter.getPort(), output,
+              jobRecord.getNumberOfGlobalOutputs(), 1, event.getEventGroupId(), event.getProducedByNode()));
+        }
+      }
       if (jobRecord.isRoot()) {
-          eventProcessor.send(new ContextStatusEvent(event.getContextId(), ContextStatus.COMPLETED));
-          try {
-            Job rootJob = jobHelper.createJob(jobRecord, JobStatus.COMPLETED, event.getResult());
-            jobService.handleJobRootCompleted(rootJob);
-          } catch (BindingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-          }
+        eventProcessor.send(new ContextStatusEvent(event.getContextId(), ContextStatus.COMPLETED));
+        try {
+          Job rootJob = jobHelper.createJob(jobRecord, JobStatus.COMPLETED, event.getResult());
+          jobService.handleJobRootCompleted(rootJob);
+        } catch (BindingException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
       } else {
-        if(!jobRecord.isScattered()){
-          List<LinkRecord> rootLinks = linkRecordService.findBySourceAndSourceType(jobRecord.getId(), LinkPortType.OUTPUT, jobRecord.getRootId()).stream().filter(p->p.getDestinationJobId().equals(InternalSchemaHelper.ROOT_NAME)).collect(Collectors.toList());
-          Map<String, Object> outs =new HashMap<>();
+        if (!jobRecord.isScattered()) {
+          List<LinkRecord> rootLinks = linkRecordService.findBySourceAndSourceType(jobRecord.getId(), LinkPortType.OUTPUT, jobRecord.getRootId()).stream()
+              .filter(p -> p.getDestinationJobId().equals(InternalSchemaHelper.ROOT_NAME)).collect(Collectors.toList());
+          Map<String, Object> outs = new HashMap<>();
           rootLinks.stream().forEach(link -> {
-            outs.put(link.getDestinationJobPort(),
-                variableRecordService.find(InternalSchemaHelper.ROOT_NAME, link.getDestinationJobPort(), LinkPortType.OUTPUT, jobRecord.getRootId()).getValue());
+            outs.put(link.getDestinationJobPort(), variableRecordService
+                .find(InternalSchemaHelper.ROOT_NAME, link.getDestinationJobPort(), LinkPortType.OUTPUT, jobRecord.getRootId()).getValue());
           });
-          if(!outs.isEmpty()){
+          if (!outs.isEmpty()) {
             jobService.handleJobRootPartiallyCompleted(jobRecord.getRootId(), outs, jobRecord.getId());
           }
           try {
-            jobService.handleJobCompleted(jobHelper.createJob(jobRecord, JobStatus.COMPLETED));
-          } catch (BindingException e) { }
+            jobService.handleJobCompleted(jobHelper.createJob(jobRecord, JobStatus.COMPLETED, event.getResult()));
+          } catch (BindingException e) {
+          }
+        }
       }
-    }
-      
       break;
     case ABORTED:
       Set<JobRecord.JobState> jobRecordStatuses = new HashSet<>();
