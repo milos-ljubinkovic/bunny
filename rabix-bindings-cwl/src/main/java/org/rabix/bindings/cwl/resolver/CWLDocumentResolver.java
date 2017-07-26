@@ -502,7 +502,13 @@ public class CWLDocumentResolver {
       }
     } else {
       try {
-        String filePath = new File(file.getParentFile(), path).getCanonicalPath();
+        String filePath = null;
+        if(new File(path).isAbsolute()) {
+          filePath = path;
+        }
+        else {
+          filePath = new File(file.getParentFile(), path).getCanonicalPath();
+        }
         return FileUtils.readFileToString(new File(filePath), DEFAULT_ENCODING);
       } catch (IOException e) {
         throw new BindingException("Couldn't fetch contents from " + path);
