@@ -70,7 +70,7 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
           if (!sourceJob.isContainer()) {  
             jobService.handleJobRootPartiallyCompleted(rootJob.getId(), rootJob.getOutputs(), event.getProducedByNode());
           }
-            eventProcessor.send(
+            eventProcessor.addToQueue(
                 new JobStatusEvent(sourceJob.getId(), event.getContextId(), JobRecord.JobState.COMPLETED, rootJob.getOutputs(), event.getEventGroupId(), InternalSchemaHelper.ROOT_NAME));
           return;
         }
@@ -105,7 +105,7 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
       Object tempValue = value;
       Event newEvent = createChildEvent(event, sourceJob, numberOfScattered, link, tempValue);
       if (newEvent != null)
-        eventProcessor.addToQueue(newEvent);
+        eventProcessor.send(newEvent);
     }
     
     if (sourceJob.isCompleted() && (sourceJob.isScatterWrapper() || sourceJob.isContainer())) {
