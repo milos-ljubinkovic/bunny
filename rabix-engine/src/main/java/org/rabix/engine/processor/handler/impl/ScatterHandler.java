@@ -126,7 +126,7 @@ public class ScatterHandler {
       Map<String, Object> outputs = new HashMap<>();
       for (VariableRecord outputVariableRecord : outputVariableRecords) {
 
-        eventProcessor.send(new OutputUpdateEvent(job.getRootId(), job.getId(), outputVariableRecord.getPortId(), null, 1, 1, event.getEventGroupId(), event.getProducedByNode()));
+        eventProcessor.send(new OutputUpdateEvent(job.getRootId(), job.getId(), outputVariableRecord.getPortId(), output, 1, 1, event.getEventGroupId(), event.getProducedByNode()));
       }
 //      jobRecordService.update(job);
       return;
