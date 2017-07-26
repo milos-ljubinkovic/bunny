@@ -91,6 +91,9 @@ public class CWLExpressionResolver {
       Matcher m = segPattern.matcher(remaining);
       if (m.find()) {
         if (m.group(0).startsWith(".")) {
+          if(m.group(0).equals(".length") && vars instanceof List){
+            return ((List) vars).size();
+          }
           return nextSegment(remaining.substring(m.end(0)), ((Map<?, ?>) vars).get(m.group(0).substring(1)));
         } else if (m.group(0).charAt(1) == '\"' || m.group(0).charAt(1) == '\'') {
           Character start = m.group(0).charAt(1);
@@ -176,6 +179,7 @@ public class CWLExpressionResolver {
   }
 
   private static int[] scanJavascriptExpression(String expression) throws CWLExpressionException {
+
     int DEFAULT = 0;
     int DOLLAR = 1;
     int PAREN = 2;
@@ -183,6 +187,8 @@ public class CWLExpressionResolver {
     int SINGLE_QUOTE = 4;
     int DOUBLE_QUOTE = 5;
     int BACKSLASH = 6;
+    int QUOTE_FIRST = 7;
+    int QUOTE_SECOND = 8;
 
     int i = 0;
     Stack<Integer> stack = new Stack<>();
@@ -196,56 +202,93 @@ public class CWLExpressionResolver {
       if (state == DEFAULT) {
         if (c == '$') {
           stack.push(DOLLAR);
-        } else if (c == '\\') {
+        }
+        else if (c == '\\') {
           stack.push(BACKSLASH);
         }
-      } else if (state == BACKSLASH) {
+      }
+      else if (state == BACKSLASH) {
         stack.pop();
-      } else if (state == DOLLAR) {
+      }
+      else if (state == DOLLAR) {
         if (c == '(') {
           start = i - 1;
           stack.push(PAREN);
-        } else if (c == '{') {
+        }
+        else if (c == '{') {
           start = i - 1;
           stack.push(BRACE);
         }
-      } else if (state == PAREN) {
+      }
+      else if (state == PAREN) {
         if (c == '(') {
           stack.push(PAREN);
-        } else if (c == ')') {
+        }
+        else if (c == ')') {
           stack.pop();
           if (stack.peek() == DOLLAR) {
             return new int[] { start, i + 1 };
           }
-        } else if (c == '\'') {
+        }
+        else if (c == '\'') {
           stack.push(SINGLE_QUOTE);
-        } else if (c == '"') {
+        }
+        else if (c == '"') {
           stack.push(DOUBLE_QUOTE);
         }
-      } else if (state == BRACE) {
+        else if (c == '/') {
+          stack.push(QUOTE_FIRST);
+        }
+      }
+      else if (state == BRACE) {
         if (c == '{') {
           stack.push(BRACE);
-        } else if (c == '}') {
+        }
+        else if (c == '}') {
           stack.pop();
           if (stack.peek() == DOLLAR) {
             return new int[] { start, i + 1 };
           }
-        } else if (c == '\'') {
+        }
+        else if (c == '\'') {
           stack.push(SINGLE_QUOTE);
-        } else if (c == '"') {
+        }
+        else if (c == '"') {
           stack.push(DOUBLE_QUOTE);
         }
-      } else if (state == SINGLE_QUOTE) {
+        else if (c == '/') {
+          stack.push(QUOTE_FIRST);
+        }
+      }
+      else if (state == SINGLE_QUOTE) {
         if (c == '\'') {
           stack.pop();
-        } else if (c == '\\') {
+        }
+        else if (c == '\\') {
           stack.push(BACKSLASH);
         }
-      } else if (state == DOUBLE_QUOTE) {
+      }
+      else if (state == DOUBLE_QUOTE) {
         if (c == '\"') {
           stack.pop();
-        } else if (c == '\\') {
+        }
+        else if (c == '\\') {
           stack.push(BACKSLASH);
+        }
+      }
+      else if (state == QUOTE_FIRST) {
+        if (c == '/') {
+          stack.pop();
+          stack.push(QUOTE_SECOND);
+        }
+        else {
+          stack.pop();
+          i--;
+        }
+      }
+      else if (state == QUOTE_SECOND) {
+        if (c == '\n') {
+          stack.pop();
         }
       }
       i++;
