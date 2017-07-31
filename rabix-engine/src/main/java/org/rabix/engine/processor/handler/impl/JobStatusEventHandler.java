@@ -182,6 +182,8 @@ public class JobStatusEventHandler implements EventHandler<JobStatusEvent> {
         eventProcessor.send(new ContextStatusEvent(event.getContextId(), ContextStatus.COMPLETED));
         try {
           Job rootJob = jobHelper.createJob(jobRecord, JobStatus.COMPLETED, event.getResult());
+          if(!jobRecord.isContainer())
+            jobService.handleJobRootPartiallyCompleted(jobRecord.getRootId(), rootJob.getOutputs(), jobRecord.getId());
           jobService.handleJobRootCompleted(rootJob);
         } catch (BindingException e) {
           // TODO Auto-generated catch block
