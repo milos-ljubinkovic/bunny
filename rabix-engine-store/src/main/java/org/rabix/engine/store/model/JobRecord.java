@@ -65,11 +65,11 @@ public class JobRecord extends TimestampedModel implements Cachable {
     super(LocalDateTime.now(), LocalDateTime.now());
   }
   
-  public JobRecord(UUID rootId, String id, UUID uniqueId, UUID parentId, JobState state, Boolean isContainer, Boolean isScattered, Boolean master, Boolean blocking, String dagCache) {
-    this(rootId, id, uniqueId, parentId, state, isContainer, isScattered, master, blocking, dagCache, LocalDateTime.now(), LocalDateTime.now());
+  public JobRecord(UUID rootId, String id, UUID uniqueId, UUID parentId, JobState state, Boolean isContainer, Boolean isScattered, Boolean master, Boolean blocking, String dagHash) {
+    this(rootId, id, uniqueId, parentId, state, isContainer, isScattered, master, blocking, dagHash, LocalDateTime.now(), LocalDateTime.now());
   }
 
-  public JobRecord(UUID rootId, String id, UUID uniqueId, UUID parentId, JobState state, Boolean isContainer, Boolean isScattered, Boolean master, Boolean blocking, String dagCache, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+  public JobRecord(UUID rootId, String id, UUID uniqueId, UUID parentId, JobState state, Boolean isContainer, Boolean isScattered, Boolean master, Boolean blocking, String dagHash, LocalDateTime createdAt, LocalDateTime modifiedAt) {
     super(createdAt, modifiedAt);
     this.id = id;
     this.externalId = uniqueId;
@@ -80,7 +80,7 @@ public class JobRecord extends TimestampedModel implements Cachable {
     this.blocking = blocking;
     this.isContainer = isContainer;
     this.isScattered = isScattered;
-    this.dagHash = dagCache;
+    this.dagHash = dagHash;
     this.inputCounters = new ArrayList<>();
     this.outputCounters = new ArrayList<>();
   }

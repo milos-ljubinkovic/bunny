@@ -1,19 +1,12 @@
 package org.rabix.bindings.cwl;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 
 import org.rabix.bindings.BindingException;
 import org.rabix.bindings.ProtocolTranslator;
 import org.rabix.bindings.ProtocolType;
-import org.rabix.bindings.cwl.bean.CWLDataLink;
-import org.rabix.bindings.cwl.bean.CWLJob;
-import org.rabix.bindings.cwl.bean.CWLStep;
-import org.rabix.bindings.cwl.bean.CWLStepInputs;
-import org.rabix.bindings.cwl.bean.CWLWorkflow;
+import org.rabix.bindings.cwl.bean.*;
 import org.rabix.bindings.cwl.helper.CWLJobHelper;
 import org.rabix.bindings.cwl.helper.CWLSchemaHelper;
 import org.rabix.bindings.helper.DAGValidationHelper;
@@ -106,7 +99,7 @@ public class CWLTranslator implements ProtocolTranslator {
       outputPorts.add(linkPort);
     }
     
-    ScatterMethod scatterMethod = job.getScatterMethod() != null? ScatterMethod.valueOf(job.getScatterMethod()) : ScatterMethod.dotproduct;
+    ScatterMethod scatterMethod = translateScatterMethod(job.getScatterMethod());
     if (!job.getApp().isWorkflow()) {
       Map<String, Object> commonDefaults = (Map<String, Object>) CWLValueTranslator.translateToCommon(extractDefaults(job.getInputs()));
       return new DAGNode(job.getId(), inputPorts, outputPorts, scatterMethod, job.getApp(), commonDefaults, ProtocolType.CWL);
@@ -116,7 +109,12 @@ public class CWLTranslator implements ProtocolTranslator {
 
     List<DAGNode> children = new ArrayList<>();
     for (CWLStep step : workflow.getSteps()) {
-      children.add(transformToGeneric(globalJobId, step.getJob()));
+      if ("nested_crossproduct".equals(step.getScatterMethod())) {
+        List<String> scatterList = readScatter(step.getScatter());
+
+      } else {
+        children.add(transformToGeneric(globalJobId, step.getJob()));
+      }
     }
 
     List<DAGLink> links = new ArrayList<>();
@@ -198,6 +196,68 @@ public class CWLTranslator implements ProtocolTranslator {
         dagLinkPort.setLinkMerge(dagLink.getLinkMerge());
       }
     }
+  }
+
+  private ScatterMethod translateScatterMethod(String scatterMethod) throws BindingException {
+    if (scatterMethod == null || "dotproduct".equals(scatterMethod) || "nested_crossproduct".equals(scatterMethod)) {
+      return ScatterMethod.dotproduct;
+    }
+
+    if ("flat_crossproduct".equals(scatterMethod)) {
+      return ScatterMethod.crossproduct;
+    }
+
+    throw new BindingException("Unknown scatter method: " + scatterMethod);
+  }
+
+  private List<String> readScatter(Object scatter) {
+    if (scatter instanceof String) {
+      return Collections.singletonList((String) scatter);
+    }
+
+    if (scatter instanceof List) {
+      return (List<String>) scatter;
+    }
+
+    throw new BindingException("Scatter must be a string or a list of strings.")
+  }
+
+  private DAGNode transformNestedScatter(DAGNode original, List<String> scatterPorts) {
+    if (scatterPorts.size() < 2) {
+      return original;
+    }
+
+    DAGNode ret = original;
+
+    List<String> copy = scatterPorts.subList(0, scatterPorts.size());
+
+    Collections.reverse(copy);
+    for (String port : copy){
+
+      String dagNodeId = "by_"+port;
+
+      List<DAGLinkPort> inputPorts = new ArrayList<>();
+      List<DAGLinkPort> outputPorts = new ArrayList<>();
+      List<DAGLink> links = new ArrayList<>();
+      List<DAGNode> children = Collections.singletonList(ret);
+
+      for (DAGLinkPort inp: ret.getInputPorts()) {
+        DAGLinkPort dlp = new DAGLinkPort(inp.getId(), dagNodeId, LinkPortType.INPUT, inp.getLinkMerge(), inp.getId().equals(port), null, null);
+        inputPorts.add(dlp);
+        links.add(new DAGLink(dlp, inp, null, 0));
+      }
+
+      for (DAGLinkPort out: ret.getOutputPorts()) {
+        DAGLinkPort dlp = new DAGLinkPort(out.getId(), dagNodeId, LinkPortType.OUTPUT, out.getLinkMerge(), false, null, null);
+        inputPorts.add(dlp);
+        links.add(new DAGLink(out, dlp, null, 0));
+      }
+
+      ret = new DAGContainer(dagNodeId, inputPorts, outputPorts, null, original.getScatterMethod(), links, children, original.getDefaults(), original.getProtocolType());
+    }
+
+
+    return ret;
   }
 
 }

@@ -15,8 +15,7 @@ public class ScatterStrategyFactory {
     switch (dagNode.getScatterMethod()) {
     case dotproduct:
       return new ScatterDotproduct(dagNode);
-    case flat_crossproduct:
-    case nested_crossproduct:
+    case crossproduct:
       return new ScatterCartesian(dagNode);
     default:
       throw new BindingException("Scatter method " + dagNode.getScatterMethod() + " is not supported.");

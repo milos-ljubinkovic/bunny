@@ -2,8 +2,7 @@ package org.rabix.bindings.model;
 
 public enum ScatterMethod {
   dotproduct,
-  nested_crossproduct,
-  flat_crossproduct;
+  crossproduct;
   
   public static boolean isBlocking(ScatterMethod scatterMethod) {
     switch (scatterMethod) {

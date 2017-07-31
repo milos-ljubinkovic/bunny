@@ -165,7 +165,7 @@ public class ScatterCartesian extends ScatterStrategy {
       }
     });
 
-    if (scatterMethod.equals(ScatterMethod.flat_crossproduct)) {
+    if (scatterMethod.equals(ScatterMethod.crossproduct)) {
       LinkedList<Object> result = new LinkedList<>();
       for (Combination combination : combinations) {
         String scatteredJobId = InternalSchemaHelper.scatterId(jobId, combination.position);
@@ -173,29 +173,12 @@ public class ScatterCartesian extends ScatterStrategy {
       }
       return result;
     }
-    if (scatterMethod.equals(ScatterMethod.nested_crossproduct)) {
-      LinkedList<Object> result = new LinkedList<>();
-
-      int position = 1;
-      LinkedList<Object> subresult = new LinkedList<>();
-      for (Combination combination : combinations) {
-        if (combination.indexes.get(0) != position) {
-          result.addLast(subresult);
-          subresult = new LinkedList<>();
-          position++;
-        }
-        String scatteredJobId = InternalSchemaHelper.scatterId(jobId, combination.position);
-        subresult.addLast(new JobPortPair(scatteredJobId, portId));
-      }
-      result.addLast(subresult);
-      return result;
-    }
     return null;
   }
 
   @Override
   public Object generateOutputsForEmptyList() {
-    if (scatterMethod.equals(ScatterMethod.flat_crossproduct)) {
+    if (scatterMethod.equals(ScatterMethod.crossproduct)) {
       return new ArrayList<>();  
     }
     return new ArrayList<>(); // TODO implement outputs for nested_crossproduct

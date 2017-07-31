@@ -134,7 +134,7 @@ public class ScatterHandler {
     }
   }
   
-  JobRecord createJobRecord(String id, UUID parentId, DAGNode node, boolean isScattered, UUID contextId, String dagCache) {
+  JobRecord createJobRecord(String id, UUID parentId, DAGNode node, boolean isScattered, UUID contextId, String dagHash) {
     boolean isBlocking = false;
     for (LinkMerge linkMerge : node.getLinkMergeSet(LinkPortType.INPUT)) {
       if (LinkMerge.isBlocking(linkMerge)) {
@@ -145,7 +145,7 @@ public class ScatterHandler {
     if (ScatterMethod.isBlocking(node.getScatterMethod())) {
       isBlocking = true;
     }
-    return new JobRecord(contextId, id, JobRecordService.generateUniqueId(), parentId, JobRecord.JobState.PENDING, node instanceof DAGContainer, isScattered, false, isBlocking, dagCache);
+    return new JobRecord(contextId, id, JobRecordService.generateUniqueId(), parentId, JobRecord.JobState.PENDING, node instanceof DAGContainer, isScattered, false, isBlocking, dagHash);
   }
   
   private void createScatteredJobs(JobRecord job, Event event, String port, Object value, DAGNode node, Integer numberOfScattered, Integer position) throws EventHandlerException {
