@@ -2,6 +2,7 @@ package org.rabix.bindings.cwl;
 
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import org.rabix.bindings.BindingException;
 import org.rabix.bindings.ProtocolTranslator;
@@ -10,10 +11,7 @@ import org.rabix.bindings.cwl.bean.*;
 import org.rabix.bindings.cwl.helper.CWLJobHelper;
 import org.rabix.bindings.cwl.helper.CWLSchemaHelper;
 import org.rabix.bindings.helper.DAGValidationHelper;
-import org.rabix.bindings.model.ApplicationPort;
-import org.rabix.bindings.model.Job;
-import org.rabix.bindings.model.LinkMerge;
-import org.rabix.bindings.model.ScatterMethod;
+import org.rabix.bindings.model.*;
 import org.rabix.bindings.model.dag.DAGContainer;
 import org.rabix.bindings.model.dag.DAGLink;
 import org.rabix.bindings.model.dag.DAGLinkPort;
@@ -110,8 +108,7 @@ public class CWLTranslator implements ProtocolTranslator {
     List<DAGNode> children = new ArrayList<>();
     for (CWLStep step : workflow.getSteps()) {
       if ("nested_crossproduct".equals(step.getScatterMethod())) {
-        List<String> scatterList = readScatter(step.getScatter());
-
+        children.add(transformNestedScatter(globalJobId, step));
       } else {
         children.add(transformToGeneric(globalJobId, step.getJob()));
       }
@@ -210,7 +207,7 @@ public class CWLTranslator implements ProtocolTranslator {
     throw new BindingException("Unknown scatter method: " + scatterMethod);
   }
 
-  private List<String> readScatter(Object scatter) {
+  private List<String> readScatter(Object scatter) throws BindingException {
     if (scatter instanceof String) {
       return Collections.singletonList((String) scatter);
     }
@@ -219,45 +216,77 @@ public class CWLTranslator implements ProtocolTranslator {
       return (List<String>) scatter;
     }
 
-    throw new BindingException("Scatter must be a string or a list of strings.")
+    throw new BindingException("Scatter must be a string or a list of strings.");
   }
 
-  private DAGNode transformNestedScatter(DAGNode original, List<String> scatterPorts) {
+  private CWLJob rescatter(CWLJob job, String port) {
+
+    return new CWLJob(new NestingApp(job.getApp(), port), job.getInputs(), job.getOutputs(), job.getRuntime(), job.getId(), port, job.getScatterMethod());
+  }
+
+  private DAGNode transformNestedScatter(String globalJobId, List<String> ports, CWLJob nestedJob) throws BindingException {
+
+    String port = ports.remove(0);
+    String nodeId = nestedJob.getId();
+    if (ports.isEmpty()) {
+      return transformToGeneric(globalJobId, rescatter(nestedJob, port));
+    }
+
+    nestedJob.setId(nodeId + ".by_" + port);
+
+    DAGNode nestedNode = transformNestedScatter(globalJobId, ports, nestedJob);
+
+    List<DAGLinkPort> inputPorts = new ArrayList<>();
+    List<DAGLinkPort> outputPorts = new ArrayList<>();
+    List<DAGLink> links = new ArrayList<>();
+    List<DAGNode> children = Collections.singletonList(nestedNode);
+
+    for (DAGLinkPort inp: nestedNode.getInputPorts()) {
+      DAGLinkPort dlp = new DAGLinkPort(inp.getId(), nodeId, LinkPortType.INPUT, inp.getLinkMerge(), inp.getId().equals(port), null, null);
+      inputPorts.add(dlp);
+      links.add(new DAGLink(dlp, inp, LinkMerge.merge_nested, 0));
+    }
+
+    for (DAGLinkPort out: nestedNode.getOutputPorts()) {
+      DAGLinkPort dlp = new DAGLinkPort(out.getId(), nodeId, LinkPortType.OUTPUT, out.getLinkMerge(), false, null, null);
+      outputPorts.add(dlp);
+      links.add(new DAGLink(out, dlp, LinkMerge.merge_nested, 0));
+    }
+
+    return new DAGContainer(nodeId, inputPorts, outputPorts, nestedJob.getApp(), ScatterMethod.dotproduct, links, children, null, nestedNode.getProtocolType());
+
+  }
+
+  private DAGNode transformNestedScatter(String globalJobId, CWLStep step) throws BindingException {
+
+    List<String> scatterPorts = readScatter(step.getScatter());
+
     if (scatterPorts.size() < 2) {
-      return original;
+      return transformToGeneric(globalJobId, step.getJob());
     }
 
-    DAGNode ret = original;
+    return transformNestedScatter(globalJobId, scatterPorts, step.getJob());
+  }
 
-    List<String> copy = scatterPorts.subList(0, scatterPorts.size());
+  private class NestingApp extends CWLJobApp {
 
-    Collections.reverse(copy);
-    for (String port : copy){
+    public NestingApp(CWLJobApp nestedApp, String port) {
+      inputs = nestedApp.getInputs().stream().map(inp -> new CWLInputPort(inp.getId(), inp.getDefaultValue(), inp.getSchema(), inp.getInputBinding(), inp.getStreamable(), inp.getFormat(), inp.getId().equals(port), inp.getStageInput(), inp.getLinkMerge(), inp.getDescription(), inp.getSecondaryFiles())).collect(Collectors.toList());
 
-      String dagNodeId = "by_"+port;
+      outputs = nestedApp.getOutputs().stream().map(out -> new CWLOutputPort(out.getId(), out.getFormat(), out.getDefaultValue(), out.getSchema(), out.getOutputBinding(), out.getScatter(), out.getSource(), out.getLinkMerge(), out.getSecondaryFiles(), out.getDescription())).collect(Collectors.toList());
 
-      List<DAGLinkPort> inputPorts = new ArrayList<>();
-      List<DAGLinkPort> outputPorts = new ArrayList<>();
-      List<DAGLink> links = new ArrayList<>();
-      List<DAGNode> children = Collections.singletonList(ret);
-
-      for (DAGLinkPort inp: ret.getInputPorts()) {
-        DAGLinkPort dlp = new DAGLinkPort(inp.getId(), dagNodeId, LinkPortType.INPUT, inp.getLinkMerge(), inp.getId().equals(port), null, null);
-        inputPorts.add(dlp);
-        links.add(new DAGLink(dlp, inp, null, 0));
-      }
-
-      for (DAGLinkPort out: ret.getOutputPorts()) {
-        DAGLinkPort dlp = new DAGLinkPort(out.getId(), dagNodeId, LinkPortType.OUTPUT, out.getLinkMerge(), false, null, null);
-        inputPorts.add(dlp);
-        links.add(new DAGLink(out, dlp, null, 0));
-      }
-
-      ret = new DAGContainer(dagNodeId, inputPorts, outputPorts, null, original.getScatterMethod(), links, children, original.getDefaults(), original.getProtocolType());
+      cwlVersion = nestedApp.getCwlVersion();
     }
 
+    @Override
+    public ValidationReport validate() {
+      return new ValidationReport();
+    }
 
-    return ret;
+    @Override
+    public CWLJobAppType getType() {
+      return CWLJobAppType.EMBEDDED;
+    }
   }
 
 }

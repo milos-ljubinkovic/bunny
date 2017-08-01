@@ -47,7 +47,7 @@ public final class CWLJob {
       @JsonProperty("inputs") Map<String, Object> inputs,
       @JsonProperty("outputs") Map<String, Object> outputs,
       @JsonProperty("runtime") CWLRuntime runtime,
-      @JsonProperty("id") String id, @JsonProperty("scatter") Object scatter, 
+      @JsonProperty("id") String id, @JsonProperty("scatter") Object scatter,
       @JsonProperty("scatterMethod") String scatterMethod) {
     this.id = id;
     this.app = app;
