@@ -12,6 +12,7 @@ import org.rabix.bindings.BindingException;
 import org.rabix.bindings.Bindings;
 import org.rabix.bindings.BindingsFactory;
 import org.rabix.bindings.helper.URIHelper;
+import org.rabix.bindings.model.Application;
 import org.rabix.bindings.model.ApplicationPort;
 import org.rabix.bindings.model.Job;
 import org.rabix.bindings.model.Job.JobStatus;
@@ -161,7 +162,8 @@ public class JobHelper {
     }
     
     ContextRecord contextRecord = contextRecordService.find(job.getRootId());
-    String encodedApp = URIHelper.createDataURI(appService.get(node.getAppHash()).serialize());
+    Application application = appService.get(node.getAppHash());
+    String encodedApp = URIHelper.createDataURI(application.serialize());
     
     Job newJob = new Job(job.getExternalId(), job.getParentId(), job.getRootId(), job.getId(), encodedApp, status, null, preprocesedInputs, null, contextRecord.getConfig(), null, null);
     if (processVariables) {
