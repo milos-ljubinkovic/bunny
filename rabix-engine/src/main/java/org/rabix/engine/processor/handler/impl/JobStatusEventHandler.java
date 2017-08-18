@@ -171,7 +171,7 @@ public class JobStatusEventHandler implements EventHandler<JobStatusEvent> {
         jobStatsRecordService.update(jobStatsRecord);
       }
 
-      if (!jobRecord.isScatterWrapper()) {
+      if ((!jobRecord.isScatterWrapper() || jobRecord.isRoot()) && !jobRecord.isContainer()) {
         for (PortCounter portCounter : jobRecord.getOutputCounters()) {
           Object output = event.getResult().get(portCounter.getPort());
           eventProcessor.send(new OutputUpdateEvent(jobRecord.getRootId(), jobRecord.getId(), portCounter.getPort(), output,
