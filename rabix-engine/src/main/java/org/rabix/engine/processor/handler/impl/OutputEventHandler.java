@@ -112,10 +112,10 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
   }
 
   private Event createChildEvent(final OutputUpdateEvent event, JobRecord sourceJob, Integer numberOfScattered, LinkRecord link, Object tempValue) {
+    JobRecord destinationJob = jobRecordService.find(link.getDestinationJobId(), link.getRootId());
     switch (link.getDestinationVarType()) {
       case INPUT:
         boolean lookAhead = false;
-        JobRecord destinationJob = jobRecordService.find(link.getDestinationJobId(), link.getRootId());
         int position = link.getPosition();
         if (sourceJob.isScatterWrapper()) {
           if (destinationJob.isScatterPort(link.getDestinationJobPort()) && !destinationJob.isBlocking()
@@ -134,7 +134,7 @@ public class OutputEventHandler implements EventHandler<OutputUpdateEvent> {
 
       case OUTPUT:
         boolean destinationRoot = link.getDestinationJobId().equals(InternalSchemaHelper.ROOT_NAME);
-        if (sourceJob.isScattered() && destinationRoot)
+        if (sourceJob.isScattered() && destinationRoot && destinationJob.isContainer())
           return null;
         if (sourceJob.isOutputPortReady(event.getPortId()) || sourceJob.isScattered()) {
           return new OutputUpdateEvent(event.getContextId(), link.getDestinationJobId(), link.getDestinationJobPort(), tempValue, numberOfScattered,
