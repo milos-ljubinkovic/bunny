@@ -55,7 +55,7 @@ public interface JDBIEventRepository extends EventRepository {
           public void bind(SQLStatement<?> q, JDBIEventRepository.BindEvent bind, EventRecord event) {
             q.bind("id", event.getGroupId());
             q.bind("event", JSONHelper.writeObject(event.getEvent()));
-            q.bind("type", event.getType().toString());
+            q.bind("type", event.getType() == null ? event.getType() : event.getType().toString());
             q.bind("status", event.getStatus().toString());
           }
         };
