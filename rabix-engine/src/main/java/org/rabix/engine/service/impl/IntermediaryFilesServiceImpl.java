@@ -101,13 +101,8 @@ public class IntermediaryFilesServiceImpl implements IntermediaryFilesService {
         if (!files.isEmpty()) {
           List<LinkRecord> links = linksForSourcePort(entry.getKey(), allLinks);
           Integer count = links.size();
-          for (LinkRecord link : links) {
-            if(!link.getDestinationJobId().equals(InternalSchemaHelper.getParentId(job.getName())) && link.getDestinationVarType().equals(LinkPortType.OUTPUT)) {
-              count--;
-            }
-          }
-          for (FileValue file : files) {
-            if(count > 0) {
+          if (count > 0) {
+            for (FileValue file : files) {
               addOrIncrement(job.getRootId(), file, count);
             }
           }
