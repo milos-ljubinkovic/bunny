@@ -58,7 +58,11 @@ public abstract class Application {
   public Object getProperty(String key) {
     return raw.get(key);
   }
-
+  
+  @JsonIgnore
+  public String serialize() { 
+    return JSONHelper.writeObject(this);
+  }
   /**
    * Checks if provided inputs are valid for this app.
    * Also checks if all required inputs are present
