@@ -1,0 +1,66 @@
+{
+        "reference_files": [
+            {
+
+                "name": "human_g1k_v37_decoy.phiX174_Homo_sapiens.GRCh37.75.spliceSites_HISAT2-2.0.1.tar",
+
+                "size": 4240455680,
+                "class": "File",
+                "metadata": {
+                    "reference_genome": "human_g1k_v37_decoy",
+                    "species": "Homo sapiens"
+                },
+                "path": "rna-seq-alignment-hisat2-2-0-1_app_rev_6/human_g1k_v37_decoy.phiX174_Homo_sapiens.GRCh37.75.spliceSites_HISAT2-2.0.1.tar"
+            }
+        ],
+
+        "fastq": [
+            {
+
+                "name": "G20479.HCC1143.2.converted.pe_1.fastq",
+
+                "size": 18653028380,
+                "class": "File",
+                "metadata": {
+                    "platform": "Illumina",
+                    "investigation": "CCLE-BRCA",
+                    "sample_id": "HCC1143",
+                    "case_id": "CCLE-HCC1143",
+                    "reference_genome": "HG19_Broad_variant",
+                    "paired_end": "1",
+                    "experimental_strategy": "RNA-Seq",
+                    "sample_type": "Cell Line"
+                },
+                "path": "rna-seq-alignment-hisat2-2-0-1_app_rev_6/G20479.HCC1143.2.converted.pe_1.fastq"
+            },
+            {
+
+                "name": "G20479.HCC1143.2.converted.pe_2.fastq",
+
+                "size": 18653028380,
+                "class": "File",
+                "metadata": {
+                    "platform": "Illumina",
+                    "investigation": "CCLE-BRCA",
+                    "sample_id": "HCC1143",
+                    "case_id": "CCLE-HCC1143",
+                    "reference_genome": "HG19_Broad_variant",
+                    "paired_end": "2",
+                    "experimental_strategy": "RNA-Seq",
+                    "sample_type": "Cell Line"
+                },
+                "path": "rna-seq-alignment-hisat2-2-0-1_app_rev_6/G20479.HCC1143.2.converted.pe_2.fastq"
+            }
+        ],
+        "reference": {
+
+            "name": "human_g1k_v37_decoy.phiX174.fasta",
+
+            "size": 3189755934,
+            "class": "File",
+            "metadata": {
+                "species": "Homo sapiens"
+            },
+            "path": "rna-seq-alignment-hisat2-2-0-1_app_rev_6/human_g1k_v37_decoy.phiX174.fasta"
+        }
+}

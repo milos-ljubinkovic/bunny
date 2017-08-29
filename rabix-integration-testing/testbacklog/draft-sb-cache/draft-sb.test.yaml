@@ -663,6 +663,68 @@ test10:
       path: /media/storage2/workdir/LocalRerun20170815095410/app-2017-08-15-105247.45/root/Oncofuse/G20479.oncofuse.txt_oncofuse
       secondaryFiles: []
       size: 175323
+test11:
+  app: testbacklog/draft-sb-cache/rna-seq-alignment-hisat2-2-0-1_app_rev_6.cwl
+  inputs: testbacklog/draft-sb-cache/rna-seq-alignment-hisat2-2-0-1_app_rev_6.inputs.json
+  cache: testbacklog/draft-sb-cache/rna-seq-alignment-hisat2-2-0-1_app_rev_6/cachedir
+  runtime: 60
+  expected:
+    alignment_file:
+      checksum: sha1$8bba34add0033a00dd1a1adf07ef72440dfb5b50
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage/workdir/LocalRerun20170807132433/app-2017-08-07-140407.68/root/HISAT2/G20479.HCC1143.2.converted.pe_1.HISAT-2.0.1.aligned.sam
+      metadata: {case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, platform: Illumina, quality_scale: sanger, reference_genome: HG19_Broad_variant, sample_id: HCC1143, sample_type: 'Cell Line'}
+      name: G20479.HCC1143.2.converted.pe_1.HISAT-2.0.1.aligned.sam
+      path: /media/storage/workdir/LocalRerun20170807132433/app-2017-08-07-140407.68/root/HISAT2/G20479.HCC1143.2.converted.pe_1.HISAT-2.0.1.aligned.sam
+      secondaryFiles: []
+      size: 55761107476
+    metrics_file:
+      checksum: sha1$f4ea382e38a3bb9e87af872d29408f493e4c6825
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage/workdir/LocalRerun20170807132433/app-2017-08-07-140407.68/root/HISAT2/metrics.txt
+      metadata: {case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, platform: Illumina, quality_scale: sanger, reference_genome: HG19_Broad_variant, sample_id: HCC1143, sample_type: 'Cell Line'}
+      name: metrics.txt
+      path: /media/storage/workdir/LocalRerun20170807132433/app-2017-08-07-140407.68/root/HISAT2/metrics.txt
+      secondaryFiles: []
+      size: 2030
+    novel_ss_out:
+      checksum: sha1$e6c015033654899c560f0f74d02510ee4b8521bb
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage/workdir/LocalRerun20170807132433/app-2017-08-07-140407.68/root/HISAT2/novel_splice_sites.txt
+      metadata: {case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, platform: Illumina, quality_scale: sanger, reference_genome: HG19_Broad_variant, sample_id: HCC1143, sample_type: 'Cell Line'}
+      name: novel_splice_sites.txt
+      path: /media/storage/workdir/LocalRerun20170807132433/app-2017-08-07-140407.68/root/HISAT2/novel_splice_sites.txt
+      secondaryFiles: []
+      size: 13443566
+    sorted_bam:
+      checksum: sha1$7632088a4a01455bc7a165fc088b7f69a54af6a8
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage/workdir/LocalRerun20170807132433/app-2017-08-07-140407.68/root/Picard_SortSam/G20479.HCC1143.2.converted.pe_1.HISAT-2.0.1.aligned.sorted.bam
+      metadata: {__inherit__: input_bam, case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, platform: Illumina, quality_scale: sanger, reference_genome: HG19_Broad_variant, sample_id: HCC1143, sample_type: 'Cell Line'}
+      name: G20479.HCC1143.2.converted.pe_1.HISAT-2.0.1.aligned.sorted.bam
+      path: /media/storage/workdir/LocalRerun20170807132433/app-2017-08-07-140407.68/root/Picard_SortSam/G20479.HCC1143.2.converted.pe_1.HISAT-2.0.1.aligned.sorted.bam
+      secondaryFiles: [{checksum: null, class: File, contents: null, dirname: null, location: /media/storage/workdir/LocalRerun20170807132433/app-2017-08-07-140407.68/root/Picard_SortSam/G20479.HCC1143.2.converted.pe_1.HISAT-2.0.1.aligned.sorted.bai, metadata: null, name: G20479.HCC1143.2.converted.pe_1.HISAT-2.0.1.aligned.sorted.bai, path: /media/storage/workdir/LocalRerun20170807132433/app-2017-08-07-140407.68/root/Picard_SortSam/G20479.HCC1143.2.converted.pe_1.HISAT-2.0.1.aligned.sorted.bai, secondaryFiles: [], size: 0}, {checksum: sha1$5ed3fc3c83985769fd3c8a959581ec1216a5fd24, class: File, contents: null, dirname: null, location: /media/storage/workdir/LocalRerun20170807132433/app-2017-08-07-140407.68/root/Picard_SortSam/G20479.HCC1143.2.converted.pe_1.HISAT-2.0.1.aligned.sorted.bam.bai, metadata: null, name: G20479.HCC1143.2.converted.pe_1.HISAT-2.0.1.aligned.sorted.bam.bai, path: /media/storage/workdir/LocalRerun20170807132433/app-2017-08-07-140407.68/root/Picard_SortSam/G20479.HCC1143.2.converted.pe_1.HISAT-2.0.1.aligned.sorted.bam.bai, secondaryFiles: [], size: 6635664}]
+      size: 12173659954
+    summary_metrics:
+      checksum: sha1$795e54abd6eb0e88cca754dd6ec7d7d5745e8f81
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage/workdir/LocalRerun20170807132433/app-2017-08-07-140407.68/root/Picard_CollectAlignmentSummaryMetrics/G20479.HCC1143.2.converted.pe_1.HISAT-2.0.1.aligned.sorted.summary_metrics.txt
+      metadata: {__inherit__: input_bam, case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, platform: Illumina, quality_scale: sanger, reference_genome: HG19_Broad_variant, sample_id: HCC1143, sample_type: 'Cell Line'}
+      name: G20479.HCC1143.2.converted.pe_1.HISAT-2.0.1.aligned.sorted.summary_metrics.txt
+      path: /media/storage/workdir/LocalRerun20170807132433/app-2017-08-07-140407.68/root/Picard_CollectAlignmentSummaryMetrics/G20479.HCC1143.2.converted.pe_1.HISAT-2.0.1.aligned.sorted.summary_metrics.txt
+      secondaryFiles: []
+      size: 2190
+    
         
             
                 
