@@ -910,8 +910,43 @@ test14:
         path: /media/storage/workdir/LocalRerun20170810101035/app-2017-08-10-120230.630/root/TopHat2/tophat_out/G20479.HCC1143.2.converted.pe_unmapped.bam
         secondaryFiles: []
         size: 1378331721
-                    
-            
-            
-                
-            
+test15:
+  app: testbacklog/draft-sb-cache/rna-seq-differential-expression_app_rev_11.cwl
+  inputs: testbacklog/draft-sb-cache/rna-seq-differential-expression_app_rev_11.inputs.json
+  cache: testbacklog/draft-sb-cache/rna-seq-differential-expression_app_rev_11/cachedir
+  runtime: 60
+  expected:
+    archive:
+      checksum: sha1$b1570c564c9e570eccd2ebb39937bb35b5303d9f
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage2/workdir/LocalRerun20170814105247/app-2017-08-14-121456.224/root/CummeRbundQC/G2.cuffdiff_cummerbund_report.zip
+      metadata: {}
+      name: G2.cuffdiff_cummerbund_report.zip
+      path: /media/storage2/workdir/LocalRerun20170814105247/app-2017-08-14-121456.224/root/CummeRbundQC/G2.cuffdiff_cummerbund_report.zip
+      secondaryFiles: []
+      size: 154671
+    html:
+      checksum: sha1$4b1d151b1f823a37cfaac847f9f743cba23bf834
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage2/workdir/LocalRerun20170814105247/app-2017-08-14-121456.224/root/CummeRbundQC/G2.cuffdiff.b64html
+      metadata: {}
+      name: G2.cuffdiff.b64html
+      path: /media/storage2/workdir/LocalRerun20170814105247/app-2017-08-14-121456.224/root/CummeRbundQC/G2.cuffdiff.b64html
+      secondaryFiles: []
+      size: 283206
+    zipped:
+      checksum: sha1$7dfad5c0bbf3f95f262e1fd976e05f5e111ac2da
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage2/workdir/LocalRerun20170814105247/app-2017-08-14-121456.224/root/Cuffdiff/G2.cuffdiff.zip
+      metadata: null
+      name: G2.cuffdiff.zip
+      path: /media/storage2/workdir/LocalRerun20170814105247/app-2017-08-14-121456.224/root/Cuffdiff/G2.cuffdiff.zip
+      secondaryFiles: []
+      size: 33819337
+    

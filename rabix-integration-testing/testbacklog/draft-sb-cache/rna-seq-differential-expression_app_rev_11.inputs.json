@@ -1,0 +1,59 @@
+{
+        "Annotations": {
+            "metadata": {},
+            "name": "Homo_sapiens.GRCh37.75.gtf",
+            "path": "rna-seq-differential-expression_app_rev_11/Homo_sapiens.GRCh37.75.gtf",
+            "size": 847928511,
+            "class": "File",
+        },
+        "group_name": "Group_A",
+        "Reference": {
+            "metadata": {
+                "species": "Homo sapiens"
+            },
+            "name": "HG19_Broad_variant.fasta",
+            "path": "rna-seq-differential-expression_app_rev_11/HG19_Broad_variant.fasta",
+            "size": 3140756381,
+            "class": "File",
+        },
+        "BAM_Group_A": [
+            {
+                "metadata": {
+                    "platform": "Illumina",
+                    "investigation": "CCLE-BRCA",
+                    "sample_id": "HCC1143",
+                    "experimental_strategy": "RNA-Seq",
+                    "quality_scale": "sanger",
+                    "case_id": "CCLE-HCC1143",
+                    "__inherit__": "input_bam",
+                    "reference_genome": "human_g1k_v37_decoy",
+                    "sample_type": "Cell Line"
+                },
+                "name": "G20479.HCC1143.aligned.bam",
+                "path": "rna-seq-differential-expression_app_rev_11/G20479.HCC1143.aligned.bam",
+                "size": 11465560788,
+                "class": "File",
+            }
+        ],
+        "group_name_1": "Group_B",
+        "BAM_Group_B": [
+            {
+                "metadata": {
+                    "platform": "Illumina",
+                    "quality_scale": "sanger",
+                    "sample_type": "Cell Line",
+                    "sample_id": "HCC1187",
+                    "experimental_strategy": "RNA-Seq",
+                    "investigation": "CCLE-BRCA",
+                    "case_id": "CCLE-HCC1187",
+                    "__inherit__": "input_bam",
+                    "reference_genome": "human_g1k_v37_decoy",
+                    "species": "Homo sapiens"
+                },
+                "name": "G26234.HCC1187.aligned.bam",
+                "path": "rna-seq-differential-expression_app_rev_11/G26234.HCC1187.aligned.bam",
+                "size": 12733919244,
+                "class": "File",
+            }
+        ]
+}
