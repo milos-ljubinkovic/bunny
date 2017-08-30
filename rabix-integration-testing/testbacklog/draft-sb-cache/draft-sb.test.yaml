@@ -949,4 +949,69 @@ test15:
       path: /media/storage2/workdir/LocalRerun20170814105247/app-2017-08-14-121456.224/root/Cuffdiff/G2.cuffdiff.zip
       secondaryFiles: []
       size: 33819337
-    
+test16:
+  app: testbacklog/draft-sb-cache/targeted-capture-analysis-bwa-gatk-2-3-9-lite_app_rev_25.cwl
+  inputs: testbacklog/draft-sb-cache/targeted-capture-analysis-bwa-gatk-2-3-9-lite_app_rev_25.inputs.json
+  cache: testbacklog/draft-sb-cache/targeted-capture-analysis-bwa-gatk-2-3-9-lite_app_rev_25/cachedir
+  runtime: 60
+  expected:
+    b64html:
+    - {checksum: sha1$ca6a0636268e218b8489c0ea659b07d70fd70f0a, class: File, contents: null, dirname: null, location: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/SBG_Html2b64/1/C835.HCC1143_BL.4.converted.pe_1_fastqc.b64html, metadata: {__inherit__: input_fastq, case_id: CCLE-HCC1143BL, experimental_strategy: WXS, investigation: CCLE-BRCA, paired_end: '1', platform: Illumina, reference_genome: HG19_Broad_variant, sample_id: HCC1143BL, sample_type: 'EBV Immortalized Normal', species: 'Homo sapiens'}, name: C835.HCC1143_BL.4.converted.pe_1_fastqc.b64html, path: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/SBG_Html2b64/1/C835.HCC1143_BL.4.converted.pe_1_fastqc.b64html, secondaryFiles: [], size: 461506}
+    - {checksum: sha1$bf0fe518b6ad1634fed743a79c7657f9616e2c9c, class: File, contents: null, dirname: null, location: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/SBG_Html2b64/2/C835.HCC1143_BL.4.converted.pe_2_fastqc.b64html, metadata: {__inherit__: input_fastq, case_id: CCLE-HCC1143BL, experimental_strategy: WXS, investigation: CCLE-BRCA, paired_end: '2', platform: Illumina, reference_genome: HG19_Broad_variant, sample_id: HCC1143BL, sample_type: 'EBV Immortalized Normal', species: 'Homo sapiens'}, name: C835.HCC1143_BL.4.converted.pe_2_fastqc.b64html, path: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/SBG_Html2b64/2/C835.HCC1143_BL.4.converted.pe_2_fastqc.b64html, secondaryFiles: [], size: 426394}
+    combined_vcf:
+      checksum: sha1$27bf68d91671631ca987e732c8ac94e8a3299796
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/GATK_CombineVariants/Sample_HCC1143BL.Library_Unknown.Platform_Unit_Unknown.combined.vcf
+      metadata: {'Quality scale': sanger, case_id: CCLE-HCC1143BL, experimental_strategy: WXS, intervals_file: NO_INTERVALS, investigation: CCLE-BRCA, platform: Illumina, reference_genome: human_g1k_v37_decoy, sample_id: HCC1143BL, sample_type: 'EBV Immortalized Normal', species: 'Homo sapiens'}
+      name: Sample_HCC1143BL.Library_Unknown.Platform_Unit_Unknown.combined.vcf
+      path: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/GATK_CombineVariants/Sample_HCC1143BL.Library_Unknown.Platform_Unit_Unknown.combined.vcf
+      secondaryFiles: [{checksum: sha1$cedca462e9ec2c91a2efd51a294660df00775d68, class: File, contents: null, dirname: null, location: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/GATK_CombineVariants/Sample_HCC1143BL.Library_Unknown.Platform_Unit_Unknown.combined.vcf.idx, metadata: null, name: Sample_HCC1143BL.Library_Unknown.Platform_Unit_Unknown.combined.vcf.idx, path: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/GATK_CombineVariants/Sample_HCC1143BL.Library_Unknown.Platform_Unit_Unknown.combined.vcf.idx, secondaryFiles: [], size: 261845}]
+      size: 14162665
+    output_file:
+      checksum: sha1$b4a2db57933c93e0d32e1efd83ebef90cdd9a405
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/BEDTools_Coverage/C835.HCC1143_BL.4.converted.realigned.base_recalibrated.exome_targets.b37.sorted.bed
+      metadata: {}
+      name: C835.HCC1143_BL.4.converted.realigned.base_recalibrated.exome_targets.b37.sorted.bed
+      path: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/BEDTools_Coverage/C835.HCC1143_BL.4.converted.realigned.base_recalibrated.exome_targets.b37.sorted.bed
+      secondaryFiles: []
+      size: 7063488296
+    plot_pdf:
+      checksum: sha1$4257140e945e4a4c3c00883f791f1502215c910e
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/GATK_BaseRecalibrator/C835.HCC1143_BL.4.converted.realigned.pdf
+      metadata: {}
+      name: C835.HCC1143_BL.4.converted.realigned.pdf
+      path: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/GATK_BaseRecalibrator/C835.HCC1143_BL.4.converted.realigned.pdf
+      secondaryFiles: []
+      size: 48240
+    raw_vcf:
+      checksum: sha1$7b5a6cdf252100e6fffe3f9b3037f19be34e2d2d
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/GATK_UnifiedGenotyper/C835.HCC1143_BL.4.converted.realigned.base_recalibrated.vcf
+      metadata: {'Quality scale': sanger, case_id: CCLE-HCC1143BL, experimental_strategy: WXS, intervals_file: NO_INTERVALS, investigation: CCLE-BRCA, platform: Illumina, reference_genome: human_g1k_v37_decoy, sample_id: HCC1143BL, sample_type: 'EBV Immortalized Normal', species: 'Homo sapiens'}
+      name: C835.HCC1143_BL.4.converted.realigned.base_recalibrated.vcf
+      path: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/GATK_UnifiedGenotyper/C835.HCC1143_BL.4.converted.realigned.base_recalibrated.vcf
+      secondaryFiles: [{checksum: sha1$299c6c375d1ec2d1f74b780481355c27025a63fc, class: File, contents: null, dirname: null, location: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/GATK_UnifiedGenotyper/C835.HCC1143_BL.4.converted.realigned.base_recalibrated.vcf.idx, metadata: null, name: C835.HCC1143_BL.4.converted.realigned.base_recalibrated.vcf.idx, path: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/GATK_UnifiedGenotyper/C835.HCC1143_BL.4.converted.realigned.base_recalibrated.vcf.idx, secondaryFiles: [], size: 246262}]
+      size: 13211616
+    summary_metrics:
+      checksum: sha1$64dded773ebdc421460f0ef9410e9ad314e7986a
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/Picard_CollectAlignmentSummaryMetrics/C835.HCC1143_BL.4.converted.realigned.base_recalibrated.summary_metrics.txt
+      metadata: {'Quality scale': sanger, case_id: CCLE-HCC1143BL, experimental_strategy: WXS, intervals_file: NO_INTERVALS, investigation: CCLE-BRCA, platform: Illumina, reference_genome: human_g1k_v37_decoy, sample_id: HCC1143BL, sample_type: 'EBV Immortalized Normal', species: 'Homo sapiens'}
+      name: C835.HCC1143_BL.4.converted.realigned.base_recalibrated.summary_metrics.txt
+      path: /media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/Picard_CollectAlignmentSummaryMetrics/C835.HCC1143_BL.4.converted.realigned.base_recalibrated.summary_metrics.txt
+      secondaryFiles: []
+      size: 2192
+              
+        

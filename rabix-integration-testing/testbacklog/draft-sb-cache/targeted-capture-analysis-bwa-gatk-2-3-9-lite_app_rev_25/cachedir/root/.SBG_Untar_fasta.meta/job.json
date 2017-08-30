@@ -1,0 +1,51 @@
+{
+  "id" : "bde3d845-7c9c-4dc7-880c-19c8d0410126",
+  "parentId" : "63472647-42ce-4137-9b86-3ce36e8e9c38",
+  "rootId" : "63472647-42ce-4137-9b86-3ce36e8e9c38",
+  "name" : "root.SBG_Untar_fasta",
+  "app" : "data:text/plain;base64,ewogICJjb250cmlidXRvciIgOiBbIF0sCiAgIm93bmVyIiA6IFsgXSwKICAiY3dsVmVyc2lvbiIgOiAic2JnOmRyYWZ0LTIiLAogICJpbnB1dHMiIDogWyB7CiAgICAiaWQiIDogIiNpbnB1dF90YXJfd2l0aF9yZWZlcmVuY2UiLAogICAgInR5cGUiIDogWyAiRmlsZSIgXSwKICAgICJzYmc6c3RhZ2VJbnB1dCIgOiAibGluayIsCiAgICAiZGVzY3JpcHRpb24iIDogIlRoZSBpbnB1dCBhcmNoaXZlIGZpbGUgdG8gYmUgdW5wYWNrZWQuIiwKICAgICJsYWJlbCIgOiAiSW5wdXQgYXJjaGl2ZSBmaWxlIHdpdGggZmFzdGEiLAogICAgInNiZzpmaWxlVHlwZXMiIDogIlRBUixGQSxGQVNUQSxGQS5HWixGQVNUQS5HWiIsCiAgICAicmVxdWlyZWQiIDogdHJ1ZQogIH0gXSwKICAib3V0cHV0cyIgOiBbIHsKICAgICJpZCIgOiAiI291dHB1dF9mYXN0YSIsCiAgICAidHlwZSIgOiBbICJGaWxlIiBdLAogICAgIm91dHB1dEJpbmRpbmciIDogewogICAgICAiZ2xvYiIgOiAieyouZmFzdGEsKi5mYSwqLmZhLmd6LCouZmFzdGEuZ3p9IiwKICAgICAgInNiZzppbmhlcml0TWV0YWRhdGFGcm9tIiA6ICIjaW5wdXRfdGFyX3dpdGhfcmVmZXJlbmNlIgogICAgfSwKICAgICJkZXNjcmlwdGlvbiIgOiAiVW5wYWNrZWQgZmFzdGEgZmlsZSBmcm9tIHRoZSBpbnB1dCBhcmNoaXZlLiIsCiAgICAibGFiZWwiIDogIlVucGFja2VkIGZhc3RhIGZpbGUiCiAgfSBdLAogICJoaW50cyIgOiBbIHsKICAgICJjbGFzcyIgOiAiRG9ja2VyUmVxdWlyZW1lbnQiLAogICAgImRvY2tlclB1bGwiIDogImltYWdlcy5zYmdlbm9taWNzLmNvbS9tYXJrb3Avc2JnLWRlY29tcHJlc3NvcjoxLjAiLAogICAgImRvY2tlckltYWdlSWQiIDogIjU4Yjc5YzYyN2Y5NSIKICB9LCB7CiAgICAiY2xhc3MiIDogInNiZzpDUFVSZXF1aXJlbWVudCIsCiAgICAidmFsdWUiIDogMQogIH0sIHsKICAgICJjbGFzcyIgOiAic2JnOk1lbVJlcXVpcmVtZW50IiwKICAgICJ2YWx1ZSIgOiAxMDAwCiAgfSBdLAogICJyZXF1aXJlbWVudHMiIDogWyB7CiAgICAiY2xhc3MiIDogIkV4cHJlc3Npb25FbmdpbmVSZXF1aXJlbWVudCIsCiAgICAicmVxdWlyZW1lbnRzIiA6IFsgewogICAgICAiY2xhc3MiIDogIkRvY2tlclJlcXVpcmVtZW50IiwKICAgICAgImRvY2tlclB1bGwiIDogInJhYml4L2pzLWVuZ2luZSIKICAgIH0gXSwKICAgICJpZCIgOiAiI2N3bC1qcy1lbmdpbmUiCiAgfSBdLAogICJzdWNjZXNzQ29kZXMiIDogWyBdLAogICJzdGRpbiIgOiAiIiwKICAic3Rkb3V0IiA6ICIiLAogICJiYXNlQ29tbWFuZCIgOiBbIHsKICAgICJjbGFzcyIgOiAiRXhwcmVzc2lvbiIsCiAgICAiZW5naW5lIiA6ICIjY3dsLWpzLWVuZ2luZSIsCiAgICAic2NyaXB0IiA6ICJ7XG4gIHJlZmVyZW5jZV9maWxlID0gJGpvYi5pbnB1dHMuaW5wdXRfdGFyX3dpdGhfcmVmZXJlbmNlLnBhdGguc3BsaXQoJy8nKVskam9iLmlucHV0cy5pbnB1dF90YXJfd2l0aF9yZWZlcmVuY2UucGF0aC5zcGxpdCgnLycpLmxlbmd0aC0xXVxuICBleHQgPSByZWZlcmVuY2VfZmlsZS5zcGxpdCgnLicpW3JlZmVyZW5jZV9maWxlLnNwbGl0KCcuJykubGVuZ3RoLTFdXG4gIGlmKGV4dD09J3Rhcicpe1xuICAgIHJldHVybiAndGFyIC14ZiAnICsgcmVmZXJlbmNlX2ZpbGUgICAgXG4gIH1cbiAgZWxzZXtcbiAgICByZXR1cm4gJ2VjaG8gUGFzc2luZyBpbnB1dCBmaWxlICdcbiAgfVxufSIKICB9IF0sCiAgImFyZ3VtZW50cyIgOiBbIF0sCiAgInNiZzpyZXZpc2lvbiIgOiA0LAogICJzYmc6Y2F0ZWdvcmllcyIgOiBbICJPdGhlciIgXSwKICAic2JnOmhvbWVwYWdlIiA6ICJodHRwczovL2lnb3Iuc2JnZW5vbWljcy5jb20vIiwKICAiZGVzY3JpcHRpb24iIDogIlNCRyBVbnRhciBmYXN0YSBvdXRwdXRzIEZBL0ZBU1RBL0ZBLkdaL0ZBU1RBLkdaIGZyb20gVEFSLiIsCiAgInNiZzpjcmVhdGVkT24iIDogMTQ2NjE3Mzk2NSwKICAic2JnOmNvbnRyaWJ1dG9ycyIgOiBbICJzZXZlbmJyaWRnZXMiIF0sCiAgInNiZzp0b29sa2l0IiA6ICJTQkdUb29scyIsCiAgInNiZzppZCIgOiAiYWRtaW4vc2JnLXB1YmxpYy1kYXRhL3NiZy11bnRhci1mYXN0YS84IiwKICAic2JnOmpvYiIgOiB7CiAgICAiYWxsb2NhdGVkUmVzb3VyY2VzIiA6IHsKICAgICAgImNwdSIgOiAxLAogICAgICAibWVtIiA6IDEwMDAKICAgIH0sCiAgICAiaW5wdXRzIiA6IHsKICAgICAgImlucHV0X3Rhcl93aXRoX3JlZmVyZW5jZSIgOiB7CiAgICAgICAgImNsYXNzIiA6ICJGaWxlIiwKICAgICAgICAicGF0aCIgOiAiaW5wdXRfZmlsZS5mYXN0YSIsCiAgICAgICAgInNlY29uZGFyeUZpbGVzIiA6IFsgXSwKICAgICAgICAic2l6ZSIgOiAwCiAgICAgIH0KICAgIH0KICB9LAogICJzYmc6c2JnTWFpbnRhaW5lZCIgOiBmYWxzZSwKICAidGVtcG9yYXJ5RmFpbENvZGVzIiA6IFsgXSwKICAic2JnOnRvb2xBdXRob3IiIDogIlZsYWRpbWlyIEtvdmFjZXZpYywgU2V2ZW4gQnJpZGdlcyBHZW5vbWljcyIsCiAgImlkIiA6ICJiaXgtZGVtby9zYmd0b29scy1kZW1vL3NiZy11bnRhci1mYXN0YS83IiwKICAiY2xhc3MiIDogIkNvbW1hbmRMaW5lVG9vbCIsCiAgInNiZzpwcm9qZWN0IiA6ICJiaXgtZGVtby9zYmd0b29scy1kZW1vIiwKICAic2JnOm1vZGlmaWVkT24iIDogMTQ2NjE3Mzk2OCwKICAic2JnOmNtZFByZXZpZXciIDogImVjaG8gUGFzc2luZyBpbnB1dCBmaWxlIiwKICAic2JnOmxpY2Vuc2UiIDogIkFwYWNoZSBMaWNlbnNlIDIuMCIsCiAgImxhYmVsIiA6ICJTQkcgVW50YXIgZmFzdGEiLAogICJzYmc6bW9kaWZpZWRCeSIgOiAic2V2ZW5icmlkZ2VzIiwKICAic2JnOmxhdGVzdFJldmlzaW9uIiA6IDQsCiAgInNiZzpjcmVhdGVkQnkiIDogInNldmVuYnJpZGdlcyIsCiAgIngiIDogMTkxLjY2NjY3MjIyOTc2Njk2LAogICJ5IiA6IDg5LjQyNzA4Mjk3OTQzMDgsCiAgInNiZzppbWFnZV91cmwiIDogbnVsbCwKICAic2JnOnJldmlzaW9uc0luZm8iIDogWyB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogInNldmVuYnJpZGdlcyIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ2NjE3Mzk2NSwKICAgICJzYmc6cmV2aXNpb24iIDogMAogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAic2V2ZW5icmlkZ2VzIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDY2MTczOTY4LAogICAgInNiZzpyZXZpc2lvbiIgOiAxCiAgfSwgewogICAgInNiZzptb2RpZmllZEJ5IiA6ICJzZXZlbmJyaWRnZXMiLAogICAgInNiZzptb2RpZmllZE9uIiA6IDE0NjYxNzM5NjgsCiAgICAic2JnOnJldmlzaW9uIiA6IDIKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogInNldmVuYnJpZGdlcyIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ2NjE3Mzk2OCwKICAgICJzYmc6cmV2aXNpb24iIDogMwogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAic2V2ZW5icmlkZ2VzIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDY2MTczOTY4LAogICAgInNiZzpyZXZpc2lvbiIgOiA0CiAgfSBdLAogICJzYmc6dG9vbGtpdFZlcnNpb24iIDogInYxLjAiLAogICJzYmc6dmFsaWRhdGlvbkVycm9ycyIgOiBbIF0KfQ==",
+  "status" : "COMPLETED",
+  "inputs" : {
+    "input_tar_with_reference" : [ {
+      "size" : 8680417280,
+      "path" : "/media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/SBG_Untar_fasta/human_g1k_v37_decoy.fasta.tar",
+      "location" : "/media/storage2/workdir/LocalRerun20170821150211/files/human_g1k_v37_decoy.fasta.tar",
+      "name" : "human_g1k_v37_decoy.fasta.tar",
+      "checksum" : "sha1$21153dd41f8e1b1f7135d700527fadb1bef1ed54",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    } ]
+  },
+  "outputs" : {
+    "output_fasta" : {
+      "size" : 3189750467,
+      "path" : "/media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/SBG_Untar_fasta/human_g1k_v37_decoy.fasta",
+      "location" : "/media/storage2/workdir/LocalRerun20170821150211/app-2017-08-21-160931.584/root/SBG_Untar_fasta/human_g1k_v37_decoy.fasta",
+      "name" : "human_g1k_v37_decoy.fasta",
+      "checksum" : "sha1$992291353a574f76f4be22ed6e37a64bf37e215f",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }
+  },
+  "resources" : {
+    "cpu" : 32,
+    "memMB" : 46967,
+    "diskSpaceMB" : null,
+    "networkAccess" : true,
+    "workingDir" : null,
+    "tmpDir" : null,
+    "outDirSize" : null,
+    "tmpDirSize" : null
+  },
+  "visiblePorts" : [ ]
+}
