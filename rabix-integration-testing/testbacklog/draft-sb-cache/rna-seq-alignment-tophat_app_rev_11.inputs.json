@@ -1,0 +1,63 @@
+{
+        "reference_or_index": {
+            "path": "rna-seq-alignment-tophat_app_rev_11/human_g1k_v37_decoy.phiX174_bowtie2-2.2.6.tar",
+            "name": "human_g1k_v37_decoy.phiX174_bowtie2-2.2.6.tar",
+            "size": 4117452800,
+            "class": "File",
+            "metadata": {
+                "__inherit__": "fasta_reference",
+                "reference_genome": "human_g1k_v37_decoy.phiX174"
+            }
+        },
+        "fasta_reference": {
+            "path": "rna-seq-alignment-tophat_app_rev_11/human_g1k_v37_decoy.phiX174.fasta",
+            "name": "human_g1k_v37_decoy.phiX174.fasta",
+            "size": 3189755934,
+            "class": "File",
+            "metadata": {
+                "species": "Homo sapiens"
+            }
+        },
+        "GTF": {
+            "path": "rna-seq-alignment-tophat_app_rev_11/Homo_sapiens.GRCh37.75.gtf",
+            "name": "Homo_sapiens.GRCh37.75.gtf",
+            "size": 847928511,
+            "class": "File",
+            "metadata": {}
+        },
+        "fastq": [
+            {
+                "path": "rna-seq-alignment-tophat_app_rev_11/G20479.HCC1143.2.converted.pe_1.fastq",
+                "name": "G20479.HCC1143.2.converted.pe_1.fastq",
+                "size": 18653028380,
+                "class": "File",
+                "metadata": {
+                    "reference_genome": "HG19_Broad_variant",
+                    "sample_type": "Cell Line",
+                    "investigation": "CCLE-BRCA",
+                    "paired_end": "1",
+                    "experimental_strategy": "RNA-Seq",
+                    "platform": "Illumina",
+                    "sample_id": "HCC1143",
+                    "case_id": "CCLE-HCC1143"
+                }
+            },
+            {
+                "path": "rna-seq-alignment-tophat_app_rev_11/G20479.HCC1143.2.converted.pe_2.fastq",
+                "name": "G20479.HCC1143.2.converted.pe_2.fastq",
+                "size": 18653028380,
+                "class": "File",
+                "metadata": {
+                    "reference_genome": "HG19_Broad_variant",
+                    "sample_type": "Cell Line",
+                    "investigation": "CCLE-BRCA",
+                    "paired_end": "2",
+                    "experimental_strategy": "RNA-Seq",
+                    "platform": "Illumina",
+                    "sample_id": "HCC1143",
+                    "case_id": "CCLE-HCC1143"
+                }
+            }
+        ]
+
+}

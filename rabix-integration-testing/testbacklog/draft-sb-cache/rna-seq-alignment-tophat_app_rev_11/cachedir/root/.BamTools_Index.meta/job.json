@@ -1,0 +1,118 @@
+{
+  "id" : "df553202-9eb1-4cc4-835b-7f8832608382",
+  "parentId" : "04d0e6e9-1271-401a-858a-d681e95c16c2",
+  "rootId" : "04d0e6e9-1271-401a-858a-d681e95c16c2",
+  "name" : "root.BamTools_Index",
+  "app" : "data:text/plain;base64,ewogICJjb250cmlidXRvciIgOiBbIF0sCiAgIm93bmVyIiA6IFsgXSwKICAiY3dsVmVyc2lvbiIgOiAic2JnOmRyYWZ0LTIiLAogICJpbnB1dHMiIDogWyB7CiAgICAiaWQiIDogIiNpbnB1dF9iYW1fZmlsZSIsCiAgICAidHlwZSIgOiBbICJGaWxlIiBdLAogICAgInNiZzpzdGFnZUlucHV0IiA6ICJsaW5rIiwKICAgICJkZXNjcmlwdGlvbiIgOiAiVGhlIGlucHV0IEJBTSBmaWxlLiIsCiAgICAic2JnOmNhdGVnb3J5IiA6ICJJbnB1dCAmIE91dHB1dCIsCiAgICAibGFiZWwiIDogIklucHV0IEJBTSBmaWxlIiwKICAgICJzYmc6ZmlsZVR5cGVzIiA6ICJCQU0iLAogICAgInJlcXVpcmVkIiA6IHRydWUKICB9LCB7CiAgICAiaWQiIDogIiNpbnB1dF9iYWlfZmlsZSIsCiAgICAidHlwZSIgOiBbICJudWxsIiwgIkZpbGUiIF0sCiAgICAic2JnOnN0YWdlSW5wdXQiIDogImxpbmsiLAogICAgImRlc2NyaXB0aW9uIiA6ICJJbnB1dCBCQUkoQkFNIGluZGV4KSBmaWxlLiIsCiAgICAic2JnOmNhdGVnb3J5IiA6ICJGaWxlIGlucHV0IiwKICAgICJsYWJlbCIgOiAiSW5wdXQgQkFJKEJBTSBpbmRleCkgZmlsZSIsCiAgICAic2JnOmZpbGVUeXBlcyIgOiAiQkFJIiwKICAgICJyZXF1aXJlZCIgOiBmYWxzZQogIH0sIHsKICAgICJpZCIgOiAiI2luZGV4ZWRfZGF0YSIsCiAgICAidHlwZSIgOiBbICJudWxsIiwgImJvb2xlYW4iIF0sCiAgICAiZGVzY3JpcHRpb24iIDogIkRvbid0IG91dHB1dCBpbmRleGVkIGRhdGEgZmlsZS4gVGhlIGRlZmF1bHQgdmFsdWUgaXMgW0ZBTFNFXS4iLAogICAgInNiZzpjYXRlZ29yeSIgOiAiSW5wdXQgJiBPdXRwdXQiLAogICAgImxhYmVsIiA6ICJEb24ndCBvdXRwdXQgaW5kZXhlZCBkYXRhIGZpbGUiCiAgfSwgewogICAgImlkIiA6ICIjYnRpX2Zvcm1hdCIsCiAgICAidHlwZSIgOiBbICJudWxsIiwgImJvb2xlYW4iIF0sCiAgICAiZGVzY3JpcHRpb24iIDogIkNyZWF0ZSAobm9uLXN0YW5kYXJkKSBCYW1Ub29scyBpbmRleCBmaWxlICgqLkJUSSkuIERlZmF1bHQgYmVoYXZpb3IgaXMgdG8gY3JlYXRlIHN0YW5kYXJkIEJBTSBpbmRleCAoKi5CQUkpLiIsCiAgICAic2JnOmNhdGVnb3J5IiA6ICJJbnB1dCAmIE91dHB1dCIsCiAgICAibGFiZWwiIDogIkJUSSBmb3JtYXQiCiAgfSBdLAogICJvdXRwdXRzIiA6IFsgewogICAgImlkIiA6ICIjb3V0cHV0X2JhbV9maWxlIiwKICAgICJ0eXBlIiA6IFsgIm51bGwiLCAiRmlsZSIgXSwKICAgICJvdXRwdXRCaW5kaW5nIiA6IHsKICAgICAgImdsb2IiIDogewogICAgICAgICJjbGFzcyIgOiAiRXhwcmVzc2lvbiIsCiAgICAgICAgImVuZ2luZSIgOiAiI2N3bC1qcy1lbmdpbmUiLAogICAgICAgICJzY3JpcHQiIDogIntcbiAgaWYgKCRqb2IuaW5wdXRzLmluZGV4ZWRfZGF0YSA9PT0gdHJ1ZSl7XG5cdHJldHVybiAnJ1xuICB9IGVsc2Uge1xuICAgIHJldHVybiAkam9iLmlucHV0cy5pbnB1dF9iYW1fZmlsZS5wYXRoLnNwbGl0KFwiL1wiKS5wb3AoKVxuICB9XG59XG5cblxuIgogICAgICB9LAogICAgICAic2JnOmluaGVyaXRNZXRhZGF0YUZyb20iIDogIiNpbnB1dF9iYW1fZmlsZSIsCiAgICAgICJzZWNvbmRhcnlGaWxlcyIgOiBbICIuYmFpIiwgIi5idGkiIF0KICAgIH0sCiAgICAiZGVzY3JpcHRpb24iIDogIk91dHB1dCBCQU0gZmlsZSB3aXRoIGluZGV4IChCQUkgb3IgQlRJKSBmaWxlIGFzIGEgc2Vjb25kYXJ5IGZpbGUgKG5vdCB2aXNpYmxlIGluIHRoZSBvdXRwdXQgbGlzdCBvZiB0aGUgdGFzaykuIiwKICAgICJsYWJlbCIgOiAiT3V0cHV0IEJBTSBmaWxlIiwKICAgICJzYmc6ZmlsZVR5cGVzIiA6ICJCQU0iCiAgfSwgewogICAgImlkIiA6ICIjZ2VuZXJhdGVkX2luZGV4IiwKICAgICJ0eXBlIiA6IFsgIm51bGwiLCAiRmlsZSIgXSwKICAgICJvdXRwdXRCaW5kaW5nIiA6IHsKICAgICAgImdsb2IiIDogInsqLmJhaSwqLmJ0aX0iLAogICAgICAic2JnOmluaGVyaXRNZXRhZGF0YUZyb20iIDogIiNpbnB1dF9iYW1fZmlsZSIKICAgIH0sCiAgICAiZGVzY3JpcHRpb24iIDogIkdlbmVyYXRlZCBpbmRleCBmaWxlICh3aXRob3V0IHRoZSBpbmRleGVkIGRhdGEpLiIsCiAgICAibGFiZWwiIDogIkdlbmVyYXRlZCBpbmRleCBmaWxlIiwKICAgICJzYmc6ZmlsZVR5cGVzIiA6ICJCQUksQlRJIgogIH0gXSwKICAiaGludHMiIDogWyB7CiAgICAiY2xhc3MiIDogIkRvY2tlclJlcXVpcmVtZW50IiwKICAgICJkb2NrZXJQdWxsIiA6ICJpbWFnZXMuc2JnZW5vbWljcy5jb20vbWFya29wL2JhbXRvb2xzOjIuNC4wIiwKICAgICJkb2NrZXJJbWFnZUlkIiA6ICJmODA4MTYzZDRjZDMiCiAgfSwgewogICAgImNsYXNzIiA6ICJzYmc6Q1BVUmVxdWlyZW1lbnQiLAogICAgInZhbHVlIiA6IDEKICB9LCB7CiAgICAiY2xhc3MiIDogInNiZzpNZW1SZXF1aXJlbWVudCIsCiAgICAidmFsdWUiIDogMTAwMAogIH0gXSwKICAicmVxdWlyZW1lbnRzIiA6IFsgewogICAgImNsYXNzIiA6ICJFeHByZXNzaW9uRW5naW5lUmVxdWlyZW1lbnQiLAogICAgInJlcXVpcmVtZW50cyIgOiBbIHsKICAgICAgImNsYXNzIiA6ICJEb2NrZXJSZXF1aXJlbWVudCIsCiAgICAgICJkb2NrZXJQdWxsIiA6ICJyYWJpeC9qcy1lbmdpbmUiCiAgICB9IF0sCiAgICAiaWQiIDogIiNjd2wtanMtZW5naW5lIgogIH0gXSwKICAic3VjY2Vzc0NvZGVzIiA6IFsgXSwKICAic3RkaW4iIDogIiIsCiAgInN0ZG91dCIgOiAiIiwKICAiYmFzZUNvbW1hbmQiIDogWyB7CiAgICAiY2xhc3MiIDogIkV4cHJlc3Npb24iLAogICAgImVuZ2luZSIgOiAiI2N3bC1qcy1lbmdpbmUiLAogICAgInNjcmlwdCIgOiAie1xuICBpZiAoJGpvYi5pbnB1dHMuaW5wdXRfYmFpX2ZpbGUpe1xuIFx0cmV0dXJuXCJlY2hvIFNraXBwaW5nIGluZGV4IHN0ZXAgYmVjYXVzZSBCQUkgZmlsZSBpcyBwcm92aWRlZCBvbiB0aGUgaW5wdXQuXCJcbiAgfVxuICBlbHNle1xuICAgIHJldHVybiBcIi9vcHQvYmFtdG9vbHMvYmluL2JhbXRvb2xzIGluZGV4XCJcbiAgfVxufSIKICB9IF0sCiAgImFyZ3VtZW50cyIgOiBbIHsKICAgICJwb3NpdGlvbiIgOiAwLAogICAgInNlcGFyYXRlIiA6IHRydWUsCiAgICAidmFsdWVGcm9tIiA6IHsKICAgICAgImNsYXNzIiA6ICJFeHByZXNzaW9uIiwKICAgICAgImVuZ2luZSIgOiAiI2N3bC1qcy1lbmdpbmUiLAogICAgICAic2NyaXB0IiA6ICJ7XG4gIGlmICghKHR5cGVvZiAkam9iLmlucHV0cy5pbnB1dF9iYWlfZmlsZSAhPT0gXCJ1bmRlZmluZWRcIikpe1xuICAgIHJldHVybiBcIi1pbiBcIiArICRqb2IuaW5wdXRzLmlucHV0X2JhbV9maWxlLnBhdGguc3BsaXQoJy8nKS5wb3AoKSBcbiAgfVxufSIKICAgIH0KICB9LCB7CiAgICAicG9zaXRpb24iIDogMSwKICAgICJzZXBhcmF0ZSIgOiB0cnVlLAogICAgInZhbHVlRnJvbSIgOiB7CiAgICAgICJjbGFzcyIgOiAiRXhwcmVzc2lvbiIsCiAgICAgICJlbmdpbmUiIDogIiNjd2wtanMtZW5naW5lIiwKICAgICAgInNjcmlwdCIgOiAie1xuICBpZiAoISh0eXBlb2YgJGpvYi5pbnB1dHMuaW5wdXRfYmFpX2ZpbGUgIT09IFwidW5kZWZpbmVkXCIpKVxuICAgIGlmICgodHlwZW9mICRqb2IuaW5wdXRzLmJ0aV9mb3JtYXQgIT09IFwidW5kZWZpbmVkXCIpICYmICgkam9iLmlucHV0cy5idGlfZm9ybWF0KSlcbiAgICBcdHJldHVybiBcIi1idGlcIiAgXG59IgogICAgfQogIH0gXSwKICAic2JnOnJldmlzaW9uIiA6IDIwLAogICJzYmc6Y2F0ZWdvcmllcyIgOiBbICJTQU0vQkFNLVByb2Nlc3NpbmciLCAiSW5kZXhpbmciIF0sCiAgImRlc2NyaXB0aW9uIiA6ICJCYW1Ub29scyBJbmRleCBjcmVhdGVzIGFuIGluZGV4IGZpbGUgKEJBSSBvciBCVEkpIGZvciBhIEJBTSBmaWxlLiBJZiBCQUkgZmlsZSBpcyBwcmVzZW50IG9uIHRoZSBpbnB1dCB0aGUgdG9vbCB3aWxsIHNraXAgaW5kZXhpbmcgc3RlcCBhbmQgb3V0cHV0IEJBTSB3aXRoIHByb3ZpZGVkIEJBSSBmaWxlLlxuXG4qKkNvbW1vbiBpc3N1ZXM6KiogUHJvdmlkaW5nIGEgQkFJIGZpbGUgb24gaW5wdXQgd2lsbCByZXN1bHQgaW4gYSBwYXNzLXRocm91Z2ggd2l0aG91dCBleGVjdXRpb24sIGV2ZW4gaWYgYSBkaWZmZXJlbnQgaW5kZXggZm9ybWF0IGlzIHJlcXVlc3RlZCBvbiB0aGUgb3V0cHV0IChCVEkgaW5zdGVhZCBvZiBCQUkpLiIsCiAgInNiZzpob21lcGFnZSIgOiAiaHR0cHM6Ly9naXRodWIuY29tL3Blem1hc3RlcjMxL2JhbXRvb2xzL3dpa2kiLAogICJzYmc6Y3JlYXRlZE9uIiA6IDE0NTA5MTE0NTksCiAgInNiZzp0b29sa2l0IiA6ICJCYW1Ub29scyIsCiAgInNiZzpjb250cmlidXRvcnMiIDogWyAib2duamVubSIsICJiaXgtZGVtbyIsICJtYXJrb3AiIF0sCiAgInNiZzppZCIgOiAiYWRtaW4vc2JnLXB1YmxpYy1kYXRhL2JhbXRvb2xzLWluZGV4LTItNC0wLzMwIiwKICAic2JnOmpvYiIgOiB7CiAgICAiYWxsb2NhdGVkUmVzb3VyY2VzIiA6IHsKICAgICAgImNwdSIgOiAxLAogICAgICAibWVtIiA6IDEwMDAKICAgIH0sCiAgICAiaW5wdXRzIiA6IHsKICAgICAgImJ0aV9mb3JtYXQiIDogZmFsc2UsCiAgICAgICJpbmRleGVkX2RhdGEiIDogZmFsc2UsCiAgICAgICJpbnB1dF9iYW1fZmlsZSIgOiB7CiAgICAgICAgImNsYXNzIiA6ICJGaWxlIiwKICAgICAgICAicGF0aCIgOiAiaW5wdXQvaW5wdXRfYmFtLmJhbSIsCiAgICAgICAgInNlY29uZGFyeUZpbGVzIiA6IFsgXSwKICAgICAgICAic2l6ZSIgOiAwCiAgICAgIH0KICAgIH0KICB9LAogICJzYmc6c2JnTWFpbnRhaW5lZCIgOiBmYWxzZSwKICAidGVtcG9yYXJ5RmFpbENvZGVzIiA6IFsgXSwKICAic2JnOmxpbmtzIiA6IFsgewogICAgImlkIiA6ICJodHRwczovL2dpdGh1Yi5jb20vcGV6bWFzdGVyMzEvYmFtdG9vbHMiLAogICAgImxhYmVsIiA6ICJIb21lcGFnZSIKICB9LCB7CiAgICAiaWQiIDogImh0dHBzOi8vZ2l0aHViLmNvbS9wZXptYXN0ZXIzMS9iYW10b29scy93aWtpIiwKICAgICJsYWJlbCIgOiAiV2lraSIKICB9IF0sCiAgInNiZzp0b29sQXV0aG9yIiA6ICJEZXJlayBCYXJuZXR0LCBFcmlrIEdhcnJpc29uLCBHYWJvciBNYXJ0aCwgYW5kIE1pY2hhZWwgU3Ryb21iZXJnIiwKICAiaWQiIDogImJpeC1kZW1vL2JhbXRvb2xzLTItNC0wLWRlbW8vYmFtdG9vbHMtaW5kZXgtMi00LTAvMjAiLAogICJjbGFzcyIgOiAiQ29tbWFuZExpbmVUb29sIiwKICAic2JnOnByb2plY3QiIDogImJpeC1kZW1vL2JhbXRvb2xzLTItNC0wLWRlbW8iLAogICJzYmc6bW9kaWZpZWRPbiIgOiAxNDY3MjEwODM2LAogICJzYmc6Y21kUHJldmlldyIgOiAiL29wdC9iYW10b29scy9iaW4vYmFtdG9vbHMgaW5kZXggIC1pbiBpbnB1dF9iYW0uYmFtIiwKICAic2JnOmxpY2Vuc2UiIDogIlRoZSBNSVQgTGljZW5zZSIsCiAgImxhYmVsIiA6ICJCYW1Ub29scyBJbmRleCIsCiAgInNiZzptb2RpZmllZEJ5IiA6ICJvZ25qZW5tIiwKICAic2JnOmxhdGVzdFJldmlzaW9uIiA6IDIwLAogICJzYmc6Y3JlYXRlZEJ5IiA6ICJiaXgtZGVtbyIsCiAgIngiIDogMTE1OC43MDMxMjg1MzEzNjY1LAogICJ5IiA6IDQwNC40MjM0ODc2OTMzNDE3NywKICAic2JnOnJldmlzaW9uc0luZm8iIDogWyB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogImJpeC1kZW1vIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDUwOTExNDU5LAogICAgInNiZzpyZXZpc2lvbiIgOiAwLAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6IG51bGwKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogImJpeC1kZW1vIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDUwOTExNDU5LAogICAgInNiZzpyZXZpc2lvbiIgOiAxLAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6IG51bGwKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogImJpeC1kZW1vIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDU1NzI0NDE1LAogICAgInNiZzpyZXZpc2lvbiIgOiAyLAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6IG51bGwKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogImJpeC1kZW1vIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDU1NzI0NjE4LAogICAgInNiZzpyZXZpc2lvbiIgOiAzLAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6IG51bGwKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogImJpeC1kZW1vIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDU1NzI2MzAzLAogICAgInNiZzpyZXZpc2lvbiIgOiA0LAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6IG51bGwKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogIm1hcmtvcCIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ1NjMyODM4MywKICAgICJzYmc6cmV2aXNpb24iIDogNSwKICAgICJzYmc6cmV2aXNpb25Ob3RlcyIgOiBudWxsCiAgfSwgewogICAgInNiZzptb2RpZmllZEJ5IiA6ICJtYXJrb3AiLAogICAgInNiZzptb2RpZmllZE9uIiA6IDE0NTkxNzc5MDQsCiAgICAic2JnOnJldmlzaW9uIiA6IDYsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogbnVsbAogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAibWFya29wIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDYyMzgzNTIxLAogICAgInNiZzpyZXZpc2lvbiIgOiA3LAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6IG51bGwKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogIm1hcmtvcCIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ2MjM4Mzc2NSwKICAgICJzYmc6cmV2aXNpb24iIDogOCwKICAgICJzYmc6cmV2aXNpb25Ob3RlcyIgOiBudWxsCiAgfSwgewogICAgInNiZzptb2RpZmllZEJ5IiA6ICJtYXJrb3AiLAogICAgInNiZzptb2RpZmllZE9uIiA6IDE0NjIzODQ2NTAsCiAgICAic2JnOnJldmlzaW9uIiA6IDksCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogbnVsbAogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAib2duamVubSIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ2NjQyMTczNCwKICAgICJzYmc6cmV2aXNpb24iIDogMTAsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogbnVsbAogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAib2duamVubSIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ2Njc3NzA3MCwKICAgICJzYmc6cmV2aXNpb24iIDogMTEsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogbnVsbAogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAib2duamVubSIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ2Njc3NzY1OCwKICAgICJzYmc6cmV2aXNpb24iIDogMTIsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogbnVsbAogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAib2duamVubSIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ2Njc3ODg3MSwKICAgICJzYmc6cmV2aXNpb24iIDogMTMsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogbnVsbAogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAib2duamVubSIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ2Njc3OTc2MiwKICAgICJzYmc6cmV2aXNpb24iIDogMTQsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogbnVsbAogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAib2duamVubSIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ2NzExNjEyMCwKICAgICJzYmc6cmV2aXNpb24iIDogMTUsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogbnVsbAogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAib2duamVubSIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ2NzExOTAyMSwKICAgICJzYmc6cmV2aXNpb24iIDogMTYsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogbnVsbAogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAib2duamVubSIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ2NzExOTYwOCwKICAgICJzYmc6cmV2aXNpb24iIDogMTcsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogbnVsbAogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAib2duamVubSIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ2NzExOTkxMywKICAgICJzYmc6cmV2aXNpb24iIDogMTgsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogbnVsbAogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAib2duamVubSIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ2NzExOTkzNiwKICAgICJzYmc6cmV2aXNpb24iIDogMTksCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogbnVsbAogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAib2duamVubSIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ2NzIxMDgzNiwKICAgICJzYmc6cmV2aXNpb24iIDogMjAsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogbnVsbAogIH0gXSwKICAic2JnOmltYWdlX3VybCIgOiBudWxsLAogICJzYmc6dG9vbGtpdFZlcnNpb24iIDogIjIuNC4wIiwKICAic2JnOnZhbGlkYXRpb25FcnJvcnMiIDogWyBdCn0=",
+  "status" : "COMPLETED",
+  "inputs" : {
+    "input_bam_file" : [ {
+      "size" : 10517111933,
+      "path" : "/media/storage/workdir/LocalRerun20170810101035/app-2017-08-10-120230.630/root/BamTools_Index/G20479.HCC1143.2.converted.pe_accepted_hits.bam",
+      "location" : "/media/storage/workdir/LocalRerun20170810101035/app-2017-08-10-120230.630/root/TopHat2/tophat_out/G20479.HCC1143.2.converted.pe_accepted_hits.bam",
+      "name" : "G20479.HCC1143.2.converted.pe_accepted_hits.bam",
+      "checksum" : "sha1$7933ac253e13434cab2ec5340fd441e979c9c868",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "RNA-Seq",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "HG19_Broad_variant",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    } ]
+  },
+  "outputs" : {
+    "generated_index" : {
+      "size" : 5866168,
+      "path" : "/media/storage/workdir/LocalRerun20170810101035/app-2017-08-10-120230.630/root/BamTools_Index/G20479.HCC1143.2.converted.pe_accepted_hits.bam.bai",
+      "location" : "/media/storage/workdir/LocalRerun20170810101035/app-2017-08-10-120230.630/root/BamTools_Index/G20479.HCC1143.2.converted.pe_accepted_hits.bam.bai",
+      "name" : "G20479.HCC1143.2.converted.pe_accepted_hits.bam.bai",
+      "checksum" : "sha1$5b89695a8e790c4bcc1fe9deb4e33eac6df12ff5",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "RNA-Seq",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "HG19_Broad_variant",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    },
+    "output_bam_file" : {
+      "size" : 10517111933,
+      "path" : "/media/storage/workdir/LocalRerun20170810101035/app-2017-08-10-120230.630/root/BamTools_Index/G20479.HCC1143.2.converted.pe_accepted_hits.bam",
+      "location" : "/media/storage/workdir/LocalRerun20170810101035/app-2017-08-10-120230.630/root/BamTools_Index/G20479.HCC1143.2.converted.pe_accepted_hits.bam",
+      "name" : "G20479.HCC1143.2.converted.pe_accepted_hits.bam",
+      "checksum" : "sha1$7933ac253e13434cab2ec5340fd441e979c9c868",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 5866168,
+        "path" : "/media/storage/workdir/LocalRerun20170810101035/app-2017-08-10-120230.630/root/BamTools_Index/G20479.HCC1143.2.converted.pe_accepted_hits.bam.bai",
+        "location" : "/media/storage/workdir/LocalRerun20170810101035/app-2017-08-10-120230.630/root/BamTools_Index/G20479.HCC1143.2.converted.pe_accepted_hits.bam.bai",
+        "name" : "G20479.HCC1143.2.converted.pe_accepted_hits.bam.bai",
+        "checksum" : "sha1$5b89695a8e790c4bcc1fe9deb4e33eac6df12ff5",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : {
+            "case_id" : "CCLE-HCC1143",
+            "experimental_strategy" : "RNA-Seq",
+            "investigation" : "CCLE-BRCA",
+            "platform" : "Illumina",
+            "quality_scale" : "sanger",
+            "reference_genome" : "HG19_Broad_variant",
+            "sample_id" : "HCC1143",
+            "sample_type" : "Cell Line"
+          }
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage/workdir/LocalRerun20170810101035/app-2017-08-10-120230.630/root/BamTools_Index/G20479.HCC1143.2.converted.pe_accepted_hits.bam.bti",
+        "location" : "/media/storage/workdir/LocalRerun20170810101035/app-2017-08-10-120230.630/root/BamTools_Index/G20479.HCC1143.2.converted.pe_accepted_hits.bam.bti",
+        "name" : "G20479.HCC1143.2.converted.pe_accepted_hits.bam.bti",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "RNA-Seq",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "HG19_Broad_variant",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }
+  },
+  "resources" : {
+    "cpu" : 32,
+    "memMB" : 46967,
+    "diskSpaceMB" : null,
+    "networkAccess" : true,
+    "workingDir" : null,
+    "tmpDir" : null,
+    "outDirSize" : null,
+    "tmpDirSize" : null
+  },
+  "visiblePorts" : [ "output_bam_file" ]
+}
