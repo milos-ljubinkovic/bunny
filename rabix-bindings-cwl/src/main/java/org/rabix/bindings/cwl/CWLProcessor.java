@@ -42,6 +42,7 @@ import org.rabix.bindings.cwl.service.CWLGlobService;
 import org.rabix.bindings.cwl.service.CWLMetadataService;
 import org.rabix.bindings.cwl.service.impl.CWLGlobServiceImpl;
 import org.rabix.bindings.cwl.service.impl.CWLMetadataServiceImpl;
+import org.rabix.bindings.mapper.FileMappingException;
 import org.rabix.bindings.mapper.FilePathMapper;
 import org.rabix.bindings.model.Job;
 import org.rabix.common.helper.ChecksumHelper;
@@ -72,11 +73,15 @@ public class CWLProcessor implements ProtocolProcessor {
   }
 
   @Override
-  public Job preprocess(final Job job, final File workingDir, FilePathMapper logFilesPathMapper) throws BindingException {
+  public Job preprocess(final Job job, final File workingDir, FilePathMapper filesPathMapper) throws BindingException {
     CWLJob cwlJob = CWLJobHelper.getCWLJob(job);
     CWLRuntime runtime = cwlJob.getRuntime();
-    runtime = CWLRuntimeHelper.setOutdir(runtime, workingDir.getAbsolutePath());
-    runtime = CWLRuntimeHelper.setTmpdir(runtime, workingDir.getAbsolutePath());
+    try {
+      runtime = CWLRuntimeHelper.setOutdir(runtime, filesPathMapper.map(workingDir.getAbsolutePath(), Collections.EMPTY_MAP));
+      runtime = CWLRuntimeHelper.setTmpdir(runtime, filesPathMapper.map(workingDir.getAbsolutePath(), Collections.EMPTY_MAP));
+    } catch (FileMappingException e1) {
+      logger.error(e1.getMessage());
+    }
     cwlJob.setRuntime(runtime);
     
     CWLPortProcessorHelper portProcessorHelper = new CWLPortProcessorHelper(cwlJob);
