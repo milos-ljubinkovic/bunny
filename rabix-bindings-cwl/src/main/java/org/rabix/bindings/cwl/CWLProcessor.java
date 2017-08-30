@@ -76,12 +76,14 @@ public class CWLProcessor implements ProtocolProcessor {
   public Job preprocess(final Job job, final File workingDir, FilePathMapper filesPathMapper) throws BindingException {
     CWLJob cwlJob = CWLJobHelper.getCWLJob(job);
     CWLRuntime runtime = cwlJob.getRuntime();
+    String path = workingDir.getAbsolutePath();
     try {
-      runtime = CWLRuntimeHelper.setOutdir(runtime, filesPathMapper.map(workingDir.getAbsolutePath(), Collections.EMPTY_MAP));
-      runtime = CWLRuntimeHelper.setTmpdir(runtime, filesPathMapper.map(workingDir.getAbsolutePath(), Collections.EMPTY_MAP));
+      path = filesPathMapper == null ? path : filesPathMapper.map(path, Collections.EMPTY_MAP);
     } catch (FileMappingException e1) {
       logger.error(e1.getMessage());
-    }
+    }      
+    runtime = CWLRuntimeHelper.setOutdir(runtime, path);
+    runtime = CWLRuntimeHelper.setTmpdir(runtime, path);
     cwlJob.setRuntime(runtime);
     
     CWLPortProcessorHelper portProcessorHelper = new CWLPortProcessorHelper(cwlJob);
