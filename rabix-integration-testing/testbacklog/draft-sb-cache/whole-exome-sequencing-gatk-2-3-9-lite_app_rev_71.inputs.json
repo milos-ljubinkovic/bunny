@@ -1,0 +1,90 @@
+{
+        "input_tar_with_reference": {
+            "name": "human_g1k_v37_decoy.fasta.tar",
+            "metadata": {
+                "species": "Homo sapiens"
+            },
+            "class": "File",
+            "size": 8680417280,
+            "path": "whole-exome-sequencing-gatk-2-3-9-lite_app_rev_71/human_g1k_v37_decoy.fasta.tar"
+        },
+        "database": {
+            "name": "GRCh37.75.zip",
+            "metadata": {},
+            "class": "File",
+            "size": 695676172,
+            "path": "whole-exome-sequencing-gatk-2-3-9-lite_app_rev_71/GRCh37.75.zip"
+        },
+        "Known_Indels": [
+            {
+                "name": "1000G_phase1.indels.b37.vcf",
+                "metadata": {},
+                "class": "File",
+                "size": 237684308,
+                "path": "whole-exome-sequencing-gatk-2-3-9-lite_app_rev_71/1000G_phase1.indels.b37.vcf"
+            },
+            {
+                "name": "Mills_and_1000G_gold_standard.indels.b37.sites.vcf",
+                "metadata": {
+                    "species": "Human"
+                },
+                "class": "File",
+                "size": 86369974,
+                "path": "whole-exome-sequencing-gatk-2-3-9-lite_app_rev_71/Mills_and_1000G_gold_standard.indels.b37.sites.vcf"
+            }
+        ],
+        "Target_BED": {
+            "name": "exome_targets.b37.sorted.bed",
+            "metadata": {},
+            "class": "File",
+            "size": 4852475,
+            "path": "whole-exome-sequencing-gatk-2-3-9-lite_app_rev_71/exome_targets.b37.sorted.bed"
+        },
+        "Known_SNPs": [
+            {
+                "name": "dbsnp_137.b37.vcf",
+                "metadata": {},
+                "class": "File",
+                "size": 8436107210,
+                "path": "whole-exome-sequencing-gatk-2-3-9-lite_app_rev_71/dbsnp_137.b37.vcf"
+            }
+        ],
+        "FASTQ": [
+            {
+                "name": "C835.HCC1143_BL.4.converted.pe_1.fastq",
+                "metadata": {
+                    "sample_id": "HCC1143BL",
+                    "species": "Homo sapiens",
+                    "platform": "Illumina",
+                    "experimental_strategy": "WXS",
+                    "sample_type": "EBV Immortalized Normal",
+                    "investigation": "CCLE-BRCA",
+                    "reference_genome": "HG19_Broad_variant",
+                    "paired_end": "1",
+                    "case_id": "CCLE-HCC1143BL"
+                },
+                "class": "File",
+                "size": 6658418440,
+                "path": "whole-exome-sequencing-gatk-2-3-9-lite_app_rev_71/C835.HCC1143_BL.4.converted.pe_1.fastq",
+                "secondaryFiles": []
+            },
+            {
+                "name": "C835.HCC1143_BL.4.converted.pe_2.fastq",
+                "metadata": {
+                    "sample_id": "HCC1143BL",
+                    "species": "Homo sapiens",
+                    "platform": "Illumina",
+                    "experimental_strategy": "WXS",
+                    "sample_type": "EBV Immortalized Normal",
+                    "investigation": "CCLE-BRCA",
+                    "reference_genome": "HG19_Broad_variant",
+                    "paired_end": "2",
+                    "case_id": "CCLE-HCC1143BL"
+                },
+                "class": "File",
+                "size": 6658418440,
+                "path": "whole-exome-sequencing-gatk-2-3-9-lite_app_rev_71/C835.HCC1143_BL.4.converted.pe_2.fastq",
+                "secondaryFiles": []
+            }
+        ]
+}
