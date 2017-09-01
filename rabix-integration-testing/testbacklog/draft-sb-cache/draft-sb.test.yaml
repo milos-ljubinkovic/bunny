@@ -1099,6 +1099,58 @@ test17:
       path: /media/storage2/workdir/LocalRerun20170817094835/app-2017-08-17-101032.250/root/SnpEff/snpEff_genes.txt
       secondaryFiles: []
       size: 12458698
-    
+test18:
+  app: testbacklog/draft-sb-cache/rna-seq-alignment-star-2-5-1b_app_rev_2.cwl
+  inputs: testbacklog/draft-sb-cache/rna-seq-alignment-star-2-5-1b_app_rev_2.inputs.json
+  cache: testbacklog/draft-sb-cache/rna-seq-alignment-star-2-5-1b_app_rev_2/cachedir
+  runtime: 60
+  expected:
+    chimeric_alignments: null
+    chimeric_junctions: null
+  intermediate_genome: null
+  log_files:
+      - {checksum: sha1$fd5aee0ce9917609fec0913414662c7233c1bb9f, class: File, contents: null, dirname: null, location: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.Log.progress.out, metadata: {case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, platform: Illumina, quality_scale: sanger, reference_genome: HG19_Broad_variant, sample_id: HCC1143, sample_type: 'Cell Line'}, name: G20479.HCC1143.2.converted.pe.Log.progress.out, path: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.Log.progress.out, secondaryFiles: [], size: 3314}
+      - {checksum: sha1$603db7acda5ea15dc5a5235599f8277c6e730226, class: File, contents: null, dirname: null, location: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.Log.out, metadata: {case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, platform: Illumina, quality_scale: sanger, reference_genome: HG19_Broad_variant, sample_id: HCC1143, sample_type: 'Cell Line'}, name: G20479.HCC1143.2.converted.pe.Log.out, path: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.Log.out, secondaryFiles: [], size: 56143318}
+      - {checksum: sha1$1cc3e3bc7266858cd06ed43dc38d295c28fbef3e, class: File, contents: null, dirname: null, location: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.Log.final.out, metadata: {case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, platform: Illumina, quality_scale: sanger, reference_genome: HG19_Broad_variant, sample_id: HCC1143, sample_type: 'Cell Line'}, name: G20479.HCC1143.2.converted.pe.Log.final.out, path: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.Log.final.out, secondaryFiles: [], size: 1868}
+  reads_per_gene: null
+  sorted_bam:
+      checksum: sha1$ff6f206923c7c6ea7738b180178df1915cb2ad39
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/Picard_SortSam/G20479.HCC1143.2.converted.pe.Aligned.out.sorted.bam
+      metadata: {__inherit__: input_bam, case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, platform: Illumina, quality_scale: sanger, reference_genome: human_g1k_v37_decoy.phiX174, sample_id: HCC1143, sample_type: 'Cell Line'}
+      name: G20479.HCC1143.2.converted.pe.Aligned.out.sorted.bam
+      path: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/Picard_SortSam/G20479.HCC1143.2.converted.pe.Aligned.out.sorted.bam
+      secondaryFiles: [{checksum: null, class: File, contents: null, dirname: null, location: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/Picard_SortSam/G20479.HCC1143.2.converted.pe.Aligned.out.sorted.bai, metadata: null, name: G20479.HCC1143.2.converted.pe.Aligned.out.sorted.bai, path: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/Picard_SortSam/G20479.HCC1143.2.converted.pe.Aligned.out.sorted.bai, secondaryFiles: [], size: 0}, {checksum: sha1$9ab2322b244e3dd9cf7fb541f25f73927ab51874, class: File, contents: null, dirname: null, location: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/Picard_SortSam/G20479.HCC1143.2.converted.pe.Aligned.out.sorted.bam.bai, metadata: null, name: G20479.HCC1143.2.converted.pe.Aligned.out.sorted.bam.bai, path: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/Picard_SortSam/G20479.HCC1143.2.converted.pe.Aligned.out.sorted.bam.bai, secondaryFiles: [], size: 6355312}]
+      size: 11458919778
+  splice_junctions:
+      checksum: sha1$3d4f7ec244b77c385642bf9e7ea319191ec5bb2e
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.SJ.out.tab
+      metadata: {case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, platform: Illumina, quality_scale: sanger, reference_genome: HG19_Broad_variant, sample_id: HCC1143, sample_type: 'Cell Line'}
+      name: G20479.HCC1143.2.converted.pe.SJ.out.tab
+      path: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.SJ.out.tab
+      secondaryFiles: []
+      size: 14306014
+  transcriptome_aligned_reads:
+      checksum: sha1$18001f6e80105d6112f7409736c071a9329eecb8
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.Aligned.toTranscriptome.out.bam
+      metadata: {case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, platform: Illumina, quality_scale: sanger, reference_genome: human_g1k_v37_decoy.phiX174, sample_id: HCC1143, sample_type: 'Cell Line'}
+      name: G20479.HCC1143.2.converted.pe.Aligned.toTranscriptome.out.bam
+      path: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.Aligned.toTranscriptome.out.bam
+      secondaryFiles: []
+      size: 13773882709
+  unmapped_reads:
+      - {checksum: sha1$d055c1010efb83992f5626a50b201ad79e2269c5, class: File, contents: null, dirname: null, location: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.Unmapped.out.mate2.fastq, metadata: {case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, paired_end: '2', platform: Illumina, quality_scale: sanger, reference_genome: HG19_Broad_variant, sample_id: HCC1143, sample_type: 'Cell Line'}, name: G20479.HCC1143.2.converted.pe.Unmapped.out.mate2.fastq, path: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.Unmapped.out.mate2.fastq, secondaryFiles: [], size: 574639500}
+      - {checksum: sha1$7076825a1e400877808adc3eebdc897c340d7f9f, class: File, contents: null, dirname: null, location: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.Unmapped.out.mate1.fastq, metadata: {case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, paired_end: '1', platform: Illumina, quality_scale: sanger, reference_genome: HG19_Broad_variant, sample_id: HCC1143, sample_type: 'Cell Line'}, name: G20479.HCC1143.2.converted.pe.Unmapped.out.mate1.fastq, path: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.Unmapped.out.mate1.fastq, secondaryFiles: [], size: 574639500}
+      
+        
+      
               
         
