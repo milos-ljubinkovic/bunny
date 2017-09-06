@@ -1,0 +1,65 @@
+{
+  "id" : "055aac0e-0b84-44ff-82fd-a50347e3e228",
+  "parentId" : "c74a1c9e-63b1-42f4-a62e-22390505f569",
+  "rootId" : "c74a1c9e-63b1-42f4-a62e-22390505f569",
+  "name" : "root.RSEM_Plot_Model",
+  "app" : "data:text/plain;base64,ewogICJjb250cmlidXRvciIgOiBbIF0sCiAgIm93bmVyIiA6IFsgXSwKICAiY3dsVmVyc2lvbiIgOiAic2JnOmRyYWZ0LTIiLAogICJpbnB1dHMiIDogWyB7CiAgICAiaWQiIDogIiNyc2VtX2NhbGN1bGF0ZV9leHByZXNzaW9uX2FyY2hpdmUiLAogICAgInR5cGUiIDogWyAiRmlsZSIgXSwKICAgICJzYmc6c3RhZ2VJbnB1dCIgOiAibGluayIsCiAgICAiZGVzY3JpcHRpb24iIDogIkJ1bmRsZSBvZiBhbGwgZmlsZXMgb3V0cHV0ZWQgYnkgJ1JTRU0gQ2FsY3VsYXRlIEV4cHJlc3Npb24nLiIsCiAgICAibGFiZWwiIDogIkFyY2hpdmUgb2YgYWxsIGZpbGVzIHByb2R1Y2VkIGJ5ICdSU0VNIENhbGN1bGF0ZSBFeHByZXNzaW9uJyIsCiAgICAic2JnOmZpbGVUeXBlcyIgOiAiVEFSIiwKICAgICJyZXF1aXJlZCIgOiB0cnVlCiAgfSBdLAogICJvdXRwdXRzIiA6IFsgewogICAgImlkIiA6ICIjcnNlbV9tb2RlbF9wbG90IiwKICAgICJ0eXBlIiA6IFsgIm51bGwiLCAiRmlsZSIgXSwKICAgICJvdXRwdXRCaW5kaW5nIiA6IHsKICAgICAgImdsb2IiIDogIioucGRmIiwKICAgICAgInNiZzppbmhlcml0TWV0YWRhdGFGcm9tIiA6ICIjcnNlbV9jYWxjdWxhdGVfZXhwcmVzc2lvbl9hcmNoaXZlIgogICAgfSwKICAgICJkZXNjcmlwdGlvbiIgOiAiUERGIGZpbGUgd2l0aCBwbG90cyBnZW5lcmF0ZWQgZnJvbSB0aGUgbW9kZWwuIiwKICAgICJsYWJlbCIgOiAiUERGIHBsb3QgbW9kZWwgZmlsZSIsCiAgICAic2JnOmZpbGVUeXBlcyIgOiAiUERGIgogIH0gXSwKICAiaGludHMiIDogWyB7CiAgICAiY2xhc3MiIDogInNiZzpDUFVSZXF1aXJlbWVudCIsCiAgICAidmFsdWUiIDogMQogIH0sIHsKICAgICJjbGFzcyIgOiAic2JnOk1lbVJlcXVpcmVtZW50IiwKICAgICJ2YWx1ZSIgOiAxMDAwCiAgfSwgewogICAgImNsYXNzIiA6ICJEb2NrZXJSZXF1aXJlbWVudCIsCiAgICAiZG9ja2VyUHVsbCIgOiAiaW1hZ2VzLnNiZ2Vub21pY3MuY29tL3Vyb3Nfc2lwZXRpYy9yc2VtOjEuMi4zMSIsCiAgICAiZG9ja2VySW1hZ2VJZCIgOiAiNjdkM2E2YzAxZTkyMjEwZjQzYzhlZjgwOWMyYTI0NWE3NWJmN2Q1YTUyNzYyODIzY2RjM2IyZTc4NGRlNTc2YyIKICB9LCB7CiAgICAiY2xhc3MiIDogInNiZzpHb29nbGVJbnN0YW5jZVR5cGUiLAogICAgInZhbHVlIiA6ICJuMS1zdGFuZGFyZC0zMjtwZC1zc2Q7NDA5NiIKICB9LCB7CiAgICAiY2xhc3MiIDogInNiZzpBV1NJbnN0YW5jZVR5cGUiLAogICAgInZhbHVlIiA6ICJjNC44eGxhcmdlO2Vicy1ncDI7NzAwIgogIH0gXSwKICAicmVxdWlyZW1lbnRzIiA6IFsgewogICAgImNsYXNzIiA6ICJFeHByZXNzaW9uRW5naW5lUmVxdWlyZW1lbnQiLAogICAgInJlcXVpcmVtZW50cyIgOiBbIHsKICAgICAgImNsYXNzIiA6ICJEb2NrZXJSZXF1aXJlbWVudCIsCiAgICAgICJkb2NrZXJQdWxsIiA6ICJyYWJpeC9qcy1lbmdpbmUiCiAgICB9IF0sCiAgICAiaWQiIDogIiNjd2wtanMtZW5naW5lIgogIH0gXSwKICAic3VjY2Vzc0NvZGVzIiA6IFsgXSwKICAic3RkaW4iIDogIiIsCiAgInN0ZG91dCIgOiAiIiwKICAiYmFzZUNvbW1hbmQiIDogWyAidGFyIiwgIi14ZiIsIHsKICAgICJjbGFzcyIgOiAiRXhwcmVzc2lvbiIsCiAgICAiZW5naW5lIiA6ICIjY3dsLWpzLWVuZ2luZSIsCiAgICAic2NyaXB0IiA6ICJ7XG52YXIgc3RyID0gW10uY29uY2F0KCRqb2IuaW5wdXRzLnJzZW1fY2FsY3VsYXRlX2V4cHJlc3Npb25fYXJjaGl2ZSlbMF0ucGF0aC5zcGxpdChcIi9cIikucG9wKCk7XG5yZXR1cm4gc3RyXG5cbn0iCiAgfSwgIiYmIiwgInJzZW0tcGxvdC1tb2RlbCIgXSwKICAiYXJndW1lbnRzIiA6IFsgewogICAgInBvc2l0aW9uIiA6IDEsCiAgICAic2VwYXJhdGUiIDogdHJ1ZSwKICAgICJ2YWx1ZUZyb20iIDogewogICAgICAiY2xhc3MiIDogIkV4cHJlc3Npb24iLAogICAgICAiZW5naW5lIiA6ICIjY3dsLWpzLWVuZ2luZSIsCiAgICAgICJzY3JpcHQiIDogIltdLmNvbmNhdCgkam9iLmlucHV0cy5yc2VtX2NhbGN1bGF0ZV9leHByZXNzaW9uX2FyY2hpdmUpWzBdLm1ldGFkYXRhLnNhbXBsZV9uYW1lIgogICAgfQogIH0sIHsKICAgICJwb3NpdGlvbiIgOiAyLAogICAgInNlcGFyYXRlIiA6IHRydWUsCiAgICAidmFsdWVGcm9tIiA6IHsKICAgICAgImNsYXNzIiA6ICJFeHByZXNzaW9uIiwKICAgICAgImVuZ2luZSIgOiAiI2N3bC1qcy1lbmdpbmUiLAogICAgICAic2NyaXB0IiA6ICJ7XG4gIHZhciB4ID0gW10uY29uY2F0KCRqb2IuaW5wdXRzLnJzZW1fY2FsY3VsYXRlX2V4cHJlc3Npb25fYXJjaGl2ZSlbMF0ubWV0YWRhdGEuc2FtcGxlX25hbWVcbiAgcmV0dXJuIHggKyBcIl9wbG90X21vZGVsLnBkZlwiIFxufSIKICAgIH0KICB9IF0sCiAgInNiZzpyZXZpc2lvbiIgOiA1LAogICJzYmc6Y2F0ZWdvcmllcyIgOiBbICJQbG90dGluZy1hbmQtUmVuZGVyaW5nIiwgIlJOQSIgXSwKICAiZGVzY3JpcHRpb24iIDogIlJTRU0gUGxvdCBNb2RlbCBnZW5lcmF0ZXMgcGxvdHMgZm9yIHZpc3VhbGlzaW5nIHRoZSBtb2RlbCBsZWFybmVkIGJ5IFJTRU0uIFRoZSBwbG90cyBkZXBlbmQgb24gcmVhZCB0eXBlIGFuZCB1c2VyIGNvbmZpZ3VyYXRpb24gYW5kIG1heSBpbmNsdWRlIGZyYWdtZW50IGxlbmd0aCBkaXN0cmlidXRpb24sIHJlYWQgbGVuZ3RoIGRpc3RyaWJ1dGlvbiwgcmVhZCBzdGFydCBwb3NpdGlvbiBkaXN0cmlidXRpb24sIHF1YWxpdHkgc2NvcmUgdnMgb2JzZXJ2ZWQgcXVhbGl0eSBnaXZlbiBhIHJlZmVyZW5jZSBiYXNlLCBwb3NpdGlvbiB2cyBwZXJjZW50YWdlIG9mIHNlcXVlbmNpbmcgZXJyb3IgZ2l2ZW4gYSByZWZlcmVuY2UgYmFzZSwgYW5kIGhpc3RvZ3JhbSBvZiByZWFkcyB3aXRoIGRpZmZlcmVudCBudW1iZXIgb2YgYWxpZ25tZW50cy5cblxuIyMjQ29tbW9uIGlzc3VlcyMjI1xuTm9uZSIsCiAgInNiZzpjcmVhdGVkT24iIDogMTQ2NTk4MTk1NywKICAic2JnOmNvbnRyaWJ1dG9ycyIgOiBbICJ1cm9zX3NpcGV0aWMiIF0sCiAgInNiZzp0b29sa2l0IiA6ICJSU0VNIiwKICAic2JnOmlkIiA6ICJhZG1pbi9zYmctcHVibGljLWRhdGEvcnNlbS1wbG90LW1vZGVsLTEtMi0zMS81IiwKICAic2JnOmpvYiIgOiB7CiAgICAiYWxsb2NhdGVkUmVzb3VyY2VzIiA6IHsKICAgICAgImNwdSIgOiAxLAogICAgICAibWVtIiA6IDEwMDAKICAgIH0sCiAgICAiaW5wdXRzIiA6IHsKICAgICAgInJzZW1fY2FsY3VsYXRlX2V4cHJlc3Npb25fYXJjaGl2ZSIgOiB7CiAgICAgICAgImNsYXNzIiA6ICJGaWxlIiwKICAgICAgICAibWV0YWRhdGEiIDogewogICAgICAgICAgInNhbXBsZV9uYW1lIiA6ICJzYW1wbGVfbmFtZSIKICAgICAgICB9LAogICAgICAgICJwYXRoIiA6ICIvcGF0aC90by9pbnB1dF9maWxlcy5leHQiLAogICAgICAgICJzZWNvbmRhcnlGaWxlcyIgOiBbIF0sCiAgICAgICAgInNpemUiIDogMAogICAgICB9CiAgICB9CiAgfSwKICAic2JnOnNiZ01haW50YWluZWQiIDogZmFsc2UsCiAgInRlbXBvcmFyeUZhaWxDb2RlcyIgOiBbIF0sCiAgInNiZzpsaW5rcyIgOiBbIHsKICAgICJpZCIgOiAiaHR0cDovL2Rld2V5bGFiLmdpdGh1Yi5pby9SU0VNLyIsCiAgICAibGFiZWwiIDogIlJTRU0gSG9tZXBhZ2UiCiAgfSwgewogICAgImlkIiA6ICJodHRwczovL2dpdGh1Yi5jb20vZGV3ZXlsYWIvUlNFTSIsCiAgICAibGFiZWwiIDogIlJTRU0gU291cmNlIENvZGUiCiAgfSwgewogICAgImlkIiA6ICJodHRwczovL2dpdGh1Yi5jb20vZGV3ZXlsYWIvUlNFTS9hcmNoaXZlL3YxLjIuMzEudGFyLmd6IiwKICAgICJsYWJlbCIgOiAiUlNFTSBEb3dubG9hZCIKICB9LCB7CiAgICAiaWQiIDogImh0dHBzOi8vYm1jYmlvaW5mb3JtYXRpY3MuYmlvbWVkY2VudHJhbC5jb20vYXJ0aWNsZXMvMTAuMTE4Ni8xNDcxLTIxMDUtMTItMzIzIiwKICAgICJsYWJlbCIgOiAiUlNFTSBQdWJsaWNhdGlvbnMiCiAgfSwgewogICAgImlkIiA6ICJodHRwOi8vZGV3ZXlsYWIuZ2l0aHViLmlvL1JTRU0vUkVBRE1FLmh0bWwiLAogICAgImxhYmVsIiA6ICJSU0VNIERvY3VtZW50YXRpb24iCiAgfSBdLAogICJzYmc6dG9vbEF1dGhvciIgOiAiQm8gTGksIENvbGluIERld2V5IiwKICAiaWQiIDogInVyb3Nfc2lwZXRpYy9yc2VtLTEtMi0zMS1kZW1vL3JzZW0tcGxvdC1tb2RlbC0xLTItMzEvNSIsCiAgImNsYXNzIiA6ICJDb21tYW5kTGluZVRvb2wiLAogICJzYmc6cHJvamVjdCIgOiAidXJvc19zaXBldGljL3JzZW0tMS0yLTMxLWRlbW8iLAogICJzYmc6cmV2aXNpb25Ob3RlcyIgOiAiVXBkYXRlZCBkZXNjcmlwdGlvbi4iLAogICJzYmc6bW9kaWZpZWRPbiIgOiAxNDcxODcyNjE3LAogICJzYmc6Y21kUHJldmlldyIgOiAidGFyIC14ZiBpbnB1dF9maWxlcy5leHQgJiYgcnNlbS1wbG90LW1vZGVsICBzYW1wbGVfbmFtZSAgc2FtcGxlX25hbWVfcGxvdF9tb2RlbC5wZGYiLAogICJzYmc6bGljZW5zZSIgOiAiR05VIEdlbmVyYWwgUHVibGljIExpY2Vuc2UgdjMuMCBvbmx5IiwKICAiYXBwVXJsIiA6ICIvdS91cm9zX3NpcGV0aWMvcnNlbS0xLTItMzEtZGVtby9hcHBzLyN1cm9zX3NpcGV0aWMvcnNlbS0xLTItMzEtZGVtby9yc2VtLXBsb3QtbW9kZWwtMS0yLTMxLzUiLAogICJsYWJlbCIgOiAiUlNFTSBQbG90IE1vZGVsIiwKICAic2JnOm1vZGlmaWVkQnkiIDogInVyb3Nfc2lwZXRpYyIsCiAgInNiZzpsYXRlc3RSZXZpc2lvbiIgOiA1LAogICJzYmc6Y3JlYXRlZEJ5IiA6ICJ1cm9zX3NpcGV0aWMiLAogICJ4IiA6IDExNzEuNzY1MDQ3NTE1NTYxMywKICAieSIgOiA0NzUuNTQ0NTA3OTY3NTcwMTUsCiAgInNiZzppbWFnZV91cmwiIDogbnVsbCwKICAic2JnOnJldmlzaW9uc0luZm8iIDogWyB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogInVyb3Nfc2lwZXRpYyIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ2NTk4MTk1NywKICAgICJzYmc6cmV2aXNpb24iIDogMCwKICAgICJzYmc6cmV2aXNpb25Ob3RlcyIgOiBudWxsCiAgfSwgewogICAgInNiZzptb2RpZmllZEJ5IiA6ICJ1cm9zX3NpcGV0aWMiLAogICAgInNiZzptb2RpZmllZE9uIiA6IDE0NjU5ODIwMTcsCiAgICAic2JnOnJldmlzaW9uIiA6IDEsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogbnVsbAogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAidXJvc19zaXBldGljIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDY1OTg3ODAyLAogICAgInNiZzpyZXZpc2lvbiIgOiAyLAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6IG51bGwKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogInVyb3Nfc2lwZXRpYyIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ2NTk5NDYxMiwKICAgICJzYmc6cmV2aXNpb24iIDogMywKICAgICJzYmc6cmV2aXNpb25Ob3RlcyIgOiBudWxsCiAgfSwgewogICAgInNiZzptb2RpZmllZEJ5IiA6ICJ1cm9zX3NpcGV0aWMiLAogICAgInNiZzptb2RpZmllZE9uIiA6IDE0NjkxMTkzMDAsCiAgICAic2JnOnJldmlzaW9uIiA6IDQsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogbnVsbAogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAidXJvc19zaXBldGljIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDcxODcyNjE3LAogICAgInNiZzpyZXZpc2lvbiIgOiA1LAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6ICJVcGRhdGVkIGRlc2NyaXB0aW9uLiIKICB9IF0sCiAgInNiZzp0b29sa2l0VmVyc2lvbiIgOiAiMS4yLjMxIiwKICAic2JnOnZhbGlkYXRpb25FcnJvcnMiIDogWyBdCn0=",
+  "status" : "COMPLETED",
+  "inputs" : {
+    "rsem_calculate_expression_archive" : [ {
+      "size" : 57430016000,
+      "path" : "/media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Plot_Model/rsem_calculate_expression_archive.HCC1143.tar",
+      "location" : "/media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Calculate_Expression/rsem_calculate_expression_archive.HCC1143.tar",
+      "name" : "rsem_calculate_expression_archive.HCC1143.tar",
+      "checksum" : "sha1$f41bf902db802eeee1c4e9d3063a39a9245ba62f",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "RNA-Seq",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "reference_genome" : "HG19_Broad_variant",
+          "sample_id" : "HCC1143",
+          "sample_name" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    } ]
+  },
+  "outputs" : {
+    "rsem_model_plot" : {
+      "size" : 20591,
+      "path" : "/media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Plot_Model/HCC1143_plot_model.pdf",
+      "location" : "/media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Plot_Model/HCC1143_plot_model.pdf",
+      "name" : "HCC1143_plot_model.pdf",
+      "checksum" : "sha1$401b5f2cd79469248b20efcf4f5477dc5f12640f",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "RNA-Seq",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "reference_genome" : "HG19_Broad_variant",
+          "sample_id" : "HCC1143",
+          "sample_name" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }
+  },
+  "resources" : {
+    "cpu" : 32,
+    "memMB" : 46967,
+    "diskSpaceMB" : null,
+    "networkAccess" : true,
+    "workingDir" : null,
+    "tmpDir" : null,
+    "outDirSize" : null,
+    "tmpDirSize" : null
+  },
+  "visiblePorts" : [ "rsem_model_plot" ]
+}

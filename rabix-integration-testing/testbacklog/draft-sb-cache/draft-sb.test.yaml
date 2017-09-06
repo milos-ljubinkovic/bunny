@@ -1149,7 +1149,68 @@ test18:
   unmapped_reads:
       - {checksum: sha1$d055c1010efb83992f5626a50b201ad79e2269c5, class: File, contents: null, dirname: null, location: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.Unmapped.out.mate2.fastq, metadata: {case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, paired_end: '2', platform: Illumina, quality_scale: sanger, reference_genome: HG19_Broad_variant, sample_id: HCC1143, sample_type: 'Cell Line'}, name: G20479.HCC1143.2.converted.pe.Unmapped.out.mate2.fastq, path: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.Unmapped.out.mate2.fastq, secondaryFiles: [], size: 574639500}
       - {checksum: sha1$7076825a1e400877808adc3eebdc897c340d7f9f, class: File, contents: null, dirname: null, location: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.Unmapped.out.mate1.fastq, metadata: {case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, paired_end: '1', platform: Illumina, quality_scale: sanger, reference_genome: HG19_Broad_variant, sample_id: HCC1143, sample_type: 'Cell Line'}, name: G20479.HCC1143.2.converted.pe.Unmapped.out.mate1.fastq, path: /media/storage2/workdir/LocalRerun20170831144747/app-2017-08-31-153709.245/root/STAR_1/G20479.HCC1143.2.converted.pe.Unmapped.out.mate1.fastq, secondaryFiles: [], size: 574639500}
-      
+test19:
+  app: testbacklog/draft-sb-cache/rsem-1-2-31-workflow-with-star-aligner_app_rev_8.cwl
+  inputs: testbacklog/draft-sb-cache/rsem-1-2-31-workflow-with-star-aligner_app_rev_8.inputs.json
+  cache: testbacklog/draft-sb-cache/rsem-1-2-31-workflow-with-star-aligner_app_rev_8/cachedir
+  runtime: 60
+  expected:
+    output_file:
+      checksum: sha1$401b5f2cd79469248b20efcf4f5477dc5f12640f
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Plot_Model/HCC1143_plot_model.pdf
+      metadata: {case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, platform: Illumina, reference_genome: HG19_Broad_variant, sample_id: HCC1143, sample_name: HCC1143, sample_type: 'Cell Line'}
+      name: HCC1143_plot_model.pdf
+      path: /media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Plot_Model/HCC1143_plot_model.pdf
+      secondaryFiles: []
+      size: 20591
+    sample_name_genes_results:
+      checksum: sha1$1fc3bdf5d44543c9afbe2e4b8693f9704033650e
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Calculate_Expression/HCC1143.genes.results
+      metadata: {case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, platform: Illumina, reference_genome: HG19_Broad_variant, sample_id: HCC1143, sample_type: 'Cell Line'}
+      name: HCC1143.genes.results
+      path: /media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Calculate_Expression/HCC1143.genes.results
+      secondaryFiles: []
+      size: 9922015
+    sample_name_genome_bam:
+      checksum: sha1$0056db67e25794b63e0f366e8e55e9a50fc8a03f
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Calculate_Expression/HCC1143.genome.sorted.bam
+      metadata: {case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, platform: Illumina, reference_genome: human_g1k_v37_decoy.phiX174, sample_id: HCC1143, sample_type: 'Cell Line'}
+      name: HCC1143.genome.sorted.bam
+      path: /media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Calculate_Expression/HCC1143.genome.sorted.bam
+      secondaryFiles: [{checksum: sha1$c06242a92db5d3e65b9ee7415de9c6d011ffc763, class: File, contents: null, dirname: null, location: /media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Calculate_Expression/HCC1143.genome.sorted.bam.bai, metadata: null, name: HCC1143.genome.sorted.bam.bai, path: /media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Calculate_Expression/HCC1143.genome.sorted.bam.bai, secondaryFiles: [], size: 2516648}]
+      size: 8494001675
+    sample_name_isoforms_results:
+      checksum: sha1$fe1c53e9bbf6fa29a22bb302b5379ffeca1b4b39
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Calculate_Expression/HCC1143.isoforms.results
+      metadata: {case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, platform: Illumina, reference_genome: HG19_Broad_variant, sample_id: HCC1143, sample_type: 'Cell Line'}
+      name: HCC1143.isoforms.results
+      path: /media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Calculate_Expression/HCC1143.isoforms.results
+      secondaryFiles: []
+      size: 28573054
+    sample_name_transcript_bam:
+      checksum: sha1$cd8482d0c1258e603f2a7ad5365b9b6ddeec314a
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Calculate_Expression/HCC1143.transcript.sorted.bam
+      metadata: {case_id: CCLE-HCC1143, experimental_strategy: RNA-Seq, investigation: CCLE-BRCA, platform: Illumina, reference_genome: human_g1k_v37_decoy.phiX174, sample_id: HCC1143, sample_type: 'Cell Line'}
+      name: HCC1143.transcript.sorted.bam
+      path: /media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Calculate_Expression/HCC1143.transcript.sorted.bam
+      secondaryFiles: [{checksum: sha1$e741485d6a7c89443f719718d0c28caa762810ef, class: File, contents: null, dirname: null, location: /media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Calculate_Expression/HCC1143.transcript.sorted.bam.bai, metadata: null, name: HCC1143.transcript.sorted.bam.bai, path: /media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Calculate_Expression/HCC1143.transcript.sorted.bam.bai, secondaryFiles: [], size: 11918176}]
+      size: 26910630684
+          
         
       
               
