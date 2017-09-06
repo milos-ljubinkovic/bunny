@@ -1210,6 +1210,84 @@ test19:
       path: /media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Calculate_Expression/HCC1143.transcript.sorted.bam
       secondaryFiles: [{checksum: sha1$e741485d6a7c89443f719718d0c28caa762810ef, class: File, contents: null, dirname: null, location: /media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Calculate_Expression/HCC1143.transcript.sorted.bam.bai, metadata: null, name: HCC1143.transcript.sorted.bam.bai, path: /media/storage/workdir/LocalRerun20170904125541/app-2017-09-05-103654.434/root/RSEM_Calculate_Expression/HCC1143.transcript.sorted.bam.bai, secondaryFiles: [], size: 11918176}]
       size: 26910630684
+test20:
+  app: testbacklog/draft-sb-cache/whole-genome-analysis-bwa-gatk-2-3-9-lite_app_rev_58.cwl
+  inputs: testbacklog/draft-sb-cache/whole-genome-analysis-bwa-gatk-2-3-9-lite_app_rev_58.inputs.json
+  cache: testbacklog/draft-sb-cache/whole-genome-analysis-bwa-gatk-2-3-9-lite_app_rev_58/cachedir
+  runtime: 60
+  expected:
+    annotated:
+      checksum: sha1$25710732cbe7f1183bf1f65cc21032909e6a9208
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/SnpEff/Sample_NA12878.Library_FDA_GARVAN.Platform_Unit_Unknown.combined.recalibrated.recalibrated.snpEff_annotated.vcf
+      metadata: {NUM_READS: 481514412, READ_COUNT: 481514412, experimental_strategy: WGS, investigation: 'FDA Consistency Challenge', library_id: FDA_GARVAN, platform: Illumina-HiSeq-XTen, quality_scale: sanger, reference_genome: human_g1k_v37_decoy, sample_id: NA12878, sample_type: 'Cell Line', species: 'Homo sapiens'}
+      name: Sample_NA12878.Library_FDA_GARVAN.Platform_Unit_Unknown.combined.recalibrated.recalibrated.snpEff_annotated.vcf
+      path: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/SnpEff/Sample_NA12878.Library_FDA_GARVAN.Platform_Unit_Unknown.combined.recalibrated.recalibrated.snpEff_annotated.vcf
+      secondaryFiles: []
+      size: 3532761415
+    b64html:
+      - {checksum: sha1$a83f3ba110b341c863401dd7157e32ab6eb4aecd, class: File, contents: null, dirname: null, location: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/SBG_Html2b64/1/NA12878-Garvan-Vial1_R2_fastqc.b64html, metadata: {NUM_READS: 481514412, READ_COUNT: 481514412, __inherit__: input_fastq, experimental_strategy: WGS, investigation: 'FDA Consistency Challenge', library_id: FDA_GARVAN, platform: Illumina-HiSeq-XTen, quality_scale: sanger, sample_id: NA12878, sample_type: 'Cell Line', species: 'Homo sapiens'}, name: NA12878-Garvan-Vial1_R2_fastqc.b64html, path: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/SBG_Html2b64/1/NA12878-Garvan-Vial1_R2_fastqc.b64html, secondaryFiles: [], size: 350438}
+      - {checksum: sha1$269aa8393f2b9ee211baf1095f9400ff58d5e1c1, class: File, contents: null, dirname: null, location: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/SBG_Html2b64/2/NA12878-Garvan-Vial1_R1_fastqc.b64html, metadata: {NUM_READS: 481514412, READ_COUNT: 481514412, __inherit__: input_fastq, experimental_strategy: WGS, investigation: 'FDA Consistency Challenge', library_id: FDA_GARVAN, platform: Illumina-HiSeq-XTen, quality_scale: sanger, sample_id: NA12878, sample_type: 'Cell Line', species: 'Homo sapiens'}, name: NA12878-Garvan-Vial1_R1_fastqc.b64html, path: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/SBG_Html2b64/2/NA12878-Garvan-Vial1_R1_fastqc.b64html, secondaryFiles: [], size: 312498}
+    combined_vcf:
+      checksum: sha1$0c07cf3046fc7ebbd51b043647c071c2f24bb516
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_CombineVariants/Sample_NA12878.Library_FDA_GARVAN.Platform_Unit_Unknown.combined.vcf
+      metadata: {NUM_READS: 481514412, READ_COUNT: 481514412, experimental_strategy: WGS, investigation: 'FDA Consistency Challenge', library_id: FDA_GARVAN, platform: Illumina-HiSeq-XTen, quality_scale: sanger, reference_genome: human_g1k_v37_decoy, sample_id: NA12878, sample_type: 'Cell Line', species: 'Homo sapiens'}
+      name: Sample_NA12878.Library_FDA_GARVAN.Platform_Unit_Unknown.combined.vcf
+      path: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_CombineVariants/Sample_NA12878.Library_FDA_GARVAN.Platform_Unit_Unknown.combined.vcf
+      secondaryFiles: [{checksum: sha1$781a256cd1d56a58a83a41e2de4ea7034b2a071a, class: File, contents: null, dirname: null, location: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_CombineVariants/Sample_NA12878.Library_FDA_GARVAN.Platform_Unit_Unknown.combined.vcf.idx, metadata: null, name: Sample_NA12878.Library_FDA_GARVAN.Platform_Unit_Unknown.combined.vcf.idx, path: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_CombineVariants/Sample_NA12878.Library_FDA_GARVAN.Platform_Unit_Unknown.combined.vcf.idx, secondaryFiles: [], size: 10692276}]
+      size: 1161250288
+    per_interval:
+      checksum: sha1$8a6acf15a42b0a163fc28593beffdc07bddc3239
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/SBG_Genome_Coverage/NA12878_ed.merged.bam.bed.per_interval.bed
+      metadata: {NUM_READS: 481514412, READ_COUNT: 481514412, experimental_strategy: WGS, file_format: BED, investigation: 'FDA Consistency Challenge', library_id: FDA_GARVAN, platform: Illumina-HiSeq-XTen, quality_scale: sanger, reference_genome: human_g1k_v37_decoy, sample_id: NA12878, sample_type: 'Cell Line', species: 'Homo sapiens'}
+      name: NA12878_ed.merged.bam.bed.per_interval.bed
+      path: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/SBG_Genome_Coverage/NA12878_ed.merged.bam.bed.per_interval.bed
+      secondaryFiles: []
+      size: 4474699
+    plot_pdf:
+      checksum: sha1$eb4c87e06935c13690c71c09ea9636ec08dbae53
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_BaseRecalibrator/NA12878-Garvan-Vial1_R.realigned.pdf
+      metadata: {}
+      name: NA12878-Garvan-Vial1_R.realigned.pdf
+      path: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_BaseRecalibrator/NA12878-Garvan-Vial1_R.realigned.pdf
+      secondaryFiles: []
+      size: 55162
+    summary: null
+    summary_1:
+      checksum: sha1$893c9889fb6a99f79d6e9b51bed26a4c259eadb8
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/SBG_Genome_Coverage/NA12878_ed.merged.bam.bed.summary
+      metadata: {NUM_READS: 481514412, READ_COUNT: 481514412, experimental_strategy: WGS, file_format: TEXT, investigation: 'FDA Consistency Challenge', library_id: FDA_GARVAN, platform: Illumina-HiSeq-XTen, quality_scale: sanger, reference_genome: human_g1k_v37_decoy, sample_id: NA12878, sample_type: 'Cell Line', species: 'Homo sapiens'}
+      name: NA12878_ed.merged.bam.bed.summary
+      path: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/SBG_Genome_Coverage/NA12878_ed.merged.bam.bed.summary
+      secondaryFiles: []
+      size: 1065471
+    summary_metrics:
+      checksum: sha1$e00e417303847b18163cfc260661aaa860c14b26
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/Picard_CollectAlignmentSummaryMetrics/NA12878_ed.merged.summary_metrics.txt
+      metadata: {NUM_READS: 481514412, READ_COUNT: 481514412, experimental_strategy: WGS, investigation: 'FDA Consistency Challenge', library_id: FDA_GARVAN, platform: Illumina-HiSeq-XTen, quality_scale: sanger, reference_genome: human_g1k_v37_decoy, sample_id: NA12878, sample_type: 'Cell Line', species: 'Homo sapiens'}
+      name: NA12878_ed.merged.summary_metrics.txt
+      path: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/Picard_CollectAlignmentSummaryMetrics/NA12878_ed.merged.summary_metrics.txt
+      secondaryFiles: []
+      size: 2184
+    summary_text: null
+    
           
         
       

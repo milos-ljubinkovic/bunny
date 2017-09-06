@@ -1,0 +1,115 @@
+{
+        "1000g_indels": {
+            "class": "File",
+            "name": "1000G_phase1.indels.b37.vcf",
+            "metadata": {},
+            "size": 237684308,
+            "path": "whole-genome-analysis-bwa-gatk-2-3-9-lite_app_rev_58/1000G_phase1.indels.b37.vcf"
+        },
+        "bqsr_intervals": "20",
+        "1000g_p1_snps": {
+            "class": "File",
+            "name": "1000G_phase1.snps.high_confidence.b37.vcf",
+            "metadata": {},
+            "size": 7313069069,
+            "path": "whole-genome-analysis-bwa-gatk-2-3-9-lite_app_rev_58/1000G_phase1.snps.high_confidence.b37.vcf"
+        },
+        "1000g_omni": {
+            "class": "File",
+            "name": "1000G_omni2.5.b37.vcf",
+            "metadata": {
+                "file_segment_number": 1
+            },
+            "size": 201389765,
+            "path": "whole-genome-analysis-bwa-gatk-2-3-9-lite_app_rev_58/1000G_omni2.5.b37.vcf"
+        },
+        "database_1": {
+            "class": "File",
+            "name": "GRCh37.75.zip",
+            "metadata": {},
+            "size": 695676172,
+            "path": "whole-genome-analysis-bwa-gatk-2-3-9-lite_app_rev_58/GRCh37.75.zip"
+        },
+        "hapmap": {
+            "class": "File",
+            "name": "hapmap_3.3.b37.vcf",
+            "size": 225898391,
+            "path": "whole-genome-analysis-bwa-gatk-2-3-9-lite_app_rev_58/hapmap_3.3.b37.vcf"
+        },
+        "mills": {
+            "class": "File",
+            "name": "Mills_and_1000G_gold_standard.indels.b37.sites.vcf",
+            "metadata": {
+                "species": "Human"
+            },
+            "size": 86369974,
+            "path": "whole-genome-analysis-bwa-gatk-2-3-9-lite_app_rev_58/Mills_and_1000G_gold_standard.indels.b37.sites.vcf"
+        },
+        "reference": {
+            "class": "File",
+            "name": "human_g1k_v37_decoy.fasta.tar",
+            "metadata": {
+                "species": "Homo sapiens"
+            },
+            "size": 8680417280,
+            "path": "whole-genome-analysis-bwa-gatk-2-3-9-lite_app_rev_58/human_g1k_v37_decoy.fasta.tar"
+        },
+        "bed_file_1": {
+            "class": "File",
+            "name": "human_g1k_v37_decoy.breakpoints.bed",
+            "metadata": {},
+            "size": 1942,
+            "path": "whole-genome-analysis-bwa-gatk-2-3-9-lite_app_rev_58/human_g1k_v37_decoy.breakpoints.bed"
+        },
+        "fastq": [
+            {
+                "class": "File",
+                "name": "NA12878-Garvan-Vial1_R1.fastq.gz",
+                "metadata": {
+                    "investigation": "FDA Consistency Challenge",
+                    "NUM_READS": 481514412,
+                    "quality_scale": "sanger",
+                    "paired_end": "1",
+                    "READ_COUNT": 481514412,
+                    "experimental_strategy": "WGS",
+                    "sample_type": "Cell Line",
+                    "platform": "Illumina-HiSeq-XTen",
+                    "species": "Homo sapiens",
+                    "sample_id": "NA12878",
+                    "library_id": "FDA_GARVAN"
+                },
+                "size": 40512932230,
+                "secondaryFiles": [],
+                "path": "whole-genome-analysis-bwa-gatk-2-3-9-lite_app_rev_58/NA12878-Garvan-Vial1_R1.fastq.gz"
+            },
+            {
+                "class": "File",
+                "name": "NA12878-Garvan-Vial1_R2.fastq.gz",
+                "metadata": {
+                    "investigation": "FDA Consistency Challenge",
+                    "NUM_READS": 481514412,
+                    "quality_scale": "sanger",
+                    "paired_end": "2",
+                    "READ_COUNT": 481514412,
+                    "experimental_strategy": "WGS",
+                    "sample_type": "Cell Line",
+                    "platform": "Illumina-HiSeq-XTen",
+                    "species": "Homo sapiens",
+                    "sample_id": "NA12878",
+                    "library_id": "FDA_GARVAN"
+                },
+                "size": 46872038669,
+                "secondaryFiles": [],
+                "path": "whole-genome-analysis-bwa-gatk-2-3-9-lite_app_rev_58/NA12878-Garvan-Vial1_R2.fastq.gz"
+            }
+        ],
+        "dbsnp": [
+            {
+                "class": "File",
+                "name": "dbsnp_137.b37.vcf",
+                "metadata": {},
+                "size": 8436107210,
+                "path": "whole-genome-analysis-bwa-gatk-2-3-9-lite_app_rev_58/dbsnp_137.b37.vcf"
+            }
+        ]
+}

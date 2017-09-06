@@ -1,0 +1,1271 @@
+{
+  "id" : "291657cf-a4a7-46ee-ad02-c9d65ac15b5e",
+  "parentId" : "177c159a-cb01-4f70-8086-81f791d3881a",
+  "rootId" : "177c159a-cb01-4f70-8086-81f791d3881a",
+  "name" : "root.Sambamba_Merge",
+  "app" : "data:text/plain;base64,ewogICJjb250cmlidXRvciIgOiBbIF0sCiAgIm93bmVyIiA6IFsgXSwKICAiY3dsVmVyc2lvbiIgOiAic2JnOmRyYWZ0LTIiLAogICJpbnB1dHMiIDogWyB7CiAgICAiaWQiIDogIiNyZXNlcnZlZF90aHJlYWRzIiwKICAgICJ0eXBlIiA6IFsgIm51bGwiLCAiaW50IiBdLAogICAgImRlc2NyaXB0aW9uIiA6ICJOdW1iZXIgb2YgdGhyZWFkcyByZXNlcnZlZCBvbiB0aGUgaW5zdGFuY2UgcGFzc2VkIHRvIHRoZSBzY2hlZHVsZXIgKG51bWJlciBvZiBqb2JzKS4iLAogICAgInNiZzp0b29sRGVmYXVsdFZhbHVlIiA6ICIxIiwKICAgICJzYmc6Y2F0ZWdvcnkiIDogIkV4ZWN1dGlvbiIsCiAgICAibGFiZWwiIDogIk51bWJlciBvZiB0aHJlYWRzIHJlc2VydmVkIG9uIHRoZSBpbnN0YW5jZSIKICB9LCB7CiAgICAiaWQiIDogIiNudW1fb2ZfdGhyZWFkcyIsCiAgICAidHlwZSIgOiBbICJudWxsIiwgImludCIgXSwKICAgICJkZXNjcmlwdGlvbiIgOiAiTnVtYmVyIG9mIHRocmVhZHMgdG8gdXNlIGZvciBjb21wcmVzc2lvbi9kZWNvbXByZXNzaW9uLiIsCiAgICAic2JnOmNhdGVnb3J5IiA6ICJNZXJnZSIsCiAgICAibGFiZWwiIDogIk51bWJlciBvZiB0aHJlYWRzIHRvIHVzZSIKICB9LCB7CiAgICAiaWQiIDogIiNtZW1fbWIiLAogICAgInR5cGUiIDogWyAibnVsbCIsICJpbnQiIF0sCiAgICAiZGVzY3JpcHRpb24iIDogIk1lbW9yeSBpbiBNQi4iLAogICAgInNiZzp0b29sRGVmYXVsdFZhbHVlIiA6ICIxMDI0IiwKICAgICJzYmc6Y2F0ZWdvcnkiIDogIkV4ZWN1dGlvbiIsCiAgICAibGFiZWwiIDogIk1lbW9yeSBpbiBNQiIKICB9LCB7CiAgICAiaWQiIDogIiNjb21wcmVzc2lvbl9sZXZlbCIsCiAgICAidHlwZSIgOiBbICJudWxsIiwgImludCIgXSwKICAgICJkZXNjcmlwdGlvbiIgOiAiTGV2ZWwgb2YgY29tcHJlc3Npb24gZm9yIG1lcmdlZCBCQU0gZmlsZSwgbnVtYmVyIGZyb20gMCB0byA5LiIsCiAgICAic2JnOmNhdGVnb3J5IiA6ICJNZXJnZSIsCiAgICAibGFiZWwiIDogIkNvbXByZXNzaW9uIGxldmVsIgogIH0sIHsKICAgICJpZCIgOiAiI2JhbXMiLAogICAgInR5cGUiIDogWyB7CiAgICAgICJpdGVtcyIgOiAiRmlsZSIsCiAgICAgICJuYW1lIiA6ICJiYW1zIiwKICAgICAgInR5cGUiIDogImFycmF5IgogICAgfSBdLAogICAgImlucHV0QmluZGluZyIgOiB7CiAgICAgICJpdGVtU2VwYXJhdG9yIiA6IG51bGwsCiAgICAgICJwb3NpdGlvbiIgOiA1LAogICAgICAic2JnOmNtZEluY2x1ZGUiIDogdHJ1ZSwKICAgICAgInNlcGFyYXRlIiA6IHRydWUKICAgIH0sCiAgICAiZGVzY3JpcHRpb24iIDogIklucHV0IEJBTSBmaWxlcy4iLAogICAgInNiZzpjYXRlZ29yeSIgOiAiTWVyZ2UiLAogICAgImxhYmVsIiA6ICJCQU0gZmlsZXMiLAogICAgInNiZzpmaWxlVHlwZXMiIDogIkJBTSIsCiAgICAicmVxdWlyZWQiIDogdHJ1ZQogIH0gXSwKICAib3V0cHV0cyIgOiBbIHsKICAgICJpZCIgOiAiI21lcmdlZF9iYW0iLAogICAgInR5cGUiIDogWyAibnVsbCIsICJGaWxlIiBdLAogICAgIm91dHB1dEJpbmRpbmciIDogewogICAgICAiZ2xvYiIgOiAiKi5iYW0iLAogICAgICAic2JnOmluaGVyaXRNZXRhZGF0YUZyb20iIDogIiNiYW1zIiwKICAgICAgInNlY29uZGFyeUZpbGVzIiA6IFsgIi5iYWkiLCAiXi5iYWkiIF0KICAgIH0sCiAgICAiZGVzY3JpcHRpb24iIDogIk1lcmdlZCBiYW0uIiwKICAgICJsYWJlbCIgOiAiTWVyZ2VkIGJhbSIsCiAgICAic2JnOmZpbGVUeXBlcyIgOiAiQkFNIgogIH0gXSwKICAiaGludHMiIDogWyB7CiAgICAiY2xhc3MiIDogInNiZzpDUFVSZXF1aXJlbWVudCIsCiAgICAidmFsdWUiIDogewogICAgICAiY2xhc3MiIDogIkV4cHJlc3Npb24iLAogICAgICAiZW5naW5lIiA6ICIjY3dsLWpzLWVuZ2luZSIsCiAgICAgICJzY3JpcHQiIDogIntcbiAgaWYgKCRqb2IuaW5wdXRzLnJlc2VydmVkX3RocmVhZHMpIHtcbiAgICBcbiAgICByZXR1cm4gJGpvYi5pbnB1dHMucmVzZXJ2ZWRfdGhyZWFkc1xuICAgIFxuICB9IGVsc2UgaWYgKCRqb2IuaW5wdXRzLm51bV9vZl90aHJlYWRzKSB7XG4gICAgXG4gICAgcmV0dXJuICRqb2IuaW5wdXRzLm51bV9vZl90aHJlYWRzXG4gICAgXG4gIH0gZWxzZSB7XG4gICAgXG4gICAgcmV0dXJuIDFcbiAgfVxuICBcbn0iCiAgICB9CiAgfSwgewogICAgImNsYXNzIiA6ICJzYmc6TWVtUmVxdWlyZW1lbnQiLAogICAgInZhbHVlIiA6IHsKICAgICAgImNsYXNzIiA6ICJFeHByZXNzaW9uIiwKICAgICAgImVuZ2luZSIgOiAiI2N3bC1qcy1lbmdpbmUiLAogICAgICAic2NyaXB0IiA6ICJ7XG4gIGlmICgkam9iLmlucHV0cy5tZW1fbWIpIHtcbiAgICBcbiAgICByZXR1cm4gJGpvYi5pbnB1dHMubWVtX21iXG4gICAgXG4gIH0gZWxzZSB7XG4gICAgXG4gICAgcmV0dXJuIDEwMjRcbiAgICBcbiAgfVxuICBcbn0iCiAgICB9CiAgfSwgewogICAgImNsYXNzIiA6ICJEb2NrZXJSZXF1aXJlbWVudCIsCiAgICAiZG9ja2VyUHVsbCIgOiAiaW1hZ2VzLnNiZ2Vub21pY3MuY29tL21sYWRlbmxzYmcvc2FtYmFtYmE6MC41LjkiLAogICAgImRvY2tlckltYWdlSWQiIDogIiIKICB9IF0sCiAgInJlcXVpcmVtZW50cyIgOiBbIHsKICAgICJjbGFzcyIgOiAiRXhwcmVzc2lvbkVuZ2luZVJlcXVpcmVtZW50IiwKICAgICJyZXF1aXJlbWVudHMiIDogWyB7CiAgICAgICJjbGFzcyIgOiAiRG9ja2VyUmVxdWlyZW1lbnQiLAogICAgICAiZG9ja2VyUHVsbCIgOiAicmFiaXgvanMtZW5naW5lIgogICAgfSBdLAogICAgImlkIiA6ICIjY3dsLWpzLWVuZ2luZSIKICB9IF0sCiAgInN1Y2Nlc3NDb2RlcyIgOiBbIF0sCiAgInN0ZGluIiA6ICIiLAogICJzdGRvdXQiIDogIiIsCiAgImJhc2VDb21tYW5kIiA6IFsgewogICAgImNsYXNzIiA6ICJFeHByZXNzaW9uIiwKICAgICJlbmdpbmUiIDogIiNjd2wtanMtZW5naW5lIiwKICAgICJzY3JpcHQiIDogIntcbiAgaWYgKCRqb2IuaW5wdXRzLmJhbXMgaW5zdGFuY2VvZiBBcnJheSkgeyAvLyBWS1xuICAgIGlmICgkam9iLmlucHV0cy5iYW1zWzBdIGluc3RhbmNlb2YgQXJyYXkpIHtcbiAgICAgIFxuICAgICAgLy8gU3VwcG9ydCBmb3IgaW5wdXQgcmVjZWl2ZWQgYXMgbGlzdCBvZiBvbmUtZWxlbWVudC1saXN0cyBcbiAgICAgIGluX3ZhciA9IFtdXG4gICAgICBmb3IgKGk9MDtpPCRqb2IuaW5wdXRzLmJhbXMubGVuZ3RoO2krKykgXG4gIFx0XHRpbl92YXIgPSBpbl92YXIuY29uY2F0KCRqb2IuaW5wdXRzLmJhbXNbaV0pO1xuICAgICAgXG4gICAgfSBlbHNlIHtcbiAgICAgIGluX3ZhciA9IFtdLmNvbmNhdCgkam9iLmlucHV0cy5iYW1zKVxuICAgIH1cbiAgXG4gIFxuICB9IGVsc2Uge1xuICAgIGluX3ZhciA9IFtdLmNvbmNhdCgkam9iLmlucHV0cy5iYW1zKVxuICB9XG4gIGNvbW09JydcbiAgaWYoaW5fdmFyIGluc3RhbmNlb2YgQXJyYXkpIC8vIEFsd2F5cyB0cnVlXG4gIHtcbiAgICBpZihpbl92YXIubGVuZ3RoPT0xKVxuICAgIHtcbiAgICAgIGNvbW0rPSdjcCAnXG4gICAgICBcbiAgICB9XG4gIFx0ZWxzZSBpZihpbl92YXIubGVuZ3RoPjEpXG4gIFx0e1xuICAgIFxuICAgIFx0Y29tbSs9Jy9vcHQvc2FtYmFtYmFfMC41Ljkvc2FtYmFtYmFfdjAuNS45IG1lcmdlICdcbiAgICBcdGlmKCRqb2IuaW5wdXRzLm51bV9vZl90aHJlYWRzKVxuICBcdFx0e1xuICAgIFx0XHRjb21tKz0nIC10ICdcbiAgICBcdFx0Y29tbSs9JGpvYi5pbnB1dHMubnVtX29mX3RocmVhZHNcbiAgXHRcdH1cbiAgXHRcdGlmKCRqb2IuaW5wdXRzLmNvbXByZXNzaW9uX2xldmVsKVxuICBcdFx0e1xuICAgXHRcdFx0Y29tbSs9JyAtbCAnXG4gICAgXHRcdGNvbW0rPSRqb2IuaW5wdXRzLmNvbXByZXNzaW9uX2xldmVsXG4gIFx0XHR9XG4gICBcdFx0XG4gICAgfVxuICBcbiAgXHRcblxuICB9XG4gIHJldHVybiBjb21tXG59IgogIH0gXSwKICAiYXJndW1lbnRzIiA6IFsgewogICAgInBvc2l0aW9uIiA6IDEwLAogICAgInNlcGFyYXRlIiA6IHRydWUsCiAgICAidmFsdWVGcm9tIiA6IHsKICAgICAgImNsYXNzIiA6ICJFeHByZXNzaW9uIiwKICAgICAgImVuZ2luZSIgOiAiI2N3bC1qcy1lbmdpbmUiLAogICAgICAic2NyaXB0IiA6ICJ7XG4gIGlmICgkam9iLmlucHV0cy5iYW1zIGluc3RhbmNlb2YgQXJyYXkpIHsgLy8gVktcbiAgICBpZiAoJGpvYi5pbnB1dHMuYmFtc1swXSBpbnN0YW5jZW9mIEFycmF5KSB7XG4gICAgICBcbiAgICAgIC8vIFN1cHBvcnQgZm9yIGlucHV0IHJlY2VpdmVkIGFzIGxpc3Qgb2Ygb25lLWVsZW1lbnQtbGlzdHMgXG4gICAgICBpbl92YXIgPSBbXVxuICAgICAgZm9yIChpPTA7aTwkam9iLmlucHV0cy5iYW1zLmxlbmd0aDtpKyspIFxuICBcdFx0aW5fdmFyID0gaW5fdmFyLmNvbmNhdCgkam9iLmlucHV0cy5iYW1zW2ldKTtcbiAgICAgIFxuICAgIH0gZWxzZSB7XG4gICAgICBpbl92YXIgPSBbXS5jb25jYXQoJGpvYi5pbnB1dHMuYmFtcylcbiAgICB9XG4gIFxuICBcbiAgfSBlbHNlIHtcbiAgICBpbl92YXIgPSBbXS5jb25jYXQoJGpvYi5pbnB1dHMuYmFtcylcbiAgfVxuICBcbiAgY29tbT0nJ1xuICBpZihpbl92YXIubGVuZ3RoPT0xKVxuICB7XG4gIFx0Y29tbSs9Jy4gJ1xuICBcbiAgXHRpZihpbl92YXJbMF0uc2Vjb25kYXJ5RmlsZXMhPXVuZGVmaW5lZCAmJiBpbl92YXJbMF0uc2Vjb25kYXJ5RmlsZXMubGVuZ3RoPjApXG4gIFx0e1xuICAgIFx0IGNvbW0rPSd8IGNwICdcbiAgICBcdCBjb21tKz1pbl92YXJbMF0uc2Vjb25kYXJ5RmlsZXNbMF0ucGF0aFxuICAgIFx0IGNvbW0rPScgLiAnXG4gIFx0fVxuICB9XG4gIHJldHVybiBjb21tXG59IgogICAgfQogIH0sIHsKICAgICJwb3NpdGlvbiIgOiA1LAogICAgInNlcGFyYXRlIiA6IHRydWUsCiAgICAidmFsdWVGcm9tIiA6IHsKICAgICAgImNsYXNzIiA6ICJFeHByZXNzaW9uIiwKICAgICAgImVuZ2luZSIgOiAiI2N3bC1qcy1lbmdpbmUiLAogICAgICAic2NyaXB0IiA6ICJ7XG5cbiAgZnVuY3Rpb24gY29tbW9uX2VuZChzdHJzKSB7XG4gIFxuICBcdC8vIEZpbmQgbWluaW11bSBsZW5ndGggb2YgZmlsZSBuYW1lXG4gIFxuICBcdGxzID0gW107XG4gICAgd2hvbGUgPSBbXTtcblx0Zm9yIChpPTA7aTxzdHJzLmxlbmd0aDtpKyspe1xuICBcdFx0bHMgPSBscy5jb25jYXQoc3Ryc1tpXS5wYXRoLnNwbGl0KCcvJykucG9wKCkubGVuZ3RoKTtcbiAgICAgICAgd2hvbGUgPSB3aG9sZS5jb25jYXQoc3Ryc1tpXS5wYXRoLmxlbmd0aCk7XG4gIFx0fVxuIFx0bCA9IE1hdGgubWluLmFwcGx5KE1hdGgsbHMpO1xuICBcbiAgXHQvLyBMb29wIGZyb20gdGhlIGVuZCB0aHJvdWdoIGNoYXJhY3RlcnMgYW5kIGNoZWNrIGlmIHRoZXkgYXJlIHRoZSBzYW1lIGZvciBhbGxcbiAgXG4gXHRpbmQgPSAwO1xuIFx0ZmxhZyA9IDA7XG4gXHRmb3IgKGk9MTtpPD1sO2krKyl7XG4gICAgXHRmb3IgKGo9MTtqPHN0cnMubGVuZ3RoO2orKyl7XG4gICAgICBcdFx0aWYgKHN0cnNbMF0ucGF0aFt3aG9sZVswXS1pXSE9c3Ryc1tqXS5wYXRoW3dob2xlW2pdLWldKXtcbiAgICAgICAgXHRmbGFnID0gMTtcbiAgICAgICAgXHRicmVha1xuICAgICAgXHRcdH1cbiAgIFx0XHR9XG4gICBcdCBcdGlmIChmbGFnID09IDEpe1xuICAgXHQgXHQgIFx0YnJlYWtcbiAgIFx0ICAgIH0gZWxzZSB7XG4gICAgICBcdFx0aW5kID0gaW5kICsgMTtcbiAgICAgICAgfVxuICBcdCB9XG4gIFxuICAvLyBBc3NpZ24gYW5kIHJldHVybiBsb25nZXN0IGVuZGluZyBjb21tb24gc3Vic3RyaW5nXG4gIGlmIChpbmQ+MCkge1xuICBcdGNvbXN0ciA9IHN0cnNbMF0ucGF0aC5zbGljZSgtaW5kKTtcbiAgfSBlbHNlIHtcbiAgICBjb21zdHIgPSAnZGlmZmVyZW50X2V4dGVuc2lvbnMnXG4gIH1cbiAgXG4gIHJldHVybiBjb21zdHJcbiAgXG4gIH1cbiAgXG4gIGlmICgkam9iLmlucHV0cy5iYW1zIGluc3RhbmNlb2YgQXJyYXkpIHsgLy8gVktcbiAgICBpZiAoJGpvYi5pbnB1dHMuYmFtc1swXSBpbnN0YW5jZW9mIEFycmF5KSB7XG4gICAgICBcbiAgICAgIC8vIFN1cHBvcnQgZm9yIGlucHV0IHJlY2VpdmVkIGFzIGxpc3Qgb2Ygb25lLWVsZW1lbnQtbGlzdHMgXG4gICAgICBpbl92YXIgPSBbXVxuICAgICAgZm9yIChpPTA7aTwkam9iLmlucHV0cy5iYW1zLmxlbmd0aDtpKyspIFxuICBcdFx0aW5fdmFyID0gaW5fdmFyLmNvbmNhdCgkam9iLmlucHV0cy5iYW1zW2ldKTtcbiAgICAgIFxuICAgIH0gZWxzZSB7XG4gICAgICBpbl92YXIgPSBbXS5jb25jYXQoJGpvYi5pbnB1dHMuYmFtcylcbiAgICB9XG4gIFxuICBcbiAgfSBlbHNlIHtcbiAgICBpbl92YXIgPSBbXS5jb25jYXQoJGpvYi5pbnB1dHMuYmFtcylcbiAgfVxuICBcbiAgcHJlZml4PScnXG4gIFxuICBpZihpbl92YXIubGVuZ3RoPT0xKSB7IFxuICAgIHJldHVybiAnJyAvLyBJbnB1dCB3aWxsIGJlIGp1c3QgcGFzc2VkIHRvIG91dHB1dFxuICB9ZWxzZSBpZiAoaW5fdmFyWzBdLm1ldGFkYXRhKXtcbiBcdCAgIGlmIChcInNhbXBsZV9pZFwiIGluIGluX3ZhclswXS5tZXRhZGF0YSl7ICAgXG4gIFx0XHQgcHJlZml4ID0gaW5fdmFyWzBdLm1ldGFkYXRhW1wic2FtcGxlX2lkXCJdOyAgICAgIFxuICAgXHQgICAgfSBlbHNlIHtcbiAgIFx0XHQgIHByZWZpeCA9ICdzYW1wbGVfdW5rbm93bic7XG4gICAgICAgIH1cbiAgIFxuICB9ZWxzZSB7XG4gICAgcHJlZml4ID0gJ3NhbXBsZV91bmtub3duJzsgICBcbiAgfVxuICBcbiAgLy8gQ3JlYXRlIGpvaW50IG5hbWUgYW5kIGFkZCB0aGUgbWVyZ2VkIHN1ZmZpeFxuICBqb2ludF9uYW1lID0gcHJlZml4ICsgJ18nICsgY29tbW9uX2VuZChpbl92YXIpO1xuICBuYW1lID0gam9pbnRfbmFtZS5zcGxpdCgnLicpLnNsaWNlKDAsLTEpLmpvaW4oJy4nKSArICcubWVyZ2VkLmJhbSdcbiAgXG4gIFxuICBcbiAgcmV0dXJuIG5hbWVcbiAgXG59XG5cblxuIgogICAgfQogIH0gXSwKICAic2JnOnJldmlzaW9uIiA6IDE4LAogICJzYmc6Y2F0ZWdvcmllcyIgOiBbICJTQU0vQkFNLVByb2Nlc3NpbmciIF0sCiAgImRlc2NyaXB0aW9uIiA6ICJTYW1iYW1iYSBNZXJnZSBpcyB1c2VkIGZvciBtZXJnaW5nIHNldmVyYWwgc29ydGVkIEJBTSBmaWxlcyBpbnRvIG9uZS4gVGhlIHNvcnRpbmcgb3JkZXIgb2YgYWxsIHRoZSBmaWxlcyBtdXN0IGJlIHRoZSBzYW1lLCBhbmQgaXQgaXMgbWFpbnRhaW5lZCBpbiB0aGUgb3V0cHV0IGZpbGUuIiwKICAic2JnOmNyZWF0ZWRPbiIgOiAxNDU4OTIwNDEyLAogICJzYmc6dG9vbGtpdCIgOiAiU2FtYmFtYmEiLAogICJzYmc6Y29udHJpYnV0b3JzIiA6IFsgIm5ldmVuYW0iLCAibmV2ZW5hbS5zdWRvIiwgInZsYWRpbWlyayIsICJvZ25qZW5tIiBdLAogICJzYmc6aWQiIDogImFkbWluL3NiZy1wdWJsaWMtZGF0YS9zYW1iYW1iYS1tZXJnZS0wLTUtOS8xOCIsCiAgInNiZzpqb2IiIDogewogICAgImFsbG9jYXRlZFJlc291cmNlcyIgOiB7CiAgICAgICJjcHUiIDogMiwKICAgICAgIm1lbSIgOiAyCiAgICB9LAogICAgImlucHV0cyIgOiB7CiAgICAgICJiYW1zIiA6IFsgewogICAgICAgICJjbGFzcyIgOiAiRmlsZSIsCiAgICAgICAgIm1ldGFkYXRhIiA6IHsKICAgICAgICAgICJzYW1wbGVfaWQiIDogInRlc3RtZXRhIgogICAgICAgIH0sCiAgICAgICAgInBhdGgiIDogIi9wYXRoL3RvL3V1dV9iYW1zLmJhbSIsCiAgICAgICAgInNlY29uZGFyeUZpbGVzIiA6IFsgXSwKICAgICAgICAic2l6ZSIgOiAwCiAgICAgIH0sIHsKICAgICAgICAiY2xhc3MiIDogIkZpbGUiLAogICAgICAgICJwYXRoIiA6ICIvcGF0aC90by91eXl5X2JhbXMuYmFtIiwKICAgICAgICAic2Vjb25kYXJ5RmlsZXMiIDogWyBdLAogICAgICAgICJzaXplIiA6IDAKICAgICAgfSBdLAogICAgICAiY29tcHJlc3Npb25fbGV2ZWwiIDogbnVsbCwKICAgICAgIm1lbV9tYiIgOiAyLAogICAgICAibnVtX29mX3RocmVhZHMiIDogNiwKICAgICAgInJlc2VydmVkX3RocmVhZHMiIDogMgogICAgfQogIH0sCiAgInNiZzpzYmdNYWludGFpbmVkIiA6IGZhbHNlLAogICJ0ZW1wb3JhcnlGYWlsQ29kZXMiIDogWyBdLAogICJzYmc6bGlua3MiIDogWyB7CiAgICAiaWQiIDogImh0dHA6Ly9sb21lcmVpdGVyLmdpdGh1Yi5pby9zYW1iYW1iYS9kb2NzL3NhbWJhbWJhLXZpZXcuaHRtbCIsCiAgICAibGFiZWwiIDogIkhvbWVwYWdlIgogIH0sIHsKICAgICJpZCIgOiAiaHR0cHM6Ly9naXRodWIuY29tL2xvbWVyZWl0ZXIvc2FtYmFtYmEiLAogICAgImxhYmVsIiA6ICJTb3VyY2UgY29kZSIKICB9LCB7CiAgICAiaWQiIDogImh0dHBzOi8vZ2l0aHViLmNvbS9sb21lcmVpdGVyL3NhbWJhbWJhL3dpa2kiLAogICAgImxhYmVsIiA6ICJXaWtpIgogIH0sIHsKICAgICJpZCIgOiAiaHR0cHM6Ly9naXRodWIuY29tL2xvbWVyZWl0ZXIvc2FtYmFtYmEvcmVsZWFzZXMvdGFnL3YwLjUuOSIsCiAgICAibGFiZWwiIDogIkRvd25sb2FkIgogIH0sIHsKICAgICJpZCIgOiAiaHR0cDovL2xvbWVyZWl0ZXIuZ2l0aHViLmlvL3NhbWJhbWJhL2RvY3Mvc2FtYmFtYmEtdmlldy5odG1sIiwKICAgICJsYWJlbCIgOiAiUHVibGljYXRpb24iCiAgfSBdLAogICJzYmc6dG9vbEF1dGhvciIgOiAiQXJ0ZW0gVGFyYXNvdiIsCiAgImlkIiA6ICJiaXgtZGVtby9zYW1iYW1iYS0wLTUtOS1kZW1vL3NhbWJhbWJhLW1lcmdlLTAtNS05LzE4IiwKICAiY2xhc3MiIDogIkNvbW1hbmRMaW5lVG9vbCIsCiAgInNiZzpwcm9qZWN0IiA6ICJiaXgtZGVtby9zYW1iYW1iYS0wLTUtOS1kZW1vIiwKICAic2JnOnJldmlzaW9uTm90ZXMiIDogIkFkZGVkIHJlc2VydmVkIG51bWJlciBvZiB0aHJlYWRzLiIsCiAgInNiZzptb2RpZmllZE9uIiA6IDE0NzY3MDY4MjAsCiAgInNiZzpjbWRQcmV2aWV3IiA6ICIvb3B0L3NhbWJhbWJhXzAuNS45L3NhbWJhbWJhX3YwLjUuOSBtZXJnZSAgLXQgNiAgL3BhdGgvdG8vdXV1X2JhbXMuYmFtICAvcGF0aC90by91eXl5X2JhbXMuYmFtICB0ZXN0bWV0YV9fYmFtcy5tZXJnZWQuYmFtIiwKICAic2JnOmxpY2Vuc2UiIDogIkdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIHYyLjAgb25seSIsCiAgImxhYmVsIiA6ICJTYW1iYW1iYSBNZXJnZSIsCiAgInNiZzptb2RpZmllZEJ5IiA6ICJ2bGFkaW1pcmsiLAogICJzYmc6bGF0ZXN0UmV2aXNpb24iIDogMTgsCiAgInNiZzpjcmVhdGVkQnkiIDogIm5ldmVuYW0uc3VkbyIsCiAgIngiIDogMjAyNi42NjY2NjY2NjY2Njc5LAogICJ5IiA6IC00NDUuNTcyOTE2NjY2NjY2OSwKICAic2JnOnJldmlzaW9uc0luZm8iIDogWyB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogIm5ldmVuYW0uc3VkbyIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ1ODkyMDQxMiwKICAgICJzYmc6cmV2aXNpb24iIDogMCwKICAgICJzYmc6cmV2aXNpb25Ob3RlcyIgOiBudWxsCiAgfSwgewogICAgInNiZzptb2RpZmllZEJ5IiA6ICJuZXZlbmFtLnN1ZG8iLAogICAgInNiZzptb2RpZmllZE9uIiA6IDE0NTg5MjA0NTksCiAgICAic2JnOnJldmlzaW9uIiA6IDEsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogbnVsbAogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAibmV2ZW5hbSIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ2Mjk2MzYzMCwKICAgICJzYmc6cmV2aXNpb24iIDogMiwKICAgICJzYmc6cmV2aXNpb25Ob3RlcyIgOiBudWxsCiAgfSwgewogICAgInNiZzptb2RpZmllZEJ5IiA6ICJuZXZlbmFtIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDYyOTYzNjYwLAogICAgInNiZzpyZXZpc2lvbiIgOiAzLAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6IG51bGwKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogIm9nbmplbm0iLAogICAgInNiZzptb2RpZmllZE9uIiA6IDE0Njg4NDk5NDAsCiAgICAic2JnOnJldmlzaW9uIiA6IDQsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogbnVsbAogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAib2duamVubSIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ3MDY3OTU3NCwKICAgICJzYmc6cmV2aXNpb24iIDogNSwKICAgICJzYmc6cmV2aXNpb25Ob3RlcyIgOiAiQ2hhbmdlZCB0byBjb21tb24gbmFtZSIKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogIm9nbmplbm0iLAogICAgInNiZzptb2RpZmllZE9uIiA6IDE0NzA3NTIyODcsCiAgICAic2JnOnJldmlzaW9uIiA6IDYsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogIlNtYXJ0IG5hbWluZyBpbnRyb2R1Y2VkIgogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAib2duamVubSIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ3MDc1MzIzMywKICAgICJzYmc6cmV2aXNpb24iIDogNywKICAgICJzYmc6cmV2aXNpb25Ob3RlcyIgOiAiQ29ycmVjdGVkIHNpbmdsZSBmaWxlIGNhc2UiCiAgfSwgewogICAgInNiZzptb2RpZmllZEJ5IiA6ICJvZ25qZW5tIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDcwNzUzOTUwLAogICAgInNiZzpyZXZpc2lvbiIgOiA4LAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6ICJDaGFuZ2VkIGdsb2IiCiAgfSwgewogICAgInNiZzptb2RpZmllZEJ5IiA6ICJvZ25qZW5tIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDcwNzU2NTYxLAogICAgInNiZzpyZXZpc2lvbiIgOiA5LAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6ICJVcGRhdGVkIHNhbXBsZSBpZCB0YWciCiAgfSwgewogICAgInNiZzptb2RpZmllZEJ5IiA6ICJvZ25qZW5tIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDcwNzU3NDA4LAogICAgInNiZzpyZXZpc2lvbiIgOiAxMCwKICAgICJzYmc6cmV2aXNpb25Ob3RlcyIgOiAiQWRkZWQgaW5oZXJpdCBtZXRhZGF0YSIKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogInZsYWRpbWlyayIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ3Mjk5NDIxNSwKICAgICJzYmc6cmV2aXNpb24iIDogMTEsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogIkFkZGVkIHN1cHBvcnQgZm9yIHJlY2VpdmluZyBiYW1zIGFzIGxpc3QgaW5zaWRlIGxpc3QuIgogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAidmxhZGltaXJrIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDczMDAwNjUyLAogICAgInNiZzpyZXZpc2lvbiIgOiAxMiwKICAgICJzYmc6cmV2aXNpb25Ob3RlcyIgOiAiR2xvYiByZXR1cm5zICouYmFtIgogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAidmxhZGltaXJrIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDczMDcxOTcxLAogICAgInNiZzpyZXZpc2lvbiIgOiAxMywKICAgICJzYmc6cmV2aXNpb25Ob3RlcyIgOiAiQWRkZWQgc3VwcG9ydCBmb3IgaW5wdXQuYmFtcyByZWNlaXZlZCBhcyBsaXN0IG9mIG9uZS1lbGVtZW50LWxpc3RzLiIKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogIm9nbmplbm0iLAogICAgInNiZzptb2RpZmllZE9uIiA6IDE0NzMyNTc3NTEsCiAgICAic2JnOnJldmlzaW9uIiA6IDE0LAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6ICJBZGRlZCBwcm90ZWN0aW9uIGZyb20gbnVsbCAoMTApIgogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAidmxhZGltaXJrIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDczNDI0MTY0LAogICAgInNiZzpyZXZpc2lvbiIgOiAxNSwKICAgICJzYmc6cmV2aXNpb25Ob3RlcyIgOiAiUmV0dXJuZWQgcmV2aXNpb24gdGhhdCBhY2NlcHRzIGxpc3Qgb2Ygb25lLWVsZW1lbnQgbGlzdHMuIgogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAib2duamVubSIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ3NTA2NDQxMiwKICAgICJzYmc6cmV2aXNpb24iIDogMTYsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogIkFkZGVkIHJlc291cmNlIHBhcmFtZXRlcnMiCiAgfSwgewogICAgInNiZzptb2RpZmllZEJ5IiA6ICJvZ25qZW5tIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDc1MDY0NjMxLAogICAgInNiZzpyZXZpc2lvbiIgOiAxNywKICAgICJzYmc6cmV2aXNpb25Ob3RlcyIgOiAiQ2hhbmdlZCBtZW0gZXJyb3IiCiAgfSwgewogICAgInNiZzptb2RpZmllZEJ5IiA6ICJ2bGFkaW1pcmsiLAogICAgInNiZzptb2RpZmllZE9uIiA6IDE0NzY3MDY4MjAsCiAgICAic2JnOnJldmlzaW9uIiA6IDE4LAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6ICJBZGRlZCByZXNlcnZlZCBudW1iZXIgb2YgdGhyZWFkcy4iCiAgfSBdLAogICJzYmc6aW1hZ2VfdXJsIiA6IG51bGwsCiAgInNiZzp0b29sa2l0VmVyc2lvbiIgOiAiMC41LjkiLAogICJzYmc6dmFsaWRhdGlvbkVycm9ycyIgOiBbIF0KfQ==",
+  "status" : "COMPLETED",
+  "inputs" : {
+    "bams" : [ {
+      "size" : 1236136305,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/1/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/1/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$e071d57d0440e00da5b450d8bbe09fbb62da2f08",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 120264,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/1/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/1/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$cfd78eec85573ea4830e63c3c29a33bff44a7945",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/1/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/1/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "22.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 6067717222,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/2/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/2/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$f81d72d2e051ebe2b76a55b98727aa3f378d0947",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 599080,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/2/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/2/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$2287def94b35b311e7033734ddbf0a8c5a34b107",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/2/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/2/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "4.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 2938009339,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/3/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/3/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$9b160bd89b20740d1590e799426404dd78be9a92",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 290792,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/3/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/3/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$ade406619213c443f525e277169b6b4a45d8dd77",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/3/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/3/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "14.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 4138802042,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/4/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/4/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$f2335c13c27177baf6c8885571ec1ef097052d93",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 394608,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/4/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/4/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$c0caaa4d858949b29c744893d18eb8b213882fb5",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/4/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/4/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "9.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 2437534307,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/5/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/5/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$1bc2f07366f8f5caceab6426b116feb038f5f2d3",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 240672,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/5/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/5/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$79f9671345b066026bf3e126e62079402d10d58f",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/5/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/5/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "18.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 4930373282,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/6/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/6/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$300142f25a1c851b76d6c6c5706e434710dc7505",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 485064,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/6/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/6/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$ef953fb2b02d5b4f475aa7352eaeee5d75855239",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/6/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/6/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "x.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 4336516003,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/7/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/7/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$ebc26bd45ac3ef270ab23156d3efa090caefbe6d",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 420200,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/7/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/7/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$56b7eb044f7cfe5e75d290ef11659456bf21ac41",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/7/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/7/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "10.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 2750060331,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/8/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/8/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$eaf18dbd093e700e0e384903fa1696e98ff897eb",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 271272,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/8/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/8/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$ed45ca79490c71728a8318d7d89681075e50cd7e",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/8/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/8/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "15.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 5159964771,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/9/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/9/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$2b1e05b2dc2adfac4c3735903fa936de52b36a16",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 497336,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/9/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/9/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$04a11692c454b443159838fad9087e4d9bbe58d0",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/9/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/9/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "7.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 4753959768,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/10/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/10/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$890b493714c7741e730f21b6be58f7bcb31f3b6e",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 457336,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/10/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/10/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$e44c8e888d6b86780b5ed7d9c1512bb6a9c8de5b",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/10/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/10/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "8.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 6375611750,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/11/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/11/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$397f3671c0494d11e35abf7cb11ed8d2061b008b",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 621184,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/11/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/11/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$f13a218404575752f9970fb6f2a3d876ba34849b",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/11/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/11/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "3.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1996447690,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/12/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/12/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$a06257db5c264713db91309c74de7d6a2888963a",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 180168,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/12/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/12/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$2fe0878bc9e92fda5cc5c4edc24a867846be4449",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/12/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/12/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "19.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 3045149493,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/13/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/13/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$2701e1c3e0d2584038b7ddd8ac106b0798098879",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 260400,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/13/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/13/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$235bd1ecbf6395dfd7e48fa69c10a18dd59062df",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/13/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/13/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "16.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 4373172465,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/14/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/14/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$247a85bc812d1558d2b6dcb3be3d664155d8b79e",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 419952,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/14/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/14/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$2ef4519224327e6dba0613c7bdd729d1402eecfd",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/14/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/14/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "11.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 5519269273,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/15/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/15/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$b02ebe3a385f7bd36851bce78a3cf9c8d444a745",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 534088,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/15/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/15/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$d2971b08c0c7f425a1ab55660db341fec4422c64",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/15/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/15/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "6.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 7981013046,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/16/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/16/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$30eba8eaf3e936f194d9ef93bad9482fecbeb969",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 760976,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/16/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/16/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$119aeda4a65c8b98c6abc3c145bb1d4e0ffa4cc8",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/16/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/16/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "2.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 2014474982,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/17/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/17/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$4d126d2864fe79cc145c5ce963cc57fee22e5693",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 192240,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/17/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/17/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$b4bcd4b003dd14e1a2bf625cbc72d4bd39ce6bb5",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/17/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/17/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "20.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1233874354,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/18/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/18/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$9bdd4b0ef82404c512541ea28c7bbe58104581f8",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 119640,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/18/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/18/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$a262ae4a59f789057c5965f6a813129106e177db",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/18/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/18/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "21.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 5846612589,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/19/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/19/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$ea3b56b0869781d96c044ce74c3c726950da6e34",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 567208,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/19/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/19/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$b501b66d0ecc3ef11bb51b9bb47b70e745f2e305",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/19/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/19/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "5.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 4325851828,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/20/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/20/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$40809184762681cd65811325f28b44c19a590d7c",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 416480,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/20/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/20/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$f1d1767945ed3e14b06c430210ba80736715b05f",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/20/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/20/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "12.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 3077542205,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/21/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/21/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$a4abd5ea6989245fc3bbbbb8eebe6e4696496b2f",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 313976,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/21/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/21/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$2a2441034e35e15e842d04fb62fba46751c8716c",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/21/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/21/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "13.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 28668323,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/22/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/22/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$2172e47a80228173259a3850170bf127e1fddbe7",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 64808,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/22/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/22/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$1d9eb4b6366dc5609d542a53fd91fb25b35f4597",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/22/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/22/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "y.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 7676600833,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/23/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/23/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$27da3df18017c77d9b3aff01144660a701991a71",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 732088,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/23/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/23/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$18460433c52234fbb21250e8bca4159314c5e44d",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/23/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/23/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "1.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 2726838697,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/24/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/24/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$6460d6b9a520913d12b9cea0ef29061fa144f716",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 251936,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/24/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/24/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$c38e91da674c5041d2b53ddbe2e057743775673e",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/24/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/24/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "17.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1733212678,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/25/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/25/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam",
+      "checksum" : "sha1$598378adf54e5bfbbf218257080407d13b23f982",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 40544,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/25/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/25/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bam.bai",
+        "checksum" : "sha1$46b8d2eac4f2e12c60cac100c7f8074f7a299066",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/25/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_PrintReads/25/NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "name" : "NA12878-Garvan-Vial1_R.realigned.base_recalibrated.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "intervals_file" : "others.bed",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1887710991,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/Sambamba_View/1/NA12878-Garvan-Vial1_R.filtered.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/Sambamba_View/1/NA12878-Garvan-Vial1_R.filtered.bam",
+      "name" : "NA12878-Garvan-Vial1_R.filtered.bam",
+      "checksum" : "sha1$c97e6d05e23c7bbc1067c025e20bde0527bb1745",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    } ],
+    "num_of_threads" : 7,
+    "reserved_threads" : 7
+  },
+  "outputs" : {
+    "merged_bam" : {
+      "size" : 97295356913,
+      "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/Sambamba_Merge/NA12878_ed.merged.bam",
+      "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/Sambamba_Merge/NA12878_ed.merged.bam",
+      "name" : "NA12878_ed.merged.bam",
+      "checksum" : "sha1$470c4fb5ac030eb85209c59823208dcb4195599e",
+      "secondaryFiles" : [ {
+        "$type" : "File",
+        "size" : 9239848,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/Sambamba_Merge/NA12878_ed.merged.bam.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/Sambamba_Merge/NA12878_ed.merged.bam.bai",
+        "name" : "NA12878_ed.merged.bam.bai",
+        "checksum" : "sha1$2174dfced2d9f8e923da5a57dda0b2c0e51e1211",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      }, {
+        "$type" : "File",
+        "size" : 0,
+        "path" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/Sambamba_Merge/NA12878_ed.merged.bai",
+        "location" : "/media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/Sambamba_Merge/NA12878_ed.merged.bai",
+        "name" : "NA12878_ed.merged.bai",
+        "secondaryFiles" : [ ],
+        "properties" : {
+          "sbg:metadata" : null
+        },
+        "$type" : "File"
+      } ],
+      "properties" : {
+        "sbg:metadata" : {
+          "NUM_READS" : 481514412,
+          "READ_COUNT" : 481514412,
+          "experimental_strategy" : "WGS",
+          "investigation" : "FDA Consistency Challenge",
+          "library_id" : "FDA_GARVAN",
+          "platform" : "Illumina-HiSeq-XTen",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "NA12878",
+          "sample_type" : "Cell Line",
+          "species" : "Homo sapiens"
+        }
+      },
+      "$type" : "File"
+    }
+  },
+  "resources" : {
+    "cpu" : 32,
+    "memMB" : 46967,
+    "diskSpaceMB" : null,
+    "networkAccess" : true,
+    "workingDir" : null,
+    "tmpDir" : null,
+    "outDirSize" : null,
+    "tmpDirSize" : null
+  },
+  "visiblePorts" : [ ]
+}
