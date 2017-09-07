@@ -1,0 +1,44 @@
+{
+        "input_fasta_file": {
+            "metadata": {
+                "species": "Homo sapiens"
+            },
+            "path": "varscan2-workflow-from-bam-v2-3-9_app_rev_29/human_g1k_v37_decoy.fasta",
+            "size": 3189750467,
+            "class": "File",
+            "name": "human_g1k_v37_decoy.fasta"
+        },
+        "Tumor_BAM": {
+            "metadata": {
+                "case_id": "CCLE-HCC1143",
+                "investigation": "CCLE-BRCA",
+                "experimental_strategy": "WXS",
+                "platform": "Illumina",
+                "reference_genome": "human_g1k_v37_decoy",
+                "sample_id": "HCC1143",
+                "quality_scale": "sanger",
+                "sample_type": "Cell Line"
+            },
+            "path": "varscan2-workflow-from-bam-v2-3-9_app_rev_29/C835.HCC1143.2.converted.realigned.base_recalibrated.bam",
+            "size": 5645361631,
+            "class": "File",
+            "name": "C835.HCC1143.2.converted.realigned.base_recalibrated.bam"
+        },
+        "Normal_BAM": {
+            "metadata": {
+                "species": "Homo sapiens",
+                "case_id": "CCLE-HCC1143BL",
+                "investigation": "CCLE-BRCA",
+                "experimental_strategy": "WXS",
+                "platform": "Illumina",
+                "reference_genome": "human_g1k_v37_decoy",
+                "sample_id": "HCC1143BL",
+                "quality_scale": "sanger",
+                "sample_type": "EBV Immortalized Normal"
+            },
+            "path": "varscan2-workflow-from-bam-v2-3-9_app_rev_29/C835.HCC1143_BL.4.converted.realigned.base_recalibrated.bam",
+            "size": 4879348013,
+            "class": "File",
+            "name": "C835.HCC1143_BL.4.converted.realigned.base_recalibrated.bam"
+        }
+}

@@ -1234,7 +1234,7 @@ test20:
       checksum: sha1$0c07cf3046fc7ebbd51b043647c071c2f24bb516
       class: File
       contents: null
-      dirname: null
+      dirnamFUZZZe: null
       location: /media/storage2/workdir/LocalRerun20170822102322/app-2017-08-22-132541.918/root/GATK_CombineVariants/Sample_NA12878.Library_FDA_GARVAN.Platform_Unit_Unknown.combined.vcf
       metadata: {NUM_READS: 481514412, READ_COUNT: 481514412, experimental_strategy: WGS, investigation: 'FDA Consistency Challenge', library_id: FDA_GARVAN, platform: Illumina-HiSeq-XTen, quality_scale: sanger, reference_genome: human_g1k_v37_decoy, sample_id: NA12878, sample_type: 'Cell Line', species: 'Homo sapiens'}
       name: Sample_NA12878.Library_FDA_GARVAN.Platform_Unit_Unknown.combined.vcf
@@ -1287,9 +1287,31 @@ test20:
       secondaryFiles: []
       size: 2184
     summary_text: null
-    
-          
-        
-      
-              
-        
+test21:
+  app: testbacklog/draft-sb-cache/varscan2-workflow-from-bam-v2-3-9_app_rev_29.cwl
+  inputs: testbacklog/draft-sb-cache/varscan2-workflow-from-bam-v2-3-9_app_rev_29.inputs.json
+  cache: testbacklog/draft-sb-cache/varscan2-workflow-from-bam-v2-3-9_app_rev_29/cachedir
+  runtime: 60
+  expected:
+    High_Confidence_INDELs:
+      checksum: sha1$962deda6398fd815f20a8481f64ee3b59f2aa3d5
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/SBG_VCF_Reorder_1/C835.HCC1143.2.converted.realigned.base_recalibrated_11_INDELs.Somatic.hc.and_more.concat.sorted.reordered.vcf
+      metadata: {__inherit__: input_file, case_id: CCLE-HCC1143, experimental_strategy: WXS, investigation: CCLE-BRCA, platform: Illumina, quality_scale: sanger, reference_genome: human_g1k_v37_decoy, sample_id: HCC1143, sample_type: 'Cell Line'}
+      name: C835.HCC1143.2.converted.realigned.base_recalibrated_11_INDELs.Somatic.hc.and_more.concat.sorted.reordered.vcf
+      path: /media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/SBG_VCF_Reorder_1/C835.HCC1143.2.converted.realigned.base_recalibrated_11_INDELs.Somatic.hc.and_more.concat.sorted.reordered.vcf
+      secondaryFiles: []
+      size: 8588
+    High_Confidence_SNPs:
+      checksum: sha1$7de7ce9e9f5957c135c2dc634b4cb1a36650bdd7
+      class: File
+      contents: null
+      dirname: null
+      location: /media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/SBG_VCF_Reorder/C835.HCC1143.2.converted.realigned.base_recalibrated_11_SNPs.filtered.Somatic.hc.and_more.concat.sorted.reordered.vcf
+      metadata: {__inherit__: input_file, case_id: CCLE-HCC1143, experimental_strategy: WXS, investigation: CCLE-BRCA, platform: Illumina, quality_scale: sanger, reference_genome: human_g1k_v37_decoy, sample_id: HCC1143, sample_type: 'Cell Line'}
+      name: C835.HCC1143.2.converted.realigned.base_recalibrated_11_SNPs.filtered.Somatic.hc.and_more.concat.sorted.reordered.vcf
+      path: /media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/SBG_VCF_Reorder/C835.HCC1143.2.converted.realigned.base_recalibrated_11_SNPs.filtered.Somatic.hc.and_more.concat.sorted.reordered.vcf
+      secondaryFiles: []
+      size: 66623

@@ -1,0 +1,595 @@
+{
+  "id" : "17500726-ed0a-438d-854d-004199cda072",
+  "parentId" : "43e67640-59dd-4ac1-bd4b-2a1dcc63c045",
+  "rootId" : "43e67640-59dd-4ac1-bd4b-2a1dcc63c045",
+  "name" : "root.VCFtools_Concat_INDELs",
+  "app" : "data:text/plain;base64,ewogICJjb250cmlidXRvciIgOiBbIF0sCiAgIm93bmVyIiA6IFsgXSwKICAiY3dsVmVyc2lvbiIgOiAic2JnOmRyYWZ0LTIiLAogICJpbnB1dHMiIDogWyB7CiAgICAiaWQiIDogIiNzbWFsbF9vdmVybGFwIiwKICAgICJ0eXBlIiA6IFsgIm51bGwiLCAiaW50IiBdLAogICAgImlucHV0QmluZGluZyIgOiB7CiAgICAgICJwcmVmaXgiIDogIi1zIiwKICAgICAgInNiZzpjbWRJbmNsdWRlIiA6IHRydWUsCiAgICAgICJzZXBhcmF0ZSIgOiB0cnVlCiAgICB9LAogICAgImRlc2NyaXB0aW9uIiA6ICJBbGxvdyBzbWFsbCBvdmVybGFwcyBpbiBOIGNvbnNlY3V0aXZlIGZpbGVzICh3aGVuIHJ1biB3aXRoIHRoZSB0aGlzIG9wdGlvbiwgb25seSBvbmUgY2hyb21vc29tZSBjYW4gYmUgcHJlc2VudCkuIiwKICAgICJzYmc6dG9vbERlZmF1bHRWYWx1ZSIgOiAiTm9uZSIsCiAgICAic2JnOmFsdFByZWZpeCIgOiAiLS1tZXJnZS1zb3J0IiwKICAgICJzYmc6Y2F0ZWdvcnkiIDogIkV4ZWN1dGlvbiIsCiAgICAibGFiZWwiIDogIlNtYWxsIG92ZXJsYXAiCiAgfSwgewogICAgImlkIiA6ICIjcGFkX21pc3NpbmciLAogICAgInR5cGUiIDogWyAibnVsbCIsICJib29sZWFuIiBdLAogICAgImlucHV0QmluZGluZyIgOiB7CiAgICAgICJwcmVmaXgiIDogIi1wIiwKICAgICAgInNiZzpjbWRJbmNsdWRlIiA6IHRydWUsCiAgICAgICJzZXBhcmF0ZSIgOiBmYWxzZQogICAgfSwKICAgICJkZXNjcmlwdGlvbiIgOiAiV3JpdGUgJy4nIGluIHBsYWNlIG9mIG1pc3NpbmcgY29sdW1ucy4gVXNlZnVsIGZvciBqb2luaW5nIGNoclkgd2l0aCB0aGUgcmVzdC4iLAogICAgInNiZzp0b29sRGVmYXVsdFZhbHVlIiA6ICJGQUxTRSIsCiAgICAic2JnOmNhdGVnb3J5IiA6ICJFeGVjdXRpb24iLAogICAgImxhYmVsIiA6ICJQYWQgbWlzc2luZyIKICB9LCB7CiAgICAiaWQiIDogIiNpbnB1dF9maWxlcyIsCiAgICAidHlwZSIgOiBbIHsKICAgICAgIml0ZW1zIiA6ICJGaWxlIiwKICAgICAgInR5cGUiIDogImFycmF5IgogICAgfSBdLAogICAgImlucHV0QmluZGluZyIgOiB7CiAgICAgICJpdGVtU2VwYXJhdG9yIiA6IG51bGwsCiAgICAgICJwb3NpdGlvbiIgOiAyMCwKICAgICAgInNiZzpjbWRJbmNsdWRlIiA6IHRydWUsCiAgICAgICJzZXBhcmF0ZSIgOiBmYWxzZQogICAgfSwKICAgICJkZXNjcmlwdGlvbiIgOiAiSW5wdXQgYXJyYXkgb2YgZmlsZXMgKHZjZiBvciB2Y2YuZ3opLiIsCiAgICAic2JnOmNhdGVnb3J5IiA6ICJGaWxlIElucHV0IiwKICAgICJsYWJlbCIgOiAiSW5wdXQgZmlsZXMiLAogICAgInNiZzpmaWxlVHlwZXMiIDogIlZDRiwgVkNGLkdaIiwKICAgICJyZXF1aXJlZCIgOiB0cnVlCiAgfSwgewogICAgImlkIiA6ICIjZmlsZV9saXN0IiwKICAgICJ0eXBlIiA6IFsgIm51bGwiLCAiRmlsZSIgXSwKICAgICJpbnB1dEJpbmRpbmciIDogewogICAgICAicHJlZml4IiA6ICItZiIsCiAgICAgICJzYmc6Y21kSW5jbHVkZSIgOiB0cnVlLAogICAgICAic2VwYXJhdGUiIDogdHJ1ZQogICAgfSwKICAgICJkZXNjcmlwdGlvbiIgOiAiUmVhZCB0aGUgbGlzdCBvZiBmaWxlcyBmcm9tIGEgZmlsZS4iLAogICAgInNiZzpjYXRlZ29yeSIgOiAiRmlsZSBJbnB1dCIsCiAgICAibGFiZWwiIDogIkxpc3Qgb2YgZmlsZXMiLAogICAgInNiZzpmaWxlVHlwZXMiIDogIlRYVCIsCiAgICAicmVxdWlyZWQiIDogZmFsc2UKICB9LCB7CiAgICAiaWQiIDogIiNjb21wcmVzc2VkIiwKICAgICJ0eXBlIiA6IFsgIm51bGwiLCAiYm9vbGVhbiIgXSwKICAgICJkZXNjcmlwdGlvbiIgOiAiQ2hlY2sgdG8gbWFrZSB0aGUgb3V0cHV0IGNvbXByZXNzZWQgKHVzdWFsbHkgZm9yIGZ1cnRoZXIgcHJvY2Vzc2luZykuIiwKICAgICJzYmc6dG9vbERlZmF1bHRWYWx1ZSIgOiAiRkFMU0UiLAogICAgInNiZzpjYXRlZ29yeSIgOiAiRXhlY3V0aW9uIiwKICAgICJsYWJlbCIgOiAiQ29tcHJlc3NlZCBvdXRwdXQiCiAgfSwgewogICAgImlkIiA6ICIjY2hlY2tfY29sdW1ucyIsCiAgICAidHlwZSIgOiBbICJudWxsIiwgImJvb2xlYW4iIF0sCiAgICAiaW5wdXRCaW5kaW5nIiA6IHsKICAgICAgInBvc2l0aW9uIiA6IDUsCiAgICAgICJwcmVmaXgiIDogIi1jIiwKICAgICAgInNiZzpjbWRJbmNsdWRlIiA6IHRydWUsCiAgICAgICJzZXBhcmF0ZSIgOiB0cnVlCiAgICB9LAogICAgImRlc2NyaXB0aW9uIiA6ICJEbyBub3QgY29uY2F0ZW5hdGUsIG9ubHkgY2hlY2sgaWYgdGhlIGNvbHVtbnMgYWdyZWUuIiwKICAgICJzYmc6dG9vbERlZmF1bHRWYWx1ZSIgOiAiRkFMU0UiLAogICAgInNiZzphbHRQcmVmaXgiIDogIi0tY2hlY2tfY29sdW1ucyIsCiAgICAic2JnOmNhdGVnb3J5IiA6ICJFeGVjdXRpb24iLAogICAgImxhYmVsIiA6ICJDaGVjayBjb2x1bW5zIgogIH0gXSwKICAib3V0cHV0cyIgOiBbIHsKICAgICJpZCIgOiAiI291dHB1dF9maWxlIiwKICAgICJ0eXBlIiA6IFsgIm51bGwiLCAiRmlsZSIgXSwKICAgICJvdXRwdXRCaW5kaW5nIiA6IHsKICAgICAgImdsb2IiIDogewogICAgICAgICJjbGFzcyIgOiAiRXhwcmVzc2lvbiIsCiAgICAgICAgImVuZ2luZSIgOiAiI2N3bC1qcy1lbmdpbmUiLAogICAgICAgICJzY3JpcHQiIDogIntcbiAgICBmdW5jdGlvbiBmbGF0dGVuKGFycmF5KXtcbiAgXG5cbiAgXG4gIGZvcihpPTA7aTxhcnJheS5sZW5ndGg7aSsrKSB7XG4gICAgaWYgKGFycmF5W2ldIGluc3RhbmNlb2YgQXJyYXkpIHtcbiAgICBcdGFycmF5ID0gYXJyYXkuY29uY2F0KGFycmF5W2ldKVxuICAgICAgICBhcnJheS5zcGxpY2UoaSwgMSlcbiAgICAgICAgaSAtPSAxXG4gICAgfVxuICB9XG4gIFxuICByZXR1cm4gYXJyYXlcbiAgXG59XG4gIFxuICBpbnAgPSAkam9iLmlucHV0cy5pbnB1dF9maWxlc1xuICBpbnAgPSBmbGF0dGVuKFtdLmNvbmNhdCggaW5wICkpO1xuICBcbiAgaWYgKGlucC5sZW5ndGggPiAxKSB7XG4gICAgIHN1Zml4ID0gXCJhbmRfbW9yZS5jb25jYXRcIlxuICB9IGVsc2Uge1xuICAgICBzdWZpeCA9IFwiY29uY2F0XCJcbiAgfVxuICBcbiAgc3VmaXhfZXh0ID0gXCJ2Y2ZcIjtcbiAgZmlsZXBhdGggPSBpbnBbMF0ucGF0aFxuICBmaWxlbmFtZSA9IGZpbGVwYXRoLnNwbGl0KFwiL1wiKS5wb3AoKVxuICBcbiAgaWYgKGZpbGVuYW1lLmxhc3RJbmRleE9mKFwiLnZjZi5nelwiKSAhPSAtMSkge1xuICAgIGJhc2VuYW1lID0gZmlsZW5hbWUuc3Vic3RyKDAsZmlsZW5hbWUubGFzdEluZGV4T2YoXCIudmNmLmd6XCIpKVxuICB9IGVsc2Uge1xuICAgIGJhc2VuYW1lID0gZmlsZW5hbWUuc3Vic3RyKDAsZmlsZW5hbWUubGFzdEluZGV4T2YoXCIuXCIpKVxuICB9XG5cbiAgbmV3X2ZpbGVuYW1lID0gYmFzZW5hbWUgKyBcIi5cIiArIHN1Zml4ICsgXCIuXCIgKyBzdWZpeF9leHQ7XG5cbiAgaWYgKCRqb2IuaW5wdXRzLmNvbXByZXNzZWQpIHtcblxuICBcdHJldHVybiBuZXdfZmlsZW5hbWUgKyAnLmd6J1xuICAgICAgXG4gIH0gZWxzZSB7XG4gIFxuICBcdHJldHVybiBuZXdfZmlsZW5hbWVcbiAgfVxufSIKICAgICAgfSwKICAgICAgInNiZzppbmhlcml0TWV0YWRhdGFGcm9tIiA6ICIjaW5wdXRfZmlsZXMiCiAgICB9LAogICAgImRlc2NyaXB0aW9uIiA6ICJDb25jYXRlbmF0ZWQgZmlsZXMgZnJvbSB0aGUgaW5wdXQgYXMgYSBzaW5nbGUgdmNmIGZpbGUuIiwKICAgICJsYWJlbCIgOiAiQ29uY2F0ZW5hdGVkIHZjZiBmaWxlIiwKICAgICJzYmc6ZmlsZVR5cGVzIiA6ICJWQ0YsVkNGLkdaIgogIH0gXSwKICAiaGludHMiIDogWyB7CiAgICAiY2xhc3MiIDogIkRvY2tlclJlcXVpcmVtZW50IiwKICAgICJkb2NrZXJQdWxsIiA6ICJpbWFnZXMuc2JnZW5vbWljcy5jb20vb2duamVubS92Y2Z0b29sczowLjEuMTQiLAogICAgImRvY2tlckltYWdlSWQiIDogIjU0Y2I4MjNiYTI1YSIKICB9LCB7CiAgICAiY2xhc3MiIDogInNiZzpDUFVSZXF1aXJlbWVudCIsCiAgICAidmFsdWUiIDogMQogIH0sIHsKICAgICJjbGFzcyIgOiAic2JnOk1lbVJlcXVpcmVtZW50IiwKICAgICJ2YWx1ZSIgOiAxMDAwCiAgfSwgewogICAgImNsYXNzIiA6ICJzYmc6QVdTSW5zdGFuY2VUeXBlIiwKICAgICJ2YWx1ZSIgOiAiYzMuOHhsYXJnZSIKICB9LCB7CiAgICAiY2xhc3MiIDogInNiZzpHb29nbGVJbnN0YW5jZVR5cGUiLAogICAgInZhbHVlIiA6ICJuMS1zdGFuZGFyZC0zMjtwZC1zc2Q7NDA5NiIKICB9IF0sCiAgInJlcXVpcmVtZW50cyIgOiBbIHsKICAgICJjbGFzcyIgOiAiRXhwcmVzc2lvbkVuZ2luZVJlcXVpcmVtZW50IiwKICAgICJyZXF1aXJlbWVudHMiIDogWyB7CiAgICAgICJjbGFzcyIgOiAiRG9ja2VyUmVxdWlyZW1lbnQiLAogICAgICAiZG9ja2VyUHVsbCIgOiAicmFiaXgvanMtZW5naW5lIgogICAgfSBdLAogICAgImlkIiA6ICIjY3dsLWpzLWVuZ2luZSIsCiAgICAiZW5naW5lQ29tbWFuZCIgOiAiY3dsLWVuZ2luZS5qcyIKICB9IF0sCiAgInN1Y2Nlc3NDb2RlcyIgOiBbIF0sCiAgInN0ZGluIiA6ICIiLAogICJzdGRvdXQiIDogIiIsCiAgImJhc2VDb21tYW5kIiA6IFsgInZjZi1jb25jYXQiIF0sCiAgImFyZ3VtZW50cyIgOiBbIHsKICAgICJwb3NpdGlvbiIgOiA1MCwKICAgICJzZXBhcmF0ZSIgOiB0cnVlLAogICAgInZhbHVlRnJvbSIgOiB7CiAgICAgICJjbGFzcyIgOiAiRXhwcmVzc2lvbiIsCiAgICAgICJlbmdpbmUiIDogIiNjd2wtanMtZW5naW5lIiwKICAgICAgInNjcmlwdCIgOiAie1xuICAgICAgZnVuY3Rpb24gZmxhdHRlbihhcnJheSl7XG4gIFxuXG4gIFxuICBmb3IoaT0wO2k8YXJyYXkubGVuZ3RoO2krKykge1xuICAgIGlmIChhcnJheVtpXSBpbnN0YW5jZW9mIEFycmF5KSB7XG4gICAgXHRhcnJheSA9IGFycmF5LmNvbmNhdChhcnJheVtpXSlcbiAgICAgICAgYXJyYXkuc3BsaWNlKGksIDEpXG4gICAgICAgIGkgLT0gMVxuICAgIH1cbiAgfVxuICBcbiAgcmV0dXJuIGFycmF5XG4gIFxufVxuICBcbiAgaW5wID0gJGpvYi5pbnB1dHMuaW5wdXRfZmlsZXNcbiAgaW5wID0gZmxhdHRlbihbXS5jb25jYXQoIGlucCApKTtcbiAgXG4gIGlmIChpbnAubGVuZ3RoID4gMSkge1xuICAgICBzdWZpeCA9IFwiYW5kX21vcmUuY29uY2F0XCJcbiAgfSBlbHNlIHtcbiAgICAgc3VmaXggPSBcImNvbmNhdFwiXG4gIH1cbiAgXG4gIHN1Zml4X2V4dCA9IFwidmNmXCI7XG4gIGZpbGVwYXRoID0gaW5wWzBdLnBhdGhcbiAgZmlsZW5hbWUgPSBmaWxlcGF0aC5zcGxpdChcIi9cIikucG9wKClcbiAgXG4gIGlmIChmaWxlbmFtZS5sYXN0SW5kZXhPZihcIi52Y2YuZ3pcIikgIT0gLTEpIHtcbiAgICBiYXNlbmFtZSA9IGZpbGVuYW1lLnN1YnN0cigwLGZpbGVuYW1lLmxhc3RJbmRleE9mKFwiLnZjZi5nelwiKSlcbiAgfSBlbHNlIHtcbiAgICBiYXNlbmFtZSA9IGZpbGVuYW1lLnN1YnN0cigwLGZpbGVuYW1lLmxhc3RJbmRleE9mKFwiLlwiKSlcbiAgfVxuXG4gIG5ld19maWxlbmFtZSA9IGJhc2VuYW1lICsgXCIuXCIgKyBzdWZpeCArIFwiLlwiICsgc3VmaXhfZXh0O1xuXG4gIHJldHVybiAnPiAnICsgbmV3X2ZpbGVuYW1lXG4gIFxufSIKICAgIH0KICB9LCB7CiAgICAicG9zaXRpb24iIDogMTAwLAogICAgInNlcGFyYXRlIiA6IHRydWUsCiAgICAidmFsdWVGcm9tIiA6IHsKICAgICAgImNsYXNzIiA6ICJFeHByZXNzaW9uIiwKICAgICAgImVuZ2luZSIgOiAiI2N3bC1qcy1lbmdpbmUiLAogICAgICAic2NyaXB0IiA6ICJ7XG4gICAgICBmdW5jdGlvbiBmbGF0dGVuKGFycmF5KXtcbiAgXG5cbiAgXG4gIGZvcihpPTA7aTxhcnJheS5sZW5ndGg7aSsrKSB7XG4gICAgaWYgKGFycmF5W2ldIGluc3RhbmNlb2YgQXJyYXkpIHtcbiAgICBcdGFycmF5ID0gYXJyYXkuY29uY2F0KGFycmF5W2ldKVxuICAgICAgICBhcnJheS5zcGxpY2UoaSwgMSlcbiAgICAgICAgaSAtPSAxXG4gICAgfVxuICB9XG4gIFxuICByZXR1cm4gYXJyYXlcbiAgXG59XG4gIFxuICBpbnAgPSAkam9iLmlucHV0cy5pbnB1dF9maWxlc1xuICBpbnAgPSBmbGF0dGVuKFtdLmNvbmNhdCggaW5wICkpO1xuICBcbiAgaWYgKGlucC5sZW5ndGggPiAxKSB7XG4gICAgIHN1Zml4ID0gXCJhbmRfbW9yZS5jb25jYXRcIlxuICB9IGVsc2Uge1xuICAgICBzdWZpeCA9IFwiY29uY2F0XCJcbiAgfVxuICBcbiAgc3VmaXhfZXh0ID0gXCJ2Y2ZcIjtcbiAgZmlsZXBhdGggPSBpbnBbMF0ucGF0aFxuICBmaWxlbmFtZSA9IGZpbGVwYXRoLnNwbGl0KFwiL1wiKS5wb3AoKVxuICBcbiAgaWYgKGZpbGVuYW1lLmxhc3RJbmRleE9mKFwiLnZjZi5nelwiKSAhPSAtMSkge1xuICAgIGJhc2VuYW1lID0gZmlsZW5hbWUuc3Vic3RyKDAsZmlsZW5hbWUubGFzdEluZGV4T2YoXCIudmNmLmd6XCIpKVxuICB9IGVsc2Uge1xuICAgIGJhc2VuYW1lID0gZmlsZW5hbWUuc3Vic3RyKDAsZmlsZW5hbWUubGFzdEluZGV4T2YoXCIuXCIpKVxuICB9XG5cbiAgbmV3X2ZpbGVuYW1lID0gYmFzZW5hbWUgKyBcIi5cIiArIHN1Zml4ICsgXCIuXCIgKyBzdWZpeF9leHQ7XG5cbiAgaWYgKCRqb2IuaW5wdXRzLmNvbXByZXNzZWQpIHtcblxuICBcdHJldHVybiAnJiYgYmd6aXAgLWMgLWYgJyArIG5ld19maWxlbmFtZSArICcgPiAnICsgbmV3X2ZpbGVuYW1lICsgJy5neidcbiAgICAgIFxuICB9IGVsc2Uge1xuICAgIFxuICAgIHJldHVybiAnJ1xuICB9XG59IgogICAgfQogIH0gXSwKICAic2JnOnJldmlzaW9uIiA6IDksCiAgInNiZzpjYXRlZ29yaWVzIiA6IFsgIlZDRi1Qcm9jZXNzaW5nIiBdLAogICJkZXNjcmlwdGlvbiIgOiAiVkNGdG9vbHMgY29uY2F0IGNvbmNhdGVuYXRlcyBWQ0YgZmlsZXMgKGZvciBleGFtcGxlLCBzcGxpdHRpbmcgYnkgY2hyb21vc29tZSkuIE5vdGUgdGhhdCB0aGUgaW5wdXQgYW5kIG91dHB1dCBWQ0ZzIHdpbGwgaGF2ZSB0aGUgc2FtZSBudW1iZXIgb2YgY29sdW1ucy4gVGhlIHNjcmlwdCBkb2VzIG5vdCBtZXJnZSBWQ0ZzIGJ5IHBvc2l0aW9uIChzZWUgYWxzbyB2Y2YtbWVyZ2UpLlxuXG5JbiB0aGUgZGVmYXVsdCBtb2RlLCB0aGlzIHRvb2wgb25seSBjaGVja3MgdGhhdCBhbGwgZmlsZXMgaGF2ZSB0aGUgc2FtZSBjb2x1bW5zLiBXaGVuIHJ1biB3aXRoIHRoZSAtcyBvcHRpb24sIGl0IHdpbGwgcGVyZm9ybSBhIHBhcnRpYWwgbWVyZ2Ugc29ydCBhbmQgbG9vayBhdCBhIGxpbWl0ZWQgbnVtYmVyIG9mIG9wZW4gZmlsZXMgc2ltdWx0YW5lb3VzbHkuIiwKICAic2JnOmNyZWF0ZWRPbiIgOiAxNDUwOTExNjE1LAogICJzYmc6Y29udHJpYnV0b3JzIiA6IFsgImJpeC1kZW1vIiwgIm9nbmplbm0iIF0sCiAgInNiZzp0b29sa2l0IiA6ICJWQ0Z0b29scyIsCiAgInNiZzppZCIgOiAiYWRtaW4vc2JnLXB1YmxpYy1kYXRhL3ZjZnRvb2xzLWNvbmNhdC0wLTEtMTQvOSIsCiAgInNiZzpqb2IiIDogewogICAgImFsbG9jYXRlZFJlc291cmNlcyIgOiB7CiAgICAgICJjcHUiIDogMSwKICAgICAgIm1lbSIgOiAxMDAwCiAgICB9LAogICAgImlucHV0cyIgOiB7CiAgICAgICJjaGVja19jb2x1bW5zIiA6IHRydWUsCiAgICAgICJjb21wcmVzc2VkIiA6IHRydWUsCiAgICAgICJmaWxlX2xpc3QiIDogewogICAgICAgICJjbGFzcyIgOiAiRmlsZSIsCiAgICAgICAgInBhdGgiIDogImZpbGVfbGlzdC5leHQiLAogICAgICAgICJzZWNvbmRhcnlGaWxlcyIgOiBbIF0sCiAgICAgICAgInNpemUiIDogMAogICAgICB9LAogICAgICAiaW5wdXRfZmlsZXMiIDogWyB7CiAgICAgICAgInBhdGgiIDogInNhbXBsZTEudmNmIgogICAgICB9LCB7CiAgICAgICAgInBhdGgiIDogInNhbXBsZTIudmNmIgogICAgICB9IF0sCiAgICAgICJwYWRfbWlzc2luZyIgOiB0cnVlLAogICAgICAic21hbGxfb3ZlcmxhcCIgOiAwCiAgICB9CiAgfSwKICAic2JnOnNiZ01haW50YWluZWQiIDogZmFsc2UsCiAgInRlbXBvcmFyeUZhaWxDb2RlcyIgOiBbIF0sCiAgInNiZzpsaW5rcyIgOiBbIHsKICAgICJpZCIgOiAiaHR0cHM6Ly92Y2Z0b29scy5naXRodWIuaW8iLAogICAgImxhYmVsIiA6ICJIb21lcGFnZSIKICB9LCB7CiAgICAiaWQiIDogImh0dHBzOi8vZ2l0aHViLmNvbS92Y2Z0b29scy92Y2Z0b29scyIsCiAgICAibGFiZWwiIDogIlNvdXJjZSBjb2RlIgogIH0sIHsKICAgICJpZCIgOiAiaHR0cDovL2Jpb2luZm9ybWF0aWNzLm94Zm9yZGpvdXJuYWxzLm9yZy9jb250ZW50LzI3LzE1LzIxNTYiLAogICAgImxhYmVsIiA6ICJQdWJsaWNhdGlvbnMiCiAgfSwgewogICAgImlkIiA6ICJodHRwczovL2dpdGh1Yi5jb20vdmNmdG9vbHMvdmNmdG9vbHMvemlwYmFsbC9tYXN0ZXIiLAogICAgImxhYmVsIiA6ICJEb3dubG9hZCIKICB9LCB7CiAgICAiaWQiIDogImh0dHBzOi8vc291cmNlZm9yZ2UubmV0L3AvdmNmdG9vbHMvd2lraS9Ib21lLyIsCiAgICAibGFiZWwiIDogIldpa2kiCiAgfSBdLAogICJzYmc6dG9vbEF1dGhvciIgOiAiQWRhbSBBdXRvbiwgUGV0ciBEYW5lY2VrLCBBbnRob255IE1hcmNrZXR0YSIsCiAgImlkIiA6ICJiaXgtZGVtby92Y2Z0b29scy0wLTEtMTQtZGVtby92Y2Z0b29scy1jb25jYXQtMC0xLTE0LzkiLAogICJjbGFzcyIgOiAiQ29tbWFuZExpbmVUb29sIiwKICAic2JnOnByb2plY3QiIDogImJpeC1kZW1vL3ZjZnRvb2xzLTAtMS0xNC1kZW1vIiwKICAic2JnOnJldmlzaW9uTm90ZXMiIDogIkFkZGVkIGZsYXR0ZW5zIiwKICAic2JnOm1vZGlmaWVkT24iIDogMTQ4MDQzMTU0MywKICAic2JnOmNtZFByZXZpZXciIDogInZjZi1jb25jYXQgc2FtcGxlMS52Y2Ygc2FtcGxlMi52Y2YgID4gc2FtcGxlMS5hbmRfbW9yZS5jb25jYXQudmNmICAmJiBiZ3ppcCAtYyAtZiBzYW1wbGUxLmFuZF9tb3JlLmNvbmNhdC52Y2YgPiBzYW1wbGUxLmFuZF9tb3JlLmNvbmNhdC52Y2YuZ3oiLAogICJzYmc6bGljZW5zZSIgOiAiR05VIEdlbmVyYWwgUHVibGljIExpY2Vuc2UgdmVyc2lvbiAzLjAgKEdQTHYzKSIsCiAgImxhYmVsIiA6ICJWQ0Z0b29scyBDb25jYXQgSU5ERUxzIiwKICAic2JnOm1vZGlmaWVkQnkiIDogIm9nbmplbm0iLAogICJzYmc6bGF0ZXN0UmV2aXNpb24iIDogOSwKICAic2JnOmNyZWF0ZWRCeSIgOiAiYml4LWRlbW8iLAogICJ4IiA6IDEzNzUuMDAwMTQyNDc4NjMxMiwKICAieSIgOiA0MjkuMDQ3NjY5NzEyMzc5OTYsCiAgInNiZzppbWFnZV91cmwiIDogbnVsbCwKICAic2JnOnJldmlzaW9uc0luZm8iIDogWyB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogImJpeC1kZW1vIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDUwOTExNjE1LAogICAgInNiZzpyZXZpc2lvbiIgOiAwLAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6IG51bGwKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogImJpeC1kZW1vIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDUwOTExNjE2LAogICAgInNiZzpyZXZpc2lvbiIgOiAxLAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6IG51bGwKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogImJpeC1kZW1vIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDUwOTExNjE3LAogICAgInNiZzpyZXZpc2lvbiIgOiAyLAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6IG51bGwKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogImJpeC1kZW1vIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDUwOTExNjE3LAogICAgInNiZzpyZXZpc2lvbiIgOiAzLAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6IG51bGwKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogImJpeC1kZW1vIiwKICAgICJzYmc6bW9kaWZpZWRPbiIgOiAxNDUwOTExNjE4LAogICAgInNiZzpyZXZpc2lvbiIgOiA0LAogICAgInNiZzpyZXZpc2lvbk5vdGVzIiA6IG51bGwKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogIm9nbmplbm0iLAogICAgInNiZzptb2RpZmllZE9uIiA6IDE0NzI4MjYwNjMsCiAgICAic2JnOnJldmlzaW9uIiA6IDUsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogIkFkZGVkIC1jIG9wdGlvbiIKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogIm9nbmplbm0iLAogICAgInNiZzptb2RpZmllZE9uIiA6IDE0NzI4MjYxNjAsCiAgICAic2JnOnJldmlzaW9uIiA6IDYsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogIkNoYW5nZWQgaW5mbyIKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogIm9nbmplbm0iLAogICAgInNiZzptb2RpZmllZE9uIiA6IDE0NzQ1OTE1MjEsCiAgICAic2JnOnJldmlzaW9uIiA6IDcsCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogIkNoYW5nZWQgY29uY2F0IgogIH0sIHsKICAgICJzYmc6bW9kaWZpZWRCeSIgOiAib2duamVubSIsCiAgICAic2JnOm1vZGlmaWVkT24iIDogMTQ4MDQzMTE0NCwKICAgICJzYmc6cmV2aXNpb24iIDogOCwKICAgICJzYmc6cmV2aXNpb25Ob3RlcyIgOiAiT3ZlcmhhdWwgZG9uZSIKICB9LCB7CiAgICAic2JnOm1vZGlmaWVkQnkiIDogIm9nbmplbm0iLAogICAgInNiZzptb2RpZmllZE9uIiA6IDE0ODA0MzE1NDMsCiAgICAic2JnOnJldmlzaW9uIiA6IDksCiAgICAic2JnOnJldmlzaW9uTm90ZXMiIDogIkFkZGVkIGZsYXR0ZW5zIgogIH0gXSwKICAic2JnOnRvb2xraXRWZXJzaW9uIiA6ICIwLjEuMTQiLAogICJzYmc6dmFsaWRhdGlvbkVycm9ycyIgOiBbIF0KfQ==",
+  "status" : "COMPLETED",
+  "inputs" : {
+    "input_files" : [ {
+      "size" : 2016,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/1/C835.HCC1143.2.converted.realigned.base_recalibrated_11_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/1/C835.HCC1143.2.converted.realigned.base_recalibrated_11_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_11_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$3a68b0bcf343c4c75927803bed11f09e84a055b3",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "11",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1549,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/2/C835.HCC1143.2.converted.realigned.base_recalibrated_10_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/2/C835.HCC1143.2.converted.realigned.base_recalibrated_10_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_10_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$323a1a1def0da5e813c37a341b218996a3005230",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "10",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 2346,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/3/C835.HCC1143.2.converted.realigned.base_recalibrated_12_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/3/C835.HCC1143.2.converted.realigned.base_recalibrated_12_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_12_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$ab7414e593d6d03eaad4d425ec2b4386603e4118",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "12",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1549,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/4/C835.HCC1143.2.converted.realigned.base_recalibrated_13_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/4/C835.HCC1143.2.converted.realigned.base_recalibrated_13_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_13_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$323a1a1def0da5e813c37a341b218996a3005230",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "13",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1549,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/5/C835.HCC1143.2.converted.realigned.base_recalibrated_20_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/5/C835.HCC1143.2.converted.realigned.base_recalibrated_20_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_20_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$323a1a1def0da5e813c37a341b218996a3005230",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "20",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1728,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/6/C835.HCC1143.2.converted.realigned.base_recalibrated_21_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/6/C835.HCC1143.2.converted.realigned.base_recalibrated_21_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_21_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$c461b2718444742fd93860af4f774c56938719ef",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "21",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1549,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/7/C835.HCC1143.2.converted.realigned.base_recalibrated_22_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/7/C835.HCC1143.2.converted.realigned.base_recalibrated_22_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_22_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$323a1a1def0da5e813c37a341b218996a3005230",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "22",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1549,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/8/C835.HCC1143.2.converted.realigned.base_recalibrated_others_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/8/C835.HCC1143.2.converted.realigned.base_recalibrated_others_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_others_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$323a1a1def0da5e813c37a341b218996a3005230",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "others",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1880,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/9/C835.HCC1143.2.converted.realigned.base_recalibrated_1_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/9/C835.HCC1143.2.converted.realigned.base_recalibrated_1_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_1_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$1f9dd2d3e4af2f2524e046c7eeca882471a744ba",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "1",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1549,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/10/C835.HCC1143.2.converted.realigned.base_recalibrated_4_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/10/C835.HCC1143.2.converted.realigned.base_recalibrated_4_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_4_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$323a1a1def0da5e813c37a341b218996a3005230",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "4",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 2012,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/11/C835.HCC1143.2.converted.realigned.base_recalibrated_2_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/11/C835.HCC1143.2.converted.realigned.base_recalibrated_2_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_2_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$7122d6813ef4688a472f7a3d96380f6fcde13de1",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "2",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 2316,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/12/C835.HCC1143.2.converted.realigned.base_recalibrated_3_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/12/C835.HCC1143.2.converted.realigned.base_recalibrated_3_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_3_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$ec973cd7efdc184f5fcabb28d3eaa188c64fbbb9",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "3",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 2022,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/13/C835.HCC1143.2.converted.realigned.base_recalibrated_x_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/13/C835.HCC1143.2.converted.realigned.base_recalibrated_x_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_x_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$4833c632b6561dee9aa7e6b05aac6e2d62c2ff90",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "x",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1549,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/14/C835.HCC1143.2.converted.realigned.base_recalibrated_y_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/14/C835.HCC1143.2.converted.realigned.base_recalibrated_y_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_y_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$323a1a1def0da5e813c37a341b218996a3005230",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "y",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 2299,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/15/C835.HCC1143.2.converted.realigned.base_recalibrated_7_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/15/C835.HCC1143.2.converted.realigned.base_recalibrated_7_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_7_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$801a7dbc0d5a5b2213f178baf67a0834524c0159",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "7",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1702,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/16/C835.HCC1143.2.converted.realigned.base_recalibrated_8_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/16/C835.HCC1143.2.converted.realigned.base_recalibrated_8_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_8_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$2c3ca6f80ce5adba0432f000c360bef2a771dceb",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "8",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1549,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/17/C835.HCC1143.2.converted.realigned.base_recalibrated_9_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/17/C835.HCC1143.2.converted.realigned.base_recalibrated_9_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_9_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$323a1a1def0da5e813c37a341b218996a3005230",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "9",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 2182,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/18/C835.HCC1143.2.converted.realigned.base_recalibrated_6_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/18/C835.HCC1143.2.converted.realigned.base_recalibrated_6_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_6_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$d01bc39a609df57319c70566e75ff722fb6d2f22",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "6",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 2023,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/19/C835.HCC1143.2.converted.realigned.base_recalibrated_5_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/19/C835.HCC1143.2.converted.realigned.base_recalibrated_5_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_5_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$d11974e24191db62a0b0be97df614e7a070cc518",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "5",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1549,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/20/C835.HCC1143.2.converted.realigned.base_recalibrated_18_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/20/C835.HCC1143.2.converted.realigned.base_recalibrated_18_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_18_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$323a1a1def0da5e813c37a341b218996a3005230",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "18",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1701,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/21/C835.HCC1143.2.converted.realigned.base_recalibrated_19_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/21/C835.HCC1143.2.converted.realigned.base_recalibrated_19_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_19_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$24e11098006b76c3099bb47582fbf7f806fa0c5b",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "19",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1857,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/22/C835.HCC1143.2.converted.realigned.base_recalibrated_17_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/22/C835.HCC1143.2.converted.realigned.base_recalibrated_17_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_17_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$cbc1730b1d333a48458d5ed20a8c53b024e26df3",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "17",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1873,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/23/C835.HCC1143.2.converted.realigned.base_recalibrated_14_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/23/C835.HCC1143.2.converted.realigned.base_recalibrated_14_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_14_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$acce1ebbdefd0c603c9779ad4844c5875b6ca278",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "14",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 1849,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/24/C835.HCC1143.2.converted.realigned.base_recalibrated_16_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/24/C835.HCC1143.2.converted.realigned.base_recalibrated_16_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_16_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$2d588304062bf7f757f712054c41e7979e78c557",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "16",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }, {
+      "size" : 2017,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/25/C835.HCC1143.2.converted.realigned.base_recalibrated_15_INDELs.Somatic.hc.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VarScan2_ProcessSomatic_INDELs/25/C835.HCC1143.2.converted.realigned.base_recalibrated_15_INDELs.Somatic.hc.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_15_INDELs.Somatic.hc.vcf",
+      "checksum" : "sha1$10a6be3a7a99b9185a84fcad58a5bb5c8f0b4efd",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "ScatteredUsing" : "15",
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    } ]
+  },
+  "outputs" : {
+    "output_file" : {
+      "size" : 8588,
+      "path" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VCFtools_Concat_INDELs/C835.HCC1143.2.converted.realigned.base_recalibrated_11_INDELs.Somatic.hc.and_more.concat.vcf",
+      "location" : "/media/storage/workdir/LocalRerun20170906151034/app-2017-09-07-094102.781/root/VCFtools_Concat_INDELs/C835.HCC1143.2.converted.realigned.base_recalibrated_11_INDELs.Somatic.hc.and_more.concat.vcf",
+      "name" : "C835.HCC1143.2.converted.realigned.base_recalibrated_11_INDELs.Somatic.hc.and_more.concat.vcf",
+      "checksum" : "sha1$63fd74b4aba0496903c2be86d3d44cef2a9c8bd5",
+      "secondaryFiles" : [ ],
+      "properties" : {
+        "sbg:metadata" : {
+          "__inherit__" : "normal_pileup",
+          "case_id" : "CCLE-HCC1143",
+          "experimental_strategy" : "WXS",
+          "investigation" : "CCLE-BRCA",
+          "platform" : "Illumina",
+          "quality_scale" : "sanger",
+          "reference_genome" : "human_g1k_v37_decoy",
+          "sample_id" : "HCC1143",
+          "sample_type" : "Cell Line"
+        }
+      },
+      "$type" : "File"
+    }
+  },
+  "resources" : {
+    "cpu" : 32,
+    "memMB" : 46967,
+    "diskSpaceMB" : null,
+    "networkAccess" : true,
+    "workingDir" : null,
+    "tmpDir" : null,
+    "outDirSize" : null,
+    "tmpDirSize" : null
+  }
+}
