@@ -5,6 +5,7 @@ import java.io.StringReader;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.mozilla.javascript.Callable;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.NativeJSON;
 import org.mozilla.javascript.Scriptable;
@@ -27,7 +28,13 @@ public class CWLExpressionJavascriptResolver {
 
   public final static int OPTIMIZATION_LEVEL = -1;
   public final static int MAX_STACK_DEPTH = 10;
-
+  
+  static Callable callable = new Callable() {
+    @Override
+    public Object call(Context cx, Scriptable scope, Scriptable thisObj, Object[] args) {
+      return args[1];
+    }
+  };
   /**
    * Evaluate JS script (function or statement)
    */
@@ -37,27 +44,20 @@ public class CWLExpressionJavascriptResolver {
       trimmedExpr = trimmedExpr.substring(1);
     }
     
-    String function = trimmedExpr;
-    if (trimmedExpr.startsWith("{")) {
-      function = "(function()%expr)()";
-      function = function.replace("%expr", trimmedExpr);
-    }
-
     Context cx = Context.enter();
+    cx.setLanguageVersion(Context.VERSION_ES6);
     cx.setOptimizationLevel(OPTIMIZATION_LEVEL);
     cx.setMaximumInterpreterStackDepth(MAX_STACK_DEPTH);
     cx.setClassShutter(new CWLExpressionDenyAllClassShutter());
 
     try {
       Scriptable globalScope = cx.initStandardObjects();
-
       if (engineConfigs != null) {
         for (int i = 0; i < engineConfigs.size(); i++) {
           Reader engineConfigReader = new StringReader(engineConfigs.get(i));
           cx.evaluateReader(globalScope, engineConfigReader, "engineConfig_" + i + ".js", 1, null);
         }
       }
-
       putToScope(EXPR_CONTEXT_NAME, context, cx, globalScope);
       putToScope(EXPR_SELF_NAME, self, cx, globalScope);
       putToScope(EXPR_RUNTIME_NAME, runtime, cx, globalScope);
@@ -65,31 +65,27 @@ public class CWLExpressionJavascriptResolver {
       Scriptable resultScope = cx.newObject(globalScope);
       resultScope.setPrototype(globalScope);
       resultScope.setParentScope(globalScope);
-
-      Object result = cx.evaluateString(resultScope, function, "script", 1, null);
+      Object result = resolve(trimmedExpr, cx, globalScope);
       if (result == null || result instanceof Undefined) {
         return null;
       }
-      
-      Object wrappedResult = Context.javaToJS(result, globalScope);
-      putToScope("$result", wrappedResult, cx, globalScope);
-      ScriptableObject.putProperty(globalScope, "$result", wrappedResult);
-
-      String finalFunction = "(function() { " + "           var result = $result;"
-          + "           var type = result instanceof Array? \"array\" : typeof result;"
-          + "           return JSON.stringify({ \"result\" : result, \"type\" : type }); " + "     })()";
-
-      Scriptable wrapScope = cx.newObject(globalScope);
-      wrapScope.setPrototype(globalScope);
-      wrapScope.setParentScope(globalScope);
-      result = cx.evaluateString(wrapScope, finalFunction, "script", 1, null);
       return castResult(result);
     } catch (Exception e) {
-      String msg = String.format("Failed evaluating expression %s.", expr);
-      throw new CWLExpressionException(msg, e);
+      throw new CWLExpressionException(e.getMessage() + " encountered while resolving expression: " + expr, e);
     } finally {
       Context.exit();
     }
+  }
+
+  private static Object resolve(String trimmedExpr, Context cx, Scriptable resultScope) {
+    String f = "$f=function()";
+    if (trimmedExpr.startsWith("{")) {
+      f += trimmedExpr;
+    } else {
+      f = f + "{return " + trimmedExpr + "}";
+    }
+    cx.evaluateString(resultScope, f, "script", 1, null);
+    return cx.evaluateString(resultScope, "JSON.stringify($f());", "script", 1, null);
   }
 
   /**
@@ -98,13 +94,7 @@ public class CWLExpressionJavascriptResolver {
   private static void putToScope(String name, Object value, Context cx, Scriptable scope) {
     if (value != null) {
       String selfJson = BeanSerializer.serializePartial(value);
-
-      Object json = NativeJSON.parse(cx, scope, selfJson, new org.mozilla.javascript.Callable() {
-        @Override
-        public Object call(Context cx, Scriptable scope, Scriptable thisObj, Object[] args) {
-          return args[1];
-        }
-      });
+      Object json = NativeJSON.parse(cx, scope, selfJson, callable);
       ScriptableObject.putProperty(scope, name, json);
     } else {
       ScriptableObject.putProperty(scope, name, null);
@@ -115,11 +105,8 @@ public class CWLExpressionJavascriptResolver {
    * Cast result to proper Java object
    */
   private static Object castResult(Object result) {
-    if (result == null) {
-      return null;
-    }
     JsonNode node = JSONHelper.readJsonNode(result.toString());
-    return JSONHelper.transform(node.get("result"), false);
+    return JSONHelper.transform(node, false);
   }
 
 }

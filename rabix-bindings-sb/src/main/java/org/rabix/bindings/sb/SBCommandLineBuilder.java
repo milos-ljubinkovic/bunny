@@ -1,6 +1,7 @@
 package org.rabix.bindings.sb;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -45,7 +46,7 @@ public class SBCommandLineBuilder implements ProtocolCommandLineBuilder {
     }
     
     SBCommandLineTool commandLineTool = (SBCommandLineTool) sbJob.getApp();
-    List<CommandLine.Part> commandLineParts = Lists.transform(buildCommandLineParts(sbJob, workingDir, filePathMapper), (obj -> new CommandLine.Part(obj.toString())));
+    List<CommandLine.Part> commandLineParts = Lists.transform(buildCommandLineParts(sbJob, workingDir, filePathMapper), (obj -> new CommandLine.Part(obj.toString(), false)));
 
     String stdin = null;
     try {
@@ -61,9 +62,17 @@ public class SBCommandLineBuilder implements ProtocolCommandLineBuilder {
       throw new BindingException("Failed to extract standard outputs.", e);
     }
 
-    CommandLine commandLine = new CommandLine(commandLineParts, stdin, stdout, null, true);
+    CommandLine commandLine = new CommandLine(commandLineParts, toPath(stdin, workingDir.toPath()), toPath(stdout, workingDir.toPath()), null, true);
     logger.info("Command line built. CommandLine = {}", commandLine);
     return commandLine;
+  }
+  
+  private String toPath(String s, Path workDir) {
+    return StringUtils.isEmpty(s) ? s :  sanitize(workDir.resolve(s).toString());
+  }
+  
+  private String sanitize(String s) {
+      return s.contains(" ") ? "'" + s + "'" : s;
   }
   
   @Override
@@ -285,7 +294,7 @@ public class SBCommandLineBuilder implements ProtocolCommandLineBuilder {
       if (itemSeparator != null) {
         String joinedItems = Joiner.on(itemSeparator).join(flattenedValues);
         if (prefix == null) {
-          return new SBCommandLinePart.Builder(position, isFile).part(joinedItems).build();
+          return new SBCommandLinePart.Builder(position, isFile).keyValue(keyValue).part(joinedItems).build();
         }
         if (StringUtils.isWhitespace(separator) && separator.length() > 0) {
           return new SBCommandLinePart.Builder(position, isFile).keyValue(keyValue).part(prefix).part(joinedItems).build();

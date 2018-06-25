@@ -1,5 +1,7 @@
 package org.rabix.bindings.cwl;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -36,6 +38,17 @@ import org.rabix.bindings.model.requirement.ResourceRequirement;
 
 public class CWLRequirementProvider implements ProtocolRequirementProvider {
 
+  private ResourceRequirement getResourceRequirement(CWLJob cwlJob, CWLResourceRequirement cwlResourceRequirement) throws BindingException {
+    if (cwlResourceRequirement == null) {
+      return null;
+    }
+    try {
+      return new ResourceRequirement(cwlResourceRequirement.getCoresMin(cwlJob), null, cwlResourceRequirement.getRamMin(cwlJob), null, cwlResourceRequirement.getTmpdirMin(cwlJob), null, null);
+    } catch (CWLExpressionException e) {
+      throw new BindingException(e);
+    }
+  }
+
   private DockerContainerRequirement getDockerRequirement(CWLDockerResource cwlDockerResource) {
     if (cwlDockerResource == null) {
       return null;
@@ -56,7 +69,6 @@ public class CWLRequirementProvider implements ProtocolRequirementProvider {
     for (EnvironmentDef envDef : envDefinitions) {
       String key = envDef.getName();
       Object value = envDef.getValue();
-
       try {
         value = CWLExpressionResolver.resolve(value, cwlJob, null);
       } catch (CWLExpressionException e) {
@@ -69,13 +81,16 @@ public class CWLRequirementProvider implements ProtocolRequirementProvider {
     }
     return new EnvironmentVariableRequirement(result);
   }
+  
   private void processFileValue(List<SingleFileRequirement> result, boolean linkEnabled, String entryname, FileValue fileValue) {
     result.add(new FileRequirement.SingleInputFileRequirement((String) entryname, fileValue, linkEnabled));        
     if(fileValue.getSecondaryFiles() !=null)
       for(FileValue secondary: fileValue.getSecondaryFiles()){
+        secondary.setPath(Paths.get(fileValue.getPath()).resolveSibling(secondary.getPath()).toString());
         processFileValue(result, linkEnabled, secondary.getName(), secondary);
     }
   }
+  
   private FileRequirement getFileRequirement(CWLJob cwlJob, CWLInitialWorkDirRequirement initialWorkDirRequirement) throws BindingException {
     if (initialWorkDirRequirement == null) {
       return null;
@@ -95,29 +110,30 @@ public class CWLRequirementProvider implements ProtocolRequirementProvider {
         CWLDirent dirent = (CWLDirent) listingObj;
         
         Object entry = dirent.getEntry();
-        Object entryname = dirent.getEntryname(); // TODO explicit cast
+        String entryname = (String) dirent.getEntryname();
         if (CWLSchemaHelper.isFileFromValue(entry)) {
-          processFileValue(result, !dirent.isWritable(), (String) entryname, CWLFileValueHelper.createFileValue(((CWLDirent) listingObj).getEntry()));
+          FileValue fileValue = CWLFileValueHelper.createFileValue(((CWLDirent) listingObj).getEntry());
+          processFileValue(result, !dirent.isWritable(), entryname == null ? fileValue.getName() : entryname, fileValue);
           continue;
         }
         if (CWLSchemaHelper.isDirectoryFromValue(entry)) {
           DirectoryValue directoryValue = CWLDirectoryValueHelper.createDirectoryValue(((CWLDirent) listingObj).getEntry());
-          result.add(new FileRequirement.SingleInputDirectoryRequirement((String) entryname, directoryValue, !dirent.isWritable()));
+          result.add(new FileRequirement.SingleInputDirectoryRequirement(entryname == null ? directoryValue.getName() : entryname, directoryValue, !dirent.isWritable()));
           continue;
         }
         if (entry instanceof String) {
-          result.add(new FileRequirement.SingleTextFileRequirement((String) entryname, (String) entry));    // TODO discuss cast
+          result.add(new FileRequirement.SingleTextFileRequirement(entryname, (String) entry));
         }
         continue;
       }
       if (listingObj instanceof FileValue) {
         FileValue fileValue = (FileValue) listingObj;
+        String runtime = cwlJob.getRuntime().getOutdir();
+        if (runtime != null) {
+          Path workDir = Paths.get(runtime);
+          fileValue.setPath(workDir.resolve(fileValue.getName()).toString());
+        }
         processFileValue(result, false, (String) fileValue.getName(), (FileValue) listingObj);
-        continue;
-      }
-      if (listingObj instanceof DirectoryValue) {
-        DirectoryValue directoryValue = (DirectoryValue) listingObj;
-        result.add(new FileRequirement.SingleInputDirectoryRequirement(directoryValue.getName(), directoryValue, false));
         continue;
       }
       throw new BindingException("Failed to create file requirements. Unknown value " + listingObj);
@@ -129,22 +145,21 @@ public class CWLRequirementProvider implements ProtocolRequirementProvider {
   public List<Requirement> getRequirements(Job job) throws BindingException {
     CWLJob cwlJob = CWLJobHelper.getCWLJob(job);
     CWLJobApp cwlJobApp = cwlJob.getApp();
-    return convertRequirements(job, cwlJobApp.getRequirements());
+    return convertRequirements(cwlJob, cwlJobApp.getRequirements());
   }
 
   @Override
   public List<Requirement> getHints(Job job) throws BindingException {
     CWLJob cwlJob = CWLJobHelper.getCWLJob(job);
     CWLJobApp cwlJobApp = cwlJob.getApp();
-    return convertRequirements(job, cwlJobApp.getHints());
+    return convertRequirements(cwlJob, cwlJobApp.getHints());
   }
 
-  private List<Requirement> convertRequirements(Job job, List<CWLResource> resources) throws BindingException {
+  private List<Requirement> convertRequirements(CWLJob cwlJob, List<CWLResource> resources) throws BindingException {
     EnvironmentVariableRequirement environmentVariableRequirement = null;
     if (resources == null) {
       return Collections.<Requirement> emptyList();
     }
-    CWLJob cwlJob = CWLJobHelper.getCWLJob(job);
 
     List<Requirement> result = new ArrayList<>();
     for (CWLResource cwlResource : resources) {
@@ -161,26 +176,20 @@ public class CWLRequirementProvider implements ProtocolRequirementProvider {
         result.add(getFileRequirement(cwlJob, (CWLInitialWorkDirRequirement) cwlResource));
         continue;
       }
+      if (cwlResource instanceof CWLResourceRequirement) {
+        result.add(getResourceRequirement(cwlJob, (CWLResourceRequirement) cwlResource));
+        continue;
+      }
       result.add(new CustomRequirement(cwlResource.getType(), cwlResource.getRaw()));
     }
     return result;
   }
-  
 
   @Override
   public ResourceRequirement getResourceRequirement(Job job) throws BindingException {
     CWLJob cwlJob = CWLJobHelper.getCWLJob(job);
-    
     CWLResourceRequirement cwlResourceRequirement = cwlJob.getApp().getResourceRequirement();
-
-    if (cwlResourceRequirement == null) {
-      return null;
-    }
-    try {
-      return new ResourceRequirement(cwlResourceRequirement.getCoresMin(cwlJob), null, cwlResourceRequirement.getRamMin(cwlJob), null, null, null, null);
-    } catch (CWLExpressionException e) {
-      throw new BindingException(e);
-    }
+    return getResourceRequirement(cwlJob, cwlResourceRequirement);
   }
 
 }

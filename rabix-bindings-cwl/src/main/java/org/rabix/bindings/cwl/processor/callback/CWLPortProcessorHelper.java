@@ -1,6 +1,7 @@
 package org.rabix.bindings.cwl.processor.callback;
 
-import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Set;
 
@@ -57,31 +58,24 @@ public class CWLPortProcessorHelper {
     try {
       return portProcessor.processOutputs(outputs, new CWLFileValueUpdateProcessorCallback(fileTransformer));
     } catch (CWLPortProcessorException e) {
-      throw new CWLPortProcessorException("Failed to set input file size", e);
+      throw new CWLPortProcessorException(e);
     }
   }
   
   public Map<String, Object> setFileProperties(Map<String, Object> inputs) throws CWLPortProcessorException {
     try {
-      return portProcessor.processInputs(inputs, new CWLFilePropertiesProcessorCallback());
+      String appFileLocation = portProcessor.getJob().getApp().getAppFileLocation();
+      return portProcessor.processInputs(inputs, new CWLFilePropertiesProcessorCallback(Paths.get(appFileLocation == null ? "." : appFileLocation).toAbsolutePath().normalize()));
     } catch (CWLPortProcessorException e) {
-      throw new CWLPortProcessorException("Failed to set input file properties", e);
-    }
-  }
-  
-  public Map<String, Object> setPathsToInputs(Map<String, Object> inputs) throws CWLPortProcessorException {
-    try {
-      return portProcessor.processInputs(inputs, new CWLFileLocationToPathProcessorCallback());
-    } catch (CWLPortProcessorException e) {
-      throw new CWLPortProcessorException("Failed to set paths", e);
+      throw new CWLPortProcessorException(e);
     }
   }
 
-  public Map<String, Object> createFileLiteralFiles(Map<String, Object> inputs, File workingDir) throws CWLPortProcessorException {
+  public Map<String, Object> createFileLiteralFiles(Map<String, Object> inputs, Path workingDir) throws CWLPortProcessorException {
     try {
       return portProcessor.processInputs(inputs, new CWLFileLiteralProcessorCallback(workingDir));
     } catch (CWLPortProcessorException e) {
-      throw new CWLPortProcessorException("Failed to set paths", e);
+      throw new CWLPortProcessorException(e);
     }
   }
   
@@ -89,11 +83,11 @@ public class CWLPortProcessorHelper {
     try {
       return portProcessor.processInputs(inputs, new CWLLoadContentsPortProcessorCallback());
     } catch (CWLPortProcessorException e) {
-      throw new CWLPortProcessorException("Failed to load input contents.", e);
+      throw new CWLPortProcessorException(e);
     }
   }
 
-  public Map<String, Object> stageInputFiles(Map<String, Object> inputs, File workingDir)
+  public Map<String, Object> stageInputFiles(Map<String, Object> inputs, Path workingDir)
       throws CWLPortProcessorException {
     try {
       return portProcessor.processInputs(inputs, new CWLStageInputProcessorCallback(workingDir));
@@ -102,7 +96,7 @@ public class CWLPortProcessorHelper {
     }
   }
   
-  public Map<String, Object> setInputSecondaryFiles(Map<String, Object> inputs, File workingDir, HashAlgorithm hashAlgorithm)
+  public Map<String, Object> setInputSecondaryFiles(Map<String, Object> inputs, Path workingDir, HashAlgorithm hashAlgorithm)
       throws CWLPortProcessorException {
     try {
       return portProcessor.processInputs(inputs, new CWLInputSecondaryFilesProcessor(portProcessor.getJob(), hashAlgorithm, workingDir));

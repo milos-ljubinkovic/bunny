@@ -4,6 +4,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -57,16 +62,16 @@ public class SBFileValueHelper extends SBBeanHelper {
     return (Long) number;
   }
 
-  public static void setChecksum(File file, Object raw, HashAlgorithm hashAlgorithm) {
-    if (!file.exists()) {
-      throw new RuntimeException("Missing file " + file);
+  public static void setChecksum(Path actual, Object raw, HashAlgorithm hashAlgorithm) {
+    if (!Files.exists(actual)) {
+      throw new RuntimeException("Missing file " + actual);
     }
-    String checksum = ChecksumHelper.checksum(file, hashAlgorithm);
+    String checksum = ChecksumHelper.checksum(actual, hashAlgorithm);
     if (checksum != null) {
       setValue(KEY_CHECKSUM, checksum, raw);
     }
   }
-  
+
   public static void setChecksum(String checksum, Object raw) {
     setValue(KEY_CHECKSUM, checksum, raw);
   }
@@ -87,7 +92,7 @@ public class SBFileValueHelper extends SBBeanHelper {
   public static String getContents(Object raw) {
     return getValue(KEY_CONTENTS, raw);
   }
-  
+
   private static void setContents(String contents, Map<String, Object> raw) {
     setValue(KEY_CONTENTS, contents, raw);
   }
@@ -103,7 +108,7 @@ public class SBFileValueHelper extends SBBeanHelper {
   public static void setPath(String path, Object raw) {
     setValue(KEY_PATH, path, raw);
   }
-  
+
   public static String getLocation(Object raw) {
     return getValue(KEY_LOCATION, raw);
   }
@@ -111,11 +116,11 @@ public class SBFileValueHelper extends SBBeanHelper {
   public static void setLocation(String location, Object raw) {
     setValue(KEY_LOCATION, location, raw);
   }
-  
+
   public static void setOriginalPath(String path, Object raw) {
     setValue(KEY_ORIGINAL_PATH, path, raw);
   }
-  
+
   public static String getOriginalPath(Object raw) {
     return getValue(KEY_ORIGINAL_PATH, raw);
   }
@@ -163,7 +168,7 @@ public class SBFileValueHelper extends SBBeanHelper {
     }
     return paths;
   }
-  
+
   /**
    * Load first CONTENTS_NUMBER_OF_BYTES bytes from file
    */
@@ -174,7 +179,7 @@ public class SBFileValueHelper extends SBBeanHelper {
     try {
       File file = new File(path);
       is = new FileInputStream(file);
-      int bufferSize = file.length() > 0 && file.length() < CONTENTS_NUMBER_OF_BYTES ? (int) file.length(): CONTENTS_NUMBER_OF_BYTES;
+      int bufferSize = file.length() > 0 && file.length() < CONTENTS_NUMBER_OF_BYTES ? (int) file.length() : CONTENTS_NUMBER_OF_BYTES;
       byte[] buffer = new byte[bufferSize];
       is.read(buffer);
       return new String(buffer, "UTF-8");
@@ -188,7 +193,7 @@ public class SBFileValueHelper extends SBBeanHelper {
       }
     }
   }
-  
+
   public static FileValue createFileValue(Object value) {
     String path = SBFileValueHelper.getPath(value);
     String name = SBFileValueHelper.getName(value);
@@ -197,7 +202,7 @@ public class SBFileValueHelper extends SBBeanHelper {
     String contents = SBFileValueHelper.getContents(value);
     String dirname = SBFileValueHelper.getDirname(value);
     Long size = SBFileValueHelper.getSize(value);
-    
+
     Map<String, Object> properties = new HashMap<>();
     properties.put(SBBindingHelper.KEY_SBG_METADATA, SBFileValueHelper.getMetadata(value));
 
@@ -213,10 +218,10 @@ public class SBFileValueHelper extends SBBeanHelper {
     ret.setDirname(dirname);
     return ret;
   }
-  
+
   public static Map<String, Object> createFileRaw(FileValue fileValue) {
     Map<String, Object> raw = new HashMap<>();
-    
+
     setFileType(raw);
     setPath(fileValue.getPath(), raw);
     setName(fileValue.getName(), raw);
@@ -230,7 +235,7 @@ public class SBFileValueHelper extends SBBeanHelper {
     if (properties != null) {
       setMetadata(properties.get(SBBindingHelper.KEY_SBG_METADATA), raw);
     }
-    
+
     List<FileValue> secondaryFileValues = fileValue.getSecondaryFiles();
     if (secondaryFileValues != null) {
       List<Map<String, Object>> secondaryFilesRaw = new ArrayList<>();
@@ -242,4 +247,93 @@ public class SBFileValueHelper extends SBBeanHelper {
     return raw;
   }
 
+  public static void buildMissingInfo(Object value, HashAlgorithm alg, Path dir) throws IOException, URISyntaxException {
+    Path workDir = dir == null ? Paths.get("/") : dir;
+    String path = getPath(value);
+    String location = getLocation(value);
+    Path actual = null;
+
+    if (path == null) {
+      if (location != null) {
+        URI uri = createFullURI(location, workDir);
+        location = uri.toString();
+        actual = Paths.get(uri);
+        if (!actual.isAbsolute()) {
+          actual = workDir.resolve(actual).toAbsolutePath();
+        }
+        path = actual.toString();
+      } else {
+        return;
+      }
+    }
+
+    if (location == null) {
+      actual = workDir.resolve(path).toAbsolutePath();
+      location = actual.toUri().toString();
+    } else {
+      actual = Paths.get(createFullURI(location, workDir));
+    }
+    if (!Paths.get(path).isAbsolute()) {
+      path = workDir.resolve(path).toAbsolutePath().toString();
+    }
+
+    String name = getName(value);
+    if (name == null) {
+      setNames(actual, value);
+    } else {
+      if (!path.endsWith(name)) {
+        path = Paths.get(path).resolveSibling(name).toString();
+      }
+    }
+
+    setPath(path, value);
+    setLocation(location, value);
+
+    if (getSize(value) == null && Files.exists(actual)) {
+      setSize(Files.size(actual), value);
+      if (alg != null)
+        setChecksum(actual, value, alg);
+    }
+
+    List<Map<String, Object>> secondaryFiles = getSecondaryFiles(value);
+    if (secondaryFiles != null) {
+      for (Map<String, Object> secondaryFileValue : secondaryFiles) {
+        buildMissingInfo(secondaryFileValue, alg, workDir);
+      }
+    }
+    if (name != null && !actual.endsWith(name)) {
+      setPath(Paths.get(path).resolveSibling(name).toString(), value);
+    }
+  }
+
+  private static URI createFullURI(String val, Path parent) throws URISyntaxException {
+    URI uri = URI.create(val.replace(" ", "%20"));
+    if (uri.getScheme() == null) {
+      uri = new URI("file", val, null);
+    }
+    if (uri.isOpaque()) {
+      uri = new URI("file", parent.resolve(val).toAbsolutePath().toString(), null);
+    }
+    return uri;
+  }
+
+  private static void setNames(Path path, Object value) throws IOException {
+    String name = path.getFileName().toString();
+    if (getName(value) == null)
+      setName(name, value);
+    if (path.getParent() != null)
+      setDirname(path.getParent().toString(), value);
+  }
+
+  public static void setChecksum(File file, Map<String, Object> fileData, HashAlgorithm hashAlgorithm) {
+    setChecksum(file.toPath(), fileData, hashAlgorithm);
+  }
+  
+  public static Map<String, Object> pathToRawFile(Path file, HashAlgorithm hash, Path workDir) throws IOException, URISyntaxException {
+    Map<String, Object> fileValue = new HashMap<>();
+    setFileType(fileValue);
+    setLocation(file.toUri().toString(), fileValue);
+    buildMissingInfo(fileValue, hash, workDir);
+    return fileValue;
+  }
 }

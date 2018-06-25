@@ -3,9 +3,12 @@ package org.rabix.cli;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -23,26 +26,26 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.apache.commons.configuration.Configuration;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.NotImplementedException;
 import org.apache.commons.lang.StringUtils;
 import org.rabix.backend.api.BackendModule;
 import org.rabix.backend.api.callback.WorkerStatusCallback;
 import org.rabix.backend.api.callback.impl.NoOpWorkerStatusCallback;
-import org.rabix.backend.tes.TESModule;
 import org.rabix.bindings.BindingException;
 import org.rabix.bindings.Bindings;
 import org.rabix.bindings.BindingsFactory;
 import org.rabix.bindings.ProtocolType;
-import org.rabix.bindings.helper.URIHelper;
+import org.rabix.bindings.helper.FileValueHelper;
 import org.rabix.bindings.model.Application;
 import org.rabix.bindings.model.ApplicationPort;
 import org.rabix.bindings.model.DataType;
 import org.rabix.bindings.model.FileValue;
 import org.rabix.bindings.model.Job;
-import org.rabix.bindings.model.Job.JobStatus;
 import org.rabix.bindings.model.Resources;
 import org.rabix.cli.service.LocalDownloadServiceImpl;
+import org.rabix.cli.status.LocalBackendEngineStatusCallback;
 import org.rabix.common.config.ConfigModule;
 import org.rabix.common.helper.JSONHelper;
 import org.rabix.common.json.BeanSerializer;
@@ -55,32 +58,23 @@ import org.rabix.engine.EngineModule;
 import org.rabix.engine.service.BackendService;
 import org.rabix.engine.service.BootstrapService;
 import org.rabix.engine.service.BootstrapServiceException;
-import org.rabix.engine.service.ContextRecordService;
+import org.rabix.engine.service.GarbageCollectionService;
 import org.rabix.engine.service.IntermediaryFilesHandler;
-import org.rabix.engine.service.IntermediaryFilesService;
 import org.rabix.engine.service.JobService;
 import org.rabix.engine.service.JobServiceException;
-import org.rabix.engine.service.SchedulerService;
-import org.rabix.engine.service.SchedulerService.SchedulerJobBackendAssigner;
-import org.rabix.engine.service.SchedulerService.SchedulerMessageCreator;
-import org.rabix.engine.service.SchedulerService.SchedulerMessageSender;
 import org.rabix.engine.service.impl.BackendServiceImpl;
 import org.rabix.engine.service.impl.BootstrapServiceImpl;
 import org.rabix.engine.service.impl.IntermediaryFilesLocalHandler;
-import org.rabix.engine.service.impl.IntermediaryFilesServiceImpl;
 import org.rabix.engine.service.impl.JobReceiverImpl;
 import org.rabix.engine.service.impl.JobServiceImpl;
-import org.rabix.engine.service.impl.SchedulerServiceImpl;
+import org.rabix.engine.service.impl.NoOpIntermediaryFilesServiceHandler;
 import org.rabix.engine.status.EngineStatusCallback;
-import org.rabix.engine.status.impl.DefaultEngineStatusCallback;
-import org.rabix.engine.store.model.ContextRecord;
 import org.rabix.engine.stub.BackendStubFactory;
 import org.rabix.engine.stub.impl.BackendStubFactoryImpl;
 import org.rabix.transport.mechanism.TransportPlugin.ReceiveCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -94,7 +88,7 @@ public class BackendCommandLine {
 
   private static final Logger logger = LoggerFactory.getLogger(BackendCommandLine.class);
   private static String configDir = "/.bunny/config";
-  
+
 
   @SuppressWarnings("unchecked")
   public static void main(String[] commandLineArguments) {
@@ -104,7 +98,7 @@ public class BackendCommandLine {
     CommandLine commandLine;
     List<String> commandLineArray = Arrays.asList(commandLineArguments);
     String[] inputArguments = null;
-    
+
     if (commandLineArray.contains("--")) {
       commandLineArguments = commandLineArray.subList(0, commandLineArray.indexOf("--")).toArray(new String[0]);
       inputArguments = commandLineArray.subList(commandLineArray.indexOf("--") + 1, commandLineArray.size()).toArray(new String[0]);
@@ -121,25 +115,32 @@ public class BackendCommandLine {
       if (!checkCommandLine(commandLine)) {
         printUsageAndExit(posixOptions);
       }
-      
-      final String appPath = commandLine.getArgList().get(0);
-      File appFile = new File(URIHelper.extractBase(appPath));
-      if (!appFile.exists()) {
-        VerboseLogger.log(String.format("Application file %s does not exist.", appFile.getCanonicalPath()));
+
+      final String app = commandLine.getArgList().get(0);
+
+      Path filePath = null;
+      URI appUri = URI.create(app.replace(" ", "%20"));
+      if (appUri.getScheme() == null) {
+        appUri = new URI("file", Paths.get(".").toAbsolutePath().resolve(appUri.getSchemeSpecificPart()).normalize().toString(), appUri.getFragment());
+      }
+      filePath = Paths.get(appUri.getPath());
+      if (!Files.exists(filePath)) {
+        VerboseLogger.log(String.format("Application file %s does not exist.", appUri.toString()));
         printUsageAndExit(posixOptions);
       }
-      
-      String appUrl = URIHelper.createURI(URIHelper.FILE_URI_SCHEME, appPath);
+
+
+      String fullUri = appUri.toString();
       if (commandLine.hasOption("resolve-app")) {
-        printResolvedAppAndExit(appUrl);
+        printResolvedAppAndExit(fullUri);
       }
 
-      File inputsFile = null;
+      Path inputsFile = null;
       if (commandLine.getArgList().size() > 1) {
         String inputsPath = commandLine.getArgList().get(1);
-        inputsFile = new File(inputsPath);
-        if (!inputsFile.exists()) {
-          VerboseLogger.log(String.format("Inputs file %s does not exist.", inputsFile.getCanonicalPath()));
+        inputsFile = Paths.get(".").resolve(inputsPath).toAbsolutePath().normalize();
+        if (!Files.exists(inputsFile)) {
+          VerboseLogger.log(String.format("Inputs file %s does not exist.", inputsFile.toString()));
           printUsageAndExit(posixOptions);
         }
       }
@@ -153,10 +154,10 @@ public class BackendCommandLine {
 
       Map<String, Object> configOverrides = new HashMap<>();
       configOverrides.put("cleaner.backend.period", 5000L);
-      
-      String directoryName = generateDirectoryName(appPath);
+
+      String directoryName = generateDirectoryName(app);
       configOverrides.put("backend.execution.directory.name", directoryName);
-          
+
       String executionDirPath = commandLine.getOptionValue("basedir");
       if (executionDirPath != null) {
         File executionDir = new File(executionDirPath);
@@ -169,7 +170,7 @@ public class BackendCommandLine {
       } else {
         String workingDir = null;
         try {
-          workingDir = inputsFile.getParentFile().getCanonicalPath();
+          workingDir = inputsFile.getParent().toString();
         } catch (Exception e) {
           workingDir = new File(".").getCanonicalPath();
         }
@@ -177,6 +178,9 @@ public class BackendCommandLine {
       }
       if (commandLine.hasOption("no-container")) {
         configOverrides.put("docker.enabled", false);
+      }
+      if (commandLine.hasOption("enable-composer-logs")) {
+        configOverrides.put("composer.logs.enabled", true);
       }
       if (commandLine.hasOption("cache-dir")) {
         String cacheDir = commandLine.getOptionValue("cache-dir");
@@ -195,7 +199,7 @@ public class BackendCommandLine {
           VerboseLogger.log("TES URL is empty");
           System.exit(10);
         }
-        
+
         try {
           URL url = new URL(tesURL);
           String host = url.getHost();
@@ -214,38 +218,36 @@ public class BackendCommandLine {
           VerboseLogger.log("TES URL is invalid");
           System.exit(-10);
         }
-      }      
+      }
       String tesStorageURL = commandLine.getOptionValue("tes-storage");
       if (tesStorageURL != null) {
         configOverrides.put("rabix.tes.storage.base", tesStorageURL);
       }
-      
+
       final ConfigModule configModule = new ConfigModule(configDir, configOverrides);
+      Configuration configuration = configModule.provideConfig();
       Injector injector = Guice.createInjector(
           new EngineModule(configModule),
-          new TESModule(configModule),
           new AbstractModule() {
             @Override
             protected void configure() {
               install(configModule);
-              
-              bind(IntermediaryFilesService.class).to(IntermediaryFilesServiceImpl.class).in(Scopes.SINGLETON);
-              bind(IntermediaryFilesHandler.class).to(IntermediaryFilesLocalHandler.class).in(Scopes.SINGLETON);
-              
+
+              if (configuration.getBoolean("engine.delete_intermediary_files", false)) {
+                bind(IntermediaryFilesHandler.class).to(IntermediaryFilesLocalHandler.class).in(Scopes.SINGLETON);
+              } else {
+                bind(IntermediaryFilesHandler.class).to(NoOpIntermediaryFilesServiceHandler.class).in(Scopes.SINGLETON);
+              }
               bind(JobService.class).to(JobServiceImpl.class).in(Scopes.SINGLETON);
               bind(BackendService.class).to(BackendServiceImpl.class).in(Scopes.SINGLETON);
-              bind(SchedulerService.class).to(SchedulerServiceImpl.class).in(Scopes.SINGLETON);
-              bind(SchedulerMessageCreator.class).to(SchedulerServiceImpl.class).in(Scopes.SINGLETON);
-              bind(SchedulerJobBackendAssigner.class).to(SchedulerServiceImpl.class).in(Scopes.SINGLETON);
-              bind(SchedulerMessageSender.class).to(SchedulerServiceImpl.class).in(Scopes.SINGLETON);
-              bind(EngineStatusCallback.class).to(DefaultEngineStatusCallback.class).in(Scopes.SINGLETON);
+              bind(EngineStatusCallback.class).to(LocalBackendEngineStatusCallback.class).in(Scopes.SINGLETON);
               bind(DownloadService.class).to(LocalDownloadServiceImpl.class).in(Scopes.SINGLETON);
               bind(UploadService.class).to(NoOpUploadServiceImpl.class).in(Scopes.SINGLETON);
               bind(WorkerStatusCallback.class).to(NoOpWorkerStatusCallback.class).in(Scopes.SINGLETON);
 
               bind(BackendStubFactory.class).to(BackendStubFactoryImpl.class).in(Scopes.SINGLETON);
               bind(new TypeLiteral<ReceiveCallback<Job>>(){}).to(JobReceiverImpl.class).in(Scopes.SINGLETON);
-              
+
               Set<Class<BackendModule>> backendModuleClasses = ClasspathScanner.<BackendModule>scanSubclasses(BackendModule.class);
               for (Class<BackendModule> backendModuleClass : backendModuleClasses) {
                 try {
@@ -259,18 +261,20 @@ public class BackendCommandLine {
             }
           });
 
+      injector.getInstance(GarbageCollectionService.class).disable();
+
       // Load app from JSON
       Bindings bindings = null;
       Application application = null;
-      
+
       try {
-        bindings = BindingsFactory.create(appUrl);
-        application = bindings.loadAppObject(appUrl);
+        bindings = BindingsFactory.create(appUri.toString());
+        application = bindings.loadAppObject(fullUri);
       } catch (NotImplementedException e) {
         logger.error("Not implemented feature");
         System.exit(33);
       } catch (BindingException e) {
-        logger.error("Error: " + appUrl + " is not a valid app! {}", e.getMessage());
+        logger.error("Error: " + appUri.toString() + " is not a valid app! {}", e.getMessage());
         System.exit(10);
       }
       if (application == null) {
@@ -290,8 +294,8 @@ public class BackendCommandLine {
 
       Map<String, Object> inputs;
       if (inputsFile != null) {
-        String inputsText = readFile(inputsFile.getAbsolutePath(), Charset.defaultCharset());
-        inputs = (Map<String, Object>) JSONHelper.transform(JSONHelper.readJsonNode(inputsText), true);
+        String inputsText = readFile(inputsFile.toAbsolutePath().toString(), Charset.defaultCharset());
+        inputs = (Map<String, Object>) JSONHelper.transform(JSONHelper.readJsonNode(inputsText), false);
       } else {
         inputs = new HashMap<>();
         // No inputs file. If we didn't provide -- at the end, just print app help and exit
@@ -361,15 +365,18 @@ public class BackendCommandLine {
       for (ApplicationPort schemaInput : application.getInputs()) {
         String id = schemaInput.getId().replaceFirst("^#", "");
 
-        if (schemaInput.isRequired() && schemaInput.getDefaultValue() == null && !inputs.containsKey(id)) {
+        if (schemaInput.isRequired() && schemaInput.getDefaultValue() == null && (!inputs.containsKey(id) || inputs.get(id) == null)) {
           missingRequiredFields.add(id);
         }
       }
       if (!missingRequiredFields.isEmpty()) {
-        VerboseLogger.log("Required inputs missing: " + StringUtils.join(missingRequiredFields, ", "));
+        String message = "Required inputs missing: " + StringUtils.join(missingRequiredFields, ", ");
+        VerboseLogger.log(message);
+        if (configuration.getBoolean("composer.logs.enabled", false))
+          logger.info("Composer: {\"status\": \"FAILED\",  \"stepId\": \"root\", \"message\": \"" + message + "\"}");
         printAppUsageAndExit(appInputOptions);
       }
-      
+
       Resources resources = null;
       Map<String, Object> contextConfig = null;
 
@@ -385,78 +392,57 @@ public class BackendCommandLine {
       }
 
       final BootstrapService bootstrapService = injector.getInstance(BootstrapService.class);
-      
+
       final JobService jobService = injector.getInstance(JobService.class);
-      final ContextRecordService contextRecordService = injector.getInstance(ContextRecordService.class);
-      
+
       bootstrapService.start();
       Object commonInputs = null;
       try {
         commonInputs = bindings.translateToCommon(inputs);
+        if (inputsFile != null) {
+          final Path finalInputs = inputsFile;
+          FileValueHelper.updateFileValues(commonInputs, (FileValue f) -> {
+            fixPaths(finalInputs, f);
+            if (f.getSecondaryFiles() != null)
+              for (FileValue sec : f.getSecondaryFiles()) {
+                fixPaths(finalInputs, sec);
+              }
+            return f;
+          });
+        }
       } catch (BindingException e1) {
         VerboseLogger.log("Failed to translate inputs to the common Rabix format");
         System.exit(10);
       }
-      
-      @SuppressWarnings("unchecked")
-      final Job job = jobService.start(new Job(appUrl, (Map<String, Object>) commonInputs), contextConfig);
 
-      final Bindings finalBindings = bindings;
-      Thread checker = new Thread(new Runnable() {
-        @Override
-        @SuppressWarnings("unchecked")
-        public void run() {
-          ContextRecord contextRecord = contextRecordService.find(job.getId());
-          
-          while (contextRecord == null || contextRecord.getStatus().equals(ContextRecord.ContextStatus.RUNNING)) {
-            try {
-              Thread.sleep(1000);
-              contextRecord = contextRecordService.find(job.getId());
-            } catch (InterruptedException e) {
-              logger.error("Failed to wait for root Job to finish", e);
-              throw new RuntimeException(e);
-            }
-          }
-          Job rootJob = jobService.get(job.getId());
-          if (rootJob.getStatus().equals(JobStatus.COMPLETED)) {
-            try {
-              try {
-                Map<String, Object> outputs = (Map<String, Object>) finalBindings.translateToSpecific(rootJob.getOutputs());
-                System.out.println(JSONHelper.mapper.writerWithDefaultPrettyPrinter().writeValueAsString(outputs));
-                System.exit(0);
-              } catch (BindingException e) {
-                logger.error("Failed to translate common outputs to native", e);
-                throw new RuntimeException(e);
-              }
-            } catch (JsonProcessingException e) {
-              logger.error("Failed to write outputs to standard out", e);
-              System.exit(10);
-            }
-          } else {
-            VerboseLogger.log("Failed to execute a Job");
-            System.exit(10);
-          }
-        }
-      });
-      checker.start();
-      checker.join();
+      jobService.start(new Job(fullUri, (Map<String, Object>) commonInputs), contextConfig);
     } catch (ParseException e) {
       logger.error("Encountered an error while parsing using Posix parser.", e);
       System.exit(10);
     } catch (IOException e) {
       logger.error("Encountered an error while reading a file.", e);
       System.exit(10);
-    } catch (JobServiceException | InterruptedException e) {
-      logger.error("Encountered an error while starting local backend.", e);
-      System.exit(10);
-    } catch (BootstrapServiceException e) {
+    } catch (JobServiceException | BootstrapServiceException | URISyntaxException e) {
       logger.error("Encountered an error while starting local backend.", e);
       System.exit(10);
     }
   }
 
+
+  private static void fixPaths(final Path finalInputs, FileValue f) {
+    String path = f.getPath();
+    if (path != null && !Paths.get(path).isAbsolute()) {
+      f.setPath(finalInputs.resolveSibling(path).normalize().toString());
+    }
+    String location = f.getLocation();
+    if (location != null && URI.create(location).getScheme() == null) {
+      f.setLocation(finalInputs.resolveSibling(location).normalize().toString());
+    }
+  }
+
+
   /**
-   * Prints resolved application on standard out 
+   * Prints resolved application on standard out
    */
   private static void printResolvedAppAndExit(String appUrl) {
     Bindings bindings = null;
@@ -464,7 +450,7 @@ public class BackendCommandLine {
     try {
       bindings = BindingsFactory.create(appUrl);
       application = bindings.loadAppObject(appUrl);
-      
+
       System.out.println(BeanSerializer.serializePartial(application));
       System.exit(0);
     } catch (NotImplementedException e) {
@@ -475,7 +461,7 @@ public class BackendCommandLine {
       System.exit(10);
     }
   }
-  
+
   /**
    * Reads content from a file
    */
@@ -501,6 +487,7 @@ public class BackendCommandLine {
     options.addOption(null, "quiet", false, "don't print anything except final result on standard output");
     options.addOption(null, "tes-url", true, "url of the ga4gh task execution server instance (experimental)");
     options.addOption(null, "tes-storage", true, "path to the storage used by the ga4gh tes server (currently supports locall dirs and google storage cloud paths)");
+    options.addOption(null, "enable-composer-logs", false, "enable additional logging required by Composer");
     // TODO: implement useful cli overrides for config options
 //    options.addOption(null, "set-ownership", false, "");
 //    options.addOption(null, "ownership-uid", true, "");
@@ -553,9 +540,9 @@ public class BackendCommandLine {
     h.printHelp("Inputs for selected tool are: ", options);
     System.exit(10);
   }
-  
+
   private static void printVersionAndExit(Options posixOptions) {
-    System.out.println("Rabix 1.0.1");
+    System.out.println("Rabix 1.0.5");
     System.exit(0);
   }
 
@@ -566,7 +553,7 @@ public class BackendCommandLine {
     System.exit(10);
   }
 
-  private static File getConfigDir(CommandLine commandLine, Options options) throws IOException {
+  private static File getConfigDir(CommandLine commandLine, Options options) throws IOException, URISyntaxException {
     String configPath = commandLine.getOptionValue("configuration-dir");
     if (configPath != null) {
       File config = new File(configPath);
@@ -576,7 +563,8 @@ public class BackendCommandLine {
         logger.debug("Configuration directory {} doesn't exist or is not a directory.", configPath);
       }
     }
-    File config = new File(new File(BackendCommandLine.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParentFile().getParentFile() + "/config");
+
+    File config = Paths.get(BackendCommandLine.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent().getParent().toAbsolutePath().normalize().resolve("config").toFile();
 
     logger.debug("Config path: {}", config.getCanonicalPath());
     if (config.exists() && config.isDirectory()) {
@@ -630,7 +618,7 @@ public class BackendCommandLine {
       return value[0];
     }
   }
-  
+
   /**
    * Returns a directory name containing the current date and app name
    */

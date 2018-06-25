@@ -1,6 +1,7 @@
 package org.rabix.bindings.draft3;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -8,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 import org.rabix.bindings.BindingException;
@@ -30,7 +32,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
 import com.google.common.escape.Escaper;
 import com.google.common.escape.Escapers;
 
@@ -56,9 +57,7 @@ public class Draft3CommandLineBuilder implements ProtocolCommandLineBuilder {
     draft3Job.setRuntime(remapedRuntime);
     
     Draft3CommandLineTool commandLineTool = (Draft3CommandLineTool) draft3Job.getApp();
-    List<CommandLine.Part> commandLineParts = Lists.transform(buildCommandLineParts(draft3Job, workingDir, filePathMapper), (obj ->
-        new CommandLine.Part(obj.toString())));
-
+    List<CommandLine.Part> parts = buildCommandLineParts(draft3Job, workingDir, filePathMapper).stream().map(p->new CommandLine.Part(p.toString())).collect(Collectors.toList());
     String stdin = null;
     try {
       stdin = commandLineTool.getStdin(draft3Job);
@@ -73,9 +72,17 @@ public class Draft3CommandLineBuilder implements ProtocolCommandLineBuilder {
       throw new BindingException("Failed to extract standard outputs.", e);
     }
 
-    CommandLine commandLine = new CommandLine(commandLineParts, stdin, stdout, null, true);
+    CommandLine commandLine = new CommandLine(parts, toPath(stdin, workingDir.toPath()), toPath(stdout, workingDir.toPath()), null, parts.stream().anyMatch(p->StringUtils.endsWithAny(p.getValue(),"&&","|")));
     logger.info("Command line built. CommandLine = {}", commandLine);
     return commandLine;
+  }
+
+  private String toPath(String s, Path workDir) {
+    return StringUtils.isEmpty(s) ? s :  sanitize(workDir.resolve(s).toString());
+  }
+  
+  private String sanitize(String s) {
+      return s.contains(" ") ? "'" + s + "'" : s;
   }
   
   @Override
@@ -272,7 +279,7 @@ public class Draft3CommandLineBuilder implements ProtocolCommandLineBuilder {
       if (itemSeparator != null) {
         String joinedItems = Joiner.on(itemSeparator).join(flattenedValues);
         if (prefix == null) {
-          return new Draft3CommandLinePart.Builder(position, isFile).part(joinedItems).build();
+          return new Draft3CommandLinePart.Builder(position, isFile).keyValue(keyValue).part(joinedItems).build();
         }
         if (StringUtils.isWhitespace(separator) && separator.length() > 0) {
           return new Draft3CommandLinePart.Builder(position, isFile).keyValue(keyValue).part(prefix).part(joinedItems).build();

@@ -14,22 +14,24 @@ public class EventRecord {
     FAILED
   }
 
-  public enum PersistentType {
-    INIT,
-    JOB_STATUS_UPDATE_RUNNING,
-    JOB_STATUS_UPDATE_COMPLETED
-  }
-
+  private UUID rootId;
   private UUID groupId;
-  private PersistentType type;
   private Status status;
   private Map<String, ?> event;
 
-  public EventRecord(UUID groupId, PersistentType type, Status status, Map<String, ?> event) {
+  public EventRecord(UUID rootId, UUID groupId, Status status, Map<String, ?> event) {
+    this.rootId = rootId;
     this.groupId = groupId;
-    this.type = type;
     this.status = status;
     this.event = event;
+  }
+
+  public UUID getRootId() {
+    return rootId;
+  }
+
+  public void setRootId(UUID rootId) {
+    this.rootId = rootId;
   }
 
   public UUID getGroupId() {
@@ -38,14 +40,6 @@ public class EventRecord {
 
   public void setGroupId(UUID groupId) {
     this.groupId = groupId;
-  }
-
-  public PersistentType getType() {
-    return type;
-  }
-
-  public void setType(PersistentType type) {
-    this.type = type;
   }
 
   public Status getStatus() {

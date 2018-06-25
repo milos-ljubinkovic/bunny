@@ -1,6 +1,7 @@
 package org.rabix.bindings.sb.processor.callback;
 
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Set;
 
@@ -10,6 +11,7 @@ import org.rabix.bindings.sb.bean.SBJob;
 import org.rabix.bindings.sb.processor.SBPortProcessor;
 import org.rabix.bindings.sb.processor.SBPortProcessorException;
 import org.rabix.bindings.transformer.FileTransformer;
+import org.rabix.common.helper.ChecksumHelper.HashAlgorithm;
 
 public class SBPortProcessorHelper {
 
@@ -89,13 +91,36 @@ public class SBPortProcessorHelper {
     }
   }
 
-  public Map<String, Object> stageInputFiles(Map<String, Object> inputs, File workingDir)
-      throws SBPortProcessorException {
+  public Map<String, Object> stageInputFiles(Map<String, Object> inputs, File workingDir) throws SBPortProcessorException {
     try {
       return portProcessor.processInputs(inputs, new SBStageInputProcessorCallback(workingDir));
     } catch (SBPortProcessorException e) {
       throw new SBPortProcessorException("Failed to stage inputs.", e);
     }
   }
+  
+  public Map<String, Object> populateFiles(Map<String, Object> inputs, File workingDir) throws SBPortProcessorException {
+    try {
+      return portProcessor.processInputs(inputs, new SBStageInputProcessorCallback(workingDir));
+    } catch (SBPortProcessorException e) {
+      throw new SBPortProcessorException("Failed to stage inputs.", e);
+    }
+  }
+  
+  public Map<String, Object> setInputSecondaryFiles(Map<String, Object> inputs, SBJob job, HashAlgorithm hash) throws SBPortProcessorException {
+    try {
+      return portProcessor.processInputs(inputs, new SBInputSecondaryFilesProcessor(job, hash));
+    } catch (SBPortProcessorException e) {
+      throw new SBPortProcessorException("Failed to set inputs secondaryFiles.", e);
+    }
+  }
 
+  public Map<String, Object> setFileProperties(Map<String, Object> inputs) throws SBPortProcessorException {
+    try {
+      String appFileLocation = sbJob.getApp().getAppFileLocation();
+      return portProcessor.processInputs(inputs, new SBFilePropertiesProcessorCallback(Paths.get(appFileLocation == null ? "." : appFileLocation).toAbsolutePath().normalize()));
+    } catch (SBPortProcessorException e) {
+      throw new SBPortProcessorException("Failed to set inputs properties.", e);
+    }
+  }  
 }

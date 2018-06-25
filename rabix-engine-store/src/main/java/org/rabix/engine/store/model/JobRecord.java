@@ -1,26 +1,23 @@
 package org.rabix.engine.store.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.rabix.bindings.model.LinkMerge;
+import org.rabix.bindings.model.dag.DAGLinkPort.LinkPortType;
+import org.rabix.bindings.model.dag.DAGNode;
+import org.rabix.engine.store.model.scatter.ScatterStrategy;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.rabix.bindings.model.LinkMerge;
-import org.rabix.bindings.model.dag.DAGLinkPort.LinkPortType;
-import org.rabix.bindings.model.dag.DAGNode;
-import org.rabix.engine.store.model.scatter.ScatterStrategy;
-import org.rabix.engine.store.cache.Cachable;
-import org.rabix.engine.store.cache.CacheKey;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-public class JobRecord extends TimestampedModel implements Cachable {
+public class JobRecord extends TimestampedModel {
 
   public static class JobIdRootIdPair {
     final public String id;
     final public UUID rootId;
-    
+
     public JobIdRootIdPair(String id, UUID rootId) {
       this.id = id;
       this.rootId = rootId;
@@ -35,18 +32,18 @@ public class JobRecord extends TimestampedModel implements Cachable {
     FAILED,
     ABORTED
   }
-  
+
   public final static String CACHE_NAME = "JOB_RECORD";
-  
+
   private String id;
   private UUID externalId;
   private UUID rootId;
   private UUID parentId;
   private Boolean master;
   private Boolean blocking;
-  
+
   private JobState state;
-  
+
   private List<PortCounter> inputCounters;
   private List<PortCounter> outputCounters;
 
@@ -56,15 +53,15 @@ public class JobRecord extends TimestampedModel implements Cachable {
 
   private int numberOfGlobalInputs = 0;
   private int numberOfGlobalOutputs = 0;
-  
+
   private String dagHash;
-  
+
   private ScatterStrategy scatterStrategy;
-  
+
   public JobRecord() {
     super(LocalDateTime.now(), LocalDateTime.now());
   }
-  
+
   public JobRecord(UUID rootId, String id, UUID uniqueId, UUID parentId, JobState state, Boolean isContainer, Boolean isScattered, Boolean master, Boolean blocking, String dagCache) {
     this(rootId, id, uniqueId, parentId, state, isContainer, isScattered, master, blocking, dagCache, LocalDateTime.now(), LocalDateTime.now());
   }
@@ -84,11 +81,11 @@ public class JobRecord extends TimestampedModel implements Cachable {
     this.inputCounters = new ArrayList<>();
     this.outputCounters = new ArrayList<>();
   }
-  
+
   public Boolean isRoot() {
     return externalId.equals(rootId);
   }
-  
+
   public Boolean isBlocking() {
     return blocking;
   }
@@ -197,6 +194,10 @@ public class JobRecord extends TimestampedModel implements Cachable {
     this.dagHash = dagHash;
   }
 
+  public boolean isTopLevel() {
+    return isRoot() || (parentId != null && parentId.equals(rootId));
+  }
+
   public Boolean isInputPortReady(String port) {
     for (PortCounter pc : inputCounters) {
       if (pc.port.equals(port)) {
@@ -207,7 +208,7 @@ public class JobRecord extends TimestampedModel implements Cachable {
     }
     return false;
   }
-  
+
   public Boolean isOutputPortReady(String port) {
     for (PortCounter pc : outputCounters) {
       if (pc.port.equals(port)) {
@@ -218,7 +219,7 @@ public class JobRecord extends TimestampedModel implements Cachable {
     }
     return false;
   }
-  
+
   public PortCounter getInputCounter(String port) {
     for (PortCounter portCounter : inputCounters) {
       if (portCounter.port.equals(port)) {
@@ -227,7 +228,7 @@ public class JobRecord extends TimestampedModel implements Cachable {
     }
     return null;
   }
-  
+
   public PortCounter getOutputCounter(String port) {
     for (PortCounter portCounter : outputCounters) {
       if (portCounter.port.equals(port)) {
@@ -245,7 +246,7 @@ public class JobRecord extends TimestampedModel implements Cachable {
     }
     return 0;
   }
-  
+
   public int getOutputPortIncoming(String port) {
     for (PortCounter pc : outputCounters) {
       if (pc.port.equals(port)) {
@@ -254,7 +255,7 @@ public class JobRecord extends TimestampedModel implements Cachable {
     }
     return 0;
   }
-  
+
   public Boolean isReady() {
     for (PortCounter portCounter : inputCounters) {
       if (portCounter.counter > 0) {
@@ -272,7 +273,7 @@ public class JobRecord extends TimestampedModel implements Cachable {
     }
     return true;
   }
-  
+
   public Boolean isScatterPort(String port) {
     for (PortCounter portCounter : inputCounters) {
       if (portCounter.port.equals(port)) {
@@ -292,19 +293,9 @@ public class JobRecord extends TimestampedModel implements Cachable {
     }
     return result;
   }
-  
+
   public Boolean isInputPortBlocking(DAGNode node, String port) {
     return getInputPortIncoming(port) > 1 && LinkMerge.isBlocking(node.getLinkMerge(port, LinkPortType.INPUT));
-  }
-
-  @Override
-  public String getCacheEntityName() {
-    return CACHE_NAME;
-  }
-  
-  @Override
-  public CacheKey getCacheKey() {
-    return new JobCacheKey(this);
   }
 
   public static class PortCounter {
@@ -316,7 +307,7 @@ public class JobRecord extends TimestampedModel implements Cachable {
     public Boolean scatter;
     @JsonProperty("incoming")
     public int incoming;
-    
+
     @JsonProperty("updatedAsSourceCounter")
     public int updatedAsSourceCounter = 0;
     @JsonProperty("globalCounter")
@@ -344,15 +335,15 @@ public class JobRecord extends TimestampedModel implements Cachable {
     public void increaseIncoming() {
       this.incoming++;
     }
-    
+
     public void updatedAsSource(int value) {
       this.updatedAsSourceCounter = updatedAsSourceCounter + value;
     }
-    
+
     public void setGlobalCounter(int globalCounter) {
       this.globalCounter = globalCounter;
     }
-    
+
     public String getPort() {
       return port;
     }
@@ -364,7 +355,7 @@ public class JobRecord extends TimestampedModel implements Cachable {
     public int getGlobalCounter() {
       return globalCounter;
     }
-    
+
     public int getCounter() {
       return counter;
     }
@@ -385,61 +376,6 @@ public class JobRecord extends TimestampedModel implements Cachable {
     public String toString() {
       return "PortCounter [port=" + port + ", counter=" + counter + ", scatter=" + scatter + ", incoming=" + incoming
           + ", updatedAsSourceCounter=" + updatedAsSourceCounter + ", globalCounter=" + globalCounter + "]";
-    }
-    
-  }
-  
-  public static class JobCacheKey implements CacheKey {
-    String id;
-    UUID root;
-    
-    public JobCacheKey(JobRecord record) {
-      this.id = record.id;
-      this.root = record.rootId;
-    }
-    
-    public JobCacheKey(String id, UUID rootId) {
-      this.id = id;
-      this.root = rootId;
-    }
-    
-    @Override
-    public boolean satisfies(CacheKey key) {
-      if (key instanceof JobCacheKey) {
-        return id.equals(((JobCacheKey) key).id) && root.equals(((JobCacheKey) key).root);
-      }
-      return false;
-    }
-
-    @Override
-    public int hashCode() {
-      final int prime = 31;
-      int result = 1;
-      result = prime * result + ((id == null) ? 0 : id.hashCode());
-      result = prime * result + ((root == null) ? 0 : root.hashCode());
-      return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-      if (this == obj)
-        return true;
-      if (obj == null)
-        return false;
-      if (getClass() != obj.getClass())
-        return false;
-      JobCacheKey other = (JobCacheKey) obj;
-      if (id == null) {
-        if (other.id != null)
-          return false;
-      } else if (!id.equals(other.id))
-        return false;
-      if (root == null) {
-        if (other.root != null)
-          return false;
-      } else if (!root.equals(other.root))
-        return false;
-      return true;
     }
 
   }

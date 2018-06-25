@@ -1,6 +1,5 @@
 package org.rabix.bindings.cwl;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,12 +13,9 @@ import org.rabix.bindings.cwl.bean.CWLJob;
 import org.rabix.bindings.cwl.bean.CWLJobApp;
 import org.rabix.bindings.cwl.bean.CWLOutputPort;
 import org.rabix.bindings.cwl.bean.CWLStep;
-import org.rabix.bindings.cwl.bean.CWLStepInputs;
 import org.rabix.bindings.cwl.bean.CWLWorkflow;
 import org.rabix.bindings.cwl.bean.resource.CWLResource;
 import org.rabix.bindings.cwl.helper.CWLBindingHelper;
-import org.rabix.bindings.cwl.helper.CWLDirectoryValueHelper;
-import org.rabix.bindings.cwl.helper.CWLFileValueHelper;
 import org.rabix.bindings.cwl.helper.CWLSchemaHelper;
 import org.rabix.bindings.model.ApplicationPort;
 import org.rabix.bindings.model.LinkMerge;
@@ -52,8 +48,12 @@ public class CWLJobProcessor implements BeanProcessor<CWLJob> {
     if(job.getApp().getCwlVersion() == null && parentJob != null) {
       job.getApp().setCwlVersion(parentJob.getApp().getCwlVersion());
     }
+
+    if(job.getApp().getAppFileLocation() == null && parentJob != null) {
+      job.getApp().setAppFileLocation(parentJob.getApp().getAppFileLocation());
+    }
+    
     processElements(null, job);
-    rewriteDefaultPaths(job);
     
     if (job.getApp().isWorkflow()) {
       CWLWorkflow workflow = (CWLWorkflow) job.getApp();
@@ -70,65 +70,7 @@ public class CWLJobProcessor implements BeanProcessor<CWLJob> {
     }
     return job;
   }
-  
-  /**
-   * Rewrite default file location if application is loaded from elsewhere 
-   */
-  private void rewriteDefaultPaths(CWLJob job) {
-    CWLJobApp app = job.getApp();
-    String appLocation = app.getAppFileLocation();
-    if (appLocation != null) {
-      rewriteDefaultPaths(job.getInputs(), appLocation);
-    }
-  }
-  
-  @SuppressWarnings("unchecked")
-  private void rewriteDefaultPaths(Object value, String appLocation) {
-    if (value instanceof CWLStepInputs) {
-      value = ((CWLStepInputs) value).getDefaultValue();
-    }
-    if (CWLSchemaHelper.isFileFromValue(value) || CWLSchemaHelper.isDirectoryFromValue(value)) {
-      String location = CWLFileValueHelper.getLocation(value);
-      if (location != null && !location.startsWith("/")) {
-        File appFile = new File(appLocation);
-        String newLocation = new File(appFile.getParentFile(), location).getAbsolutePath();
-        CWLFileValueHelper.setLocation(newLocation, value);
-      }
-      String path = CWLFileValueHelper.getPath(value);
-      if (path != null && !path.startsWith("/")) {
-        File appFile = new File(appLocation);
-        String newPath = new File(appFile.getParentFile(), path).getAbsolutePath();
-        CWLFileValueHelper.setPath(newPath, value);
-      }
-      List<Map<String, Object>> secondaryFiles = CWLFileValueHelper.getSecondaryFiles(value);
-      if (secondaryFiles != null) {
-        for (Map<String, Object> secondaryFile : secondaryFiles) {
-          rewriteDefaultPaths(secondaryFile, appLocation);
-        }
-      }
-      if (CWLSchemaHelper.isDirectoryFromValue(value)) {
-        List<Object> listing = CWLDirectoryValueHelper.getListing(value);
-        if (listing != null) {
-          for (Object listingObj : listing) {
-            rewriteDefaultPaths(listingObj, appLocation);
-          }
-        }
-      }
-      return;
-    }
-    if (value instanceof Map<?, ?>) {
-      for (Object mapValue : ((Map<String, Object>) value).values()) {
-        rewriteDefaultPaths(mapValue, appLocation);
-      }
-      return;
-    }
-    if (value instanceof List<?>) {
-      for (Object listValue : ((List<Object>) value)) {
-        rewriteDefaultPaths(listValue, appLocation);
-      }
-    }
-  }
-  
+ 
   /**
    * @param step
    * @param parentJob
@@ -136,10 +78,11 @@ public class CWLJobProcessor implements BeanProcessor<CWLJob> {
    * Process hints in workflow 
    */
   public void processHints(CWLStep step, CWLJobApp parentJob, CWLJobApp childJob) {
-    for(CWLResource resource: parentJob.getHints()) {
+    for(CWLResource resource: step.getHints()) {
       childJob.setHint(resource);
     }
-    for(CWLResource resource: step.getHints()) {
+    
+    for(CWLResource resource: parentJob.getHints()) {
       childJob.setHint(resource);
     }
   }
@@ -151,10 +94,11 @@ public class CWLJobProcessor implements BeanProcessor<CWLJob> {
    * Process requirements in workflow
    */
   public void processRequirements(CWLStep step, CWLJobApp parentJob, CWLJobApp childJob) {
-    for(CWLResource resource: parentJob.getRequirements()) {
+    for(CWLResource resource: step.getRequirements()) {
       childJob.setRequirement(resource);
     }
-    for(CWLResource resource: step.getRequirements()) {
+    
+    for(CWLResource resource: parentJob.getRequirements()) {
       childJob.setRequirement(resource);
     }
   }
@@ -246,15 +190,15 @@ public class CWLJobProcessor implements BeanProcessor<CWLJob> {
   private void processPorts(CWLJob parentJob, CWLJob job, List<? extends ApplicationPort> ports) throws CWLException {
     for (ApplicationPort port : ports) {
       setScatter(job, port);  // if it's a container
-      if (parentJob != null && parentJob.getApp().isWorkflow()) {
+      if (parentJob != null && parentJob.getApp().isWorkflow() && port.getScatter() != null && port.getScatter()) {
         // if it's a container
         CWLWorkflow workflowApp = (CWLWorkflow) parentJob.getApp();
         processDataLinks(workflowApp.getDataLinks(), port, job, true);
       }
-      if (job != null && job.getApp().isWorkflow()) {
-        CWLWorkflow workflowApp = (CWLWorkflow) job.getApp();
-        processDataLinks(workflowApp.getDataLinks(), port, job, false);
-      }
+//      if (job != null && job.getApp().isWorkflow()) {
+//        CWLWorkflow workflowApp = (CWLWorkflow) job.getApp();
+//        processDataLinks(workflowApp.getDataLinks(), port, job, false);
+//      }
       
       // handle standard out
       if (job.getApp().isCommandLineTool() && port instanceof CWLOutputPort) {

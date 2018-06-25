@@ -1,28 +1,21 @@
 package org.rabix.engine.service;
 
-import java.util.Set;
-import java.util.UUID;
-
-import org.rabix.bindings.model.FileValue;
 import org.rabix.bindings.model.Job;
+
+import java.util.UUID;
 
 public interface IntermediaryFilesService {
 
-  void addOrIncrement(UUID rootId, FileValue file, Integer usage);
+  void registerOutputFiles(UUID rootId, Object value);
 
-  void decrementFiles(UUID rootId, Set<String> checkFiles);
+  void handleUnusedFilesIfAny(Job job);
 
-  void jobFailed(UUID rootId, Set<String> rootInputs);
+  void handleJobFailed(Job job, Job rootJob);
 
-  void handleUnusedFiles(Job job);
+  void decrementInputFilesReferences(UUID rootId, Object value);
 
-  void handleContainerReady(Job containerJob, boolean keepInputFiles);
+  void incrementInputFilesReferences(UUID rootId, Object inputs);
 
-  void handleJobCompleted(Job job);
-
-  void handleJobFailed(Job job, Job rootJob, boolean keepInputFiles);
-
-  void extractPathsFromFileValue(Set<String> paths, FileValue file);
-
+  void freeze(UUID rootId, Object value);
 }
 

@@ -1,71 +1,57 @@
 package org.rabix.engine.store.memory.impl;
 
+import com.google.inject.Inject;
+import org.rabix.engine.store.model.EventRecord;
+import org.rabix.engine.store.repository.EventRepository;
+
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
-import org.rabix.engine.store.model.EventRecord;
-import org.rabix.engine.store.repository.EventRepository;
-
-import com.google.inject.Inject;
-
 public class InMemoryEventRepository implements EventRepository {
 
-  private class Key {
-    UUID id;
-    EventRecord.PersistentType type;
+  private final Map<UUID, EventRecord> eventRepository;
 
-    public Key(UUID id, EventRecord.PersistentType type) {
-      this.id = id;
-      this.type = type;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
-      Key key = (Key) o;
-      return Objects.equals(id, key.id) &&
-          type == key.type;
-    }
-
-    @Override
-    public int hashCode() {
-      return Objects.hash(id, type);
-    }
-  }
-
-  private Key key(EventRecord event) {
-    return new Key(event.getGroupId(), event.getType());
-  }
-
-  private Map<Key, EventRecord> eventRepository;
-  
   @Inject
   public InMemoryEventRepository() {
     this.eventRepository = new ConcurrentHashMap<>();
   }
 
   @Override
-  public synchronized void insert(EventRecord event) {
-    eventRepository.put(key(event), event);
+  public void insert(EventRecord event) {
+    eventRepository.put(event.getGroupId(), event);
   }
 
   @Override
-  public synchronized void updateStatus(EventRecord event) {
-    eventRepository.get(key(event)).setStatus(event.getStatus());
+  public void deleteGroup(UUID id) {
+    eventRepository.remove(id);
   }
 
   @Override
-  public synchronized void deleteGroup(UUID id) {
-    eventRepository.entrySet().removeIf(e -> e.getKey().id == id);
+  public void deleteByGroupIds(UUID rootId, Set<UUID> groupIds) {
+    groupIds.forEach(this::deleteGroup);
   }
 
   @Override
-  public synchronized List<EventRecord> findUnprocessed() {
+  public void deleteByRootId(UUID rootId) {
+    eventRepository.values().removeIf(e -> rootId.equals(e.getRootId()));
+  }
+
+  @Override
+  public void updateStatus(UUID groupId, EventRecord.Status status) {
+    EventRecord eventRecord = eventRepository.get(groupId);
+    if (eventRecord != null) {
+      eventRecord.setStatus(status);
+    }
+  }
+
+  @Override
+  public List<EventRecord> getPendingEvents() {
     return eventRepository.values().stream()
-        .filter(event -> event.getStatus() == EventRecord.Status.UNPROCESSED)
+        .filter(event ->
+                event.getStatus() == EventRecord.Status.UNPROCESSED
+                        || event.getStatus() == EventRecord.Status.PROCESSED)
         .collect(Collectors.toList());
   }
-  
+
 }

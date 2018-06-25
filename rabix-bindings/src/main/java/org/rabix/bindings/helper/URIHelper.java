@@ -8,8 +8,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
@@ -29,7 +32,7 @@ public class URIHelper {
   public final static String FTP_URI_SCHEME = "ftp://";
   public final static String HTTP_URI_SCHEME = "http";
   public final static String DATA_URI_SCHEME = "data";
-  public final static String FILE_URI_SCHEME = "file://";
+  public final static String FILE_URI_SCHEME = "file:";
   
   private final static String DATA_URI_BASE_64 = "base64";
   private final static String DATA_URI_PAYLOAD_SEPARATOR = ",";
@@ -163,9 +166,7 @@ public class URIHelper {
 
   private static String loadFromFile(String uri) throws IOException {
     try {
-      String filePath = getURIInfo(uri);
-      String absoluteFilePath = new File(filePath).getCanonicalPath();
-      return FileUtils.readFileToString(new File(absoluteFilePath), DEFAULT_ENCODING);
+      return new String(Files.readAllBytes(Paths.get(URI.create(uri))));
     } catch (IOException e) {
       logger.error("Failed to load data from file {}: {}", uri, e.getMessage());
       throw e;

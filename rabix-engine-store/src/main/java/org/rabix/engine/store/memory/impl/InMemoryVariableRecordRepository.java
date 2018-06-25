@@ -1,62 +1,50 @@
 package org.rabix.engine.store.memory.impl;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-
+import com.google.inject.Inject;
 import org.rabix.bindings.model.dag.DAGLinkPort.LinkPortType;
 import org.rabix.engine.store.model.VariableRecord;
 import org.rabix.engine.store.repository.VariableRecordRepository;
 
-import com.google.inject.Inject;
-import org.rabix.engine.store.model.JobRecord;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class InMemoryVariableRecordRepository extends VariableRecordRepository {
 
-  private ConcurrentMap<UUID, List<VariableRecord>> variableRecordsPerContext;
-  
+  private ConcurrentMap<UUID, Collection<VariableRecord>> variableRecordsPerContext;
+  private ConcurrentMap<UUID, ConcurrentMap<String, Collection<VariableRecord>>> variableRecordsPerContextAndId;
+
   @Inject
-  public InMemoryVariableRecordRepository() {
-    variableRecordsPerContext = new ConcurrentHashMap<UUID, List<VariableRecord>>();
+    public InMemoryVariableRecordRepository() {
+    variableRecordsPerContext = new ConcurrentHashMap<>();
+    variableRecordsPerContextAndId = new ConcurrentHashMap<>();
   }
 
   public int insert(VariableRecord variableRecord) {
     getVariableRecords(variableRecord.getRootId()).add(variableRecord);
+    getVariableRecordsWithId(variableRecord.getRootId(), variableRecord.getJobId()).add(variableRecord);
     return 1;
   }
-  
+
   public void delete(UUID rootId) {
     variableRecordsPerContext.remove(rootId);
   }
 
   public int update(VariableRecord variableRecord) {
-    for (VariableRecord vr : getVariableRecords(variableRecord.getRootId())) {
-      if (vr.getJobId().equals(variableRecord.getJobId()) && vr.getPortId().equals(variableRecord.getPortId()) && vr.getType().equals(variableRecord.getType()) && vr.getRootId().equals(variableRecord.getRootId())) {
+    for (VariableRecord vr : getVariableRecordsWithId(variableRecord.getRootId(), variableRecord.getJobId())) {
+      if (vr.getPortId().equals(variableRecord.getPortId()) && vr.getType().equals(variableRecord.getType())) {
         vr.setValue(variableRecord.getValue());
         return 1;
       }
     }
     return 0;
   }
-  
+
   public List<VariableRecord> getByType(String jobId, LinkPortType type, UUID contextId) {
     List<VariableRecord> result = new ArrayList<>();
-    for (VariableRecord vr : getVariableRecords(contextId)) {
-      if (vr.getJobId().equals(jobId) && vr.getType().equals(type) && vr.getRootId().equals(contextId)) {
-        result.add(vr);
-      }
-    }
-    return result;
-  }
-  
-  public List<VariableRecord> getByPort(String jobId, String portId, UUID contextId) {
-    List<VariableRecord> result = new ArrayList<>();
-    for (VariableRecord vr : getVariableRecords(contextId)) {
-      if (vr.getJobId().equals(jobId) && vr.getPortId().equals(portId) && vr.getRootId().equals(contextId)) {
+    for (VariableRecord vr : getVariableRecordsWithId(contextId, jobId)) {
+      if (vr.getType().equals(type)) {
         result.add(vr);
       }
     }
@@ -64,18 +52,29 @@ public class InMemoryVariableRecordRepository extends VariableRecordRepository {
   }
 
   public VariableRecord get(String jobId, String portId, LinkPortType type, UUID contextId) {
-    for (VariableRecord vr : getVariableRecords(contextId)) {
-      if (vr.getJobId().equals(jobId) && vr.getPortId().equals(portId) && vr.getType().equals(type) && vr.getRootId().equals(contextId)) {
+    for (VariableRecord vr : getVariableRecordsWithId(contextId, jobId)) {
+      if (vr.getPortId().equals(portId) && vr.getType().equals(type)) {
         return vr;
       }
     }
     return null;
   }
 
+
+  public List<VariableRecord> getByPort(String jobId, String portId, UUID contextId) {
+    List<VariableRecord> result = new ArrayList<>();
+    for (VariableRecord vr : getVariableRecordsWithId(contextId, jobId)) {
+      if (vr.getPortId().equals(portId)) {
+        result.add(vr);
+      }
+    }
+    return result;
+  }
+
   public List<VariableRecord> findByJobId(String jobId, LinkPortType type, UUID contextId) {
     List<VariableRecord> result = new ArrayList<>();
-    for (VariableRecord vr : getVariableRecords(contextId)) {
-      if (vr.getJobId().equals(jobId) && vr.getType().equals(type) && vr.getRootId().equals(contextId)) {
+    for (VariableRecord vr : getVariableRecordsWithId(contextId, jobId)) {
+      if (vr.getType().equals(type)) {
         result.add(vr);
       }
     }
@@ -83,16 +82,16 @@ public class InMemoryVariableRecordRepository extends VariableRecordRepository {
   }
 
   public List<VariableRecord> find(UUID contextId) {
-    return getVariableRecords(contextId);
+    return new ArrayList<>(getVariableRecords(contextId));
   }
-  
-  public List<VariableRecord> getVariableRecords(UUID contextId) {
-    List<VariableRecord> variableList = variableRecordsPerContext.get(contextId);
-    if (variableList == null) {
-      variableList = new ArrayList<>();
-      variableRecordsPerContext.put(contextId, variableList);
-    }
-    return variableList;
+
+  public Collection<VariableRecord> getVariableRecords(UUID contextId) {
+    return variableRecordsPerContext.computeIfAbsent(contextId, k -> new ArrayList<>());
+  }
+
+  public Collection<VariableRecord> getVariableRecordsWithId(UUID contextId, String jobId) {
+    ConcurrentMap<String, Collection<VariableRecord>> map = variableRecordsPerContextAndId.computeIfAbsent(contextId, k -> new ConcurrentHashMap<>());
+    return map.computeIfAbsent(jobId, k-> new ArrayList<>());
   }
 
   @Override
@@ -110,8 +109,13 @@ public class InMemoryVariableRecordRepository extends VariableRecordRepository {
   }
 
   @Override
-  public void delete(Set<JobRecord.JobIdRootIdPair> externalIDs) {
-    // TODO Auto-generated method stub
+  public void delete(String id, UUID rootId) {
+    getVariableRecords(rootId).removeIf(variableRecord -> variableRecord.getJobId().equals(id));
+    getVariableRecordsWithId(rootId, id).clear();
   }
-  
+
+  @Override
+  public void deleteByRootId(UUID rootId) {
+    variableRecordsPerContext.remove(rootId);
+  }
 }

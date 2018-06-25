@@ -1,12 +1,11 @@
 package org.rabix.executor.container.impl;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Writer;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -23,8 +22,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.rabix.bindings.Bindings;
 import org.rabix.bindings.BindingsFactory;
 import org.rabix.bindings.CommandLine;
+import org.rabix.bindings.helper.FileValueHelper;
 import org.rabix.bindings.mapper.FileMappingException;
 import org.rabix.bindings.mapper.FilePathMapper;
+import org.rabix.bindings.model.DirectoryValue;
+import org.rabix.bindings.model.FileValue;
 import org.rabix.bindings.model.Job;
 import org.rabix.bindings.model.Resources;
 import org.rabix.bindings.model.requirement.EnvironmentVariableRequirement;
@@ -49,6 +51,7 @@ public class LocalContainerHandler implements ContainerHandler {
 
   private Process process;
   private String commandLineString;
+  private String log;
   
   public static final String HOME_ENV_VAR = "HOME";
   public static final String TMPDIR_ENV_VAR = "TMPDIR";
@@ -58,6 +61,22 @@ public class LocalContainerHandler implements ContainerHandler {
     this.workingDir = storageConfig.getWorkingDir(job);
   }
 
+  private void stageFile(FileValue file) {
+    Path path = Paths.get(file.getPath());
+    if (!Files.exists(path)) {
+      try {
+        Files.copy(Paths.get(URI.create(file.getLocation())), path);
+      } catch (IOException e) {
+        logger.error("Failed to stage file: " + file.getLocation(), e);
+      }
+    }
+    file.getSecondaryFiles().forEach((FileValue sec) -> stageFile(sec));
+    
+    if(file instanceof DirectoryValue){
+      ((DirectoryValue)file).getListing().forEach(f->stageFile(f));
+    }
+  }
+  
   @Override
   public synchronized void start() throws ContainerException {
     try {
@@ -71,8 +90,6 @@ public class LocalContainerHandler implements ContainerHandler {
           return path;
         }
       });
-
-      commandLineString = commandLine.build();
 
       final ProcessBuilder processBuilder = new ProcessBuilder();
       List<Requirement> combinedRequirements = new ArrayList<>();
@@ -90,6 +107,7 @@ public class LocalContainerHandler implements ContainerHandler {
         }
       }
       
+      
       EnvironmentVariableRequirement environmentVariableResource = getRequirement(combinedRequirements, EnvironmentVariableRequirement.class);
       if (environmentVariableResource != null) {
         for (Entry<String, String> envVariableEntry : environmentVariableResource.getVariables().entrySet()) {
@@ -97,26 +115,29 @@ public class LocalContainerHandler implements ContainerHandler {
         }
       }
 
+      FileValueHelper.updateFileValues(job.getInputs(), (FileValue f) -> {
+        stageFile(f);
+        return f;
+      });
+
+      commandLineString = commandLine.build();
       processBuilder.directory(workingDir);
 
-      boolean runInShell = commandLineString.startsWith("/bin/bash") || commandLineString.startsWith("/bin/sh");
-      if (runInShell || !commandLine.isRunInShell()) {
-        List<String> parts = commandLine.getParts();
-        processBuilder.command(parts);
-
-        processBuilder.redirectInput(redirect(workingDir, commandLine.getStandardIn(), false));
-        processBuilder.redirectOutput(redirect(workingDir, commandLine.getStandardOut(), true));
-        processBuilder.redirectError(redirect(workingDir, commandLine.getStandardError(), true));
+      if (commandLine.isRunInShell()) {
+        List<String> parts = commandLine.getBuiltParts();
+        int start = StringUtils.startsWithAny(parts.get(0), "/bin/bash", "/bin/sh") && parts.get(1).startsWith("-c") ? 2 : 0;
+        processBuilder.command("/bin/sh", "-c", StringUtils.join(parts.subList(start, parts.size()), " "));
       } else {
-        processBuilder.command("/bin/sh", "-c", commandLineString);
+        processBuilder.command(commandLine.getParts());
       }
-
+      redirect(processBuilder, workingDir, commandLine);
       VerboseLogger.log(String.format("Running command line: %s", commandLineString));
       processFuture = executorService.submit(new Callable<Integer>() {
         @Override
         public Integer call() throws Exception {
           process = processBuilder.start();
           process.waitFor();
+          log = StringUtils.join(IOUtils.readLines(process.getErrorStream()), '\n');
           return process.exitValue();
         }
       });
@@ -127,22 +148,22 @@ public class LocalContainerHandler implements ContainerHandler {
     }
   }
   
-  
-
-  private ProcessBuilder.Redirect redirect(File workingDir, String path, boolean write) {
-    if (StringUtils.isEmpty(path)) {
-      return ProcessBuilder.Redirect.PIPE;
-    }
-    File res = new File(path);
-    if (!res.isAbsolute()) {
-      res = new File(workingDir, path);
-    }
-    if (write) {
-      return ProcessBuilder.Redirect.to(res);
-    }
-    return ProcessBuilder.Redirect.from(res);
+  private void redirect(ProcessBuilder pb, File workingDir, CommandLine commandLine) {
+    String stdIn = commandLine.getStandardIn();
+    String stdOut = commandLine.getStandardOut();
+    String stdError = commandLine.getStandardError();
+    if (!StringUtils.isEmpty(stdIn))
+      pb.redirectInput(ProcessBuilder.Redirect.from(toFile(stdIn)));
+    if (!StringUtils.isEmpty(stdOut))
+      pb.redirectOutput(ProcessBuilder.Redirect.to(toFile(stdOut)));
+    if (!StringUtils.isEmpty(stdError))
+      pb.redirectError(ProcessBuilder.Redirect.to(toFile(stdError)));
   }
-  
+
+  private File toFile(String stdIn) {
+    return Paths.get(stdIn.startsWith("'") ? stdIn.substring(1, stdIn.length() - 1) : stdIn).toFile();
+  }
+
   @SuppressWarnings("unchecked")
   private <T extends Requirement> T getRequirement(List<Requirement> requirements, Class<T> clazz) {
     for (Requirement requirement : requirements) {
@@ -184,27 +205,6 @@ public class LocalContainerHandler implements ContainerHandler {
   }
 
   @Override
-  public synchronized void dumpContainerLogs(File errorFile) throws ContainerException {
-
-    try {
-      if (!errorFile.exists()) {
-        errorFile.createNewFile();
-      }
-      if (process == null) {
-        try (Writer outputStream = new FileWriter(errorFile)) {
-          outputStream.write("Process not initiated");
-        }
-      }
-      try (InputStream inputStream = process.getErrorStream(); OutputStream outputStream = new FileOutputStream(errorFile)) {
-        IOUtils.copy(inputStream, outputStream);
-      }
-    } catch (IOException e) {
-      logger.error("Failed to create " + errorFile.getName(), e);
-      throw new ContainerException("Failed to create " + errorFile.getName(), e);
-    }
-  }
-
-  @Override
   public void dumpCommandLine() throws ContainerException {
     try {
       File commandLineFile = new File(workingDir, JobHandler.COMMAND_LOG);
@@ -216,6 +216,10 @@ public class LocalContainerHandler implements ContainerHandler {
   }
 
   @Override
-  public void removeContainer() {
+  public void removeContainer() {}
+
+  @Override
+  public String getProcessExitMessage() throws ContainerException {
+    return log;
   }
 }
